@@ -87,11 +87,12 @@ export default function App() {
   const [activeFilter, setActiveFilter] = useState('全部包裝');
   const [activeCourseFilter, setActiveCourseFilter] = useState('全部');
   const [activeSection, setActiveSection] = useState('home');
+  const [selectedProject, setSelectedProject] = useState(null);
 
   // --- 資料定義 ---
   const projectData = {
     Packaging: [
-      { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
+      { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard09.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
       { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_innercard02.png', tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
       { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/tws_innercard03.png', tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
       { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/tws_innercard04.png', tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
@@ -189,8 +190,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = activeCategory ? 'hidden' : 'unset';
-  }, [activeCategory]);
+    document.body.style.overflow = (activeCategory || selectedProject) ? 'hidden' : 'unset';
+  }, [activeCategory, selectedProject]);
 
   return (
     <div className="font-sans text-[#121212] bg-[#fdfdfd] antialiased selection:bg-[#a38a6a] selection:text-white pb-24">
@@ -200,12 +201,12 @@ export default function App() {
 
       {/* 2. 精品膠囊導覽列 */}
       <div className="fixed top-0 left-0 w-full z-[120] flex justify-center pt-8 px-6 pointer-events-none">
-        <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-8 py-3 rounded-full bg-white/80 backdrop-blur-3xl border border-white/40 shadow-lg ${scrolled ? 'w-full max-w-4xl' : 'w-full max-w-6xl'}`}>
+        <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-8 py-3 rounded-full bg-white/80 backdrop-blur-3xl border border-white/40 shadow-lg ${scrolled ? 'w-full max-w-[60rem]' : 'w-full max-w-[85rem]'}`}>
           <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white shrink-0">
                <img src="/logo.png" alt="AL Logo" className="w-full h-full object-cover" />
             </div>
-            <span className="font-black text-xl tracking-tighter hidden sm:block">Amanda Lai.</span>
+            <span className="font-black text-xl tracking-tighter hidden sm:block whitespace-nowrap">Amanda Lai.</span>
           </div>
           <div className="hidden md:flex items-center space-x-2 text-[14px] font-black uppercase tracking-widest text-gray-400">
             {['about', 'portfolio', 'experience', 'skills', 'courses'].map(item => (
@@ -215,7 +216,7 @@ export default function App() {
               </a>
             ))}
           </div>
-          <a href="#contact" className="bg-[#121212] text-white text-[14px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] transition-all flex items-center gap-2 active:scale-95 shadow-md">
+          <a href="#contact" className="bg-[#121212] flex-shrink-0 text-white text-[14px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] transition-all flex items-center gap-2 active:scale-95 shadow-md whitespace-nowrap">
             CONTACT <ArrowRight size={14} />
           </a>
         </nav>
@@ -273,7 +274,12 @@ export default function App() {
           <div className="lg:col-span-7 flex flex-col justify-end text-[#121212]">
             <Reveal delay={200} className="max-w-2xl space-y-12">
                <p className="text-3xl md:text-4xl font-black leading-[1.5] text-gray-900 tracking-tight">畢業於<strong className="relative inline-block text-[#121212]">國立臺灣科技大學<span className="absolute bottom-1 left-0 w-full h-3 bg-[#a38a6a]/10 -z-10"></span></strong> 工業設計系，擁有 6 年從外觀至量產的深厚實戰。</p>
-               <p className="text-[17px] text-gray-500 leading-[1.85] max-w-[65ch] font-medium text-justify">我擅長將複雜的工程數據轉化為動人的設計語言，不僅關注產品在貨架上的吸引力，更深入鑽研其在物流環節的保護力。始終堅持「在成本限制中尋求極致」，為品牌創造持久的商業價值。</p>
+               <div className="flex gap-8 items-start">
+                   <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-xl border-4 border-white hidden sm:block">
+                      <img src="/Profolio_photo.jpg" alt="Amanda Lai" className="w-full h-full object-cover" />
+                   </div>
+                   <p className="text-[17px] text-gray-500 leading-[1.85] max-w-[65ch] font-medium text-justify">我擅長將複雜的工程數據轉化為動人的設計語言，不僅關注產品在貨架上的吸引力，更深入鑽研其在物流環節的保護力。始終堅持「在成本限制中尋求極致」，為品牌創造持久的商業價值。</p>
+               </div>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[#121212]">
                   <div className="space-y-4 text-[#121212]">
                      <div className="flex items-center gap-3 text-[#121212]"><LayoutGrid size={20} className="text-[#a38a6a]" /><h4 className="font-black text-[14px] uppercase tracking-widest text-[#121212]">Global Reach</h4></div>
@@ -341,7 +347,7 @@ export default function App() {
             { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
             { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
             { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase, image: null },
-            { company: "國立臺灣科技大學", title: "工業設計系 / 大學畢業", date: "2013 - 2017", duration: "基礎教育", location: "台北市", responsibilities: ["深耕結構工程與美學邏輯，奠定系統化產品開發思維。"], achievements: [], tools: ["工業設計", "產品開發", "系統化邏輯"], type: "edu", icon: GraduationCap, image: "/ntust_logo.png" },
+            { company: "國立臺灣科技大學", title: "工業設計系 / 大學畢業", date: "2013 - 2017", duration: "基礎教育", location: "台北市", responsibilities: ["深耕結構工程與美學邏輯，奠定系統化產品開發思維。"], achievements: [], tools: ["工業設計", "產品開發", "系統化邏輯"], type: "edu", icon: GraduationCap, image: "/ntust_logo.jpg" },
             { company: "國立臺中高工", title: "圖文傳播科 / 高職畢業", date: "2010 - 2013", duration: "基礎教育", location: "台中市", responsibilities: ["啟蒙於平面美學與印刷技術，掌握刀模與色彩控制精髓。"], achievements: [], tools: ["平面設計", "印刷工程", "色彩學"], type: "edu", icon: LayoutGrid, image: "/tcivs_logo.jpg" }
           ].map((item, idx) => {
             const IconComponent = item.icon;
@@ -456,7 +462,7 @@ export default function App() {
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
                    {[
                      { name: 'SolidWorks', img: '/solidworks_logo.jpg' },
-                     { name: 'Creo', img: '/creo_logo.png' },
+                     { name: 'Creo', img: '/creo_logo.jpg' },
                      { name: 'KeyShot', img: '/keyshot-logo-2.jpg' },
                      { name: 'Illustrator', img: '/illustrator.jpg' },
                      { name: 'Photoshop', img: '/photoshop_logo.jpg' },
@@ -622,21 +628,66 @@ export default function App() {
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-20 text-[#121212] text-[#121212]">
               {filteredProjects.map((proj, i) => (
-                 <div key={proj.id} className="group/item flex flex-col cursor-pointer text-[#121212] text-[#121212]">
-                   <div className="aspect-[16/10] overflow-hidden rounded-[3rem] bg-gray-50 mb-12 relative shadow-sm hover:shadow-2xl transition-all duration-700 text-[#121212]">
-                      <img src={proj.img} alt={proj.title} className="w-full h-full object-cover grayscale opacity-90 group-hover/item:grayscale-0 group-hover/item:opacity-100 group-hover/item:scale-105 transition-all duration-1000 text-[#121212]" />
-                      <div className="absolute top-10 left-10 w-16 h-16 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center font-serif italic text-2xl shadow-sm text-[#121212] text-[#121212]">0{i+1}</div>
+                 <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
+                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[3rem] bg-white relative p-6">
+                      <img src={proj.img} alt={proj.title} className="w-full h-auto object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                      <div className="absolute top-8 left-8 w-14 h-14 rounded-full bg-[#121212]/5 backdrop-blur-md flex items-center justify-center font-serif italic text-xl shadow-sm text-[#121212]">0{i+1}</div>
                    </div>
-                   <div className="px-6 text-[#121212] text-[#121212]">
-                      <div className="flex justify-between items-center mb-8 text-[#121212] text-[#121212]">
-                         <h4 className="text-3xl font-black text-[#121212] tracking-tight text-[#121212]">{proj.title}</h4>
-                         <div className="w-14 h-14 rounded-full border border-gray-100 flex items-center justify-center text-gray-200 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all text-[#121212] text-[#121212]"><ExternalLink size={24} /></div>
+                   <div className="px-10 pb-10 pt-4 flex-grow flex flex-col justify-end text-[#121212]">
+                      <div className="flex justify-between items-center mb-6">
+                         <h4 className="text-3xl font-black text-[#121212] tracking-tight">{proj.title}</h4>
+                         <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all"><ExternalLink size={20} /></div>
                       </div>
-                      <p className="text-xl text-gray-500 leading-relaxed mb-12 font-medium text-[#121212]">{proj.desc}</p>
-                      <div className="flex flex-wrap gap-3 text-[#121212]">{proj.tags.map(tag => (<span key={tag} className="text-[14px] font-black uppercase px-5 py-2.5 bg-gray-50 rounded text-gray-400 tracking-widest text-[#121212]">{tag}</span>))}</div>
+                      <div className="flex flex-wrap gap-3">
+                        {proj.tags.map(tag => (<span key={tag} className="text-[12px] font-black uppercase px-4 py-1.5 bg-[#a38a6a]/10 rounded-full text-[#a38a6a] tracking-widest">{tag}</span>))}
+                      </div>
                    </div>
                  </div>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* --- PROJECT DETAILS MODAL --- */}
+      {selectedProject && (
+        <div className="fixed inset-0 z-[300] flex justify-center items-center p-4 sm:p-8 md:p-12">
+          {/* Backdrop */}
+          <div onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-[#121212]/80 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"></div>
+          
+          {/* Modal Content */}
+          <div className="relative bg-white w-full max-w-7xl h-[90vh] md:h-full max-h-[90vh] md:max-h-full rounded-[2rem] shadow-2xl flex flex-col animate-in zoom-in-95 duration-500 cubic-bezier">
+            
+            {/* Header & Close */}
+            <div className="flex-shrink-0 flex items-center justify-between p-8 md:p-10 border-b border-gray-100 z-10 sticky top-0 bg-white/90 backdrop-blur-md rounded-t-[2rem]">
+               <div className="flex flex-col">
+                  <h3 className="text-3xl md:text-4xl font-black tracking-tight text-[#121212]">{selectedProject.title}</h3>
+                  <div className="flex gap-2 mt-4 flex-wrap">
+                    {selectedProject.tags.map(tag => (
+                      <span key={tag} className="text-[14px] font-bold text-[#a38a6a] bg-[#a38a6a]/10 px-4 py-1.5 rounded-full uppercase tracking-widest">{tag}</span>
+                    ))}
+                  </div>
+               </div>
+               <button onClick={() => setSelectedProject(null)} className="flex items-center justify-center w-14 h-14 bg-gray-50 hover:bg-gray-100 rounded-full transition-colors group">
+                 <X size={24} className="text-gray-500 group-hover:text-[#121212] transition-colors" />
+               </button>
+            </div>
+
+            {/* Scrollable Images */}
+            <div className="flex-grow overflow-y-auto p-4 sm:p-8 md:p-12 custom-scrollbar bg-[#fdfdfd]">
+               <div className="space-y-8 flex flex-col items-center">
+                  {selectedProject.detailsImages ? (
+                     selectedProject.detailsImages.map((img, idx) => (
+                       <div key={idx} className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
+                          <img src={img} alt={`${selectedProject.title} details`} className="w-full h-auto object-contain" />
+                       </div>
+                     ))
+                  ) : (
+                     <div className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
+                        <img src={selectedProject.img} alt={`${selectedProject.title} thumbnail`} className="w-full h-auto object-contain" />
+                     </div>
+                  )}
+               </div>
             </div>
           </div>
         </div>
