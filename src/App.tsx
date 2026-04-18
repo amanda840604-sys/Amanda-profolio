@@ -91,19 +91,19 @@ export default function App() {
   // --- 資料定義 ---
   const projectData = {
     Packaging: [
-      { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: 'https://images.unsplash.com/photo-1628102491629-778571d893a3?q=80&w=800', tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
-      { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800', tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
-      { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: 'https://images.unsplash.com/photo-1585218356057-dc0e8d355888?q=80&w=800', tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
-      { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: 'https://images.unsplash.com/photo-1543632971-ceb99bc4f7c1?q=80&w=800', tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
-      { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: 'https://images.unsplash.com/photo-1608223652646-6dd410e53a39?q=80&w=800', tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
-      { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托。', img: 'https://images.unsplash.com/photo-1587826359546-d2424fa19532?q=80&w=800', tags: ['包裝設計', '紙托'], category: '消費性電子產品' },
-      { id: 7, title: 'Carrycase 包袋設計', desc: '收納包袋結構設計，針對戶外需求優化。', img: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?q=80&w=800', tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: 'https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=800', tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
-      { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: 'https://images.unsplash.com/photo-1485965120184-e220f721d03e?q=80&w=800', tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: 'https://images.unsplash.com/photo-1511994298241-608e28f14fde?q=80&w=800', tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 11, title: '座管 包裝設計', desc: '圓柱狀金屬件全紙緩衝固定結構。', img: 'https://images.unsplash.com/photo-1576435728678-68ce0db81561?q=80&w=800', tags: ['包裝設計', '自行車', '減塑'], category: '自行車零件' },
-      { id: 12, title: '立管 包裝設計', desc: '緊湊型自行車立管包裝與運輸模組。', img: 'https://images.unsplash.com/photo-1534158914592-062992fbe900?q=80&w=800', tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 13, title: '快拆束仔 包裝設計', desc: '小型精密零件的高效率包裝排版設計。', img: 'https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=800', tags: ['包裝設計', '自行車'], category: '自行車零件' }
+      { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
+      { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_innercard02.png', tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
+      { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/tws_innercard03.png', tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
+      { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/tws_innercard04.png', tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
+      { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/tws_innercard05.png', tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
+      { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托。', img: '/camera_pkg_001.jpg', tags: ['包裝設計', '紙托'], category: '消費性電子產品' },
+      { id: 7, title: '視訊鏡頭細部設計', desc: '收納包袋結構設計，針對戶外需求優化。', img: '/camera_pkg_002.jpg', tags: ['包裝設計', '鏡頭包裝'], category: '消費性電子產品' },
+      { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/tws_innercard08.png', tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
+      { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tws_innercard09.png', tags: ['包裝設計', '自行車'], category: '自行車零件' },
+      { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/tws_innercard10.png', tags: ['包裝設計', '自行車'], category: '自行車零件' },
+      { id: 11, title: '座管 包裝設計', desc: '圓柱狀金屬件全紙緩衝固定結構。', img: '/tws_innercard11.png', tags: ['包裝設計', '自行車', '減塑'], category: '自行車零件' },
+      { id: 12, title: '立管 包裝設計', desc: '緊湊型自行車立管包裝與運輸模組。', img: '/tws_innercard12.png', tags: ['包裝設計', '自行車'], category: '自行車零件' },
+      { id: 13, title: '快拆束仔 包裝設計', desc: '小型精密零件的高效率包裝排版設計。', img: '/tws_innercard06.png', tags: ['包裝設計', '自行車'], category: '自行車零件' }
     ],
     Product: [
       { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800', tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
@@ -121,7 +121,7 @@ export default function App() {
   const coursesData = [
     { id: 1, title: '包裝結構設計、運輸驗證\n成本優化實務課程', org: '財團法人塑膠工業技術發展中心 (PIDC)', date: '2026.03.26', hours: '48 小時', category: '包裝專業課程', img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800' },
     { id: 2, title: '在職菁英 AI 人才培育課程', org: '114年度經濟部產業發展署補助課程', date: '2025.12.09 - 2025.12.17', hours: '30 小時', category: 'AI應用課程', img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800' },
-    { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=800' },
+    { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg' },
     { id: 4, title: 'AI 應用實務系列課程(NUVA)\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: 'https://images.unsplash.com/photo-1546410531-bea47d91e847?q=80&w=800' },
     { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800' }
   ];
@@ -202,7 +202,9 @@ export default function App() {
       <div className="fixed top-0 left-0 w-full z-[120] flex justify-center pt-8 px-6 pointer-events-none">
         <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-8 py-3 rounded-full bg-white/80 backdrop-blur-3xl border border-white/40 shadow-lg ${scrolled ? 'w-full max-w-4xl' : 'w-full max-w-6xl'}`}>
           <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <div className="w-10 h-10 rounded-full bg-[#121212] flex items-center justify-center text-white text-[14px] font-black transition-transform group-hover:scale-110 group-hover:bg-[#a38a6a]">AL</div>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white shrink-0">
+               <img src="/logo.png" alt="AL Logo" className="w-full h-full object-cover" />
+            </div>
             <span className="font-black text-xl tracking-tighter hidden sm:block">Amanda Lai.</span>
           </div>
           <div className="hidden md:flex items-center space-x-2 text-[14px] font-black uppercase tracking-widest text-gray-400">
@@ -334,10 +336,10 @@ export default function App() {
 
           {/* 專業經歷與基礎教育 (整合為單一連續主軸) */}
           {[
-            { company: "久鼎金屬股份有限公司", title: "資深包裝結構工程師", date: "2024.01 - PRESENT", duration: "現職", location: "自行車零件製造業", responsibilities: ["自行車零件包裝結構革新", "成功開發多項「輻射狀全紙緩衝」專利結構"], achievements: ["全紙緩衝替代 EPE，低碳量產導向", "CMF 永續研究與專利佈局"], tools: ["專利結構", "包裝設計", "結構驗證"], type: "work", icon: Briefcase, image: null },
+            { company: "久鼎金屬股份有限公司", title: "資深包裝結構工程師", date: "2024.01 - PRESENT", duration: "現職", location: "自行車零件製造業", responsibilities: ["自行車零件包裝結構革新", "成功開發多項「輻射狀全紙緩衝」專利結構"], achievements: ["全紙緩衝替代 EPE，低碳量產導向", "CMF 永續研究與專利佈局"], tools: ["專利結構", "包裝設計", "結構驗證"], type: "work", icon: Briefcase, image: "/cic-logo.png.png" },
             { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "提出多元價位包裝設計方案，滿足品牌策略，接案達成率達 40%", "於 RFQ 階段設計包裝及成本分析，研發成本節省約 10%"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
-            { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: null },
-            { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: null },
+            { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
+            { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
             { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase, image: null },
             { company: "國立臺灣科技大學", title: "工業設計系 / 大學畢業", date: "2013 - 2017", duration: "基礎教育", location: "台北市", responsibilities: ["深耕結構工程與美學邏輯，奠定系統化產品開發思維。"], achievements: [], tools: ["工業設計", "產品開發", "系統化邏輯"], type: "edu", icon: GraduationCap, image: "/ntust_logo.png" },
             { company: "國立臺中高工", title: "圖文傳播科 / 高職畢業", date: "2010 - 2013", duration: "基礎教育", location: "台中市", responsibilities: ["啟蒙於平面美學與印刷技術，掌握刀模與色彩控制精髓。"], achievements: [], tools: ["平面設計", "印刷工程", "色彩學"], type: "edu", icon: LayoutGrid, image: "/tcivs_logo.jpg" }
