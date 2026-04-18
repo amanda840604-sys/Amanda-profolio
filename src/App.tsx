@@ -202,10 +202,10 @@ export default function App() {
       <div className="fixed top-0 left-0 w-full z-[120] flex justify-center pt-8 px-6 pointer-events-none">
         <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-8 py-3 rounded-full bg-white/80 backdrop-blur-3xl border border-white/40 shadow-lg ${scrolled ? 'w-full max-w-4xl' : 'w-full max-w-6xl'}`}>
           <div className="flex items-center gap-3 cursor-pointer group" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-            <div className="w-10 h-10 rounded-full bg-[#121212] flex items-center justify-center text-white text-xs font-black transition-transform group-hover:scale-110 group-hover:bg-[#a38a6a]">AL</div>
+            <div className="w-10 h-10 rounded-full bg-[#121212] flex items-center justify-center text-white text-[14px] font-black transition-transform group-hover:scale-110 group-hover:bg-[#a38a6a]">AL</div>
             <span className="font-black text-xl tracking-tighter hidden sm:block">Amanda Lai.</span>
           </div>
-          <div className="hidden md:flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-gray-400">
+          <div className="hidden md:flex items-center space-x-2 text-[14px] font-black uppercase tracking-widest text-gray-400">
             {['about', 'portfolio', 'experience', 'skills', 'courses'].map(item => (
               <a key={item} href={`#${item}`} className={`px-4 py-2 rounded-full transition-all duration-500 hover:text-[#121212] ${activeSection === item ? 'text-[#121212] bg-gray-50' : ''}`}>
                 {item}
@@ -213,7 +213,7 @@ export default function App() {
               </a>
             ))}
           </div>
-          <a href="#contact" className="bg-[#121212] text-white text-[10px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] transition-all flex items-center gap-2 active:scale-95 shadow-md">
+          <a href="#contact" className="bg-[#121212] text-white text-[14px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] transition-all flex items-center gap-2 active:scale-95 shadow-md">
             CONTACT <ArrowRight size={14} />
           </a>
         </nav>
@@ -223,7 +223,7 @@ export default function App() {
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-8">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-tr from-[#a38a6a]/10 via-white to-[#a38a6a]/5 blur-[160px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
         <Reveal direction="down">
-          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white border border-gray-100 text-[#a38a6a] text-[10px] font-black tracking-[0.4em] uppercase mb-12 shadow-sm">
+          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white border border-gray-100 text-[#a38a6a] text-[14px] font-black tracking-[0.4em] uppercase mb-12 shadow-sm">
             BASED IN TAIWAN / PORTFOLIO 2026
           </div>
         </Reveal>
@@ -243,7 +243,7 @@ export default function App() {
              <div className="w-[1px] h-24 bg-gradient-to-b from-[#a38a6a] to-transparent relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-[slide_3s_infinite]"></div>
              </div>
-             <span className="text-[10px] font-black uppercase tracking-[0.4em] text-gray-400 group-hover:text-[#a38a6a] transition-colors">Scroll To Explore</span>
+             <span className="text-[14px] font-black uppercase tracking-[0.4em] text-gray-400 group-hover:text-[#a38a6a] transition-colors">Scroll To Explore</span>
           </button>
         </Reveal>
       </section>
@@ -253,7 +253,7 @@ export default function App() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 text-[#121212]">
           <div className="lg:col-span-5">
             <Reveal direction="left">
-               <h2 className="text-[11px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-8 flex items-center gap-6">
+               <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-8 flex items-center gap-6">
                  <div className="w-16 h-[2px] bg-[#a38a6a]"></div> Profile
                </h2>
                <h3 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-[#121212] mb-12">工藝美學 × <br /> 邏輯工程</h3>
@@ -261,7 +261,7 @@ export default function App() {
                   <div className="flex justify-between items-center text-white">
                     <div className="text-white">
                       <p className="text-6xl font-black mb-1 tracking-tighter text-white">06<span className="text-[#a38a6a] font-serif italic text-4xl text-white">y+</span></p>
-                      <p className="text-[10px] uppercase font-bold text-gray-500 tracking-widest">Industry Experience</p>
+                      <p className="text-[14px] uppercase font-bold text-gray-500 tracking-widest">Industry Experience</p>
                     </div>
                     <Award size={32} className="text-[#a38a6a]" />
                   </div>
@@ -274,11 +274,11 @@ export default function App() {
                <p className="text-[17px] text-gray-500 leading-[1.85] max-w-[65ch] font-medium text-justify">我擅長將複雜的工程數據轉化為動人的設計語言，不僅關注產品在貨架上的吸引力，更深入鑽研其在物流環節的保護力。始終堅持「在成本限制中尋求極致」，為品牌創造持久的商業價值。</p>
                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[#121212]">
                   <div className="space-y-4 text-[#121212]">
-                     <div className="flex items-center gap-3 text-[#121212]"><LayoutGrid size={20} className="text-[#a38a6a]" /><h4 className="font-black text-xs uppercase tracking-widest text-[#121212]">Global Reach</h4></div>
+                     <div className="flex items-center gap-3 text-[#121212]"><LayoutGrid size={20} className="text-[#a38a6a]" /><h4 className="font-black text-[14px] uppercase tracking-widest text-[#121212]">Global Reach</h4></div>
                      <p className="text-sm text-gray-500 font-medium">累積 25 件國際品牌提案，接案率 40%。</p>
                   </div>
                   <div className="space-y-4 text-[#121212]">
-                     <div className="flex items-center gap-3 text-[#121212]"><Cpu size={20} className="text-[#a38a6a]" /><h4 className="font-black text-xs uppercase tracking-widest text-[#121212]">Innovation</h4></div>
+                     <div className="flex items-center gap-3 text-[#121212]"><Cpu size={20} className="text-[#a38a6a]" /><h4 className="font-black text-[14px] uppercase tracking-widest text-[#121212]">Innovation</h4></div>
                      <p className="text-sm text-gray-500 font-medium text-[#121212]">建立 6 套模組化結構資料庫，提升研發效率。</p>
                   </div>
                </div>
@@ -291,8 +291,8 @@ export default function App() {
       <section id="portfolio" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-gray-200 pb-12">
-            <div><h2 className="text-[11px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6">Works</h2><h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Selected Projects.</h3></div>
-            <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mt-8 md:mt-0 text-[#121212]">Design Mastery × Core Focus</p>
+            <div><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6">Works</h2><h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Selected Projects.</h3></div>
+            <p className="text-[14px] font-black text-gray-400 uppercase tracking-widest mt-8 md:mt-0 text-[#121212]">Design Mastery × Core Focus</p>
           </div>
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-[#121212]">
@@ -304,12 +304,12 @@ export default function App() {
                   </div>
                   <div className="p-12 flex flex-col flex-grow text-[#121212]">
                      <h4 className="text-3xl font-black uppercase mb-2 tracking-tight">{key}</h4>
-                     <p className="text-xs font-bold text-[#a38a6a] tracking-widest mb-8 uppercase">{label}</p>
+                     <p className="text-[14px] font-bold text-[#a38a6a] tracking-widest mb-8 uppercase">{label}</p>
                      <p className="text-[14px] text-gray-500 leading-[1.85] max-w-[60ch] mb-12 flex-grow font-medium">
                         {key === 'Packaging' ? '致力於高強度全紙結構與 ESG 永續材質，實現 0% 塑料緩衝。' : key === 'Product' ? '將工業美學轉化為具量產性的商業實績，兼顧外觀與組裝工藝。' : '品牌視覺與企業識別系統建構，透過專業排版與色彩策略優化溝通。'}
                      </p>
                      <button onClick={() => setActiveCategory(key)} className="group/btn flex items-center justify-between w-full pt-8 border-t border-gray-100 transition-all text-[#121212]">
-                        <span className="text-[11px] font-black uppercase tracking-widest">View Projects</span>
+                        <span className="text-[14px] font-black uppercase tracking-widest">View Projects</span>
                         <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
                      </button>
                   </div>
@@ -323,7 +323,7 @@ export default function App() {
       <section id="experience" className="px-8 md:px-24 py-40 max-w-6xl mx-auto text-[#121212]">
         <Reveal>
           <div className="text-center mb-32">
-             <h2 className="text-[11px] font-black tracking-[0.6em] text-[#a38a6a] uppercase mb-6">Chronicles</h2>
+             <h2 className="text-[14px] font-black tracking-[0.6em] text-[#a38a6a] uppercase mb-6">Chronicles</h2>
              <h3 className="text-5xl md:text-7xl font-black tracking-tighter">Evolution Path.</h3>
           </div>
         </Reveal>
@@ -334,13 +334,13 @@ export default function App() {
 
           {/* 專業經歷與基礎教育 (整合為單一連續主軸) */}
           {[
-            { company: "久鼎金屬股份有限公司", title: "資深包裝結構工程師", date: "2024.01 - PRESENT", duration: "現職", location: "自行車零件製造業", responsibilities: ["自行車零件包裝結構革新", "成功開發多項「輻射狀全紙緩衝」專利結構"], achievements: ["全紙緩衝替代 EPE，低碳量產導向", "CMF 永續研究與專利佈局"], tools: ["專利結構", "包裝設計", "結構驗證"], type: "work", icon: Briefcase },
-            { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "提出多元價位包裝設計方案，滿足品牌策略，接案達成率達 40%", "於 RFQ 階段設計包裝及成本分析，研發成本節省約 10%"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase },
-            { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase },
-            { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase },
-            { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase },
-            { company: "國立臺灣科技大學", title: "工業設計系 / 大學畢業", date: "2013 - 2017", duration: "基礎教育", location: "台北市", responsibilities: ["深耕結構工程與美學邏輯，奠定系統化產品開發思維。"], achievements: [], tools: ["工業設計", "產品開發", "系統化邏輯"], type: "edu", icon: GraduationCap },
-            { company: "國立臺中高工", title: "圖文傳播科 / 高職畢業", date: "2010 - 2013", duration: "基礎教育", location: "台中市", responsibilities: ["啟蒙於平面美學與印刷技術，掌握刀模與色彩控制精髓。"], achievements: [], tools: ["平面設計", "印刷工程", "色彩學"], type: "edu", icon: LayoutGrid }
+            { company: "久鼎金屬股份有限公司", title: "資深包裝結構工程師", date: "2024.01 - PRESENT", duration: "現職", location: "自行車零件製造業", responsibilities: ["自行車零件包裝結構革新", "成功開發多項「輻射狀全紙緩衝」專利結構"], achievements: ["全紙緩衝替代 EPE，低碳量產導向", "CMF 永續研究與專利佈局"], tools: ["專利結構", "包裝設計", "結構驗證"], type: "work", icon: Briefcase, image: null },
+            { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "提出多元價位包裝設計方案，滿足品牌策略，接案達成率達 40%", "於 RFQ 階段設計包裝及成本分析，研發成本節省約 10%"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
+            { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: null },
+            { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: null },
+            { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase, image: null },
+            { company: "國立臺灣科技大學", title: "工業設計系 / 大學畢業", date: "2013 - 2017", duration: "基礎教育", location: "台北市", responsibilities: ["深耕結構工程與美學邏輯，奠定系統化產品開發思維。"], achievements: [], tools: ["工業設計", "產品開發", "系統化邏輯"], type: "edu", icon: GraduationCap, image: "/ntust_logo.png" },
+            { company: "國立臺中高工", title: "圖文傳播科 / 高職畢業", date: "2010 - 2013", duration: "基礎教育", location: "台中市", responsibilities: ["啟蒙於平面美學與印刷技術，掌握刀模與色彩控制精髓。"], achievements: [], tools: ["平面設計", "印刷工程", "色彩學"], type: "edu", icon: LayoutGrid, image: "/tcivs_logo.jpg" }
           ].map((item, idx) => {
             const IconComponent = item.icon;
             return (
@@ -351,7 +351,7 @@ export default function App() {
                     <div className={`${item.type === 'work' ? 'border-b border-gray-100 pb-6 mb-6' : 'mb-4'}`}>
                       <div className="flex justify-between items-start mb-4 gap-4">
                         <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-3 text-[10px] font-black tracking-widest uppercase mb-3">
+                          <div className="flex flex-wrap items-center gap-3 text-[14px] font-black tracking-widest uppercase mb-3">
                             <span className="text-[#a38a6a]">{item.date}</span>
                             <span className="text-gray-200">|</span>
                             <span className="text-gray-400">{item.duration}</span>
@@ -359,18 +359,22 @@ export default function App() {
                           <h4 className={`text-2xl lg:text-3xl font-black text-[#121212] mb-2 tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis ${item.type === 'edu' ? 'opacity-80' : ''}`}>{item.company}</h4>
                           <p className="text-sm font-bold text-[#a38a6a] tracking-widest leading-relaxed">{item.title}</p>
                         </div>
-                        {/* CSS Mask implementation for Brand Color Logo */}
-                        <div className="p-3 bg-white/50 rounded-2xl hidden sm:block shrink-0 shadow-sm relative overflow-hidden group-hover:scale-110 fluid-anim">
-                          <div className="absolute inset-0 bg-[#a38a6a] opacity-10"></div>
-                          <IconComponent size={24} className="text-[#a38a6a] css-mask-logo relative z-10" />
+                        {/* Logo Image Rendering */}
+                        <div className="w-14 h-14 p-2 bg-white/50 rounded-2xl hidden sm:flex items-center justify-center shrink-0 shadow-sm relative overflow-hidden group-hover:scale-110 fluid-anim">
+                          <div className="absolute inset-0 bg-[#a38a6a] opacity-5 group-hover:opacity-10 transition-opacity"></div>
+                          {item.image ? (
+                             <img src={item.image} alt={item.company} className="w-full h-full object-contain relative z-10 filter grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-multiply" />
+                          ) : (
+                             <IconComponent size={24} className="text-[#a38a6a] css-mask-logo relative z-10" />
+                          )}
                         </div>
                       </div>
-                      {item.type === 'work' && <p className="text-[11px] font-bold text-gray-400 flex items-center gap-1.5 tracking-wider"><MapPin size={12} className="text-gray-300"/> {item.location}</p>}
+                      {item.type === 'work' && <p className="text-[14px] font-bold text-gray-400 flex items-center gap-1.5 tracking-wider"><MapPin size={12} className="text-gray-300"/> {item.location}</p>}
                     </div>
 
                     <div className="space-y-6">
                       <div>
-                        {item.type === 'work' && <h5 className="text-[9px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-3">Core Responsibilities</h5>}
+                        {item.type === 'work' && <h5 className="text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-3">Core Responsibilities</h5>}
                         <ul className={`list-disc space-y-2 marker:text-gray-300 ${item.type === 'work' ? 'pl-4' : 'pl-0 list-none'}`}>
                           {item.responsibilities.map(res => (
                             <li key={res} className="text-[14px] text-gray-600 font-medium leading-[1.8] max-w-[55ch]">{res}</li>
@@ -380,7 +384,7 @@ export default function App() {
                       
                       {item.achievements.length > 0 && (
                         <div>
-                          <h5 className="text-[9px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-4 mt-2">Key Achievements</h5>
+                          <h5 className="text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-4 mt-2">Key Achievements</h5>
                           <div className="flex flex-col gap-3">
                             {item.achievements.map(ach => (
                               <div key={ach} className="flex items-start gap-3">
@@ -395,7 +399,7 @@ export default function App() {
 
                     <div className="flex flex-wrap gap-2 mt-8 pt-6 border-t border-[#a38a6a]/10">
                       {item.tools.map(tool => (
-                        <span key={tool} className="text-[10px] font-black px-4 py-2 bg-gray-50 rounded-lg text-gray-500 hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all uppercase fluid-anim cursor-default">{tool}</span>
+                        <span key={tool} className="text-[14px] font-black px-4 py-2 bg-gray-50 rounded-lg text-gray-500 hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all uppercase fluid-anim cursor-default">{tool}</span>
                       ))}
                     </div>
                   </SpotlightCard>
@@ -412,7 +416,7 @@ export default function App() {
       {/* 7. SKILLS */}
       <section id="skills" className="px-8 md:px-24 py-40 max-w-8xl mx-auto border-t border-gray-100 text-[#121212]">
         <Reveal>
-           <h2 className="text-[11px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Mastery Skills & Tools</h2>
+           <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Mastery Skills & Tools</h2>
         </Reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
            {[
@@ -426,13 +430,13 @@ export default function App() {
                 <SpotlightCard className="p-10 group rounded-[3rem] h-full flex flex-col">
                    <div className="flex justify-between items-start mb-8 text-[#121212]">
                       <div className="text-4xl font-serif italic text-gray-100 group-hover:text-[#a38a6a] transition-colors">{skill.id}</div>
-                      <p className="text-[10px] font-black tracking-widest text-[#a38a6a] uppercase">{skill.en}</p>
+                      <p className="text-[14px] font-black tracking-widest text-[#a38a6a] uppercase">{skill.en}</p>
                    </div>
                    <h4 className="text-2xl font-black mb-4 tracking-tight leading-snug">{skill.title}</h4>
                    <p className="text-[14px] text-gray-500 font-medium leading-[1.8] mb-10 flex-grow">{skill.desc}</p>
                    <div className="flex flex-wrap gap-2 text-[#121212]">
                      {skill.tags.map(t => (
-                       <span key={t} className="text-[10.5px] font-black px-4 py-1.5 bg-gray-50 text-gray-500 rounded-lg hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all fluid-anim uppercase">{t}</span>
+                       <span key={t} className="text-[14px] font-black px-4 py-1.5 bg-gray-50 text-gray-500 rounded-lg hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all fluid-anim uppercase">{t}</span>
                      ))}
                    </div>
                 </SpotlightCard>
@@ -445,15 +449,29 @@ export default function App() {
               <div className="relative z-10">
                 <div className="flex justify-between items-center mb-16 border-b border-white/10 pb-10">
                    <h4 className="font-serif italic text-4xl text-[#a38a6a]">Software Tools</h4>
-                   <p className="text-[10px] font-black tracking-[0.4em] text-white/50 uppercase">Design & Engineering Mastery</p>
+                   <p className="text-[14px] font-black tracking-[0.4em] text-white/50 uppercase">Design & Engineering Mastery</p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
-                   {['SolidWorks', 'Creo', 'KeyShot', 'Illustrator', 'Photoshop', 'InDesign', 'AutoCAD'].map(tool => (
-                     <div key={tool} className="flex flex-col items-center gap-4 bg-white/5 p-6 rounded-[1.5rem] hover:bg-[#a38a6a]/20 hover:-translate-y-2 transition-all cursor-pointer border border-transparent hover:border-[#a38a6a]/30 group">
-                        <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center text-[#121212] font-black text-xs transition-transform group-hover:scale-110">
-                           {tool.substring(0,2).toUpperCase()}
+                   {[
+                     { name: 'SolidWorks', img: '/solidworks_logo.jpg' },
+                     { name: 'Creo', img: '/creo_logo.png' },
+                     { name: 'KeyShot', img: '/keyshot-logo-2.jpg' },
+                     { name: 'Illustrator', img: '/illustrator.jpg' },
+                     { name: 'Photoshop', img: '/photoshop_logo.jpg' },
+                     { name: 'InDesign', img: '/Indesign_logo.png' },
+                     { name: 'AutoCAD', img: '/autocad_logo.jpg' }
+                   ].map(tool => (
+                     <div key={tool.name} className="flex flex-col items-center gap-4 bg-white/5 p-6 rounded-[1.5rem] hover:bg-[#a38a6a]/20 hover:-translate-y-2 transition-all cursor-pointer border border-transparent hover:border-[#a38a6a]/30 group">
+                        <div className="w-14 h-14 flex items-center justify-center transition-transform group-hover:scale-110 fluid-anim relative">
+                           {tool.img ? (
+                              <img src={tool.img} alt={tool.name} className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 rounded-lg blend-isolate bg-white/10" />
+                           ) : (
+                              <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center text-[#121212] font-black text-[14px]">
+                                 {tool.name.substring(0,2).toUpperCase()}
+                              </div>
+                           )}
                         </div>
-                        <span className="text-[10px] font-black tracking-[0.2em] uppercase text-white/60 group-hover:text-[#a38a6a]">{tool}</span>
+                        <span className="text-[14px] font-black tracking-[0.2em] uppercase text-white/60 group-hover:text-[#a38a6a] text-center w-full truncate">{tool.name}</span>
                      </div>
                    ))}
                 </div>
@@ -467,12 +485,12 @@ export default function App() {
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-end mb-24">
             <div>
-              <h2 className="text-[11px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6 text-[#a38a6a]">Learning Path</h2>
+              <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6 text-[#a38a6a]">Learning Path</h2>
               <h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Growth.</h3>
             </div>
             <div className="flex gap-2 mt-10 md:mt-0 overflow-x-auto pb-4 scrollbar-hide text-[#121212]">
               {['全部', 'AI應用課程', '包裝專業課程'].map(f => (
-                <button key={f} onClick={() => setActiveCourseFilter(f)} className={`whitespace-nowrap px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all shadow-sm ${activeCourseFilter === f ? 'bg-[#a38a6a] text-white' : 'bg-white text-gray-400 hover:text-[#121212] border border-gray-100'}`}>
+                <button key={f} onClick={() => setActiveCourseFilter(f)} className={`whitespace-nowrap px-8 py-3 rounded-full text-[14px] font-black uppercase tracking-[0.2em] transition-all shadow-sm ${activeCourseFilter === f ? 'bg-[#a38a6a] text-white' : 'bg-white text-gray-400 hover:text-[#121212] border border-gray-100'}`}>
                   {f} <span className="ml-2 opacity-50">({getCourseFilterCount(f)})</span>
                 </button>
               ))}
@@ -487,8 +505,8 @@ export default function App() {
                    <div className="flex-grow p-10 md:p-14 lg:w-3/5 flex flex-col justify-between transition-all duration-700 group-hover/course:lg:w-2/5 text-[#121212]">
                       <div>
                         <div className="flex items-center gap-6 mb-8">
-                          <span className="text-[10px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 rounded-full uppercase tracking-widest">{course.category}</span>
-                          <span className="text-[10px] font-bold text-gray-300 flex items-center gap-2 uppercase tracking-widest"><Calendar size={14}/> {course.date}</span>
+                          <span className="text-[14px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 rounded-full uppercase tracking-widest">{course.category}</span>
+                          <span className="text-[14px] font-bold text-gray-300 flex items-center gap-2 uppercase tracking-widest"><Calendar size={14}/> {course.date}</span>
                         </div>
                         <h4 className="text-2xl md:text-4xl font-black mb-10 group-hover/course:text-[#a38a6a] transition-colors leading-tight whitespace-pre-line text-[#121212]">{course.title}</h4>
                       </div>
@@ -496,12 +514,12 @@ export default function App() {
                         <div className="flex items-center gap-4">
                            <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-[#a38a6a]"><Award size={20} /></div>
                            <div className="text-[#121212]">
-                              <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest">Issuing Organization</p>
+                              <p className="text-[14px] font-black text-gray-400 uppercase tracking-widest">Issuing Organization</p>
                               <p className="text-sm font-bold text-[#121212]">{course.org}</p>
                            </div>
                         </div>
                         <div className="pt-6 border-t border-gray-50 flex items-center justify-between text-[#121212]">
-                           <span className="text-[11px] font-black uppercase tracking-widest text-gray-400">Duration : {course.hours}</span>
+                           <span className="text-[14px] font-black uppercase tracking-widest text-gray-400">Duration : {course.hours}</span>
                         </div>
                       </div>
                    </div>
@@ -509,7 +527,7 @@ export default function App() {
                       <img src={course.img} alt="Certificate" className="w-full h-full object-cover grayscale opacity-50 group-hover/course:grayscale-0 group-hover/course:opacity-100 group-hover/course:scale-105 transition-all duration-[1200ms]" />
                       <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
                       <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/course:opacity-100 transition-opacity duration-700">
-                         <div className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[10px] font-black uppercase tracking-[0.4em] shadow-2xl flex items-center gap-3">
+                         <div className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[14px] font-black uppercase tracking-[0.4em] shadow-2xl flex items-center gap-3">
                            <FileCheck size={16} /> Verified Expertise
                          </div>
                       </div>
@@ -522,7 +540,7 @@ export default function App() {
 
       {/* 9. INTERESTS */}
       <section id="interests" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
-        <Reveal><h2 className="text-[11px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
+        <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
            {[
              { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800" },
@@ -538,10 +556,10 @@ export default function App() {
                    <div className="p-10 flex flex-col flex-grow relative bg-white -mt-12 mx-6 rounded-[2.5rem] shadow-sm border border-gray-100 mb-6 text-[#121212]">
                       <div className="flex items-center gap-5 mb-8 text-[#121212]">
                          <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] shadow-inner text-[#121212]"><item.icon size={28} strokeWidth={2.5} /></div>
-                         <div><h4 className="text-xl font-black tracking-tight text-[#121212]">{item.title}</h4><p className="text-[10px] font-black uppercase tracking-widest text-gray-300">{item.en}</p></div>
+                         <div><h4 className="text-xl font-black tracking-tight text-[#121212]">{item.title}</h4><p className="text-[14px] font-black uppercase tracking-widest text-gray-300">{item.en}</p></div>
                       </div>
                       <p className="text-sm font-bold text-[#a38a6a] mb-4 leading-relaxed">{item.goal}</p>
-                      <p className="text-[13px] text-gray-400 font-medium leading-relaxed text-[#121212]">{item.desc}</p>
+                      <p className="text-[14px] text-gray-400 font-medium leading-relaxed text-[#121212]">{item.desc}</p>
                    </div>
                 </SpotlightCard>
              </Reveal>
@@ -553,7 +571,7 @@ export default function App() {
       <footer id="contact" className="bg-[#121212] pt-40 pb-20 text-white px-8 md:px-24">
         <Reveal>
           <div className="max-w-4xl mx-auto mb-32 text-center px-4 text-white">
-            <p className="text-[#a38a6a] font-black text-[10px] tracking-[0.5em] uppercase mb-12 text-white">Closing Statement</p>
+            <p className="text-[#a38a6a] font-black text-[14px] tracking-[0.5em] uppercase mb-12 text-white">Closing Statement</p>
             <div className="space-y-8 text-white">
               <p className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">非常感謝您的閱讀。</p>
               <p className="text-xl md:text-2xl font-medium text-gray-400 leading-relaxed max-w-2xl mx-auto text-white text-white">如有進一步了解的需要，歡迎隨時與我聯繫。</p>
@@ -565,7 +583,7 @@ export default function App() {
           <div className="text-center mb-40 border-t border-white/5 pt-32 text-white text-white text-white">
              <h2 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-20 leading-[0.8] text-white text-white text-white text-white">Let's Build <br /><span className="font-serif italic text-[#a38a6a]">Something.</span></h2>
              <div className="flex flex-col md:flex-row justify-center items-center gap-12 text-white text-white text-white">
-                <a href="mailto:amanda840604@gmail.com" className="group bg-white text-[#121212] px-14 py-7 rounded-full font-black text-xs uppercase tracking-[0.4em] hover:bg-[#a38a6a] hover:text-white transition-all flex items-center gap-5 shadow-2xl active:scale-95"><Mail size={22} /> AMANDA840604@GMAIL.COM</a>
+                <a href="mailto:amanda840604@gmail.com" className="group bg-white text-[#121212] px-14 py-7 rounded-full font-black text-[14px] uppercase tracking-[0.4em] hover:bg-[#a38a6a] hover:text-white transition-all flex items-center gap-5 shadow-2xl active:scale-95"><Mail size={22} /> AMANDA840604@GMAIL.COM</a>
                 <div className="flex gap-6 text-white text-white">
                    <a href="tel:0918190990" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#a38a6a] hover:border-[#a38a6a] transition-all group active:scale-90 text-white text-white"><Phone size={28} /></a>
                    <a href="https://line.me/ti/p/" target="_blank" rel="noopener noreferrer" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#06C755] hover:border-[#06C755] transition-all group active:scale-90 text-white text-white"><MessageCircle size={28} /></a>
@@ -573,7 +591,7 @@ export default function App() {
              </div>
           </div>
         </Reveal>
-        <div className="flex flex-col md:flex-row justify-between items-center py-16 border-t border-white/5 text-[9px] font-black uppercase tracking-[0.5em] text-gray-600 text-white text-white text-white">
+        <div className="flex flex-col md:flex-row justify-between items-center py-16 border-t border-white/5 text-[14px] font-black uppercase tracking-[0.5em] text-gray-600 text-white text-white text-white">
           <p className="text-white opacity-50 text-white">© 2026 AMANDA LAI. ALL RIGHTS RESERVED.</p>
           <div className="flex gap-16 mt-12 md:mt-0 text-white text-white">
              <a href="#" className="hover:text-[#a38a6a] transition-colors">LinkedIn</a>
@@ -587,14 +605,14 @@ export default function App() {
       {activeCategory && (
         <div className="fixed inset-0 z-[200] bg-white flex flex-col overflow-y-auto animate-in fade-in duration-500 text-[#121212] text-[#121212]">
           <div className="sticky top-0 z-[210] bg-white/90 backdrop-blur-xl border-b border-gray-100 px-8 md:px-24 py-10 flex justify-between items-center text-[#121212] text-[#121212] text-[#121212]">
-            <div className="flex items-center gap-10 text-[#121212] text-[#121212] text-[#121212]"><h2 className="text-5xl font-black uppercase tracking-tighter text-[#121212] text-[#121212]">{activeCategory}</h2><div className="h-12 w-[1px] bg-gray-100 hidden sm:block"></div><p className="text-[11px] font-black tracking-widest text-[#a38a6a] uppercase hidden sm:block text-[#121212]">Gallery Collection</p></div>
-            <button onClick={() => setActiveCategory(null)} className="group flex items-center gap-6 bg-[#121212] text-white px-10 py-4 rounded-full hover:bg-[#a38a6a] transition-all active:scale-90 shadow-xl text-white text-white"><span className="text-[11px] font-black uppercase tracking-widest text-white text-white text-white">Close Gallery</span><X size={20} className="text-white text-white" /></button>
+            <div className="flex items-center gap-10 text-[#121212] text-[#121212] text-[#121212]"><h2 className="text-5xl font-black uppercase tracking-tighter text-[#121212] text-[#121212]">{activeCategory}</h2><div className="h-12 w-[1px] bg-gray-100 hidden sm:block"></div><p className="text-[14px] font-black tracking-widest text-[#a38a6a] uppercase hidden sm:block text-[#121212]">Gallery Collection</p></div>
+            <button onClick={() => setActiveCategory(null)} className="group flex items-center gap-6 bg-[#121212] text-white px-10 py-4 rounded-full hover:bg-[#a38a6a] transition-all active:scale-90 shadow-xl text-white text-white"><span className="text-[14px] font-black uppercase tracking-widest text-white text-white text-white">Close Gallery</span><X size={20} className="text-white text-white" /></button>
           </div>
           <div className="px-8 md:px-24 py-24 max-w-8xl mx-auto w-full text-[#121212] text-[#121212]">
             {currentFilterOptions.length > 0 && (
               <div className="flex gap-4 mb-24 overflow-x-auto pb-6 scrollbar-hide text-[#121212] text-[#121212]">
                 {currentFilterOptions.map(f => (
-                  <button key={f} onClick={() => setActiveFilter(f)} className={`whitespace-nowrap px-10 py-4 rounded-full text-[11px] font-black uppercase tracking-[0.2em] transition-all ${activeFilter === f ? 'bg-[#121212] text-white shadow-2xl shadow-black/30' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>
+                  <button key={f} onClick={() => setActiveFilter(f)} className={`whitespace-nowrap px-10 py-4 rounded-full text-[14px] font-black uppercase tracking-[0.2em] transition-all ${activeFilter === f ? 'bg-[#121212] text-white shadow-2xl shadow-black/30' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>
                     {f} <span className="ml-4 opacity-40">({getFilterCount(activeCategory, f)})</span>
                   </button>
                 ))}
@@ -613,7 +631,7 @@ export default function App() {
                          <div className="w-14 h-14 rounded-full border border-gray-100 flex items-center justify-center text-gray-200 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all text-[#121212] text-[#121212]"><ExternalLink size={24} /></div>
                       </div>
                       <p className="text-xl text-gray-500 leading-relaxed mb-12 font-medium text-[#121212]">{proj.desc}</p>
-                      <div className="flex flex-wrap gap-3 text-[#121212]">{proj.tags.map(tag => (<span key={tag} className="text-[10px] font-black uppercase px-5 py-2.5 bg-gray-50 rounded text-gray-400 tracking-widest text-[#121212]">{tag}</span>))}</div>
+                      <div className="flex flex-wrap gap-3 text-[#121212]">{proj.tags.map(tag => (<span key={tag} className="text-[14px] font-black uppercase px-5 py-2.5 bg-gray-50 rounded text-gray-400 tracking-widest text-[#121212]">{tag}</span>))}</div>
                    </div>
                  </div>
               ))}
