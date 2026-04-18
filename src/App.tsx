@@ -252,8 +252,8 @@ export default function App() {
       </section>
 
       {/* 4. ABOUT SECTION */}
-      <section id="about" className="px-8 md:px-24 max-w-8xl mx-auto py-40 border-t border-gray-50 text-[#121212]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 text-[#121212]">
+      <section id="about" className="px-8 md:px-24 py-40 border-t border-gray-50 text-[#121212]">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 text-[#121212]">
           <div className="lg:col-span-5">
             <Reveal direction="left">
                <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-8 flex items-center gap-6">
@@ -297,6 +297,7 @@ export default function App() {
 
       {/* 5. PORTFOLIO */}
       <section id="portfolio" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
+        <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-gray-200 pb-12">
             <div><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6">Works</h2><h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Selected Projects.</h3></div>
@@ -325,6 +326,7 @@ export default function App() {
             </Reveal>
           ))}
         </div>
+        </div>
       </section>
 
       {/* 6. EXPERIENCE (重新規劃為單一垂直演進流) */}
@@ -342,7 +344,7 @@ export default function App() {
 
           {/* 專業經歷與基礎教育 (整合為單一連續主軸) */}
           {[
-            { company: "久鼎金屬股份有限公司", title: "資深包裝結構工程師", date: "2024.01 - PRESENT", duration: "現職", location: "自行車零件製造業", responsibilities: ["自行車零件包裝結構革新", "成功開發多項「輻射狀全紙緩衝」專利結構"], achievements: ["全紙緩衝替代 EPE，低碳量產導向", "CMF 永續研究與專利佈局"], tools: ["專利結構", "包裝設計", "結構驗證"], type: "work", icon: Briefcase, image: "/cic-logo.png.png" },
+            { company: "久鼎金屬股份有限公司", title: "資深包裝結構工程師", date: "2024.01 - PRESENT", duration: "現職", location: "自行車零件製造業", responsibilities: ["自行車零件包裝結構革新", "成功開發多項「輻射狀全紙緩衝」專利結構"], achievements: ["全紙緩衝替代 EPE，低碳量產導向", "CMF 永續研究與專利佈局"], tools: ["專利結構", "包裝設計", "結構驗證"], type: "work", icon: Briefcase, image: "/tranzx-logo-vector.png" },
             { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "提出多元價位包裝設計方案，滿足品牌策略，接案達成率達 40%", "於 RFQ 階段設計包裝及成本分析，研發成本節省約 10%"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
             { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
             { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
@@ -422,7 +424,8 @@ export default function App() {
       </section>
 
       {/* 7. SKILLS */}
-      <section id="skills" className="px-8 md:px-24 py-40 max-w-8xl mx-auto border-t border-gray-100 text-[#121212]">
+      <section id="skills" className="px-8 md:px-24 py-40 border-t border-gray-100 text-[#121212]">
+        <div className="max-w-7xl mx-auto w-full">
         <Reveal>
            <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Mastery Skills & Tools</h2>
         </Reveal>
@@ -486,10 +489,12 @@ export default function App() {
               </div>
            </div>
         </Reveal>
+        </div>
       </section>
 
       {/* 8. COURSES (非對稱佈局設計) */}
       <section id="courses" className="px-8 md:px-24 py-40 bg-[#fdfdfd] text-[#121212]">
+        <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-end mb-24">
             <div>
@@ -544,10 +549,12 @@ export default function App() {
              </Reveal>
            ))}
         </div>
+        </div>
       </section>
 
       {/* 9. INTERESTS */}
       <section id="interests" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
+        <div className="max-w-7xl mx-auto w-full">
         <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
            {[
@@ -572,6 +579,7 @@ export default function App() {
                 </SpotlightCard>
              </Reveal>
            ))}
+        </div>
         </div>
       </section>
 
@@ -616,7 +624,7 @@ export default function App() {
             <div className="flex items-center gap-10 text-[#121212] text-[#121212] text-[#121212]"><h2 className="text-5xl font-black uppercase tracking-tighter text-[#121212] text-[#121212]">{activeCategory}</h2><div className="h-12 w-[1px] bg-gray-100 hidden sm:block"></div><p className="text-[14px] font-black tracking-widest text-[#a38a6a] uppercase hidden sm:block text-[#121212]">Gallery Collection</p></div>
             <button onClick={() => setActiveCategory(null)} className="group flex items-center gap-6 bg-[#121212] text-white px-10 py-4 rounded-full hover:bg-[#a38a6a] transition-all active:scale-90 shadow-xl text-white text-white"><span className="text-[14px] font-black uppercase tracking-widest text-white text-white text-white">Close Gallery</span><X size={20} className="text-white text-white" /></button>
           </div>
-          <div className="px-8 md:px-24 py-24 max-w-8xl mx-auto w-full text-[#121212] text-[#121212]">
+          <div className="px-8 md:px-24 py-24 max-w-7xl mx-auto w-full text-[#121212] text-[#121212]">
             {currentFilterOptions.length > 0 && (
               <div className="flex gap-4 mb-24 overflow-x-auto pb-6 scrollbar-hide text-[#121212] text-[#121212]">
                 {currentFilterOptions.map(f => (
