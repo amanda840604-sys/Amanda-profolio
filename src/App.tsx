@@ -93,38 +93,36 @@ export default function App() {
   const projectData = {
     Packaging: [
       { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard09.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
-      { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_innercard02.png', tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
-      { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/tws_innercard03.png', tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
-      { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/tws_innercard04.png', tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
-      { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/tws_innercard05.png', tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
-      { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托。', img: '/camera_pkg_001.jpg', tags: ['包裝設計', '紙托'], category: '消費性電子產品' },
-      { id: 7, title: '視訊鏡頭細部設計', desc: '收納包袋結構設計，針對戶外需求優化。', img: '/camera_pkg_002.jpg', tags: ['包裝設計', '鏡頭包裝'], category: '消費性電子產品' },
-      { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/tws_innercard08.png', tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
-      { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tws_innercard09.png', tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/tws_innercard10.png', tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 11, title: '座管 包裝設計', desc: '圓柱狀金屬件全紙緩衝固定結構。', img: '/tws_innercard11.png', tags: ['包裝設計', '自行車', '減塑'], category: '自行車零件' },
-      { id: 12, title: '立管 包裝設計', desc: '緊湊型自行車立管包裝與運輸模組。', img: '/tws_innercard12.png', tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 13, title: '快拆束仔 包裝設計', desc: '小型精密零件的高效率包裝排版設計。', img: '/tws_innercard06.png', tags: ['包裝設計', '自行車'], category: '自行車零件' }
+      { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
+      { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
+      { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
+      { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
+      { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg'], tags: ['包裝設計', '紙托'], category: '消費性電子產品' },
+      { id: 7, title: '視訊鏡頭細部設計', desc: '收納包袋結構設計，針對戶外需求優化。', img: '/camera_pkg_002.jpg', detailsImages: ['/camera_pkg_002.jpg'], tags: ['包裝設計', '鏡頭包裝'], category: '消費性電子產品' },
+      { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
+      { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
+      { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
+      { id: 11, title: '攜帶盒 結構設計', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '自行車零件' }
     ],
     Product: [
-      { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800', tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
-      { id: 2, title: '瓦斯爐設計', desc: '嵌入式高效瓦斯爐，針對亞洲烹飪習慣優化的爐架結構。', img: 'https://images.unsplash.com/photo-1584269600464-37b1b58a9fe7?q=80&w=800', tags: ['產品設計', '家電'], category: '廚電/家電' },
-      { id: 3, title: '穿戴式裝置設計', desc: '全天候睡眠監測智慧手環，融合親膚材質與精密感應器。', img: 'https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?q=80&w=800', tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
-      { id: 4, title: '醫療器材設計', desc: '居家低頻治療儀，透過介面引導使用者正確復健級別。', img: 'https://images.unsplash.com/photo-1583324113626-70df0f4deaab?q=80&w=800', tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
-      { id: 5, title: '玩具設計', desc: '兒童空間感益智積木玩具，採用安全無毒環保木料。', img: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=800', tags: ['玩具設計', 'CMF'], category: '玩具設計' },
-      { id: 6, title: '手繪作品', desc: '產品構思草圖與人物速寫，紀錄設計初期的靈感瞬間。', img: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=800', tags: ['手繪', '插畫'], category: '手繪作品' }
+      { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
+      { id: 2, title: '瓦斯爐設計', desc: '嵌入式高效瓦斯爐，針對亞洲烹飪習慣優化的爐架結構。', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], category: '廚電/家電' },
+      { id: 3, title: '穿戴式裝置設計', desc: '全天候睡眠監測智慧手環，融合親膚材質與精密感應器。', img: '/sleep_monitor_device01.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
+      { id: 4, title: '醫療器材設計', desc: '居家低頻治療儀，透過介面引導使用者正確復健級別。', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
+      { id: 5, title: '玩具設計', desc: '兒童空間感益智積木玩具，採用安全無毒環保木料。', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], category: '玩具設計' },
+      { id: 6, title: '手繪作品', desc: '產品構思草圖與人物速寫，紀錄設計初期的靈感瞬間。', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], category: '手繪作品' }
     ],
     Graphic: [
-      { id: 1, title: '品牌視覺整合', desc: '為新創品牌建立完整的企業識別系統與平面應材規範。', img: 'https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=800', tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
+      { id: 1, title: '品牌視覺整合', desc: '為新創品牌建立完整的企業識別系統與平面應材規範。', img: '/graphic_design01.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
     ]
   };
 
   const coursesData = [
-    { id: 1, title: '包裝結構設計、運輸驗證\n成本優化實務課程', org: '財團法人塑膠工業技術發展中心 (PIDC)', date: '2026.03.26', hours: '48 小時', category: '包裝專業課程', img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=800' },
-    { id: 2, title: '在職菁英 AI 人才培育課程', org: '114年度經濟部產業發展署補助課程', date: '2025.12.09 - 2025.12.17', hours: '30 小時', category: 'AI應用課程', img: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=800' },
-    { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg' },
-    { id: 4, title: 'AI 應用實務系列課程(NUVA)\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: 'https://images.unsplash.com/photo-1546410531-bea47d91e847?q=80&w=800' },
-    { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=800' }
+    { id: 1, title: '包裝結構設計、運輸驗證\n成本優化實務課程', org: '財團法人塑膠工業技術發展中心 (PIDC)', date: '2026.03.26', hours: '48 小時', category: '包裝專業課程', img: '/course_pkg01.png', imgs: ['/course_pkg01.png', '/course_pkg02.jpg'] },
+    { id: 2, title: '在職菁英 AI 人才培育課程', org: '114年度經濟部產業發展署補助課程', date: '2025.12.09 - 2025.12.17', hours: '30 小時', category: 'AI應用課程', img: '/course_ai_20251209-1217.png' },
+    { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg', status: '正在培訓中，證書尚未取得' },
+    { id: 4, title: 'AI 應用實務系列課程\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: '/nuva.jpg', imgs: ['/nuva.jpg', '/chat gpt lv1.jpg', '/make lv1.jpg'] },
+    { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: '/course_ai_ccchen.jpg' }
   ];
 
   // --- 計算屬性 ---
@@ -206,7 +204,7 @@ export default function App() {
             <div className="w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white shrink-0">
                <img src="/logo.png" alt="AL Logo" className="w-full h-full object-cover" />
             </div>
-            <span className="font-black text-xl tracking-tighter hidden sm:block whitespace-nowrap">Amanda Lai.</span>
+            <span className="font-black text-xl tracking-wide uppercase hidden sm:block whitespace-nowrap">AMANDA LAI<span className="text-[#a38a6a]">.</span></span>
           </div>
           <div className="hidden md:flex items-center space-x-2 text-[14px] font-black uppercase tracking-widest text-gray-400">
             {['about', 'portfolio', 'experience', 'skills', 'courses'].map(item => (
@@ -226,8 +224,8 @@ export default function App() {
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-8">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-tr from-[#a38a6a]/10 via-white to-[#a38a6a]/5 blur-[160px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
         <Reveal direction="down">
-          <div className="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-white border border-gray-100 text-[#a38a6a] text-[14px] font-black tracking-[0.4em] uppercase mb-12 shadow-sm">
-            BASED IN TAIWAN / PORTFOLIO 2026
+          <div className="inline-flex items-center mt-20 md:mt-32 gap-3 px-6 py-2 rounded-full bg-white border border-gray-100 text-[#a38a6a] text-[14px] font-black tracking-widest uppercase mb-12 shadow-sm">
+            PORTFOLIO 2026
           </div>
         </Reveal>
         <Reveal delay={200}>
@@ -260,36 +258,19 @@ export default function App() {
                  <div className="w-16 h-[2px] bg-[#a38a6a]"></div> Profile
                </h2>
                <h3 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-[#121212] mb-12">工藝美學 × <br /> 邏輯工程</h3>
-               <SpotlightCard dark className="bg-[#121212] p-10 text-white border-none rounded-[3rem]">
-                  <div className="flex justify-between items-center text-white">
-                    <div className="text-white">
-                      <p className="text-6xl font-black mb-1 tracking-tighter text-white">06<span className="text-[#a38a6a] font-serif italic text-4xl text-white">y+</span></p>
-                      <p className="text-[14px] uppercase font-bold text-gray-500 tracking-widest">Industry Experience</p>
-                    </div>
-                    <Award size={32} className="text-[#a38a6a]" />
-                  </div>
-               </SpotlightCard>
+               
             </Reveal>
           </div>
-          <div className="lg:col-span-7 flex flex-col justify-end text-[#121212]">
+          <div className="lg:col-span-7 flex flex-col justify-center text-[#121212]">
             <Reveal delay={200} className="max-w-2xl space-y-12">
                <p className="text-3xl md:text-4xl font-black leading-[1.5] text-gray-900 tracking-tight">畢業於<strong className="relative inline-block text-[#121212]">國立臺灣科技大學<span className="absolute bottom-1 left-0 w-full h-3 bg-[#a38a6a]/10 -z-10"></span></strong> 工業設計系，擁有 6 年從外觀至量產的深厚實戰。</p>
-               <div className="flex gap-8 items-start">
-                   <div className="w-24 h-24 md:w-32 md:h-32 shrink-0 rounded-full overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-xl border-4 border-white hidden sm:block">
-                      <img src="/Profolio_photo.jpg" alt="Amanda Lai" className="w-full h-full object-cover" />
+               <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
+                   <div className="w-40 h-40 md:w-64 md:h-64 shrink-0 rounded-[2.5rem] md:rounded-[4rem] group overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border-[6px] border-white cursor-pointer relative hover:-translate-y-2">
+                      <img src="/Profolio_photo.jpg" alt="Amanda Lai" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                    </div>
                    <p className="text-[17px] text-gray-500 leading-[1.85] max-w-[65ch] font-medium text-justify">我擅長將複雜的工程數據轉化為動人的設計語言，不僅關注產品在貨架上的吸引力，更深入鑽研其在物流環節的保護力。始終堅持「在成本限制中尋求極致」，為品牌創造持久的商業價值。</p>
                </div>
-               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[#121212]">
-                  <div className="space-y-4 text-[#121212]">
-                     <div className="flex items-center gap-3 text-[#121212]"><LayoutGrid size={20} className="text-[#a38a6a]" /><h4 className="font-black text-[14px] uppercase tracking-widest text-[#121212]">Global Reach</h4></div>
-                     <p className="text-sm text-gray-500 font-medium">累積 25 件國際品牌提案，接案率 40%。</p>
-                  </div>
-                  <div className="space-y-4 text-[#121212]">
-                     <div className="flex items-center gap-3 text-[#121212]"><Cpu size={20} className="text-[#a38a6a]" /><h4 className="font-black text-[14px] uppercase tracking-widest text-[#121212]">Innovation</h4></div>
-                     <p className="text-sm text-gray-500 font-medium text-[#121212]">建立 6 套模組化結構資料庫，提升研發效率。</p>
-                  </div>
-               </div>
+               
             </Reveal>
           </div>
         </div>
@@ -300,7 +281,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-gray-200 pb-12">
-            <div><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6">Works</h2><h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Selected Projects.</h3></div>
+            <div><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6">Works</h2><h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Projects.</h3></div>
             <p className="text-[14px] font-black text-gray-400 uppercase tracking-widest mt-8 md:mt-0 text-[#121212]">Design Mastery × Core Focus</p>
           </div>
         </Reveal>
@@ -309,7 +290,7 @@ export default function App() {
             <Reveal key={key} delay={idx * 200}>
                <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[3rem]">
                   <div className="aspect-[4/5] overflow-hidden relative">
-                     <img src={key === 'Packaging' ? "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800" : key === 'Product' ? "https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=800" : "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?q=80&w=800"} alt={key} className="w-full h-full object-cover grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-110 transition-all duration-1000" />
+                     <img src={key === 'Packaging' ? "/tws_pkg_design01.jpg" : key === 'Product' ? "/rangehood02.jpg" : "/graphic_design02.jpg"} alt={key} className="w-full h-full object-cover grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-110 transition-all duration-1000" />
                   </div>
                   <div className="p-12 flex flex-col flex-grow text-[#121212]">
                      <h4 className="text-3xl font-black uppercase mb-2 tracking-tight">{key}</h4>
@@ -348,7 +329,7 @@ export default function App() {
             { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "提出多元價位包裝設計方案，滿足品牌策略，接案達成率達 40%", "於 RFQ 階段設計包裝及成本分析，研發成本節省約 10%"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
             { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
             { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
-            { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase, image: null },
+            { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase, image: "/cic-logo.png.png" },
             { company: "國立臺灣科技大學", title: "工業設計系 / 大學畢業", date: "2013 - 2017", duration: "基礎教育", location: "台北市", responsibilities: ["深耕結構工程與美學邏輯，奠定系統化產品開發思維。"], achievements: [], tools: ["工業設計", "產品開發", "系統化邏輯"], type: "edu", icon: GraduationCap, image: "/ntust_logo.jpg" },
             { company: "國立臺中高工", title: "圖文傳播科 / 高職畢業", date: "2010 - 2013", duration: "基礎教育", location: "台中市", responsibilities: ["啟蒙於平面美學與印刷技術，掌握刀模與色彩控制精髓。"], achievements: [], tools: ["平面設計", "印刷工程", "色彩學"], type: "edu", icon: LayoutGrid, image: "/tcivs_logo.jpg" }
           ].map((item, idx) => {
@@ -462,7 +443,7 @@ export default function App() {
                    <h4 className="font-serif italic text-4xl text-[#a38a6a]">Software Tools</h4>
                    <p className="text-[14px] font-black tracking-[0.4em] text-white/50 uppercase">Design & Engineering Mastery</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6">
                    {[
                      { name: 'SolidWorks', img: '/solidworks_logo.jpg' },
                      { name: 'Creo', img: '/creo_logo.jpg' },
@@ -472,17 +453,17 @@ export default function App() {
                      { name: 'InDesign', img: '/Indesign_logo.png' },
                      { name: 'AutoCAD', img: '/autocad_logo.jpg' }
                    ].map(tool => (
-                     <div key={tool.name} className="flex flex-col items-center gap-4 bg-white/5 p-6 rounded-[1.5rem] hover:bg-[#a38a6a]/20 hover:-translate-y-2 transition-all cursor-pointer border border-transparent hover:border-[#a38a6a]/30 group">
-                        <div className="w-14 h-14 flex items-center justify-center transition-transform group-hover:scale-110 fluid-anim relative">
+                     <div key={tool.name} className="flex flex-col items-center gap-4 bg-white/5 py-8 rounded-[2rem] hover:bg-[#a38a6a]/20 hover:-translate-y-2 transition-all cursor-pointer border border-transparent hover:border-[#a38a6a]/30 group">
+                        <div className="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-110 fluid-anim relative">
                            {tool.img ? (
-                              <img src={tool.img} alt={tool.name} className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 rounded-lg blend-isolate bg-white/10" />
+                              <img src={tool.img} alt={tool.name} className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 rounded" />
                            ) : (
-                              <div className="w-full h-full rounded-2xl bg-white flex items-center justify-center text-[#121212] font-black text-[14px]">
+                              <div className="w-full h-full rounded-lg bg-white flex items-center justify-center text-[#121212] font-black text-xs">
                                  {tool.name.substring(0,2).toUpperCase()}
                               </div>
                            )}
                         </div>
-                        <span className="text-[14px] font-black tracking-[0.2em] uppercase text-white/60 group-hover:text-[#a38a6a] text-center w-full truncate">{tool.name}</span>
+                        <span className="text-xs font-black tracking-widest uppercase text-white/50 group-hover:text-white transition-colors duration-500 text-center w-full truncate px-2">{tool.name}</span>
                      </div>
                    ))}
                 </div>
@@ -503,7 +484,7 @@ export default function App() {
             </div>
             <div className="flex gap-2 mt-10 md:mt-0 overflow-x-auto pb-4 scrollbar-hide text-[#121212]">
               {['全部', 'AI應用課程', '包裝專業課程'].map(f => (
-                <button key={f} onClick={() => setActiveCourseFilter(f)} className={`whitespace-nowrap px-8 py-3 rounded-full text-[14px] font-black uppercase tracking-[0.2em] transition-all shadow-sm ${activeCourseFilter === f ? 'bg-[#a38a6a] text-white' : 'bg-white text-gray-400 hover:text-[#121212] border border-gray-100'}`}>
+                <button key={f} onClick={() => setActiveCourseFilter(f)} className={`whitespace-nowrap px-8 py-3 rounded-full text-base font-black uppercase tracking-[0.2em] transition-all shadow-sm ${activeCourseFilter === f ? 'bg-[#a38a6a] text-white' : 'bg-white text-gray-400 hover:text-[#121212] border border-gray-100'}`}>
                   {f} <span className="ml-2 opacity-50">({getCourseFilterCount(f)})</span>
                 </button>
               ))}
@@ -536,14 +517,31 @@ export default function App() {
                         </div>
                       </div>
                    </div>
-                   <div className="relative lg:w-2/5 h-[300px] lg:h-auto overflow-hidden bg-gray-900 transition-all duration-[1000ms] group-hover/course:lg:w-3/5 pointer-events-none">
-                      <img src={course.img} alt="Certificate" className="w-full h-full object-cover grayscale opacity-50 group-hover/course:grayscale-0 group-hover/course:opacity-100 group-hover/course:scale-105 transition-all duration-[1200ms]" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent"></div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover/course:opacity-100 transition-opacity duration-700">
-                         <div className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-[14px] font-black uppercase tracking-[0.4em] shadow-2xl flex items-center gap-3">
-                           <FileCheck size={16} /> Verified Expertise
+                    <div className="relative w-[50%] md:w-[35%] lg:w-[20%] lg:min-w-[200px] h-[300px] lg:h-auto overflow-hidden bg-gray-900 transition-all duration-[1000ms] group-hover/course:w-[50%] md:group-hover/course:w-[40%] lg:group-hover/course:w-[35%] pointer-events-none self-center rounded-3xl lg:rounded-none my-6 lg:my-0 lg:ml-auto">
+                      {course.imgs ? (
+                        <div className="relative w-full h-full">
+                           {course.imgs.map((img, i) => (
+                              <img key={i} src={img} alt={`Certificate ${i}`} className={`absolute inset-0 w-full h-full object-contain grayscale opacity-50 transition-all duration-[1200ms] ${i === 0 ? 'group-hover/course:opacity-100 group-hover/course:grayscale-0 z-20' : 'opacity-0 scale-95 group-hover/course:opacity-0 z-10'} group-hover/course:scale-105`} style={{ animation: `carouselFade ${course.imgs.length * 3}s infinite ${i * 3}s` }} />
+                           ))}
+                           <style>{`
+                             @keyframes carouselFade {
+                               0%, 20% { opacity: 1; z-index: 20; filter: grayscale(0%); transform: scale(1.05); }
+                               25%, 95% { opacity: 0; z-index: 10; filter: grayscale(100%); transform: scale(1); }
+                               100% { opacity: 1; z-index: 20; filter: grayscale(0%); transform: scale(1.05); }
+                             }
+                           `}</style>
+                        </div>
+                      ) : (
+                        <img src={course.img} alt="Certificate" className="w-full h-full object-contain grayscale opacity-50 group-hover/course:grayscale-0 group-hover/course:opacity-100 group-hover/course:scale-105 transition-all duration-[1200ms]" />
+                      )}
+                      
+                      {course.status && (
+                         <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-30 transition-opacity duration-700">
+                           <div className="px-4 py-2 bg-[#121212]/80 backdrop-blur-md rounded-lg text-white text-xs font-black tracking-widest text-center shadow-2xl">
+                             {course.status}
+                           </div>
                          </div>
-                      </div>
+                      )}
                    </div>
                 </div>
              </Reveal>
@@ -558,17 +556,17 @@ export default function App() {
         <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
            {[
-             { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800" },
-             { title: '馬拉松', en: 'Marathon', icon: Timer, goal: '5次半馬，目標全馬', desc: '不只是體能，更是對堅持信念的終極挑戰。', img: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?q=80&w=800" },
-             { title: '登山挑戰', en: 'Hiking', icon: Mountain, goal: '登頂2座百岳，持續挑戰', desc: '在山林間對話，尋找自我探索與放鬆的途徑。', img: "https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=800" }
+             { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "/fitness.jpg" },
+             { title: '馬拉松', en: 'Marathon', icon: Timer, goal: '5次半馬，目標全馬', desc: '不只是體能，更是對堅持信念的終極挑戰。', img: "/marathon.jpg" },
+             { title: '登山挑戰', en: 'Hiking', icon: Mountain, goal: '登頂2座百岳，持續挑戰', desc: '在山林間對話，尋找自我探索與放鬆的途徑。', img: "/mountain.jpg" }
            ].map((item, idx) => (
              <Reveal key={idx} delay={idx * 150}>
-                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] rounded-[3rem]">
-                   <div className="h-64 overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 relative text-[#121212]">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent opacity-80 text-[#121212]"></div>
+                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] rounded-[3rem] group">
+                   <div className="h-[28rem] group-hover:h-[32rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-[#fdfdfd]">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-1000 ease-out" />
+                      <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/80 to-transparent group-hover:opacity-40 transition-opacity duration-1000"></div>
                    </div>
-                   <div className="p-10 flex flex-col flex-grow relative bg-white -mt-12 mx-6 rounded-[2.5rem] shadow-sm border border-gray-100 mb-6 text-[#121212]">
+                   <div className="p-10 flex flex-col flex-grow relative bg-white -mt-12 mx-6 rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] border border-gray-100 mb-6 text-[#121212] group-hover:-translate-y-4 transition-transform duration-700 ease-out">
                       <div className="flex items-center gap-5 mb-8 text-[#121212]">
                          <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] shadow-inner text-[#121212]"><item.icon size={28} strokeWidth={2.5} /></div>
                          <div><h4 className="text-xl font-black tracking-tight text-[#121212]">{item.title}</h4><p className="text-[14px] font-black uppercase tracking-widest text-gray-300">{item.en}</p></div>
@@ -609,10 +607,11 @@ export default function App() {
         </Reveal>
         <div className="flex flex-col md:flex-row justify-between items-center py-16 border-t border-white/5 text-[14px] font-black uppercase tracking-[0.5em] text-gray-600 text-white text-white text-white">
           <p className="text-white opacity-50 text-white">© 2026 AMANDA LAI. ALL RIGHTS RESERVED.</p>
-          <div className="flex gap-16 mt-12 md:mt-0 text-white text-white">
-             <a href="#" className="hover:text-[#a38a6a] transition-colors">LinkedIn</a>
-             <a href="#" className="hover:text-[#a38a6a] transition-colors">Behance</a>
-             <a href="#" className="hover:text-[#a38a6a] transition-colors">Instagram</a>
+          <div className="flex flex-wrap gap-8 mt-12 md:mt-0 text-white text-white justify-center">
+             <a href="https://line.me/ti/p/fk-CFFKYiU" target="_blank" rel="noopener noreferrer" className="hover:text-[#a38a6a] transition-colors flex items-center gap-2">
+                <MessageCircle size={18} />
+                LINE 聯繫
+             </a>
           </div>
         </div>
       </footer>
@@ -628,7 +627,7 @@ export default function App() {
             {currentFilterOptions.length > 0 && (
               <div className="flex gap-4 mb-24 overflow-x-auto pb-6 scrollbar-hide text-[#121212] text-[#121212]">
                 {currentFilterOptions.map(f => (
-                  <button key={f} onClick={() => setActiveFilter(f)} className={`whitespace-nowrap px-10 py-4 rounded-full text-[14px] font-black uppercase tracking-[0.2em] transition-all ${activeFilter === f ? 'bg-[#121212] text-white shadow-2xl shadow-black/30' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>
+                  <button key={f} onClick={() => setActiveFilter(f)} className={`whitespace-nowrap px-10 py-4 rounded-full text-base font-black uppercase tracking-[0.2em] transition-all ${activeFilter === f ? 'bg-[#121212] text-white shadow-2xl shadow-black/30' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>
                     {f} <span className="ml-4 opacity-40">({getFilterCount(activeCategory, f)})</span>
                   </button>
                 ))}
@@ -638,7 +637,15 @@ export default function App() {
               {filteredProjects.map((proj, i) => (
                  <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
                    <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[3rem] bg-white relative p-6">
-                      <img src={proj.img} alt={proj.title} className="w-full h-auto object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                      {proj.id === 1 && activeCategory === 'Packaging' ? (
+                        <div className="flex gap-2 w-full h-[300px]">
+                           <img src="/tws_innercard01.png" alt="TWS 1" className="w-1/2 h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                           <img src="/tws_innercard02.png" alt="TWS 2" className="w-1/2 h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                        </div>
+                      ) : (
+                        <img src={proj.img} alt={proj.title} className="w-full h-auto object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                      )}
+                      
                       <div className="absolute top-8 left-8 w-14 h-14 rounded-full bg-[#121212]/5 backdrop-blur-md flex items-center justify-center font-serif italic text-xl shadow-sm text-[#121212]">0{i+1}</div>
                    </div>
                    <div className="px-10 pb-10 pt-4 flex-grow flex flex-col justify-end text-[#121212]">
