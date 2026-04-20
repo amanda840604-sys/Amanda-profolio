@@ -44,6 +44,92 @@ const Reveal = ({ children, delay = 0, className = "", direction = "up" }: any) 
   );
 };
 
+/* --- 互動組件 3：課程專用輪播卡片 (Course Card) --- */
+const CourseCard = ({ course, delay, ...props }: any) => {
+  const [imgIndex, setImgIndex] = useState(0);
+
+  useEffect(() => {
+    if (!course.imgs || course.imgs.length <= 1) return;
+    const interval = setInterval(() => {
+      setImgIndex((prev) => (prev + 1) % course.imgs.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [course.imgs]);
+
+  return (
+    <Reveal delay={delay} {...props}>
+       <div className="group/course flex flex-col hover:shadow-2xl transition-all duration-700 rounded-[3rem] bg-white border-0 overflow-hidden h-full">
+          {/* Image Area */}
+          <div className="h-[24rem] overflow-hidden relative bg-white grayscale group-hover/course:grayscale-0 transition-all duration-1000">
+             {course.imgs ? (
+                <div className="w-full h-full relative">
+                   {course.imgs.map((img: string, i: number) => {
+                      let fitClass = 'object-cover';
+                      let zoomClass = 'group-hover/course:scale-105';
+                      
+                      // For certificates: start with contain, zoom to fill
+                      if ((course.id === 1 && i === 0) || (course.id === 2) || (course.id === 4 && (i === 0 || i === 1))) {
+                         fitClass = 'object-contain';
+                         zoomClass = 'group-hover/course:scale-125'; // Higher scale to reach edges
+                      }
+
+                      return (
+                        <img 
+                          key={i} 
+                          src={img} 
+                          alt={`Certificate ${i}`} 
+                          className={`absolute inset-0 w-full h-full ${fitClass} ${zoomClass} transition-all duration-[1500ms] ease-out ${i === imgIndex ? 'opacity-100 z-20' : 'opacity-0 z-10'}`}
+                        />
+                      );
+                   })}
+                </div>
+             ) : (
+                <img 
+                   src={course.img} 
+                   alt="Certificate" 
+                   className={`w-full h-full ${course.id === 2 ? 'object-contain group-hover/course:scale-125' : 'object-cover group-hover/course:scale-110'} transition-all duration-[1500ms] ease-out`} 
+                />
+             )}
+             
+             {/* Gradient Mask (Interests Style) */}
+             <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/40 to-transparent group-hover:opacity-20 transition-opacity duration-1000 z-30"></div>
+             
+             {course.status && (
+                <div className="absolute inset-0 flex items-center justify-center bg-black/20 z-40">
+                  <div className="px-6 py-3 bg-[#121212]/90 backdrop-blur-md rounded-2xl text-white text-xs font-black tracking-widest text-center uppercase border border-white/10 shadow-2xl">
+                    {course.status}
+                  </div>
+                </div>
+             )}
+          </div>
+
+          {/* Overlapping Content Area (Interests Style) */}
+          <div className="p-10 flex flex-col flex-grow relative bg-white -mt-12 mx-6 rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] border border-gray-100 mb-6 text-[#121212] group-hover:-translate-y-4 transition-transform duration-700 ease-out z-50">
+             <div className="flex items-center gap-4 mb-6">
+               <span className="text-[12px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 rounded-full uppercase tracking-widest">{course.category}</span>
+               <span className="text-[12px] font-bold text-gray-400 flex items-center gap-2 uppercase tracking-widest"><Calendar size={12}/> {course.date}</span>
+             </div>
+             
+             <h4 className="text-2xl font-black mb-8 group-hover/course:text-[#a38a6a] transition-colors leading-tight min-h-[3rem]">{course.title}</h4>
+             
+             <div className="mt-auto pt-6 border-t border-gray-50 space-y-4">
+                <div className="flex items-center gap-4">
+                   <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-[#a38a6a]"><Award size={20} /></div>
+                   <div>
+                      <p className="text-[10px] font-black text-gray-300 uppercase tracking-widest leading-none mb-1">Organization</p>
+                      <p className="text-[13px] font-bold text-[#121212]">{course.org}</p>
+                   </div>
+                </div>
+                <div className="pt-2 flex items-center justify-between">
+                   <span className="text-[11px] font-black uppercase tracking-widest text-gray-400">Total : {course.hours}</span>
+                </div>
+             </div>
+          </div>
+       </div>
+    </Reveal>
+  );
+}
+
 /* --- 互動組件 2：精品級滑鼠光暈 (Spotlight Card) --- */
 const SpotlightCard = ({ children, className = "", dark = false }: {
   children: React.ReactNode;
@@ -127,7 +213,7 @@ export default function App() {
     { id: 1, title: '包裝結構設計、運輸驗證\n成本優化實務課程', org: '財團法人塑膠工業技術發展中心 (PIDC)', date: '2026.03.26', hours: '48 小時', category: '包裝專業課程', img: '/course_pkg01.png', imgs: ['/course_pkg01.png', '/course_pkg02.jpg'] },
     { id: 2, title: '在職菁英 AI 人才培育課程', org: '114年度經濟部產業發展署補助課程', date: '2025.12.09 - 2025.12.17', hours: '30 小時', category: 'AI應用課程', img: '/course_ai_20251209-1217.png' },
     { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_ccchen.jpg', status: '正在培訓中，證書尚未取得' },
-    { id: 4, title: 'AI 應用實務系列課程\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: '/chat gpt lv1.jpg', imgs: ['/chat gpt lv1.jpg', '/make lv1.jpg'] },
+    { id: 4, title: 'AI 應用實務系列課程\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: '/chat gpt lv1.jpg', imgs: ['/chat gpt lv1.jpg', '/make lv1.jpg', '/nuva.jpg'] },
     { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg' }
   ];
 
@@ -504,59 +590,7 @@ export default function App() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 text-[#121212]">
            {filteredCourses.map((course, idx) => (
-             <Reveal key={course.id} delay={idx * 150}>
-                <div className="group/course flex flex-col bg-white rounded-[4rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
-                   {/* Image Area - Top Placement for "Align to Left/Right Edges" */}
-                   <div className="w-full aspect-[16/10] bg-gray-50 flex items-center justify-center overflow-hidden border-b border-gray-50 relative">
-                      {course.imgs ? (
-                        <div className="w-full h-full relative">
-                           {course.imgs.map((img, i) => (
-                              <img 
-                                key={i} 
-                                src={img} 
-                                alt={`Certificate ${i}`} 
-                                className={`absolute inset-0 w-full h-full object-contain transition-all duration-[2000ms] ${course.imgs.length > 1 ? 'animate-course-fade' : ''}`}
-                                style={{ animationDelay: `${i * 4}s`, animationDuration: `${course.imgs.length * 4}s` }}
-                              />
-                           ))}
-                        </div>
-                      ) : (
-                        <img src={course.img} alt="Certificate" className="w-full h-full object-contain transition-all duration-[1200ms] group-hover/course:scale-105" />
-                      )}
-                      
-                      {course.status && (
-                         <div className="absolute inset-0 flex items-center justify-center bg-black/40 z-30 opacity-100">
-                           <div className="px-6 py-3 bg-[#121212]/90 backdrop-blur-md rounded-2xl text-white text-xs font-black tracking-widest text-center shadow-2xl border border-white/10 uppercase">
-                             {course.status}
-                           </div>
-                         </div>
-                      )}
-                   </div>
-
-                   {/* Content Area */}
-                   <div className="p-12 md:p-16 flex flex-col flex-grow text-[#121212]">
-                      <div className="flex items-center gap-4 mb-8">
-                        <span className="text-[12px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 rounded-full uppercase tracking-widest">{course.category}</span>
-                        <span className="text-[12px] font-bold text-gray-400 flex items-center gap-2 uppercase tracking-widest"><Calendar size={12}/> {course.date}</span>
-                      </div>
-                      
-                      <h4 className="text-3xl font-black mb-10 group-hover/course:text-[#a38a6a] transition-colors leading-tight whitespace-pre-line min-h-[3.5rem]">{course.title}</h4>
-                      
-                      <div className="mt-auto pt-10 border-t border-gray-50 space-y-6">
-                         <div className="flex items-center gap-4">
-                            <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-[#a38a6a]"><Award size={20} /></div>
-                            <div>
-                               <p className="text-[11px] font-black text-gray-300 uppercase tracking-widest">Issuing Organization</p>
-                               <p className="text-sm font-bold text-[#121212]">{course.org}</p>
-                            </div>
-                         </div>
-                         <div className="flex items-center justify-between">
-                            <span className="text-[12px] font-black uppercase tracking-widest text-gray-400">Total : {course.hours}</span>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </Reveal>
+             <CourseCard key={course.id} course={course} delay={idx * 150} />
            ))}
         </div>
         </div>
@@ -725,16 +759,6 @@ export default function App() {
       {/* CSS Animations & Fluid Dynamics */}
       <style>{`
         @keyframes slide { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
-        @keyframes course-fade {
-          0%, 40% { opacity: 1; z-index: 20; }
-          50%, 90% { opacity: 0; z-index: 10; }
-          100% { opacity: 1; z-index: 20; }
-        }
-        .animate-course-fade {
-          animation-name: course-fade;
-          animation-iteration-count: infinite;
-          animation-timing-function: ease-in-out;
-        }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .cubic-bezier { transition-timing-function: cubic-bezier(0.25, 1, 0.05, 1); }
         .fluid-anim { transition-timing-function: cubic-bezier(0.25, 1, 0.05, 1); }
