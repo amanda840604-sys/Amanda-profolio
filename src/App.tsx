@@ -96,17 +96,19 @@ export default function App() {
   // --- 資料定義 ---
   const projectData = {
     Packaging: [
-      { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard09.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
+      { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard9.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
       { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01-1.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
       { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
       { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
       { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
       { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
-      { id: 7, title: '視訊鏡頭細部設計', desc: '收納包袋結構設計，針對戶外需求優化。', img: '/camera_pkg_002.jpg', detailsImages: ['/camera_pkg_002.jpg'], tags: ['包裝設計', '鏡頭包裝'], category: '消費性電子產品' },
       { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
       { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
       { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 11, title: '攜帶盒 結構設計', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '自行車零件' }
+      { id: 11, title: 'Carrycase 包裝設計', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '自行車零件' },
+      { id: 12, title: '立管包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
+      { id: 13, title: '快拆束仔包裝設計', desc: '輪組快拆專用包裝，極簡紙靠緩衝固定。', img: '/Quick Release01.jpg', detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'], tags: ['包裝設計', '自行車', 'Quick Release'], category: '自行車零件' },
+      { id: 14, title: '座管包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost04.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost09.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' }
     ],
     Product: [
       { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
@@ -124,9 +126,9 @@ export default function App() {
   const coursesData = [
     { id: 1, title: '包裝結構設計、運輸驗證\n成本優化實務課程', org: '財團法人塑膠工業技術發展中心 (PIDC)', date: '2026.03.26', hours: '48 小時', category: '包裝專業課程', img: '/course_pkg01.png', imgs: ['/course_pkg01.png', '/course_pkg02.jpg'] },
     { id: 2, title: '在職菁英 AI 人才培育課程', org: '114年度經濟部產業發展署補助課程', date: '2025.12.09 - 2025.12.17', hours: '30 小時', category: 'AI應用課程', img: '/course_ai_20251209-1217.png' },
-    { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg', status: '正在培訓中，證書尚未取得' },
-    { id: 4, title: 'AI 應用實務系列課程\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: '/nuva.jpg', imgs: ['/nuva.jpg', '/chat gpt lv1.jpg', '/make lv1.jpg'] },
-    { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: '/course_ai_ccchen.jpg' }
+    { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_ccchen.jpg', status: '正在培訓中，證書尚未取得' },
+    { id: 4, title: 'AI 應用實務系列課程\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: '/chat gpt lv1.jpg', imgs: ['/chat gpt lv1.jpg', '/make lv1.jpg'] },
+    { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg' }
   ];
 
   // --- 計算屬性 ---
@@ -296,13 +298,13 @@ export default function App() {
                   <div className="aspect-square overflow-hidden relative bg-white border-b border-gray-50">
                      <img src={key === 'Packaging' ? "/tws_pkg_design01-1.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
                   </div>
-                  <div className="p-20 flex flex-col flex-grow text-[#121212]">
+                  <div className="p-20 flex flex-col items-center text-center flex-grow text-[#121212]">
                      <h4 className="text-5xl font-black uppercase mb-4 tracking-tight">{key}</h4>
                      <p className="text-[18px] font-bold text-[#a38a6a] tracking-widest mb-12 uppercase">{label}</p>
                      <p className="text-[18px] text-gray-500 leading-[1.8] max-w-[60ch] mb-16 flex-grow font-medium">
                         {key === 'Packaging' ? '致力於高強度全紙結構與 ESG 永續材質，實現 0% 塑料緩衝。' : key === 'Product' ? '將工業美學轉化為具量產性的商業實績，兼顧外觀與組裝工藝。' : '品牌視覺與企業識別系統建構，透過專業排版與色彩策略優化溝通。'}
                      </p>
-                     <button onClick={() => setActiveCategory(key)} className="group/btn flex items-center justify-between w-full pt-12 border-t border-gray-100 transition-all text-[#121212]">
+                     <button onClick={() => setActiveCategory(key)} className="group/btn flex items-center justify-center gap-4 w-full pt-12 border-t border-gray-100 transition-all text-[#121212]">
                         <span className="text-[18px] font-black uppercase tracking-widest">Explore Collection</span>
                         <ArrowRight size={24} className="group-hover/btn:translate-x-3 transition-transform" />
                      </button>
@@ -411,8 +413,8 @@ export default function App() {
       </section>
 
       {/* 7. SKILLS */}
-      <section id="skills" className="px-8 md:px-24 py-40 bg-[#121212] text-white">
-        <div className="max-w-7xl mx-auto w-full text-white">
+      <section id="skills" className="px-8 md:px-24 py-40 border-t border-gray-50 text-[#121212]">
+        <div className="max-w-7xl mx-auto w-full text-[#121212]">
         <Reveal>
            <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Mastery Skills & Tools</h2>
         </Reveal>
@@ -500,56 +502,58 @@ export default function App() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-12 text-[#121212]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 text-[#121212]">
            {filteredCourses.map((course, idx) => (
              <Reveal key={course.id} delay={idx * 150}>
-                <div className="group/course flex flex-col lg:flex-row bg-white rounded-[3rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-[#a38a6a]/5 transition-all duration-[800ms] cubic-bezier(0.16, 1, 0.3, 1)">
-                   <div className="flex-grow p-10 md:p-14 lg:w-3/5 flex flex-col justify-between transition-all duration-700 group-hover/course:lg:w-2/5 text-[#121212]">
-                      <div>
-                        <div className="flex items-center gap-6 mb-8">
-                          <span className="text-[14px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 rounded-full uppercase tracking-widest">{course.category}</span>
-                          <span className="text-[14px] font-bold text-gray-300 flex items-center gap-2 uppercase tracking-widest"><Calendar size={14}/> {course.date}</span>
-                        </div>
-                        <h4 className="text-2xl md:text-4xl font-black mb-10 group-hover/course:text-[#a38a6a] transition-colors leading-tight whitespace-pre-line text-[#121212]">{course.title}</h4>
-                      </div>
-                      <div className="space-y-6 text-[#121212]">
-                        <div className="flex items-center gap-4">
-                           <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-[#a38a6a]"><Award size={20} /></div>
-                           <div className="text-[#121212]">
-                              <p className="text-[14px] font-black text-gray-400 uppercase tracking-widest">Issuing Organization</p>
-                              <p className="text-sm font-bold text-[#121212]">{course.org}</p>
-                           </div>
-                        </div>
-                        <div className="pt-6 border-t border-gray-50 flex items-center justify-between text-[#121212]">
-                           <span className="text-[14px] font-black uppercase tracking-widest text-gray-400">Duration : {course.hours}</span>
-                        </div>
-                      </div>
-                   </div>
-                    <div className="relative w-[50%] md:w-[35%] lg:w-[20%] lg:min-w-[200px] h-[300px] lg:h-auto overflow-hidden bg-gray-900 transition-all duration-[1000ms] group-hover/course:w-[50%] md:group-hover/course:w-[40%] lg:group-hover/course:w-[35%] pointer-events-none self-center rounded-3xl lg:rounded-none my-6 lg:my-0 lg:ml-auto">
+                <div className="group/course flex flex-col bg-white rounded-[4rem] overflow-hidden border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
+                   {/* Image Area - Top Placement for "Align to Left/Right Edges" */}
+                   <div className="w-full aspect-[16/10] bg-gray-50 flex items-center justify-center overflow-hidden border-b border-gray-50 relative">
                       {course.imgs ? (
-                        <div className="relative w-full h-full">
+                        <div className="w-full h-full relative">
                            {course.imgs.map((img, i) => (
-                              <img key={i} src={img} alt={`Certificate ${i}`} className={`absolute inset-0 w-full h-full object-contain grayscale opacity-50 transition-all duration-[1200ms] ${i === 0 ? 'group-hover/course:opacity-100 group-hover/course:grayscale-0 z-20' : 'opacity-0 scale-95 group-hover/course:opacity-0 z-10'} group-hover/course:scale-105`} style={{ animation: `carouselFade ${course.imgs.length * 3}s infinite ${i * 3}s` }} />
+                              <img 
+                                key={i} 
+                                src={img} 
+                                alt={`Certificate ${i}`} 
+                                className={`absolute inset-0 w-full h-full object-contain transition-all duration-[2000ms] ${course.imgs.length > 1 ? 'animate-course-fade' : ''}`}
+                                style={{ animationDelay: `${i * 4}s`, animationDuration: `${course.imgs.length * 4}s` }}
+                              />
                            ))}
-                           <style>{`
-                             @keyframes carouselFade {
-                               0%, 20% { opacity: 1; z-index: 20; filter: grayscale(0%); transform: scale(1.05); }
-                               25%, 95% { opacity: 0; z-index: 10; filter: grayscale(100%); transform: scale(1); }
-                               100% { opacity: 1; z-index: 20; filter: grayscale(0%); transform: scale(1.05); }
-                             }
-                           `}</style>
                         </div>
                       ) : (
-                        <img src={course.img} alt="Certificate" className="w-full h-full object-contain grayscale opacity-50 group-hover/course:grayscale-0 group-hover/course:opacity-100 group-hover/course:scale-105 transition-all duration-[1200ms]" />
+                        <img src={course.img} alt="Certificate" className="w-full h-full object-contain transition-all duration-[1200ms] group-hover/course:scale-105" />
                       )}
                       
                       {course.status && (
-                         <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-30 transition-opacity duration-700">
-                           <div className="px-4 py-2 bg-[#121212]/80 backdrop-blur-md rounded-lg text-white text-xs font-black tracking-widest text-center shadow-2xl">
+                         <div className="absolute inset-0 flex items-center justify-center bg-black/40 z-30 opacity-100">
+                           <div className="px-6 py-3 bg-[#121212]/90 backdrop-blur-md rounded-2xl text-white text-xs font-black tracking-widest text-center shadow-2xl border border-white/10 uppercase">
                              {course.status}
                            </div>
                          </div>
                       )}
+                   </div>
+
+                   {/* Content Area */}
+                   <div className="p-12 md:p-16 flex flex-col flex-grow text-[#121212]">
+                      <div className="flex items-center gap-4 mb-8">
+                        <span className="text-[12px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 rounded-full uppercase tracking-widest">{course.category}</span>
+                        <span className="text-[12px] font-bold text-gray-400 flex items-center gap-2 uppercase tracking-widest"><Calendar size={12}/> {course.date}</span>
+                      </div>
+                      
+                      <h4 className="text-3xl font-black mb-10 group-hover/course:text-[#a38a6a] transition-colors leading-tight whitespace-pre-line min-h-[3.5rem]">{course.title}</h4>
+                      
+                      <div className="mt-auto pt-10 border-t border-gray-50 space-y-6">
+                         <div className="flex items-center gap-4">
+                            <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-[#a38a6a]"><Award size={20} /></div>
+                            <div>
+                               <p className="text-[11px] font-black text-gray-300 uppercase tracking-widest">Issuing Organization</p>
+                               <p className="text-sm font-bold text-[#121212]">{course.org}</p>
+                            </div>
+                         </div>
+                         <div className="flex items-center justify-between">
+                            <span className="text-[12px] font-black uppercase tracking-widest text-gray-400">Total : {course.hours}</span>
+                         </div>
+                      </div>
                    </div>
                 </div>
              </Reveal>
@@ -559,9 +563,9 @@ export default function App() {
       </section>
 
       {/* 9. INTERESTS */}
-      <section id="interests" className="px-8 md:px-24 py-40 bg-[#a38a6a] text-white">
+      <section id="interests" className="px-8 md:px-24 py-40 bg-white text-[#121212]">
         <div className="max-w-7xl mx-auto w-full">
-        <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-white/70 uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
+        <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
            {[
              { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "/fitness.jpg" },
@@ -592,11 +596,11 @@ export default function App() {
       {/* 10. CLOSING & FOOTER */}
       <footer id="contact" className="bg-[#121212] pt-40 pb-20 text-white px-8 md:px-24">
         <Reveal>
-          <div className="max-w-4xl mx-auto mb-32 text-center px-4 text-white">
-            <p className="text-[#a38a6a] font-black text-[14px] tracking-[0.5em] uppercase mb-12 text-white">Closing Statement</p>
-            <div className="space-y-8 text-white">
-              <p className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">非常感謝您的閱讀。</p>
-              <p className="text-xl md:text-2xl font-medium text-gray-400 leading-relaxed max-w-2xl mx-auto text-white text-white">如有進一步了解的需要，歡迎隨時與我聯繫。</p>
+          <div className="max-w-4xl mx-auto mb-32 text-center px-4">
+            <p className="text-[#a38a6a] font-black text-[14px] tracking-[0.5em] uppercase mb-12">Closing Statement</p>
+            <div className="space-y-8">
+              <p className="text-3xl md:text-5xl font-black tracking-tight leading-tight">非常感謝您的閱讀。</p>
+              <p className="text-xl md:text-2xl font-medium text-gray-400 leading-relaxed max-w-2xl mx-auto">如有進一步了解的需要，歡迎隨時與我聯繫。</p>
               <p className="text-xl md:text-2xl text-[#a38a6a] font-serif italic leading-relaxed pt-4">
                 若有幸符合貴公司徵才條件，<br />
                 我將十分期待有機會參與正式面試，<br />
@@ -606,13 +610,13 @@ export default function App() {
           </div>
         </Reveal>
         <Reveal direction="down">
-          <div className="text-center mb-40 border-t border-white/5 pt-32 text-white text-white text-white">
-             <h2 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-20 leading-[0.8] text-white text-white text-white text-white">Let's Build <br /><span className="font-serif italic text-[#a38a6a]">Something.</span></h2>
-             <div className="flex flex-col md:flex-row justify-center items-center gap-12 text-white text-white text-white">
+          <div className="text-center mb-40 border-t border-white/5 pt-32">
+             <h2 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-20 leading-[0.8]">Let's Build <br /><span className="font-serif italic text-[#a38a6a]">Something.</span></h2>
+             <div className="flex flex-col md:flex-row justify-center items-center gap-12">
                 <a href="mailto:amanda840604@gmail.com" className="group bg-white text-[#121212] px-14 py-7 rounded-full font-black text-[14px] uppercase tracking-[0.4em] hover:bg-[#a38a6a] hover:text-white transition-all flex items-center gap-5 shadow-2xl active:scale-95"><Mail size={22} /> AMANDA840604@GMAIL.COM</a>
-                <div className="flex gap-6 text-white text-white">
-                   <a href="tel:0918190990" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#a38a6a] hover:border-[#a38a6a] transition-all group active:scale-90 text-white text-white"><Phone size={28} /></a>
-                   <a href="https://line.me/ti/p/" target="_blank" rel="noopener noreferrer" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#06C755] hover:border-[#06C755] transition-all group active:scale-90 text-white text-white"><MessageCircle size={28} /></a>
+                <div className="flex gap-6">
+                   <a href="tel:0918190990" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#a38a6a] transition-all group active:scale-90"><Phone size={28} /></a>
+                   <a href="https://line.me/ti/p/" target="_blank" rel="noopener noreferrer" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#06C755] transition-all group active:scale-90"><MessageCircle size={28} /></a>
                 </div>
              </div>
           </div>
@@ -631,13 +635,20 @@ export default function App() {
       {/* --- MODAL --- */}
       {activeCategory && (
         <div className="fixed inset-0 z-[200] bg-white flex flex-col overflow-y-auto animate-in fade-in duration-500 text-[#121212] text-[#121212]">
-          <div className="sticky top-0 z-[210] bg-white/90 backdrop-blur-xl border-b border-gray-100 px-8 md:px-24 py-10 flex justify-between items-center text-[#121212] text-[#121212] text-[#121212]">
-            <div className="flex items-center gap-10 text-[#121212] text-[#121212] text-[#121212]"><h2 className="text-5xl font-black uppercase tracking-tighter text-[#121212] text-[#121212]">{activeCategory}</h2><div className="h-12 w-[1px] bg-gray-100 hidden sm:block"></div><p className="text-[14px] font-black tracking-widest text-[#a38a6a] uppercase hidden sm:block text-[#121212]">Gallery Collection</p></div>
-            <button onClick={() => setActiveCategory(null)} className="group flex items-center gap-6 bg-[#121212] text-white px-10 py-4 rounded-full hover:bg-[#a38a6a] transition-all active:scale-90 shadow-xl text-white text-white"><span className="text-[14px] font-black uppercase tracking-widest text-white text-white text-white">Close Gallery</span><X size={20} className="text-white text-white" /></button>
+          <div className="sticky top-0 z-[210] bg-white/90 backdrop-blur-xl border-b border-gray-100 px-8 md:px-24 py-10 flex justify-between items-center text-[#121212]">
+            <div className="flex items-center gap-6">
+              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-[#121212]">
+                {activeCategory} <span className="text-[#a38a6a] font-normal italic lowercase font-serif ml-2">Gallery Collection</span>
+              </h2>
+            </div>
+            <button onClick={() => setActiveCategory(null)} className="group flex items-center gap-6 bg-[#121212] text-white px-10 py-4 rounded-full hover:bg-[#a38a6a] transition-all active:scale-90 shadow-xl">
+              <span className="text-[14px] font-black uppercase tracking-widest">Close Gallery</span>
+              <X size={20} />
+            </button>
           </div>
-          <div className="px-8 md:px-24 py-24 max-w-7xl mx-auto w-full text-[#121212] text-[#121212]">
+          <div className="px-8 md:px-24 py-24 max-w-7xl mx-auto w-full text-[#121212]">
             {currentFilterOptions.length > 0 && (
-              <div className="flex gap-4 mb-24 overflow-x-auto pb-6 scrollbar-hide text-[#121212] text-[#121212]">
+              <div className="flex gap-4 mb-24 overflow-x-auto pb-6 scrollbar-hide">
                 {currentFilterOptions.map(f => (
                   <button key={f} onClick={() => setActiveFilter(f)} className={`whitespace-nowrap px-10 py-4 rounded-full text-base font-black uppercase tracking-[0.2em] transition-all ${activeFilter === f ? 'bg-[#121212] text-white shadow-2xl shadow-black/30' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>
                     {f} <span className="ml-4 opacity-40">({getFilterCount(activeCategory, f)})</span>
@@ -645,23 +656,15 @@ export default function App() {
                 ))}
               </div>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20 text-[#121212] text-[#121212]">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
               {filteredProjects.map((proj, i) => (
                  <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
-                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[3rem] bg-white relative p-6 aspect-[16/6]">
-                      {proj.id === 1 && activeCategory === 'Packaging' ? (
-                        <div className="flex flex-col gap-2 w-full h-full">
-                           <img src="/tws_innercard01.png" alt="TWS 1" className="w-full h-1/2 object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
-                           <img src="/tws_innercard02.png" alt="TWS 2" className="w-full h-1/2 object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
-                        </div>
-                      ) : (
-                        <img src={proj.img} alt={proj.title} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
-                      )}
-                      
+                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[3rem] bg-white relative p-4 aspect-[3/2]">
+                      <img src={proj.img} alt={proj.title} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.05]" />
                    </div>
-                   <div className="px-10 pb-10 pt-4 flex-grow flex flex-col justify-end text-[#121212]">
+                   <div className="px-10 pb-10 pt-4 flex-grow flex flex-col justify-end">
                       <div className="flex justify-between items-center mb-6">
-                         <h4 className="text-3xl font-black text-[#121212] tracking-tight">{proj.title}</h4>
+                         <h4 className="text-3xl font-black tracking-tight">{proj.title}</h4>
                          <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all"><ExternalLink size={20} /></div>
                       </div>
                       <div className="flex flex-wrap gap-3">
@@ -722,6 +725,16 @@ export default function App() {
       {/* CSS Animations & Fluid Dynamics */}
       <style>{`
         @keyframes slide { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
+        @keyframes course-fade {
+          0%, 40% { opacity: 1; z-index: 20; }
+          50%, 90% { opacity: 0; z-index: 10; }
+          100% { opacity: 1; z-index: 20; }
+        }
+        .animate-course-fade {
+          animation-name: course-fade;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease-in-out;
+        }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .cubic-bezier { transition-timing-function: cubic-bezier(0.25, 1, 0.05, 1); }
         .fluid-anim { transition-timing-function: cubic-bezier(0.25, 1, 0.05, 1); }
