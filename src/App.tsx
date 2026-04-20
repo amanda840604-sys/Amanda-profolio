@@ -169,53 +169,53 @@ const SpotlightCard = ({ children, className = "", dark = false }: {
   );
 };
 
+// --- 資料定義 ---
+const projectData = {
+  Packaging: [
+    { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard9.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
+    { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01-1.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
+    { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
+    { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
+    { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
+    { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
+    { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
+    { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
+    { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
+    { id: 11, title: 'Carrycase 包裝設計', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '自行車零件' },
+    { id: 12, title: '立管包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
+    { id: 13, title: '快拆束仔包裝設計', desc: '輪組快拆專用包裝，極簡紙靠緩衝固定。', img: '/Quick Release01.jpg', detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'], tags: ['包裝設計', '自行車', 'Quick Release'], category: '自行車零件' },
+    { id: 14, title: '座管包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost04.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost09.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' }
+  ],
+  Product: [
+    { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
+    { id: 2, title: '瓦斯爐設計', desc: '嵌入式高效瓦斯爐，針對亞洲烹飪習慣優化的爐架結構。', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], category: '廚電/家電' },
+    { id: 3, title: '穿戴式裝置設計', desc: '全天候睡眠監測智慧手環，融合親膚材質與精密感應器。', img: '/sleep_monitor_device01-1.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
+    { id: 4, title: '醫療器材設計', desc: '居家低頻治療儀，透過介面引導使用者正確復健級別。', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
+    { id: 5, title: '玩具設計', desc: '兒童空間感益智積木玩具，採用安全無毒環保木料。', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], category: '玩具設計' },
+    { id: 6, title: '手繪作品', desc: '產品構思草圖與人物速寫，紀錄設計初期的靈感瞬間。', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], category: '手繪作品' }
+  ],
+  Graphic: [
+    { id: 1, title: '品牌視覺整合', desc: '為新創品牌建立完整的企業識別系統與平面應材規範。', img: '/graphic_design02-1.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
+  ]
+};
+
+const coursesData = [
+  { id: 1, title: '包裝結構設計、運輸驗證\n成本優化實務課程', org: '財團法人塑膠工業技術發展中心 (PIDC)', date: '2026.03.26', hours: '48 小時', category: '包裝專業課程', img: '/course_pkg01.png', imgs: ['/course_pkg01.png', '/course_pkg02.jpg'] },
+  { id: 2, title: '在職菁英 AI 人才培育課程', org: '114年度經濟部產業發展署補助課程', date: '2025.12.09 - 2025.12.17', hours: '30 小時', category: 'AI應用課程', img: '/course_ai_20251209-1217.png' },
+  { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_ccchen.jpg', status: '正在培訓中，證書尚未取得' },
+  { id: 4, title: 'AI 應用實務系列課程\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: '/chat gpt lv1.jpg', imgs: ['/chat gpt lv1.jpg', '/make lv1.jpg', '/nuva.jpg'] },
+  { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg' }
+];
+
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeCategory, setActiveCategory] = useState(null);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeFilter, setActiveFilter] = useState('全部包裝');
   const [activeCourseFilter, setActiveCourseFilter] = useState('全部');
   const [activeSection, setActiveSection] = useState('home');
-  const [selectedProject, setSelectedProject] = useState(null);
-
-  // --- 資料定義 ---
-  const projectData = {
-    Packaging: [
-      { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard9.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
-      { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01-1.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
-      { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
-      { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
-      { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
-      { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
-      { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
-      { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
-      { id: 11, title: 'Carrycase 包裝設計', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '自行車零件' },
-      { id: 12, title: '立管包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
-      { id: 13, title: '快拆束仔包裝設計', desc: '輪組快拆專用包裝，極簡紙靠緩衝固定。', img: '/Quick Release01.jpg', detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'], tags: ['包裝設計', '自行車', 'Quick Release'], category: '自行車零件' },
-      { id: 14, title: '座管包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost04.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost09.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' }
-    ],
-    Product: [
-      { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
-      { id: 2, title: '瓦斯爐設計', desc: '嵌入式高效瓦斯爐，針對亞洲烹飪習慣優化的爐架結構。', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], category: '廚電/家電' },
-      { id: 3, title: '穿戴式裝置設計', desc: '全天候睡眠監測智慧手環，融合親膚材質與精密感應器。', img: '/sleep_monitor_device01-1.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
-      { id: 4, title: '醫療器材設計', desc: '居家低頻治療儀，透過介面引導使用者正確復健級別。', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
-      { id: 5, title: '玩具設計', desc: '兒童空間感益智積木玩具，採用安全無毒環保木料。', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], category: '玩具設計' },
-      { id: 6, title: '手繪作品', desc: '產品構思草圖與人物速寫，紀錄設計初期的靈感瞬間。', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], category: '手繪作品' }
-    ],
-    Graphic: [
-      { id: 1, title: '品牌視覺整合', desc: '為新創品牌建立完整的企業識別系統與平面應材規範。', img: '/graphic_design02-1.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
-    ]
-  };
-
-  const coursesData = [
-    { id: 1, title: '包裝結構設計、運輸驗證\n成本優化實務課程', org: '財團法人塑膠工業技術發展中心 (PIDC)', date: '2026.03.26', hours: '48 小時', category: '包裝專業課程', img: '/course_pkg01.png', imgs: ['/course_pkg01.png', '/course_pkg02.jpg'] },
-    { id: 2, title: '在職菁英 AI 人才培育課程', org: '114年度經濟部產業發展署補助課程', date: '2025.12.09 - 2025.12.17', hours: '30 小時', category: 'AI應用課程', img: '/course_ai_20251209-1217.png' },
-    { id: 3, title: 'iPAS AI 應用規劃師初級證照班課程', org: '中國生產力中心 China Productivity Center', date: '2026.04.26', hours: '48 小時', category: 'AI應用課程', img: '/course_ai_ccchen.jpg', status: '正在培訓中，證書尚未取得' },
-    { id: 4, title: 'AI 應用實務系列課程\nChatGPT & Make', org: 'NUVA', date: '2025.03 - 2025.04', hours: '16 小時', category: 'AI應用課程', img: '/chat gpt lv1.jpg', imgs: ['/chat gpt lv1.jpg', '/make lv1.jpg', '/nuva.jpg'] },
-    { id: 5, title: 'iPAS AI應用規劃師初級能力培訓班', org: '經濟部商業發展署', date: '2026.03.22', hours: '15 小時', category: 'AI應用課程', img: '/course_ai_20260308-0322.jpg' }
-  ];
+  const [selectedProject, setSelectedProject] = useState<any>(null);
 
   // --- 計算屬性 ---
   const currentFilterOptions = activeCategory ? (
