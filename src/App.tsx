@@ -382,7 +382,7 @@ export default function App() {
             <Reveal key={key} delay={idx * 200}>
                <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[4rem] shadow-2xl hover:-translate-y-4 transition-all duration-700">
                   <div className="aspect-square overflow-hidden relative bg-white border-b border-gray-50">
-                     <img src={key === 'Packaging' ? "/tws_pkg_design01-1.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
+                     <img src={key === 'Packaging' ? "/tws_pkg_design11111.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
                   </div>
                   <div className="p-20 flex flex-col items-center text-center flex-grow text-[#121212]">
                      <h4 className="text-5xl font-black uppercase mb-4 tracking-tight">{key}</h4>
