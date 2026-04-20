@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   ArrowRight, Briefcase, GraduationCap, LayoutGrid, Award, Mail, 
   ChevronRight, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, 
-  Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle 
+  Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers
 } from 'lucide-react';
 
 /* --- 互動組件 1：流體式滾動漸出 (Reveal) --- */
-const Reveal = ({ children, delay = 0, className = "", direction = "up" }) => {
+const Reveal = ({ children, delay = 0, className = "", direction = "up" }: any) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
 
@@ -45,7 +45,11 @@ const Reveal = ({ children, delay = 0, className = "", direction = "up" }) => {
 };
 
 /* --- 互動組件 2：精品級滑鼠光暈 (Spotlight Card) --- */
-const SpotlightCard = ({ children, className = "", dark = false }) => {
+const SpotlightCard = ({ children, className = "", dark = false }: {
+  children: React.ReactNode;
+  className?: string;
+  dark?: boolean;
+}) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const cardRef = useRef(null);
@@ -93,11 +97,11 @@ export default function App() {
   const projectData = {
     Packaging: [
       { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard09.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
-      { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
+      { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01-1.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
       { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
       { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
       { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
-      { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg'], tags: ['包裝設計', '紙托'], category: '消費性電子產品' },
+      { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
       { id: 7, title: '視訊鏡頭細部設計', desc: '收納包袋結構設計，針對戶外需求優化。', img: '/camera_pkg_002.jpg', detailsImages: ['/camera_pkg_002.jpg'], tags: ['包裝設計', '鏡頭包裝'], category: '消費性電子產品' },
       { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
       { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
@@ -107,13 +111,13 @@ export default function App() {
     Product: [
       { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
       { id: 2, title: '瓦斯爐設計', desc: '嵌入式高效瓦斯爐，針對亞洲烹飪習慣優化的爐架結構。', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], category: '廚電/家電' },
-      { id: 3, title: '穿戴式裝置設計', desc: '全天候睡眠監測智慧手環，融合親膚材質與精密感應器。', img: '/sleep_monitor_device01.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
+      { id: 3, title: '穿戴式裝置設計', desc: '全天候睡眠監測智慧手環，融合親膚材質與精密感應器。', img: '/sleep_monitor_device01-1.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
       { id: 4, title: '醫療器材設計', desc: '居家低頻治療儀，透過介面引導使用者正確復健級別。', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
       { id: 5, title: '玩具設計', desc: '兒童空間感益智積木玩具，採用安全無毒環保木料。', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], category: '玩具設計' },
       { id: 6, title: '手繪作品', desc: '產品構思草圖與人物速寫，紀錄設計初期的靈感瞬間。', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], category: '手繪作品' }
     ],
     Graphic: [
-      { id: 1, title: '品牌視覺整合', desc: '為新創品牌建立完整的企業識別系統與平面應材規範。', img: '/graphic_design01.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
+      { id: 1, title: '品牌視覺整合', desc: '為新創品牌建立完整的企業識別系統與平面應材規範。', img: '/graphic_design02-1.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
     ]
   };
 
@@ -214,7 +218,7 @@ export default function App() {
               </a>
             ))}
           </div>
-          <a href="#contact" className="bg-[#121212] flex-shrink-0 text-white text-[14px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] transition-all flex items-center gap-2 active:scale-95 shadow-md whitespace-nowrap">
+          <a href="mailto:amanda840604@gmail.com" className="bg-[#121212] flex-shrink-0 text-white text-[14px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] transition-all flex items-center gap-2 active:scale-95 shadow-md whitespace-nowrap">
             CONTACT <ArrowRight size={14} />
           </a>
         </nav>
@@ -285,22 +289,22 @@ export default function App() {
             <p className="text-[14px] font-black text-gray-400 uppercase tracking-widest mt-8 md:mt-0 text-[#121212]">Design Mastery × Core Focus</p>
           </div>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-[#121212]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-[#121212]">
           {Object.entries({ Packaging: '包裝設計', Product: '產品設計', Graphic: '平面設計' }).map(([key, label], idx) => (
             <Reveal key={key} delay={idx * 200}>
-               <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[3rem]">
-                  <div className="aspect-[4/5] overflow-hidden relative">
-                     <img src={key === 'Packaging' ? "/tws_pkg_design01.jpg" : key === 'Product' ? "/rangehood02.jpg" : "/graphic_design02.jpg"} alt={key} className="w-full h-full object-cover grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-110 transition-all duration-1000" />
+               <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[4rem] shadow-2xl hover:-translate-y-4 transition-all duration-700">
+                  <div className="aspect-square overflow-hidden relative bg-white border-b border-gray-50">
+                     <img src={key === 'Packaging' ? "/tws_pkg_design01-1.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
                   </div>
-                  <div className="p-12 flex flex-col flex-grow text-[#121212]">
-                     <h4 className="text-3xl font-black uppercase mb-2 tracking-tight">{key}</h4>
-                     <p className="text-[14px] font-bold text-[#a38a6a] tracking-widest mb-8 uppercase">{label}</p>
-                     <p className="text-[14px] text-gray-500 leading-[1.85] max-w-[60ch] mb-12 flex-grow font-medium">
+                  <div className="p-20 flex flex-col flex-grow text-[#121212]">
+                     <h4 className="text-5xl font-black uppercase mb-4 tracking-tight">{key}</h4>
+                     <p className="text-[18px] font-bold text-[#a38a6a] tracking-widest mb-12 uppercase">{label}</p>
+                     <p className="text-[18px] text-gray-500 leading-[1.8] max-w-[60ch] mb-16 flex-grow font-medium">
                         {key === 'Packaging' ? '致力於高強度全紙結構與 ESG 永續材質，實現 0% 塑料緩衝。' : key === 'Product' ? '將工業美學轉化為具量產性的商業實績，兼顧外觀與組裝工藝。' : '品牌視覺與企業識別系統建構，透過專業排版與色彩策略優化溝通。'}
                      </p>
-                     <button onClick={() => setActiveCategory(key)} className="group/btn flex items-center justify-between w-full pt-8 border-t border-gray-100 transition-all text-[#121212]">
-                        <span className="text-[14px] font-black uppercase tracking-widest">View Projects</span>
-                        <ArrowRight size={16} className="group-hover/btn:translate-x-2 transition-transform" />
+                     <button onClick={() => setActiveCategory(key)} className="group/btn flex items-center justify-between w-full pt-12 border-t border-gray-100 transition-all text-[#121212]">
+                        <span className="text-[18px] font-black uppercase tracking-widest">Explore Collection</span>
+                        <ArrowRight size={24} className="group-hover/btn:translate-x-3 transition-transform" />
                      </button>
                   </div>
                </SpotlightCard>
@@ -311,7 +315,8 @@ export default function App() {
       </section>
 
       {/* 6. EXPERIENCE (重新規劃為單一垂直演進流) */}
-      <section id="experience" className="px-8 md:px-24 py-40 max-w-6xl mx-auto text-[#121212]">
+      <section id="experience" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
+        <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-32">
              <h2 className="text-[14px] font-black tracking-[0.6em] text-[#a38a6a] uppercase mb-6">Chronicles</h2>
@@ -402,29 +407,32 @@ export default function App() {
             );
           })}
         </div>
+      </div>
       </section>
 
       {/* 7. SKILLS */}
-      <section id="skills" className="px-8 md:px-24 py-40 border-t border-gray-100 text-[#121212]">
-        <div className="max-w-7xl mx-auto w-full">
+      <section id="skills" className="px-8 md:px-24 py-40 bg-[#121212] text-white">
+        <div className="max-w-7xl mx-auto w-full text-white">
         <Reveal>
            <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Mastery Skills & Tools</h2>
         </Reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
            {[
-             { id: '01', title: '市場調研與定位分析', en: 'Market Research & Strategy', desc: '擅長設計前期的競品蒐集並針對該品牌定位分析，總結設計規畫方向。', tags: ['競品分析', '產品策略', '產品定位', '市場調查資料分析', '報告撰寫與提案', 'Market Research', 'Strategy'] },
-             { id: '02', title: '2D 品牌視覺整合與簡報提案', en: 'Graphic Design & Branding', desc: '擅長整合包裝結構與品牌識別，製作具專業感與說服力的提案簡報。', tags: ['Adobe InDesign', 'Illustrator', 'Photoshop', '電腦排版設計', '設計印刷基本認知', '電腦印前設計', 'Graphic Design', 'Branding'] },
-             { id: '03', title: '3D 建模與結構模擬', en: '3D Modeling & Engineering', desc: '能快速建構產品結構模型並進行裝配模擬，支援從設計構想至工程的溝通。', tags: ['Creo', 'SolidWorks', 'Rhino', 'Keyshot', '產品結構評估', '3D 渲染', '3D Modeling', 'Engineering'] },
-             { id: '04', title: '包裝材料選用與 BOM 建立', en: 'Packaging & BOM', desc: '熟悉泡殼、瓦楞紙卡、紙托等常用包材特性，依需求提出優化方案。', tags: ['瓦楞紙結構', '包裝材料選用', '工程圖繪製', 'BOM 建立', 'Packaging', 'BOM'] },
-             { id: '05', title: '打樣實作與設計驗證能力', en: 'Prototyping & Validation', desc: '善用割樣機進行結構模擬與快速打樣，快速驗證設計可行性。', tags: ['打樣機操作', '結構模擬', '快速打樣', '設計驗證', 'CMF 樣板製作', 'Prototyping', 'Validation'] }
+             { id: '01', title: '市場調研與定位分析', icon: LayoutGrid, en: 'Market Research & Strategy', desc: '擅長設計前期的競品蒐集並針對該品牌定位分析，總結設計規畫方向。', tags: ['競品分析', '產品策略', '產品定位', '市場調查資料分析', '報告撰寫與提案'] },
+             { id: '02', title: '2D 品牌視覺整合與簡報提案', icon: FileCheck, en: 'Graphic Design & Branding', desc: '擅長整合包裝結構與品牌識別，製作具專業感與說服力的提案簡報。', tags: ['Adobe InDesign', 'Illustrator', 'Photoshop', '電腦排版設計', '設計印刷基本認知', '電腦印前設計'] },
+             { id: '03', title: '3D 建模與結構模擬', icon: Box, en: '3D Modeling & Engineering', desc: '能快速建構產品結構模型並進行裝配模擬，支援從設計構想至工程的溝通。', tags: ['Creo', 'SolidWorks', 'Rhino', 'Keyshot', '產品結構評估', '3D 渲染'] },
+             { id: '04', title: '包裝材料選用與 BOM 建立', icon: Layers, en: 'Packaging & BOM', desc: '熟悉泡殼、瓦楞紙卡、紙托等常用包材特性，依需求提出優化方案。', tags: ['瓦楞紙結構', '包裝材料選用', '工程圖繪製', 'BOM 建立'] },
+             { id: '05', title: '打樣實作與設計驗證能力', icon: CheckCircle, en: 'Prototyping & Validation', desc: '善用割樣機進行結構模擬與快速打樣，快速驗證設計可行性。', tags: ['打樣機操作', '結構模擬', '快速打樣', '設計驗證', 'CMF 樣板製作'] }
            ].map((skill, idx) => (
              <Reveal key={idx} delay={idx * 150} className={idx === 4 ? "lg:col-span-2" : ""}>
-                <SpotlightCard className="p-10 group rounded-[3rem] h-full flex flex-col">
-                   <div className="flex justify-between items-start mb-8 text-[#121212]">
-                      <div className="text-4xl font-serif italic text-gray-100 group-hover:text-[#a38a6a] transition-colors">{skill.id}</div>
+                <SpotlightCard className="p-10 group rounded-[3rem] h-full flex flex-col hover:border-[#a38a6a]/30 transition-all bg-white text-[#121212]">
+                   <div className="flex justify-between items-start mb-8">
+                      <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] transition-transform group-hover:scale-110 duration-500">
+                        <skill.icon size={28} />
+                      </div>
                       <p className="text-[14px] font-black tracking-widest text-[#a38a6a] uppercase">{skill.en}</p>
                    </div>
-                   <h4 className="text-2xl font-black mb-4 tracking-tight leading-snug">{skill.title}</h4>
+                   <h4 className="text-2xl font-black mb-4 tracking-tight leading-snug group-hover:text-[#a38a6a] transition-colors">{skill.title}</h4>
                    <p className="text-[14px] text-gray-500 font-medium leading-[1.8] mb-10 flex-grow">{skill.desc}</p>
                    <div className="flex flex-wrap gap-2 text-[#121212]">
                      {skill.tags.map(t => (
@@ -551,9 +559,9 @@ export default function App() {
       </section>
 
       {/* 9. INTERESTS */}
-      <section id="interests" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
+      <section id="interests" className="px-8 md:px-24 py-40 bg-[#a38a6a] text-white">
         <div className="max-w-7xl mx-auto w-full">
-        <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
+        <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-white/70 uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
            {[
              { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "/fitness.jpg" },
@@ -561,9 +569,9 @@ export default function App() {
              { title: '登山挑戰', en: 'Hiking', icon: Mountain, goal: '登頂2座百岳，持續挑戰', desc: '在山林間對話，尋找自我探索與放鬆的途徑。', img: "/mountain.jpg" }
            ].map((item, idx) => (
              <Reveal key={idx} delay={idx * 150}>
-                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] rounded-[3rem] group">
-                   <div className="h-[28rem] group-hover:h-[32rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-[#fdfdfd]">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-contain p-2 group-hover:scale-105 transition-transform duration-1000 ease-out" />
+                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] rounded-[3rem] group bg-white border-0">
+                   <div className="h-[28rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-white">
+                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
                       <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/80 to-transparent group-hover:opacity-40 transition-opacity duration-1000"></div>
                    </div>
                    <div className="p-10 flex flex-col flex-grow relative bg-white -mt-12 mx-6 rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] border border-gray-100 mb-6 text-[#121212] group-hover:-translate-y-4 transition-transform duration-700 ease-out">
@@ -589,7 +597,11 @@ export default function App() {
             <div className="space-y-8 text-white">
               <p className="text-3xl md:text-5xl font-black tracking-tight text-white leading-tight">非常感謝您的閱讀。</p>
               <p className="text-xl md:text-2xl font-medium text-gray-400 leading-relaxed max-w-2xl mx-auto text-white text-white">如有進一步了解的需要，歡迎隨時與我聯繫。</p>
-              <p className="text-xl md:text-2xl text-[#a38a6a] font-serif italic leading-relaxed pt-4">若有幸符合貴公司徵才條件，我將十分期待有機會參與正式面試，<br className="hidden md:block" />為團隊帶來我的熱情與專業。</p>
+              <p className="text-xl md:text-2xl text-[#a38a6a] font-serif italic leading-relaxed pt-4">
+                若有幸符合貴公司徵才條件，<br />
+                我將十分期待有機會參與正式面試，<br />
+                為團隊帶來我的熱情與專業。
+              </p>
             </div>
           </div>
         </Reveal>
@@ -636,17 +648,16 @@ export default function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-20 text-[#121212] text-[#121212]">
               {filteredProjects.map((proj, i) => (
                  <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
-                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[3rem] bg-white relative p-6">
+                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[3rem] bg-white relative p-6 aspect-[16/6]">
                       {proj.id === 1 && activeCategory === 'Packaging' ? (
-                        <div className="flex gap-2 w-full h-[300px]">
-                           <img src="/tws_innercard01.png" alt="TWS 1" className="w-1/2 h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
-                           <img src="/tws_innercard02.png" alt="TWS 2" className="w-1/2 h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                        <div className="flex flex-col gap-2 w-full h-full">
+                           <img src="/tws_innercard01.png" alt="TWS 1" className="w-full h-1/2 object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                           <img src="/tws_innercard02.png" alt="TWS 2" className="w-full h-1/2 object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
                         </div>
                       ) : (
-                        <img src={proj.img} alt={proj.title} className="w-full h-auto object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
+                        <img src={proj.img} alt={proj.title} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.03]" />
                       )}
                       
-                      <div className="absolute top-8 left-8 w-14 h-14 rounded-full bg-[#121212]/5 backdrop-blur-md flex items-center justify-center font-serif italic text-xl shadow-sm text-[#121212]">0{i+1}</div>
                    </div>
                    <div className="px-10 pb-10 pt-4 flex-grow flex flex-col justify-end text-[#121212]">
                       <div className="flex justify-between items-center mb-6">
