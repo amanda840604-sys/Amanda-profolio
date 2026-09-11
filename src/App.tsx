@@ -184,7 +184,9 @@ const projectData = {
     { id: 11, title: 'Carrycase 包裝設計', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '自行車零件' },
     { id: 12, title: '立管包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
     { id: 13, title: '快拆束仔包裝設計', desc: '輪組快拆專用包裝，極簡紙靠緩衝固定。', img: '/Quick Release01.jpg', detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'], tags: ['包裝設計', '自行車', 'Quick Release'], category: '自行車零件' },
-    { id: 14, title: '座管包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost04.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost09.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' }
+    { id: 14, title: '座管包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost04.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost09.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' },
+    { id: 15, title: '電動機車包裝設計', desc: '大型電動機車整車與模組化零組件運輸包裝，高承重抗震防護結構。', img: '/Ebike-1.JPG', detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' },
+    { id: 16, title: '電動滑板車包裝設計', desc: '折疊式電動滑板車一體化結構與外箱設計，兼顧開箱體驗與精準限位固定。', img: '/Escooter-1.JPG', detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' }
   ],
   Product: [
     { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
@@ -220,7 +222,7 @@ export default function App() {
   // --- 計算屬性 ---
   const currentFilterOptions = activeCategory ? (
     activeCategory === 'Packaging' 
-      ? ['全部包裝', '消費性電子產品', '自行車零件']
+      ? ['全部包裝', '消費性電子產品', '自行車零件', '電動載具']
       : activeCategory === 'Product'
       ? ['全部產品', '廚電/家電', '醫療/穿戴', '玩具設計', '手繪作品']
       : activeCategory === 'Graphic'
@@ -390,7 +392,7 @@ export default function App() {
                      <p className="text-[18px] text-gray-500 leading-[1.8] max-w-[60ch] mb-16 flex-grow font-medium">
                         {key === 'Packaging' ? '致力於高強度全紙結構與 ESG 永續材質，實現 0% 塑料緩衝。' : key === 'Product' ? '將工業美學轉化為具量產性的商業實績，兼顧外觀與組裝工藝。' : '品牌視覺與企業識別系統建構，透過專業排版與色彩策略優化溝通。'}
                      </p>
-                     <button onClick={() => setActiveCategory(key)} className="group/btn flex items-center justify-center gap-4 w-full pt-12 border-t border-gray-100 transition-all text-[#121212]">
+                     <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-4 w-full pt-12 border-t border-gray-100 transition-all text-[#121212]">
                         <span className="text-[18px] font-black uppercase tracking-widest">Explore Collection</span>
                         <ArrowRight size={24} className="group-hover/btn:translate-x-3 transition-transform" />
                      </button>
