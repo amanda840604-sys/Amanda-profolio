@@ -201,7 +201,21 @@ const projectData = {
       tags: ['包裝設計', '消費電子'],
       category: '消費性電子產品'
     },
-    { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
+    {
+      id: 3,
+      title: 'HDT 紙卡內襯設計',
+      desc: '精簡卡扣與折口設計，提升大體積耳機防護穩固性並優化組裝良率。',
+      brief: [
+        { label: '專案任務', content: '為因應前期 RFQ 階段節奏快速的估價提案需求，主動建立能迅速反應的 HDT 包裝結構解決方案。' },
+        { label: '執行策略', content: '針對 HDT 產品體積較大與配重特性，預先設計多款紙卡內襯模組。透過反覆割樣與檢討，精簡繁複的卡扣與折口設計，在有效降低產線折合工時的同時，大幅提升大體積耳機的包覆力與防護穩固性。' },
+        { label: '驗證與優化', content: '親自執行實體割樣、折合與試組裝驗證。從產線實際作業視角出發，精準排除結構干涉與組裝瓶頸。' },
+        { label: '最終成果', content: '成功建置高彈性的結構設計資料庫，不僅在接案初期能迅速產出客製化且精準的提案，更全面確保了量產可行性、優化組裝良率，並有效控管包裝製造成本。' }
+      ],
+      img: '/hdt_inner_card01.jpg',
+      detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'],
+      tags: ['包裝設計', '紙卡', '電競'],
+      category: '消費性電子產品'
+    },
     { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
     { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
     { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
