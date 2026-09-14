@@ -331,7 +331,7 @@ export default function App() {
         </Reveal>
         <Reveal delay={400}>
           <p className="text-lg md:text-2xl text-gray-500 max-w-[65ch] font-medium leading-[1.85] mb-16 mx-auto text-balance">
-            包裝設計專業深化 × 結構工程實務 <br className="hidden sm:block" /> 致力於在視覺美學與永續環保之間尋求最完美的平衡。
+            包裝設計專業深化 × 結構工程實務 <br className="hidden sm:block" /> 致力於在視覺美學與永續環保之間尋求平衡。
           </p>
         </Reveal>
         <Reveal delay={600}>
@@ -358,12 +358,12 @@ export default function App() {
           </div>
           <div className="lg:col-span-7 flex flex-col justify-center text-[#121212]">
             <Reveal delay={200} className="max-w-2xl space-y-12">
-               <p className="text-3xl md:text-4xl font-black leading-[1.5] text-gray-900 tracking-tight">畢業於<strong className="relative inline-block text-[#121212]">國立臺灣科技大學<span className="absolute bottom-1 left-0 w-full h-3 bg-[#a38a6a]/10 -z-10"></span></strong> 工業設計系，擁有 6 年從外觀至量產的深厚實戰。</p>
+               <p className="text-3xl md:text-4xl font-black leading-[1.5] text-gray-900 tracking-tight">畢業於<strong className="relative inline-block text-[#121212]">國立臺灣科技大學<span className="absolute bottom-1 left-0 w-full h-3 bg-[#a38a6a]/10 -z-10"></span></strong> 工業設計系，擁有 5~6 年從外觀至量產的深厚實戰。</p>
                <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                    <div className="w-40 h-40 md:w-64 md:h-64 shrink-0 rounded-[2.5rem] md:rounded-[4rem] group overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border-[6px] border-white cursor-pointer relative hover:-translate-y-2">
                       <img src="/Profolio_photo.jpg" alt="Amanda Lai" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                    </div>
-                   <p className="text-[17px] text-gray-500 leading-[1.85] max-w-[65ch] font-medium text-justify">我擅長將複雜的工程數據轉化為動人的設計語言，不僅關注產品在貨架上的吸引力，更深入鑽研其在物流環節的保護力。始終堅持「在成本限制中尋求極致」，為品牌創造持久的商業價值。</p>
+                   <p className="text-[17px] text-gray-500 leading-[1.85] max-w-[65ch] font-medium text-justify">擅長將複雜的工程數據轉化為動人的設計語言，不僅關注產品在貨架上的吸引力，更深入鑽研其在物流環節的保護力。堅持「在成本限制中尋求極致」，為品牌創造持久的商業價值。</p>
                </div>
                
             </Reveal>
@@ -421,7 +421,7 @@ export default function App() {
 
           {/* 專業經歷與基礎教育 (整合為單一連續主軸) */}
           {[
-            { company: "久鼎金屬股份有限公司", title: "資深包裝結構工程師", date: "2024.01 - PRESENT", duration: "現職", location: "自行車零件製造業", responsibilities: ["自行車零件包裝結構革新", "成功開發多項「輻射狀全紙緩衝」專利結構"], achievements: ["全紙緩衝替代 EPE，低碳量產導向", "CMF 永續研究與專利佈局"], tools: ["專利結構", "包裝設計", "結構驗證"], type: "work", icon: Briefcase, image: "/tranzx-logo-vector.png" },
+            { company: "久鼎金屬實業股份有限公司", title: "包裝設計工程師", date: "2025.08 - PRESENT", duration: "仍在職", location: "彰化縣秀水鄉・自行車及其零件製造業 500人+", responsibilities: ["減塑全紙化包裝設計提案", "包裝廠商樣品追蹤、品質問題改善確認", "落摔測試與包裝設計結構調整"], achievements: ["自行車零件（車把手、座管、立管、快拆束仔等）共 21 款全紙包裝設計提案", "車把手尾數箱品質異常問題解決（評估全紙填充材機台）"], tools: ["減塑全紙化", "結構調整", "落摔測試", "包裝設計"], type: "work", icon: Briefcase, image: "/tranzx-logo-vector.png" },
             { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "提出多元價位包裝設計方案，滿足品牌策略，接案達成率達 40%", "於 RFQ 階段設計包裝及成本分析，研發成本節省約 10%"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
             { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
             { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
