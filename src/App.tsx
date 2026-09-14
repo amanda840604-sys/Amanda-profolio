@@ -174,7 +174,7 @@ const projectData = {
   Packaging: [
     {
       id: 1,
-      title: 'TWS 紙卡內襯設計',
+      title: 'TWS 紙卡內襯 模組化設計',
       desc: '建置高彈性紙卡方案庫，加速 RFQ 提案並兼顧量產組裝良率。',
       brief: [
         { label: '專案任務', content: '為解決前期 RFQ 階段節奏快速的估價提案需求，建立能快速反應的包裝結構解決方案。' },
@@ -189,7 +189,7 @@ const projectData = {
     },
     {
       id: 2,
-      title: 'TWS 包裝設計',
+      title: 'TWS 包裝設計提案',
       desc: '規劃高性價比與旗艦雙軌包裝架構，精準滿足多元預算並提升提案命中率。',
       brief: [
         { label: '專案任務', content: '針對客戶 RFQ 階段的估價與提案需求，精準制定分級提案策略，提供具備成本彈性與市場區隔的包裝解決方案。' },
@@ -203,7 +203,7 @@ const projectData = {
     },
     {
       id: 3,
-      title: 'HDT 紙卡內襯設計',
+      title: 'HDT 紙卡內襯 模組化設計',
       desc: '精簡卡扣與折口設計，提升大體積耳機防護穩固性並優化組裝良率。',
       brief: [
         { label: '專案任務', content: '為因應前期 RFQ 階段節奏快速的估價提案需求，主動建立能迅速反應的 HDT 包裝結構解決方案。' },
@@ -216,19 +216,46 @@ const projectData = {
       tags: ['包裝設計', '紙卡', '電競'],
       category: '消費性電子產品'
     },
-    { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
-    { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
-    { id: 6, title: '視訊鏡頭包裝設計', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
-    { id: 11, title: 'Carrycase 包裝設計', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '消費性電子產品' },
+    {
+      id: 4,
+      title: 'Soundbar 模組化設計',
+      desc: '制定高低價位分級包裝策略，靈活整合多樣包材並成功完成跨國樣機交付。',
+      brief: [
+        { label: '專案任務', content: '為因應前期 RFQ 階段節奏快速的估價提案需求，主動建立能迅速反應的 Soundbar 模組化包裝結構解決方案。' },
+        { label: '執行策略', content: '針對 Soundbar 產品特性與各部位保護需求，制定從入門到旗艦的「高低價位分級包裝策略」。靈活整合多樣化包材配置：包含內襯（紙卡／紙塑）、表面保護材（環保紙／高質感布套）至外箱結構（Folding Box／Pizza Box），精準對接客戶的不同成本預算與品牌定位。' },
+        { label: '驗證與優化', content: '親自執行實體割樣、折合與試組裝驗證。從產線實際作業視角出發，精準排除大尺寸結構的組裝干涉與瓶頸，確保整體包裝的防護力與產線作業順暢度。' },
+        { label: '最終成果', content: '成功建置高彈性的結構設計資料庫，於接案初期迅速產出客製化精準提案，全面確保量產可行性與成本控管。\n親赴台北端協助跨部門組裝作業，並順利完成跨國樣機寄送任務，達成客戶端的高標準要求。' }
+      ],
+      img: '/soundbar_inner_card01.png',
+      detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg'],
+      tags: ['包裝設計', '紙卡', 'Soundbar'],
+      category: '消費性電子產品'
+    },
+    {
+      id: 5,
+      title: 'Soundbar 包裝設計提案',
+      desc: '精準對接成本目標與逆向工程拆解，交付完整圖面、BOM 表與標準組裝流程。',
+      brief: [
+        { label: '專案任務', content: '針對客戶 RFQ 階段的嚴格成本限制與提案需求，提供符合預算目標且具備量產可行性的 Soundbar 包裝解決方案。' },
+        { label: '執行策略', content: '精準對接客戶「成本持平」的商業目標，對前代產品包裝進行逆向工程拆解與部件分析。\n在客戶設定的成本基準下，沿用並檢視既有包材與結構設定，確保新提案的防護力與預算皆完美符合客戶期望。' },
+        { label: '最終成果', content: '成功完成全套包裝設計提案，交付結構圖面與估價專用BOM 表；同時制定標準包裝組裝流程，提供精確的產線工時評估基準，大幅提升前期報價的準確度與專案推進效率。' }
+      ],
+      img: '/soundbar01.jpg',
+      detailsImages: ['/soundbar01.jpg'],
+      tags: ['包裝設計', '永續', 'Soundbar'],
+      category: '消費性電子產品'
+    },
+    { id: 6, title: '視訊鏡頭 包裝設計提案', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
+    { id: 11, title: 'Carrycase 包裝設計提案', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '消費性電子產品' },
     { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
     { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
     { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
-    { id: 12, title: '立管包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
-    { id: 13, title: '快拆束仔包裝設計', desc: '輪組快拆專用包裝，極簡紙靠緩衝固定。', img: '/Quick Release01.jpg', detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'], tags: ['包裝設計', '自行車', 'Quick Release'], category: '自行車零件' },
-    { id: 14, title: '座管包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost03-1.jpg', '/Seatpost03-2.jpg', '/Seatpost04.jpg', '/Seatpost04-1.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost08-1.jpg', '/Seatpost09.jpg', '/Seatpost09-1.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' },
-    { id: 17, title: '煞車線包裝設計', desc: '自行車煞車線專用包裝，兼顧盤卷收納、抗震抗壓與展示便利性。', img: '/brakeline-1.jpg', detailsImages: ['/brakeline-1.jpg', '/brakeline-2.jpg'], tags: ['包裝設計', '自行車', 'Brake Line'], category: '自行車零件' },
-    { id: 15, title: '電動機車包裝設計', desc: '大型電動機車整車與模組化零組件運輸包裝，高承重抗震防護結構。', img: '/Ebike-1.JPG', detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' },
-    { id: 16, title: '電動滑板車包裝設計', desc: '折疊式電動滑板車一體化結構與外箱設計，兼顧開箱體驗與精準限位固定。', img: '/Escooter-1.JPG', detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' }
+    { id: 12, title: '立管 包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
+    { id: 13, title: '快拆束仔 包裝設計', desc: '輪組快拆專用包裝，極簡紙靠緩衝固定。', img: '/Quick Release01.jpg', detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'], tags: ['包裝設計', '自行車', 'Quick Release'], category: '自行車零件' },
+    { id: 14, title: '座管 包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost03-1.jpg', '/Seatpost03-2.jpg', '/Seatpost04.jpg', '/Seatpost04-1.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost08-1.jpg', '/Seatpost09.jpg', '/Seatpost09-1.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' },
+    { id: 17, title: '煞車線 包裝設計', desc: '自行車煞車線專用包裝，兼顧盤卷收納、抗震抗壓與展示便利性。', img: '/brakeline-1.jpg', detailsImages: ['/brakeline-1.jpg', '/brakeline-2.jpg'], tags: ['包裝設計', '自行車', 'Brake Line'], category: '自行車零件' },
+    { id: 15, title: '電動機車 包裝設計', desc: '大型電動機車整車與模組化零組件運輸包裝，高承重抗震防護結構。', img: '/Ebike-1.JPG', detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' },
+    { id: 16, title: '電動滑板車 包裝設計', desc: '折疊式電動滑板車一體化結構與外箱設計，兼顧開箱體驗與精準限位固定。', img: '/Escooter-1.JPG', detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' }
   ],
   Product: [
     { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
