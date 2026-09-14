@@ -172,7 +172,21 @@ const SpotlightCard = ({ children, className = "", dark = false }: {
 // --- 資料定義 ---
 const projectData = {
   Packaging: [
-    { id: 1, title: 'TWS 紙卡內襯設計', desc: '為國際音響品牌開發的 TWS 耳機紙卡內襯方案，整合環保與結構強度。', img: '/tws_innercard01.png', detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard9.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'], tags: ['包裝設計', 'TWS', '紙卡'], category: '消費性電子產品' },
+    {
+      id: 1,
+      title: 'TWS 紙卡內襯設計',
+      desc: '建置高彈性紙卡方案庫，加速 RFQ 提案並兼顧量產組裝良率。',
+      brief: [
+        { label: '專案任務', content: '為解決前期 RFQ 階段節奏快速的估價提案需求，建立能快速反應的包裝結構解決方案。' },
+        { label: '執行策略', content: '預先設計多款適用於 TWS 產品的紙卡內襯結構，並針對成本與工法，精準區分為「有貼合」與「無貼合」兩種製程方案。' },
+        { label: '驗證與優化', content: '親自進行實體割樣、折合與試組裝驗證，從產線實際操作的視角出發，逐步修正結構上不易組裝的瓶頸。' },
+        { label: '最終成果', content: '建置高彈性的設計方案庫，不僅在接案階段能迅速產出客製化提案，更確保了設計結構的量產可行性與組裝良率。' }
+      ],
+      img: '/tws_innercard01.png',
+      detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard9.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'],
+      tags: ['包裝設計', 'TWS', '紙卡'],
+      category: '消費性電子產品'
+    },
     { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01-1.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
     { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
     { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
@@ -700,10 +714,15 @@ export default function App() {
                       <img src={proj.img} alt={proj.title} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.05]" />
                    </div>
                    <div className="px-10 pb-10 pt-4 flex-grow flex flex-col justify-end">
-                      <div className="flex justify-between items-center mb-6">
+                      <div className="flex justify-between items-center mb-3">
                          <h4 className="text-3xl font-black tracking-tight">{proj.title}</h4>
-                         <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all"><ExternalLink size={20} /></div>
+                         <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all shrink-0 ml-4"><ExternalLink size={20} /></div>
                       </div>
+                      {proj.desc && (
+                        <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-6 font-medium line-clamp-2">
+                          {proj.desc}
+                        </p>
+                      )}
                       <div className="flex flex-wrap gap-3">
                         {proj.tags.map(tag => (<span key={tag} className="text-[12px] font-black uppercase px-4 py-1.5 bg-[#a38a6a]/10 rounded-full text-[#a38a6a] tracking-widest">{tag}</span>))}
                       </div>
@@ -739,20 +758,48 @@ export default function App() {
                </button>
             </div>
 
-            {/* Scrollable Images */}
+            {/* Scrollable Content */}
             <div className="flex-grow overflow-y-auto p-4 sm:p-8 md:p-12 custom-scrollbar bg-[#fdfdfd]">
-               <div className="space-y-8 flex flex-col items-center">
-                  {selectedProject.detailsImages ? (
-                     selectedProject.detailsImages.map((img, idx) => (
-                       <div key={idx} className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
-                          <img src={img} alt={`${selectedProject.title} details`} className="w-full h-auto object-contain" />
-                       </div>
-                     ))
-                  ) : (
-                     <div className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
-                        <img src={selectedProject.img} alt={`${selectedProject.title} thumbnail`} className="w-full h-auto object-contain" />
+               <div className="max-w-5xl mx-auto space-y-10">
+                 {/* 專案文字簡介 */}
+                 {selectedProject.brief ? (
+                   <div className="bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm">
+                     <h4 className="text-xl md:text-2xl font-black text-[#121212] mb-6 flex items-center gap-3">
+                       <span className="w-2.5 h-6 bg-[#a38a6a] rounded-full inline-block"></span>
+                       專案簡介與執行策略
+                     </h4>
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                       {selectedProject.brief.map((item: any, idx: number) => (
+                         <div key={idx} className="p-6 rounded-2xl bg-gray-50/70 border border-gray-100/80 flex flex-col justify-start">
+                           <div className="flex items-center gap-2 mb-2.5">
+                             <span className="w-2 h-2 rounded-full bg-[#a38a6a]"></span>
+                             <span className="text-sm font-black text-[#a38a6a] tracking-wider uppercase">{item.label}</span>
+                           </div>
+                           <p className="text-gray-700 text-[15px] leading-relaxed font-medium text-justify">{item.content}</p>
+                         </div>
+                       ))}
                      </div>
-                  )}
+                   </div>
+                 ) : selectedProject.desc ? (
+                   <div className="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-100 shadow-sm">
+                     <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">{selectedProject.desc}</p>
+                   </div>
+                 ) : null}
+
+                 {/* 圖片展示 */}
+                 <div className="space-y-8 flex flex-col items-center">
+                    {selectedProject.detailsImages ? (
+                       selectedProject.detailsImages.map((img: string, idx: number) => (
+                         <div key={idx} className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
+                            <img src={img} alt={`${selectedProject.title} details`} className="w-full h-auto object-contain" />
+                         </div>
+                       ))
+                    ) : (
+                       <div className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
+                          <img src={selectedProject.img} alt={`${selectedProject.title} thumbnail`} className="w-full h-auto object-contain" />
+                       </div>
+                    )}
+                 </div>
                </div>
             </div>
           </div>
