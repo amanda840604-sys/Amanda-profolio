@@ -187,7 +187,20 @@ const projectData = {
       tags: ['包裝設計', 'TWS', '紙卡'],
       category: '消費性電子產品'
     },
-    { id: 2, title: 'TWS 包裝設計', desc: '全回收紙材結構，透過力學驗證確保運輸過程中的 100% 安全保護。', img: '/tws_pkg_design01-1.jpg', detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'], tags: ['包裝設計', '消費電子'], category: '消費性電子產品' },
+    {
+      id: 2,
+      title: 'TWS 包裝設計',
+      desc: '規劃高性價比與旗艦雙軌包裝架構，精準滿足多元預算並提升提案命中率。',
+      brief: [
+        { label: '專案任務', content: '針對客戶 RFQ 階段的估價與提案需求，精準制定分級提案策略，提供具備成本彈性與市場區隔的包裝解決方案。' },
+        { label: '執行策略', content: '依據產品定位與預算，規劃雙軌包裝結構架構：\n\n• A 方案（主打高性價比）：採用「紙卡內襯搭配袖套」的極簡結構，在維持保護力的前提下，極大化降低包材成本與產線組裝工時。\n\n• B 方案（主打旗艦高質感）：運用「紙托內襯」結合「書型精品盒與袖套」設計，強化結構的精緻度與份量感，全面提升消費者的開箱體驗與品牌價值。' },
+        { label: '最終成果', content: '建立層次分明的提案模組，有效協助業務團隊快速應對不同預算層級的客戶需求，大幅提升提案命中率與專案推進效率。' }
+      ],
+      img: '/tws_pkg_design01-1.jpg',
+      detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'],
+      tags: ['包裝設計', '消費電子'],
+      category: '消費性電子產品'
+    },
     { id: 3, title: 'HDT 紙卡內襯設計', desc: '針對重型電競耳機開發的高防護緩衝方案，有效達成包材減量。', img: '/hdt_inner_card01.jpg', detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'], tags: ['包裝設計', '紙卡', '電競'], category: '消費性電子產品' },
     { id: 4, title: 'Soundbar 紙卡內襯設計', desc: '大型條狀喇叭包裝，專利輻射狀支撐結構。', img: '/soundbar_inner_card01.png', detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg', '/soundbar_inner_card08.jpg'], tags: ['包裝設計', '紙卡', 'Soundbar'], category: '消費性電子產品' },
     { id: 5, title: 'Soundbar 設計', desc: '長型結構件運輸優化，顯著降低破損率。', img: '/soundbar01.jpg', detailsImages: ['/soundbar01.jpg'], tags: ['包裝設計', '永續', 'Soundbar'], category: '消費性電子產品' },
@@ -768,14 +781,14 @@ export default function App() {
                        <span className="w-2.5 h-6 bg-[#a38a6a] rounded-full inline-block"></span>
                        專案簡介與執行策略
                      </h4>
-                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                     <div className="flex flex-col gap-6 w-full">
                        {selectedProject.brief.map((item: any, idx: number) => (
-                         <div key={idx} className="p-6 rounded-2xl bg-gray-50/70 border border-gray-100/80 flex flex-col justify-start">
+                         <div key={idx} className="w-full p-6 md:p-8 rounded-2xl bg-gray-50/70 border border-gray-100/80 flex flex-col justify-start">
                            <div className="flex items-center gap-2 mb-2.5">
                              <span className="w-2 h-2 rounded-full bg-[#a38a6a]"></span>
                              <span className="text-sm font-black text-[#a38a6a] tracking-wider uppercase">{item.label}</span>
                            </div>
-                           <p className="text-gray-700 text-[15px] leading-relaxed font-medium text-justify">{item.content}</p>
+                           <p className="text-gray-700 text-[15px] leading-relaxed font-medium text-justify whitespace-pre-line">{item.content}</p>
                          </div>
                        ))}
                      </div>
