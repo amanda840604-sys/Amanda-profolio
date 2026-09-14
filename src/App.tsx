@@ -358,7 +358,7 @@ export default function App() {
           </div>
           <div className="lg:col-span-7 flex flex-col justify-center text-[#121212]">
             <Reveal delay={200} className="max-w-2xl space-y-12">
-               <p className="text-3xl md:text-4xl font-black leading-[1.5] text-gray-900 tracking-tight">畢業於<strong className="relative inline-block text-[#121212]">國立臺灣科技大學<span className="absolute bottom-1 left-0 w-full h-3 bg-[#a38a6a]/10 -z-10"></span></strong> 工業設計系，擁有 5~6 年從外觀至量產的深厚實戰。</p>
+               <p className="text-3xl md:text-4xl font-black leading-[1.5] text-gray-900 tracking-tight">畢業於<strong className="relative inline-block text-[#121212]">國立臺灣科技大學<span className="absolute bottom-1 left-0 w-full h-3 bg-[#a38a6a]/10 -z-10"></span></strong> 工業設計系，擁有 5~6 年從外觀至量產的實戰經驗。</p>
                <div className="flex flex-col md:flex-row gap-8 items-center md:items-start">
                    <div className="w-40 h-40 md:w-64 md:h-64 shrink-0 rounded-[2.5rem] md:rounded-[4rem] group overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border-[6px] border-white cursor-pointer relative hover:-translate-y-2">
                       <img src="/Profolio_photo.jpg" alt="Amanda Lai" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
