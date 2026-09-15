@@ -244,8 +244,21 @@ const projectData = {
       tags: ['包裝設計', '永續', 'Soundbar'],
       category: '消費性電子產品'
     },
-    { id: 6, title: '視訊鏡頭 包裝設計提案', desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。', img: '/camera_pkg_001.jpg', detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'], tags: ['包裝設計', '紙托', '結構設計'], category: '消費性電子產品' },
-    { id: 11, title: 'Carrycase 包裝設計提案', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg', detailsImages: ['/carrcase01.jpg'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '消費性電子產品' },
+    {
+      id: 6,
+      title: '視訊鏡頭 包裝設計提案',
+      desc: 'Webcam 精緻禮盒包裝，結合高強度環保紙托與保護套。',
+      brief: [
+        { label: '專案任務', content: '針對客戶 RFQ 階段的預算限制與提案需求，提供兼具成本效益與量產可行性的視訊鏡頭包裝解決方案。' },
+        { label: '執行策略', content: '針對終端零售與批量運輸情境，精準制定雙軌包裝策略：\n．單入零售端：採用「精品盒搭配黑色紙托」設定，提升產品的旗艦質感與開箱體驗\n．多入批量裝箱：考量鏡頭的易損特性，評估使用「充氣緩衝墊」，提供防刮與抗震保護，確保長途運輸安全性。' },
+        { label: '最終成果', content: '成功完成全套包裝設計提案，交付結構圖面與估價專用 BOM 表；同時制定標準包裝組裝流程（SOP），提供精確的產線工時評估基準，大幅提升前期報價準確度與專案推進效率。' }
+      ],
+      img: '/camera_pkg_001.jpg',
+      detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'],
+      tags: ['包裝設計', '紙托', '結構設計'],
+      category: '消費性電子產品'
+    },
+    { id: 11, title: 'Carrycase 包裝設計提案', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg?v=1', detailsImages: ['/carrcase01.jpg?v=1'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '消費性電子產品' },
     { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
     { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
     { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
