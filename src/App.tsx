@@ -272,11 +272,76 @@ const projectData = {
       tags: ['包裝設計', '攜帶盒', '減塑'],
       category: '消費性電子產品'
     },
-    { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
-    { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
-    { id: 12, title: '立管 包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
-    { id: 13, title: '快拆束仔 包裝設計', desc: '輪組快拆專用包裝，極簡紙靠緩衝固定。', img: '/Quick Release01.jpg', detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'], tags: ['包裝設計', '自行車', 'Quick Release'], category: '自行車零件' },
-    { id: 14, title: '座管 包裝設計', desc: '長型座管包裝設計，多點支撐防止刮傷。', img: '/Seatpost01.jpg', detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost03-1.jpg', '/Seatpost03-2.jpg', '/Seatpost04.jpg', '/Seatpost04-1.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost08-1.jpg', '/Seatpost09.jpg', '/Seatpost09-1.jpg'], tags: ['包裝設計', '自行車', 'Seatpost'], category: '自行車零件' },
+    {
+      id: 9,
+      title: 'TR Handle Bar 包裝設計',
+      desc: '導入無塑環保材質，全面取代現行塑膠袋包裝方式。',
+      brief: [
+        { label: '專案任務', content: '因應國際市場減塑趨勢與永續包裝規範，導入無塑環保材質，全面取代並優化現行 TR Handle Bar 產品的塑膠袋包裝方式。' },
+        { label: '執行策略', content: '針對產品外型與保護需求，展開三種無塑包材替代方案評估：\n．紙材阻隔方案：開發「蜂巢紙」與「瓦楞紙卡折合成型」之結構設計。\n．袋裝替代方案：導入具備環保特性的「竹纖維袋」進行套袋測試。\n．套管緩衝方案：應用「蜂巢紙套管」取代傳統塑膠防撞包材。' },
+        { label: '最終成果', content: '經由ISTA 1A測試與量產成本估算，收斂出「瓦楞紙卡折合成型」方案。\n該方案在達成無塑目標同時，兼顧產品穩固性與成本優勢，並順利提案給客戶。' }
+      ],
+      img: '/tr_handle_bar01.jpg',
+      detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'],
+      tags: ['包裝設計', '減塑', '自行車'],
+      category: '自行車零件'
+    },
+    {
+      id: 10,
+      title: 'RA Handle Bar 包裝設計',
+      desc: '導入無塑環保材質，全面取代現行塑膠袋包裝方式。',
+      brief: [
+        { label: '專案任務', content: '因應國際市場減塑趨勢與永續包裝規範，導入無塑環保材質，全面取代並優化現行 RA Handle Bar 產品的塑膠袋包裝方式。' },
+        { label: '執行策略', content: '針對產品外型與保護需求，展開三種無塑包材替代方案評估：\n．紙材阻隔方案：開發「瓦楞紙卡折合成型」之結構設計。\n．袋裝替代方案：導入具備環保特性的「竹纖維袋」進行套袋測試。\n．套管緩衝方案：應用「蜂巢紙套管」取代傳統塑膠防撞包材。' },
+        { label: '最終成果', content: '經由ISTA 1A測試與量產成本估算，收斂出「瓦楞紙卡折合成型」方案。\n該方案在達成無塑目標同時，兼顧產品穩固性與成本優勢，並順利提案給客戶。' }
+      ],
+      img: '/RA_handle_bar01.png',
+      detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'],
+      tags: ['包裝設計', '減塑', '自行車'],
+      category: '自行車零件'
+    },
+    {
+      id: 12,
+      title: '立管 包裝設計',
+      desc: '開發無塑環保結構，取代現有塑膠袋包裝，確保足夠防護力。',
+      brief: [
+        { label: '專案任務', content: '因應市場減塑趨勢，開發無塑環保結構，取代立管現有的塑膠袋包裝。' },
+        { label: '執行策略', content: '全面採用「瓦楞紙卡」設計。針對不同外型的立管（L 型與 I 型），分別規劃專屬的紙卡折合結構，確保產品在無塑條件下依然擁有足夠的防護力。' },
+        { label: '最終成果', content: '提前建立 L 型與 I 型立管的無塑包裝資料庫。\n當客戶提出減塑需求時，能快速提供具備量產可行性的提案，有效縮短前置作業時間。' }
+      ],
+      img: '/Stem01.jpg',
+      detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'],
+      tags: ['包裝設計', '減塑', '自行車', 'Stem'],
+      category: '自行車零件'
+    },
+    {
+      id: 13,
+      title: '快拆束仔 包裝設計',
+      desc: '開發無塑環保結構，取代現有塑膠袋包裝。',
+      brief: [
+        { label: '專案任務', content: '因應市場減塑趨勢，開發無塑環保結構，取代快拆束仔現有的塑膠袋包裝。' },
+        { label: '執行策略', content: '全面採用「瓦楞紙卡」設計。' },
+        { label: '最終成果', content: '提前建立快拆束仔的無塑包裝資料庫。\n當客戶提出減塑需求時，能快速提供具備量產可行性的提案，有效縮短前置作業時間。' }
+      ],
+      img: '/Quick Release01.jpg',
+      detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'],
+      tags: ['包裝設計', '減塑', '自行車', 'Quick Release'],
+      category: '自行車零件'
+    },
+    {
+      id: 14,
+      title: '座管 包裝設計',
+      desc: '開發單件與多件無塑環保結構，取代現有塑膠袋包裝。',
+      brief: [
+        { label: '專案任務', content: '因應市場減塑趨勢，開發無塑環保結構，取代座管現有的塑膠袋包裝。' },
+        { label: '執行策略', content: '針對單件與多件包裝需求，分別規劃不同的無塑方案：\n．單件裝：評估使用「壓泡紙」與「蜂巢紙」等緩衝紙袋，以及「瓦楞紙卡折合」結構。\n．多件裝：為配合廠內現有「A 格塑膠籃」的循環使用，並達成內襯料件共用，統一採用「瓦楞紙卡折合」方案進行規劃。' },
+        { label: '最終成果', content: '提前建立座管的單件與多件無塑包裝資料庫。\n當客戶提出減塑需求時，能快速提供具備量產可行性的提案，有效縮短前置評估與作業時間。' }
+      ],
+      img: '/Seatpost01.jpg',
+      detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost03-1.jpg', '/Seatpost03-2.jpg', '/Seatpost04.jpg', '/Seatpost04-1.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost08-1.jpg', '/Seatpost09.jpg', '/Seatpost09-1.jpg'],
+      tags: ['包裝設計', '減塑', '自行車', 'Seatpost'],
+      category: '自行車零件'
+    },
     { id: 17, title: '煞車線 包裝設計', desc: '自行車煞車線專用包裝，兼顧盤卷收納、抗震抗壓與展示便利性。', img: '/brakeline-1.jpg', detailsImages: ['/brakeline-1.jpg', '/brakeline-2.jpg'], tags: ['包裝設計', '自行車', 'Brake Line'], category: '自行車零件' },
     { id: 15, title: '電動機車 包裝設計', desc: '大型電動機車整車與模組化零組件運輸包裝，高承重抗震防護結構。', img: '/Ebike-1.JPG', detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' },
     { id: 16, title: '電動滑板車 包裝設計', desc: '折疊式電動滑板車一體化結構與外箱設計，兼顧開箱體驗與精準限位固定。', img: '/Escooter-1.JPG', detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' }
