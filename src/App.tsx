@@ -178,9 +178,9 @@ const projectData = {
       desc: '建置高彈性紙卡方案庫，加速 RFQ 提案並兼顧量產組裝良率。',
       brief: [
         { label: '專案任務', content: '為解決前期 RFQ 階段節奏快速的估價提案需求，建立能快速反應的包裝結構解決方案。' },
-        { label: '執行策略', content: '預先設計多款適用於 TWS 產品的紙卡內襯結構，並針對成本與工法，精準區分為「有貼合」與「無貼合」兩種製程方案。' },
+        { label: '執行策略', content: '預先設計多款適用於 TWS 產品的紙卡內襯結構，並針對成本與工法，區分為「有貼合」與「無貼合」兩種製程方案。' },
         { label: '驗證與優化', content: '親自進行實體割樣、折合與試組裝驗證，從產線實際操作的視角出發，逐步修正結構上不易組裝的瓶頸。' },
-        { label: '最終成果', content: '建置高彈性的設計方案庫，不僅在接案階段能迅速產出客製化提案，更確保了設計結構的量產可行性與組裝良率。' }
+        { label: '最終成果', content: '建置彈性的設計資料庫，不僅在接案階段能迅速產出客製化提案，更確保了設計結構的量產可行性與組裝良率。' }
       ],
       img: '/tws_innercard01.png',
       detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard9.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'],
@@ -192,9 +192,9 @@ const projectData = {
       title: 'TWS 包裝設計提案',
       desc: '規劃高性價比與旗艦雙軌包裝架構，精準滿足多元預算並提升提案命中率。',
       brief: [
-        { label: '專案任務', content: '針對客戶 RFQ 階段的估價與提案需求，精準制定分級提案策略，提供具備成本彈性與市場區隔的包裝解決方案。' },
-        { label: '執行策略', content: '依據產品定位與預算，規劃雙軌包裝結構架構：\n\n• A 方案（主打高性價比）：採用「紙卡內襯搭配袖套」的極簡結構，在維持保護力的前提下，極大化降低包材成本與產線組裝工時。\n\n• B 方案（主打旗艦高質感）：運用「紙托內襯」結合「書型精品盒與袖套」設計，強化結構的精緻度與份量感，全面提升消費者的開箱體驗與品牌價值。' },
-        { label: '最終成果', content: '建立層次分明的提案模組，有效協助業務團隊快速應對不同預算層級的客戶需求，大幅提升提案命中率與專案推進效率。' }
+        { label: '專案任務', content: '針對客戶 RFQ 階段的估價與提案需求，制定分級提案策略，提供具備成本彈性與市場區隔的包裝解決方案。' },
+        { label: '執行策略', content: '依據產品定位與預算，規劃兩種包裝結構架構：\n\n• A 方案（主打高性價比）：採用「紙卡內襯搭配袖套」的極簡結構，在維持保護力的前提下，極大化降低包材成本與產線組裝工時。\n• B 方案（主打旗艦高質感）：運用「紙托內襯」結合「書型精品盒與袖套」設計，強化結構的精緻度與份量感，全面提升消費者的開箱體驗與品牌價值。' },
+        { label: '最終成果', content: '建立層次分明的提案模組，有效協助業務團隊快速應對不同預算層級的客戶需求，提升提案命中率與專案推進效率。' }
       ],
       img: '/tws_pkg_design01-1.jpg',
       detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'],
@@ -206,10 +206,9 @@ const projectData = {
       title: 'HDT 紙卡內襯 模組化設計',
       desc: '精簡卡扣與折口設計，提升大體積耳機防護穩固性並優化組裝良率。',
       brief: [
-        { label: '專案任務', content: '為因應前期 RFQ 階段節奏快速的估價提案需求，主動建立能迅速反應的 HDT 包裝結構解決方案。' },
-        { label: '執行策略', content: '針對 HDT 產品體積較大與配重特性，預先設計多款紙卡內襯模組。透過反覆割樣與檢討，精簡繁複的卡扣與折口設計，在有效降低產線折合工時的同時，大幅提升大體積耳機的包覆力與防護穩固性。' },
-        { label: '驗證與優化', content: '親自執行實體割樣、折合與試組裝驗證。從產線實際作業視角出發，精準排除結構干涉與組裝瓶頸。' },
-        { label: '最終成果', content: '成功建置高彈性的結構設計資料庫，不僅在接案初期能迅速產出客製化且精準的提案，更全面確保了量產可行性、優化組裝良率，並有效控管包裝製造成本。' }
+        { label: '專案任務', content: '因應前期 RFQ 階段節奏快速的估價提案需求，建立能迅速反應的 HDT 包裝結構解決方案。' },
+        { label: '執行策略', content: '針對 HDT 產品體積較大與配重特性，預先設計多款紙卡內襯模組。\n透過反覆割樣與檢討，精簡結構設計，在有效降低產線折合工時的同時，提升大體積耳機的包覆力與防護穩固性。' },
+        { label: '最終成果', content: '建置高彈性的結構設計資料庫，不僅在接案初期能迅速產出客製化且精準的提案，更全面確保了量產可行性、優化組裝良率，並有效控管包裝製造成本。' }
       ],
       img: '/hdt_inner_card01.jpg',
       detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'],
@@ -221,10 +220,10 @@ const projectData = {
       title: 'Soundbar 模組化設計',
       desc: '制定高低價位分級包裝策略，靈活整合多樣包材並成功完成跨國樣機交付。',
       brief: [
-        { label: '專案任務', content: '為因應前期 RFQ 階段節奏快速的估價提案需求，主動建立能迅速反應的 Soundbar 模組化包裝結構解決方案。' },
-        { label: '執行策略', content: '針對 Soundbar 產品特性與各部位保護需求，制定從入門到旗艦的「高低價位分級包裝策略」。靈活整合多樣化包材配置：包含內襯（紙卡／紙塑）、表面保護材（環保紙／高質感布套）至外箱結構（Folding Box／Pizza Box），精準對接客戶的不同成本預算與品牌定位。' },
-        { label: '驗證與優化', content: '親自執行實體割樣、折合與試組裝驗證。從產線實際作業視角出發，精準排除大尺寸結構的組裝干涉與瓶頸，確保整體包裝的防護力與產線作業順暢度。' },
-        { label: '最終成果', content: '成功建置高彈性的結構設計資料庫，於接案初期迅速產出客製化精準提案，全面確保量產可行性與成本控管。\n親赴台北端協助跨部門組裝作業，並順利完成跨國樣機寄送任務，達成客戶端的高標準要求。' }
+        { label: '專案任務', content: '為因應前期 RFQ 階段節奏快速的估價提案需求，建立能迅速反應的 Soundbar 模組化包裝結構解決方案。' },
+        { label: '執行策略', content: '針對 Soundbar 產品特性與各部位保護需求，制定從入門到旗艦的「高低價位分級包裝策略」。\n靈活整合多樣化包材配置：包含內襯（紙卡／紙塑）、表面保護材（環保紙／高質感布套）至外箱結構（Folding Box／Pizza Box），精準對接客戶的不同成本預算與品牌定位。' },
+        { label: '驗證與優化', content: '親自執行實體割樣、折合與試組裝驗證。\n從產線實際作業視角出發，精準排除大尺寸結構的組裝干涉，確保整體包裝的防護與產線作業順暢度。' },
+        { label: '最終成果', content: '建置高彈性的結構設計資料庫，於接案初期迅速產出客製化精準提案，全面確保量產可行性與成本控管。\n親赴台北端協助跨部門組裝作業，並順利完成跨國樣機寄送任務，達成客戶端的要求。' }
       ],
       img: '/soundbar_inner_card01.png',
       detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg'],
