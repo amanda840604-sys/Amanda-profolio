@@ -258,8 +258,20 @@ const projectData = {
       tags: ['包裝設計', '紙托', '結構設計'],
       category: '消費性電子產品'
     },
-    { id: 11, title: 'Carrycase 包裝設計提案', desc: '隨身攜帶盒包裝設計', img: '/carrcase01.jpg?v=1', detailsImages: ['/carrcase01.jpg?v=1'], tags: ['包裝設計', '攜帶盒', '減塑'], category: '消費性電子產品' },
-    { id: 8, title: 'MTB Handle Bar 包裝設計', desc: '高精密金屬把手包裝，全紙式模組化內襯。', img: '/mtb_handle_bar01.jpg', detailsImages: ['/mtb_handle_bar01.jpg', '/mtb_handle_bar02.jpg', '/mtb_handle_bar03.jpg', '/mtb_handle_bar04.png', '/mtb_handle_bar05.png', '/mtb_handle_bar06.png'], tags: ['包裝設計', '自行車', 'Handle Bar'], category: '自行車零件' },
+    {
+      id: 11,
+      title: 'Carrycase 模組化設計',
+      desc: '建立軟、硬殼雙軌材質提案庫，迅速對接客戶預算並產出客製化提案。',
+      brief: [
+        { label: '專案任務', content: '因應前期 RFQ 階段節奏快速的估價提案需求，建立能迅速反應的 Carrycase模組化包裝解決方案。' },
+        { label: '執行策略', content: '針對不同產品定位與成本限制，建立軟、硬殼雙軌材質提案庫：\n．軟殼方案：規劃具備成本優勢的「帆布」材質，以及主打視覺與觸覺質感的「羊毛氈」材質，滿足不同外觀需求。\n．硬殼方案：設計兩款 EVA 熱壓成型Carrycase，依據實際產品與配件的空間分配，規劃不同的收納佈局與內襯配置。' },
+        { label: '最終成果', content: '成功建置高彈性的 Carrycase 設計資料庫，於接案初期即能迅速對接客戶預算並產出客製化提案。\n同時透過標準化的內襯與材質設定，確保量產可行性並有效控管包材成本。' }
+      ],
+      img: '/carrycase.png',
+      detailsImages: ['/carrycase.png'],
+      tags: ['包裝設計', '攜帶盒', '減塑'],
+      category: '消費性電子產品'
+    },
     { id: 9, title: 'TR Handle Bar 包裝設計', desc: '專業競賽級把手包裝，考量展示性與保護性。', img: '/tr_handle_bar01.jpg', detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
     { id: 10, title: 'RA Handle Bar 包裝設計', desc: '公路車把手包裝方案。', img: '/RA_handle_bar01.png', detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'], tags: ['包裝設計', '自行車'], category: '自行車零件' },
     { id: 12, title: '立管 包裝設計', desc: '自行車龍頭立管包裝，多角度固定結構防止碰撞。', img: '/Stem01.jpg', detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'], tags: ['包裝設計', '自行車', 'Stem'], category: '自行車零件' },
