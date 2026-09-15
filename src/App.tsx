@@ -342,7 +342,20 @@ const projectData = {
       tags: ['包裝設計', '減塑', '自行車', 'Seatpost'],
       category: '自行車零件'
     },
-    { id: 17, title: '煞車線 包裝設計', desc: '自行車煞車線專用包裝，兼顧盤卷收納、抗震抗壓與展示便利性。', img: '/brakeline-1.jpg', detailsImages: ['/brakeline-1.jpg', '/brakeline-2.jpg'], tags: ['包裝設計', '自行車', 'Brake Line'], category: '自行車零件' },
+    {
+      id: 17,
+      title: '煞車線 包裝設計',
+      desc: '開發無塑環保結構，取代現有塑膠袋包裝。',
+      brief: [
+        { label: '專案任務', content: '因應市場減塑趨勢，開發無塑環保結構，取代煞車線現有的塑膠袋包裝。' },
+        { label: '執行策略', content: '採用「瓦楞紙卡折合」方式規劃。' },
+        { label: '最終成果', content: '提前建立煞車線的無塑包裝資料庫。\n當客戶提出減塑需求時，能快速提供具備量產可行性的提案，有效縮短前置評估與作業時間。' }
+      ],
+      img: '/brakeline-1.jpg',
+      detailsImages: ['/brakeline-1.jpg', '/brakeline-2.jpg'],
+      tags: ['包裝設計', '減塑', '自行車', 'Brake Line'],
+      category: '自行車零件'
+    },
     { id: 15, title: '電動機車 包裝設計', desc: '大型電動機車整車與模組化零組件運輸包裝，高承重抗震防護結構。', img: '/Ebike-1.JPG', detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' },
     { id: 16, title: '電動滑板車 包裝設計', desc: '折疊式電動滑板車一體化結構與外箱設計，兼顧開箱體驗與精準限位固定。', img: '/Escooter-1.JPG', detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' }
   ],
