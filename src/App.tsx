@@ -137,14 +137,29 @@ const SpotlightCard = ({ children, className = "", dark = false }: {
   dark?: boolean;
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-  const cardRef = useRef(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (cardRef.current) {
       const rect = cardRef.current.getBoundingClientRect();
-      setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      setMousePosition({ x, y });
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      // 微幅的角度計算，產生視差傾斜感
+      const rotateX = ((y - centerY) / centerY) * -4;
+      const rotateY = ((x - centerX) / centerX) * 4;
+      setParallaxOffset({ x: rotateY, y: rotateX });
     }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    setParallaxOffset({ x: 0, y: 0 });
   };
 
   const glowColor = dark ? 'rgba(163, 138, 106, 0.2)' : 'rgba(163, 138, 106, 0.12)';
@@ -154,8 +169,9 @@ const SpotlightCard = ({ children, className = "", dark = false }: {
       ref={cardRef} 
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={handleMouseLeave}
       className={`relative overflow-hidden transition-all duration-500 border border-gray-100 bg-white ${className}`}
+      style={{ perspective: "1000px" }}
     >
       <div 
         className="pointer-events-none absolute -inset-px transition-opacity duration-700 z-0" 
@@ -164,7 +180,18 @@ const SpotlightCard = ({ children, className = "", dark = false }: {
           background: `radial-gradient(1000px circle at ${mousePosition.x}px ${mousePosition.y}px, ${glowColor}, transparent 40%)` 
         }} 
       />
-      <div className="relative z-10 h-full flex flex-col">{children}</div>
+      <div 
+        className="relative z-10 h-full flex flex-col transition-transform ease-out"
+        style={{
+          transitionDuration: isHovered ? '100ms' : '500ms',
+          transform: isHovered 
+            ? `rotateX(${parallaxOffset.y}deg) rotateY(${parallaxOffset.x}deg) scale3d(1.02, 1.02, 1.02)` 
+            : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+          transformStyle: 'preserve-3d'
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };
@@ -386,15 +413,15 @@ const projectData = {
     }
   ],
   Product: [
-    { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
-    { id: 2, title: '瓦斯爐設計', desc: '嵌入式高效瓦斯爐，針對亞洲烹飪習慣優化的爐架結構。', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], category: '廚電/家電' },
-    { id: 3, title: '穿戴式裝置設計', desc: '全天候睡眠監測智慧手環，融合親膚材質與精密感應器。', img: '/sleep_monitor_device01-1.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
-    { id: 4, title: '醫療器材設計', desc: '居家低頻治療儀，透過介面引導使用者正確復健級別。', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
-    { id: 5, title: '玩具設計', desc: '兒童空間感益智積木玩具，採用安全無毒環保木料。', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], category: '玩具設計' },
-    { id: 6, title: '手繪作品', desc: '產品構思草圖與人物速寫，紀錄設計初期的靈感瞬間。', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], category: '手繪作品' }
+    { id: 1, title: '油煙機設計', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
+    { id: 2, title: '瓦斯爐設計', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], category: '廚電/家電' },
+    { id: 3, title: '穿戴式裝置設計', img: '/sleep_monitor_device01-1.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
+    { id: 4, title: '醫療器材設計', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
+    { id: 5, title: '玩具設計', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], category: '玩具設計' },
+    { id: 6, title: '手繪作品', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], category: '手繪作品' }
   ],
   Graphic: [
-    { id: 1, title: '品牌視覺整合', desc: '為新創品牌建立完整的企業識別系統與平面應材規範。', img: '/graphic_design02-1.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
+    { id: 1, title: '品牌視覺整合', img: '/graphic_design02-1.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
   ]
 };
 
@@ -585,10 +612,7 @@ export default function App() {
                   </div>
                   <div className="p-20 flex flex-col items-center text-center flex-grow text-[#121212]">
                      <h4 className="text-5xl font-black uppercase mb-4 tracking-tight">{key}</h4>
-                     <p className="text-[18px] font-bold text-[#a38a6a] tracking-widest mb-12 uppercase">{label}</p>
-                     <p className="text-[18px] text-gray-500 leading-[1.8] max-w-[60ch] mb-16 flex-grow font-medium">
-                        {key === 'Packaging' ? '致力於高強度全紙結構與 ESG 永續材質，實現 0% 塑料緩衝。' : key === 'Product' ? '將工業美學轉化為具量產性的商業實績，兼顧外觀與組裝工藝。' : '品牌視覺與企業識別系統建構，透過專業排版與色彩策略優化溝通。'}
-                     </p>
+                     <p className="text-[18px] font-bold text-[#a38a6a] tracking-widest mb-16 flex-grow uppercase">{label}</p>
                      <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-4 w-full pt-12 border-t border-gray-100 transition-all text-[#121212]">
                         <span className="text-[18px] font-black uppercase tracking-widest">Explore Collection</span>
                         <ArrowRight size={24} className="group-hover/btn:translate-x-3 transition-transform" />
