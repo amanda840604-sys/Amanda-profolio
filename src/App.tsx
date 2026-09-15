@@ -356,8 +356,34 @@ const projectData = {
       tags: ['包裝設計', '減塑', '自行車', 'Brake Line'],
       category: '自行車零件'
     },
-    { id: 15, title: '電動機車 包裝設計', desc: '大型電動機車整車與模組化零組件運輸包裝，高承重抗震防護結構。', img: '/Ebike-1.JPG', detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' },
-    { id: 16, title: '電動滑板車 包裝設計', desc: '折疊式電動滑板車一體化結構與外箱設計，兼顧開箱體驗與精準限位固定。', img: '/Escooter-1.JPG', detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'], tags: ['包裝設計', '電動載具', '結構設計'], category: '電動載具' }
+    {
+      id: 15,
+      title: '電動機車 包裝設計',
+      desc: '針對電動機車進行整機的減塑包裝規劃。',
+      brief: [
+        { label: '專案任務', content: '針對電動機車進行整機的減塑包裝規劃。' },
+        { label: '執行策略', content: '外箱與內部緩衝結構主體採用「瓦楞紙卡」折合設計。\n考量實務防護需求，針對易刮傷的塑膠車殼部位，局部搭配「珍珠棉 (EPE)」進行防護，在極大化減塑與產品安全之間取得平衡。' },
+        { label: '最終成果', content: '順利完成整車包裝設計，目前已成功應用於國外參展與競賽的跨國運輸。' }
+      ],
+      img: '/Ebike-1.JPG',
+      detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'],
+      tags: ['包裝設計', '減塑', '電動載具', '結構設計'],
+      category: '電動載具'
+    },
+    {
+      id: 16,
+      title: '電動滑板車 包裝設計',
+      desc: '針對電動滑板車進行整機的減塑包裝概念規劃。',
+      brief: [
+        { label: '專案任務', content: '配合新產品開發進度，針對電動滑板車進行整機的減塑包裝概念規劃。' },
+        { label: '執行策略', content: '外箱與內部緩衝結構主體採用「瓦楞紙卡」折合設計。\n考量實務防護需求，針對易刮傷的塑膠車殼部位，局部搭配「珍珠棉 (EPE)」進行防護，在極大化減塑與產品安全之間取得平衡。' },
+        { label: '最終成果', content: '完成前期的包裝概念設計與空間佈局。\n提供初步的包材配置與防護策略，作為後續細部設計優化與量產評估的基礎。' }
+      ],
+      img: '/Escooter-1.JPG',
+      detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'],
+      tags: ['包裝設計', '減塑', '電動載具', '結構設計'],
+      category: '電動載具'
+    }
   ],
   Product: [
     { id: 1, title: '油煙機設計', desc: '薄化歐化油煙機系列，結合極簡美學與高效率排菸功能。', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
