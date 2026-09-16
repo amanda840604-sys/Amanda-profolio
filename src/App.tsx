@@ -433,40 +433,20 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
-  const [activeAboutTab, setActiveAboutTab] = useState('background');
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeFilter, setActiveFilter] = useState('全部包裝');
   const [activeCourseFilter, setActiveCourseFilter] = useState('全部');
   const [activeSection, setActiveSection] = useState('home');
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeAboutTab, setActiveAboutTab] = useState('background');
 
-  // --- 自傳分頁設定 ---
   const aboutTabs = [
-    { id: 'background', num: '01', label: '設計背景與專業', subLabel: 'Background & Expertise', icon: User },
-    { id: 'experience', num: '02', label: '開發實務經驗', subLabel: 'Development Experience', icon: Briefcase },
-    { id: 'career', num: '03', label: '職涯規劃目標', subLabel: 'Career Goals', icon: Target },
-    { id: 'philosophy', num: '04', label: '核心設計理念', subLabel: 'Design Beliefs', icon: Lightbulb }
+    { id: 'background', label: '設計背景與專業', subLabel: 'Background & Expertise', icon: User },
+    { id: 'experience', label: '開發實務經驗', subLabel: 'Development Experience', icon: Briefcase },
+    { id: 'career', label: '職涯規劃目標', subLabel: 'Career Goals', icon: Target },
+    { id: 'philosophy', label: '核心設計理念', subLabel: 'Design Beliefs', icon: Lightbulb }
   ];
-
-  const handleAboutTabClick = (tabId: string) => {
-    setActiveAboutTab(tabId);
-    // 在手機與平板（寬度 < 1024px），點擊後自動平滑捲動至自傳內容區塊頂部，讓使用者明確看到內文切換變化
-    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
-      setTimeout(() => {
-        const el = document.getElementById('about-content-section');
-        if (el) {
-          const navOffset = 85;
-          const elementPosition = el.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      }, 50);
-    }
-  };
 
   // --- 計算屬性 ---
   const currentFilterOptions = activeCategory ? (
@@ -533,6 +513,18 @@ export default function App() {
   useEffect(() => {
     document.body.style.overflow = (activeCategory || selectedProject || isMobileMenuOpen) ? 'hidden' : 'unset';
   }, [activeCategory, selectedProject, isMobileMenuOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (selectedProject) setSelectedProject(null);
+        else if (activeCategory) setActiveCategory(null);
+        else if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedProject, activeCategory, isMobileMenuOpen]);
 
   return (
     <div className="font-sans text-[#121212] bg-[#fdfdfd] antialiased selection:bg-[#a38a6a] selection:text-white pb-24">
@@ -662,390 +654,472 @@ export default function App() {
       {/* 4. ABOUT SECTION */}
       
       
-      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 text-[#121212]">
+      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-36 border-t border-gray-100 bg-[#faf9f6]/40 text-[#121212]">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 text-[#121212]">
-          <div className="lg:col-span-4">
+          
+          {/* 左側：PROFILE標題、選單與頭貼 */}
+          <div className="lg:col-span-4 lg:sticky lg:top-24 lg:self-start space-y-6 sm:space-y-8">
             <Reveal direction="left">
-               <div className="flex items-center justify-between mb-4 sm:mb-8">
-                 <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase flex items-center gap-3 sm:gap-4">
-                   <div className="w-8 sm:w-12 h-[2px] bg-[#a38a6a]"></div> Profile
-                 </h2>
-               </div>
-               <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] sm:leading-[0.9] text-[#121212] mb-8 sm:mb-12">
-                 設計美學 × <br /> 量產實務
-               </h3>
-               
-               {/* About Tabs Navigation */}
-               <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-col gap-2.5 sm:gap-3">
-                 {[
-                   { id: 'background', label: '設計背景與專業', subLabel: 'Background & Expertise', icon: User },
-                   { id: 'experience', label: '開發實務經驗', subLabel: 'Development Experience', icon: Briefcase },
-                   { id: 'career', label: '職涯規劃目標', subLabel: 'Career Goals', icon: Target },
-                   { id: 'philosophy', label: '核心設計理念', subLabel: 'Design Beliefs', icon: Lightbulb }
-                 ].map(tab => (
-                   <button 
-                     key={tab.id}
-                     onClick={() => setActiveAboutTab(tab.id)}
-                     className={`flex items-center justify-between text-left px-5 sm:px-6 py-3.5 sm:py-4 rounded-2xl transition-all duration-500 font-bold tracking-wider text-[15px] sm:text-[16px] ${
-                       activeAboutTab === tab.id 
-                         ? 'bg-[#a38a6a] text-white shadow-lg shadow-[#a38a6a]/30 lg:translate-x-2' 
-                         : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-900'
-                     }`}
-                   >
-                     <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
-                       <tab.icon size={20} className={`shrink-0 ${activeAboutTab === tab.id ? "text-white" : "text-gray-400"}`} />
-                       <div className="min-w-0">
-                         <span className="block truncate">{tab.label}</span>
-                         <span className={`block text-[11px] sm:text-xs font-normal tracking-normal truncate ${activeAboutTab === tab.id ? 'text-white/80' : 'text-gray-400'}`}>{tab.subLabel}</span>
-                       </div>
-                     </div>
-                   </button>
-                 ))}
-               </div>
-               
-               <div className="mt-8 sm:mt-12 w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[4rem] group overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border-4 sm:border-[6px] border-white cursor-pointer relative hover:-translate-y-2 mx-auto lg:mx-0">
-                  <img src="/Profolio_photo.jpg" alt="Amanda Lai" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
-               </div>
+              <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                <div className="w-8 sm:w-10 h-[2px] bg-[#a38a6a]"></div>
+                <h2 className="text-xs sm:text-[13px] font-black tracking-[0.35em] text-[#a38a6a] uppercase">
+                  PROFILE
+                </h2>
+              </div>
+              
+              <h3 className="text-4xl sm:text-5xl font-black tracking-tighter leading-[1.08] text-[#121212] mb-6 sm:mb-8">
+                設計美學 × <br />
+                <span className="text-[#a38a6a]">量產實務</span>
+              </h3>
+
+              {/* 4 大分類切換按鈕 */}
+              <div className="space-y-2.5 sm:space-y-3 mb-8">
+                {aboutTabs.map(tab => {
+                  const Icon = tab.icon;
+                  const isActive = activeAboutTab === tab.id;
+                  return (
+                    <button
+                      key={tab.id}
+                      onClick={() => setActiveAboutTab(tab.id)}
+                      className={`w-full flex items-center gap-3.5 p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 ${
+                        isActive
+                          ? 'bg-[#a38a6a] text-white shadow-lg shadow-[#a38a6a]/25'
+                          : 'bg-white/70 hover:bg-white text-gray-700 hover:text-gray-900 border border-gray-100/90'
+                      }`}
+                    >
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
+                        isActive ? 'bg-white/20 text-white' : 'bg-gray-100/90 text-gray-500'
+                      }`}>
+                        <Icon size={19} />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className={`font-bold text-sm sm:text-base leading-tight truncate ${isActive ? 'text-white' : 'text-gray-800'}`}>
+                          {tab.label}
+                        </div>
+                        <div className={`text-[11px] sm:text-xs mt-0.5 truncate ${isActive ? 'text-white/80' : 'text-gray-400'}`}>
+                          {tab.subLabel}
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* 個人照 Squircle 卡片 (無邊框，僅保留 Amanda Lai) */}
+              <div className="group relative w-48 h-48 sm:w-56 sm:h-56 rounded-[2.2rem] sm:rounded-[2.5rem] overflow-hidden select-none shadow-xl shadow-stone-900/10 hover:shadow-2xl hover:shadow-[#a38a6a]/20 hover:-translate-y-1.5 transition-all duration-500">
+                {/* 頭像圖片：無邊框滿版，預設黑白並於懸停時全彩微放大 */}
+                <img 
+                  src="/Profolio_photo.jpg" 
+                  alt="Amanda Lai" 
+                  className="w-full h-full object-cover grayscale contrast-[1.02] group-hover:grayscale-0 group-hover:scale-105 group-hover:contrast-100 transition-all duration-700 ease-out" 
+                />
+
+                {/* 底部優雅漸層遮罩 */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
+
+                {/* 底部僅保留 Amanda Lai */}
+                <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 pointer-events-none">
+                  <h5 className="text-base sm:text-lg font-black tracking-tight text-white leading-none drop-shadow-md">
+                    Amanda Lai
+                  </h5>
+                </div>
+              </div>
             </Reveal>
           </div>
           
-          <div className="lg:col-span-8 flex flex-col justify-start pt-2 lg:pt-24 text-[#121212]">
-            <Reveal delay={200} className="w-full">
-               {/* Background Content */}
-               {activeAboutTab === 'background' && (
-                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                      <h4 className="text-xl font-black text-gray-900 mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500"><GraduationCap className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} /></div> 
-                          <div>
-                            <span>設計背景 × 設計流程開發經驗</span>
-                            <span className="block text-xs text-[#a38a6a] font-bold tracking-wider uppercase mt-0.5">Design Background & Full Development Experience</span>
-                          </div>
-                        </div>
-                      </h4>
-                      
-                      {/* Paragraph 1 */}
-                      <div className="space-y-3 mb-6 pb-6 border-b border-gray-100">
-                        <p className="text-[17px] text-gray-800 leading-[1.8] font-medium text-justify">
-                          畢業於 <strong className="font-bold text-gray-900">國立臺灣科技大學 工業設計系</strong>，擁有 6 年產品與包裝設計實務經驗，熟悉從外觀設計、結構開發到量產製程的完整開發流程。
-                        </p>
-                        <div className="pt-1">
-                          <p className="text-[15px] text-gray-700 leading-[1.8] font-normal">
-                            I graduated from <strong className="font-bold text-gray-800">National Taiwan University of Science and Technology</strong> with a degree in <strong className="font-bold text-gray-800">Industrial Design</strong>. With 6 years of experience in product and packaging design, I’m familiar with the full development process—from early concept and structure planning to mass production.
-                          </p>
-                        </div>
+          {/* 右側：選中的主題卡片內容 */}
+          <div className="lg:col-span-8 flex flex-col justify-start text-[#121212]">
+            <Reveal>
+              {activeAboutTab === 'background' && (
+                <div className="space-y-6 sm:space-y-8 text-[#121212]">
+                  {/* 第一大卡片：設計背景 × 設計流程開發經驗 */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
+                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                        <GraduationCap size={22} className="text-[#a38a6a]" />
                       </div>
-
-                      {/* Paragraph 2 */}
-                      <div className="space-y-3">
-                        <p className="text-[17px] text-gray-800 leading-[1.8] font-medium text-justify">
-                          擅長品牌前期市場調研與定位分析，能根據產品需求進行 2D／3D 設計規劃，執行草模驗證、建模與工程圖繪製，並具備<strong className="text-gray-900">「依照預算與成本條件調整設計策略的靈活應變能力」</strong>。
-                        </p>
-                        <div className="pt-1">
-                          <p className="text-[15px] text-gray-700 leading-[1.8] font-normal">
-                            I focus on brand research, positioning, and translating product needs into design solutions through 2D/3D design, prototyping, 3D modeling, and engineering drawings. I <strong className="text-gray-900">adapt design strategies based on cost and budget</strong>.
-                          </p>
-                        </div>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">設計背景 × 設計流程開發經驗</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">DESIGN BACKGROUND & FULL DEVELOPMENT EXPERIENCE</span>
                       </div>
                     </div>
 
-                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                      <h4 className="text-xl font-black text-gray-900 mb-6 flex items-center justify-between border-b border-gray-100 pb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500"><Star className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} /></div> 
-                          <div>
-                            <span>包裝設計專業深化</span>
-                            <span className="block text-xs text-[#a38a6a] font-bold tracking-wider uppercase mt-0.5">Packaging Design Expertise</span>
-                          </div>
-                        </div>
-                      </h4>
-                      <div className="space-y-3">
-                        <p className="text-[17px] text-gray-800 leading-[1.8] font-medium text-justify">
-                          現任職於久鼎金屬實業股份有限公司，負責車載具及相關零件的包裝設計與開發，持續強化<strong className="text-gray-900">「環保包裝結構設計、跨部門專案執行能力及開發實務經驗」</strong>。
+                    <div className="space-y-6 text-sm sm:text-[15px] leading-relaxed">
+                      <div>
+                        <p className="text-gray-800 font-medium mb-2 leading-relaxed">
+                          畢業於 <strong className="font-black text-gray-900">國立臺灣科技大學 工業設計系</strong>，擁有 6 年產品與包裝設計實務經驗，熟悉從外觀設計、結構開發到量產製程的完整開發流程。
                         </p>
-                        <div className="pt-1 space-y-2">
-                          <p className="text-[15px] text-gray-700 leading-[1.8] font-normal">
-                            Currently, I work at Merry Electronics Co., Ltd., designing packaging for international electronics brands, including TWS earbuds, gaming headsets, and soundbars.
-                          </p>
-                          <p className="text-[15px] text-gray-700 leading-[1.8] font-normal">
-                            I focus on <strong className="text-gray-900">sustainable packaging, cross-functional teamwork, and aligning design with manufacturing</strong>.
-                          </p>
-                        </div>
+                        <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                          I graduated from <strong className="font-bold text-gray-700">National Taiwan University of Science and Technology</strong> with a degree in <strong className="font-bold text-gray-700">Industrial Design</strong>. With 6 years of experience in product and packaging design, I'm familiar with the full development process—from early concept and structure planning to mass production.
+                        </p>
+                      </div>
+
+                      <div className="border-t border-gray-100 pt-6">
+                        <p className="text-gray-800 font-medium mb-2 leading-relaxed">
+                          擅長品牌前期市場調研與定位分析，能根據產品需求進行 2D／3D 設計規劃，執行草模驗證、建模與工程圖繪製，並具備「<strong className="font-black text-gray-900">依照預算與成本條件調整設計策略的靈活應變能力</strong>」。
+                        </p>
+                        <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                          I focus on brand research, positioning, and translating product needs into design solutions through 2D/3D design, prototyping, 3D modeling, and engineering drawings. I <strong className="font-bold text-gray-700">adapt design strategies based on cost and budget</strong>.
+                        </p>
                       </div>
                     </div>
-                 </div>
-               )}
+                  </div>
 
-               {/* Experience Content */}
-               {activeAboutTab === 'experience' && (
-                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center justify-between border-b border-gray-100 pb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500"><Package className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} /></div> 
-                          <div>
-                            <span>包裝設計領域</span>
-                            <span className="block text-xs text-[#a38a6a] font-bold tracking-wider uppercase mt-0.5">Packaging Design Mastery</span>
-                          </div>
-                        </div>
-                      </h4>
-                      <ul className="space-y-8">
-                        <li className="text-[16px] leading-[1.8] font-medium flex items-start gap-4 pb-8 border-b border-gray-100">
-                          <CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full">
-                            <div className="flex flex-col mb-2">
-                              <strong className="text-gray-900 text-[18px]">國際品牌 TWS／HDT／Soundbar 包裝設計提案 (共25件)</strong>
-                              <span className="text-xs text-[#a38a6a] font-bold tracking-wider uppercase">Packaging Proposals for International Brands (25 Projects)</span>
-                            </div>
-                            <p className="text-gray-700 mb-3">
-                              根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略，<strong className="font-bold text-gray-900">接案達成率達 40%</strong>。<br/>
+                  {/* 第二大卡片：包裝設計專業深化 */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
+                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                        <Star size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">包裝設計專業深化</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">PACKAGING DESIGN EXPERTISE</span>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4 text-sm sm:text-[15px] leading-relaxed">
+                      <p className="text-gray-800 font-medium leading-relaxed">
+                        現任職於久鼎金屬實業股份有限公司，負責車載具及相關零件的包裝設計與開發，持續強化「<strong className="font-black text-gray-900">環保包裝結構設計、跨部門專案執行能力及開發實務經驗</strong>」。
+                      </p>
+                      <div className="space-y-1.5 text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                        <p>
+                          Currently, I work at Merry Electronics Co., Ltd., designing packaging for international electronics brands, including TWS earbuds, gaming headsets, and soundbars.
+                        </p>
+                        <p>
+                          I focus on <strong className="font-bold text-gray-700">sustainable packaging, cross-functional teamwork, and aligning design with manufacturing</strong>.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeAboutTab === 'experience' && (
+                <div className="space-y-6 sm:space-y-8 text-[#121212]">
+                  {/* 第一張卡片：包裝設計領域 (Image 3) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
+                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                        <Box size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">包裝設計領域</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">PACKAGING DESIGN MASTERY</span>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-8 sm:space-y-10">
+                      {/* Item 1 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div className="w-full min-w-0">
+                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 leading-snug">
+                            國際品牌 TWS／HDT／Soundbar 包裝設計提案 (共25件)
+                          </h5>
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                            PACKAGING PROPOSALS FOR INTERNATIONAL BRANDS (25 PROJECTS)
+                          </span>
+                          <div className="space-y-1 text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
+                            <p>
+                              根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略，<strong className="font-bold text-gray-900">接案達成率 40%</strong>。
+                            </p>
+                            <p>
                               在消費性電子產品 RFQ 階段，主導包裝結構設計、2D 工程圖繪製與初步成本分析，成功協助研發單位達成約 <strong className="font-bold text-gray-900">10% 的包材成本節省</strong>。
                             </p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.75] space-y-2">
-                              <p>
-                                Formulated packaging proposals for Tier-1 international brand audio products (TWS, Headsets, Soundbars). Engineered segmented packaging architecture across multiple price tiers, achieving a <strong className="font-bold text-gray-800">40% project acquisition success rate</strong>.
-                              </p>
-                              <p>
-                                Spearheaded structural packaging engineering, 2D drafting, and preliminary cost analysis during the RFQ stage, delivering an <strong className="font-bold text-gray-800">approx. 10% packaging material cost reduction</strong> for the engineering division.
-                              </p>
-                            </div>
                           </div>
-                        </li>
-
-                        <li className="text-[16px] leading-[1.8] font-medium flex items-start gap-4 pb-8 border-b border-gray-100">
-                          <CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full">
-                            <div className="flex flex-col mb-2">
-                              <strong className="text-gray-900 text-[18px]">建立包裝設計資料庫以及市調資料表 (共6件)</strong>
-                              <span className="text-xs text-[#a38a6a] font-bold tracking-wider uppercase">Packaging Design Database & Market Research (6 Datasets)</span>
-                            </div>
-                            <p className="text-gray-700 mb-3">
-                              彙整 TWS、HDT、Soundbar 紙卡內襯結構規格，形成模組化資料庫，改善專案提案效率，精準對焦市場需求。
+                          <div className="space-y-1 text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                            <p>
+                              Formulated packaging proposals for Tier-1 international brand audio products (TWS, Headsets, Soundbars). Engineered segmented packaging architecture across multiple price tiers, achieving a <strong className="font-bold text-gray-700">40% project acquisition success rate</strong>.
                             </p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.75]">
-                              <p>
-                                Standardized and modularized paper insert structures across TWS, headsets, and soundbars into a comprehensive design database, significantly boosting proposal turnaround speed and pinpoint market calibration.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-
-                        <li className="text-[16px] leading-[1.8] font-medium flex items-start gap-4">
-                          <CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full">
-                            <div className="flex flex-col mb-2">
-                              <strong className="text-gray-900 text-[18px]">參與 HDT 電競耳機開發專案 (共2件)</strong>
-                              <span className="text-xs text-[#a38a6a] font-bold tracking-wider uppercase">Gaming Headset Development Projects (2 Models)</span>
-                            </div>
-                            <p className="text-gray-700 mb-3">
-                              實際參與兩款 HyperX 電競耳機機型開發，累積從結構設計、打樣修正到量產導入的完整開發經驗。
+                            <p>
+                              Spearheaded structural packaging engineering, 2D drafting, and preliminary cost analysis during the RFQ stage, delivering an <strong className="font-bold text-gray-700">approx. 10% packaging material cost reduction</strong> for the engineering division.
                             </p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.75]">
-                              <p>
-                                Actively co-developed two HyperX flagship gaming headsets, acquiring comprehensive hands-on mastery spanning structural modeling, prototype validation, and volume production rollout.
-                              </p>
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center justify-between border-b border-gray-100 pb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500"><MonitorSmartphone className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} /></div> 
-                          <div>
-                            <span>產品設計與跨部門協作</span>
-                            <span className="block text-xs text-[#a38a6a] font-bold tracking-wider uppercase mt-0.5">Product Design & Cross-Functional Synergy</span>
                           </div>
                         </div>
-                      </h4>
-                      <ul className="space-y-8">
-                        <li className="text-[16px] leading-[1.8] font-medium flex items-start gap-4 pb-6 border-b border-gray-100">
-                          <Layers className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full">
-                            <strong className="text-gray-900 block mb-1 text-[17px]">主導廚電產品開發</strong>
-                            <p className="text-gray-700 mb-2">主導易清系列檯面爐（G2522AG、G2623AG）與近吸式油煙機（R7610、R7650）完整開發流程。</p>
-                            <div className="pt-1 text-[14px] text-gray-700 leading-[1.7]">
-                              Led full-cycle development of easy-clean gas cooktops (G2522AG, G2623AG) and incline range hoods (R7610, R7650).
-                            </div>
-                          </div>
-                        </li>
-                        <li className="text-[16px] leading-[1.8] font-medium flex items-start gap-4 pb-6 border-b border-gray-100">
-                          <Award className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full">
-                            <strong className="text-gray-900 block mb-1 text-[17px]">獲獎與產品落地</strong>
-                            <p className="text-gray-700 mb-2">親自承辦金點設計競賽提案並獲得 2 件入選（R3750B、P0233／235）；協助外觀與結構開發並導入量產流程，成功落地產品。</p>
-                            <div className="pt-1 text-[14px] text-gray-700 leading-[1.7]">
-                              Won Golden Pin Design Award selections for 2 projects (R3750B, P0233/235); coordinated industrial styling and engineering to ensure successful commercialization.
-                            </div>
-                          </div>
-                        </li>
-                        <li className="text-[16px] leading-[1.8] font-medium flex items-start gap-4">
-                          <Users className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full">
-                            <strong className="text-gray-900 block mb-1 text-[17px]">供應商協作能力</strong>
-                            <p className="text-gray-700 mb-2">能與供應商與工廠密切協作，確保設計順利導入量產並維持品質穩定。</p>
-                            <div className="pt-1 text-[14px] text-gray-700 leading-[1.7]">
-                              Collaborated seamlessly with tooling suppliers and assembly lines, guaranteeing flawless tooling handover and robust quality consistency.
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                 </div>
-               )}
+                      </div>
 
-               {/* Career Content */}
-               {activeAboutTab === 'career' && (
-                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center justify-between border-b border-gray-100 pb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500"><Flag className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} /></div> 
-                          <div>
-                            <span>短期目標</span>
-                            <span className="block text-xs text-[#a38a6a] font-bold tracking-wider uppercase mt-0.5">Short-Term Strategic Goals</span>
-                          </div>
-                        </div>
-                      </h4>
-                      <ul className="space-y-6 text-[16px] font-medium list-none">
-                        <li className="flex gap-4 items-start pb-6 border-b border-gray-100">
-                          <Leaf className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full space-y-2">
-                            <p className="text-gray-800 text-[17px]">深入 ESG 永續議題，探索各類紙材、布料等 CMF 特性與加工技術，建立應用知識庫，並與供應商合作開發環保材質。</p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.7]">
-                              Deep-dive into ESG sustainability, exploring CMF characteristics and processing techniques of paper and fabrics to build knowledge bases and co-develop eco-friendly materials with suppliers.
-                            </div>
-                          </div>
-                        </li>
-                        <li className="flex gap-4 items-start pb-6 border-b border-gray-100">
-                          <Box className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full space-y-2">
-                            <p className="text-gray-800 text-[17px]">強化紙材結構設計能力，目標能提出具創新性的設計專利。</p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.7]">
-                              Elevate paper structural engineering, targeting the filing and grant of innovative structural design patents.
-                            </div>
-                          </div>
-                        </li>
-                        <li className="flex gap-4 items-start">
-                          <Cpu className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full space-y-2">
-                            <p className="text-gray-800 text-[17px]">培養紙材成本評估能力，根據需求提出兼顧保護性與成本效益的結構優化方案。</p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.7]">
-                              Cultivate rigorous packaging cost evaluation to formulate optimized structural designs that seamlessly balance superior protection with high cost-efficiency.
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
-                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center justify-between border-b border-gray-100 pb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500"><Rocket className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} /></div> 
-                          <div>
-                            <span>中長期目標</span>
-                            <span className="block text-xs text-[#a38a6a] font-bold tracking-wider uppercase mt-0.5">Mid- to Long-Term Vision</span>
-                          </div>
-                        </div>
-                      </h4>
-                      <ul className="space-y-6 text-[16px] font-medium list-none">
-                        <li className="flex gap-4 items-start pb-6 border-b border-gray-100">
-                          <Globe className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full space-y-2">
-                            <p className="text-gray-800 text-[17px]">累積跨國與跨部門合作經驗，強化英文聽說讀寫的能力以應對全球化的工作需求。</p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.7]">
-                              Amplify multinational and cross-departmental collaboration, continually advancing professional English fluency to thrive in global organizations.
-                            </div>
-                          </div>
-                        </li>
-                        <li className="flex gap-4 items-start pb-6 border-b border-gray-100">
-                          <Award className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full space-y-2">
-                            <p className="text-gray-800 text-[17px]">持續提升設計落地與製程協作能力，累積更多實戰開發經驗。</p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.7]">
-                              Continually advance design realization and manufacturing execution, deepening hands-on hardware development expertise.
-                            </div>
-                          </div>
-                        </li>
-                        <li className="flex gap-4 items-start">
-                          <TrendingUp className="text-[#a38a6a] shrink-0 mt-1" size={22} />
-                          <div className="w-full space-y-2">
-                            <p className="text-gray-800 text-[17px]">建立包裝設計與市場趨勢的連結敏感度，結合行銷視角強化整合能力，朝向具策略思維的設計開發整合型人才邁進。</p>
-                            <div className="pt-1 text-[15px] text-gray-700 leading-[1.7]">
-                              Bridge packaging innovation with commercial market trends and marketing insights, advancing into an integrative design strategist with high business impact.
-                            </div>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                 </div>
-               )}
-
-               {/* Philosophy Content */}
-               {activeAboutTab === 'philosophy' && (
-                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
-                        <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
-                          <Scale size={28} />
-                        </div>
-                        <h4 className="text-lg font-black text-gray-900 mb-1">兼具感性與理性</h4>
-                        <span className="inline-block text-xs font-bold text-[#a38a6a] uppercase tracking-wider mb-4">Balance Emotion & Logic</span>
-                        <p className="text-[15px] text-gray-700 leading-[1.8] font-medium mb-3">設計不僅是創造視覺與情感價值，更必須考量製程可行性、技術限制、成本控制與品質穩定性。</p>
-                        <div className="border-t border-gray-100 pt-3">
-                          <p className="text-[14px] text-gray-600 leading-[1.7] font-normal">
-                            Design must deliver emotional resonance while strictly honoring manufacturing feasibility, cost parameters, and production stability.
+                      {/* Item 2 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div className="w-full min-w-0">
+                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 leading-snug">
+                            建立包裝設計資料庫以及市調資料表 (共6件)
+                          </h5>
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                            PACKAGING DESIGN DATABASE & MARKET RESEARCH (6 DATASETS)
+                          </span>
+                          <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
+                            彙整 TWS、HDT、Soundbar 紙卡內襯結構規格，形成模組化資料庫，改善專案提案效率，精準對焦市場需求。
+                          </p>
+                          <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                            Standardized and modularized paper insert structures across TWS, headsets, and soundbars into a comprehensive design database, significantly boosting proposal turnaround speed and pinpoint market calibration.
                           </p>
                         </div>
-                      </SpotlightCard>
+                      </div>
 
-                      <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
-                        <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
-                          <UserCheck size={28} />
-                        </div>
-                        <h4 className="text-lg font-black text-gray-900 mb-1">服務於產品與使用者</h4>
-                        <span className="inline-block text-xs font-bold text-[#a38a6a] uppercase tracking-wider mb-4">Form Follows Function</span>
-                        <p className="text-[15px] text-gray-700 leading-[1.8] font-medium mb-3">我重視產品本質，關注設計如何實際提升使用者的便利性與品牌價值，讓設計發揮功能性與影響力。</p>
-                        <div className="border-t border-gray-100 pt-3">
-                          <p className="text-[14px] text-gray-600 leading-[1.7] font-normal">
-                            Rooted in product essence, ensuring design genuinely enhances user convenience and delivers enduring brand value and tangible impact.
+                      {/* Item 3 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div className="w-full min-w-0">
+                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 leading-snug">
+                            參與 HDT 電競耳機開發專案 (共2件)
+                          </h5>
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                            GAMING HEADSET DEVELOPMENT PROJECTS (2 MODELS)
+                          </span>
+                          <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
+                            實際參與兩款 HyperX 電競耳機機型開發，累積從結構設計、打樣修正到量產導入的完整開發經驗。
+                          </p>
+                          <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                            Actively co-developed two HyperX flagship gaming headsets, acquiring comprehensive hands-on mastery spanning structural modeling, prototype validation, and volume production rollout.
                           </p>
                         </div>
-                      </SpotlightCard>
-
-                      <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
-                        <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
-                          <MessageSquare size={28} />
-                        </div>
-                        <h4 className="text-lg font-black text-gray-900 mb-1">重視跨部門協作效率</h4>
-                        <span className="inline-block text-xs font-bold text-[#a38a6a] uppercase tracking-wider mb-4">Teamwork & Synergy</span>
-                        <p className="text-[15px] text-gray-700 leading-[1.8] font-medium mb-3">良好的設計來自良好的協作，我樂於與不同角色協同合作，透過積極溝通整合各方需求與資源。</p>
-                        <div className="border-t border-gray-100 pt-3">
-                          <p className="text-[14px] text-gray-600 leading-[1.7] font-normal">
-                            Superior designs originate from seamless collaboration, uniting diverse stakeholders through proactive communication and resource integration.
-                          </p>
-                        </div>
-                      </SpotlightCard>
-
-                      <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
-                        <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
-                          <Flame size={28} />
-                        </div>
-                        <h4 className="text-lg font-black text-gray-900 mb-1">保持熱情與學習動能</h4>
-                        <span className="inline-block text-xs font-bold text-[#a38a6a] uppercase tracking-wider mb-4">Stay Curious & Driven</span>
-                        <p className="text-[15px] text-gray-700 leading-[1.8] font-medium mb-3">對我而言，設計不只是工作，更是一種持續探索的過程。我始終懷抱熱情與好奇心，樂於在團隊中貢獻專業，一同創造實質價值。</p>
-                        <div className="border-t border-gray-100 pt-3">
-                          <p className="text-[14px] text-gray-600 leading-[1.7] font-normal">
-                            Design is an ongoing journey of exploration; maintaining continuous curiosity and passion to co-create measurable, real-world value.
-                          </p>
-                        </div>
-                      </SpotlightCard>
+                      </div>
                     </div>
-                 </div>
-               )}
+                  </div>
+
+                  {/* 第二張卡片：產品設計與跨部門協作 (Image 4) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
+                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                        <MonitorSmartphone size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">產品設計與跨部門協作</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">PRODUCT DESIGN & CROSS-FUNCTIONAL SYNERGY</span>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-8 sm:space-y-10">
+                      {/* Item 1 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Layers size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <h5 className="text-base font-black text-gray-900 mb-1.5">主導廚電產品開發</h5>
+                          <p className="text-sm text-gray-700 font-medium mb-1.5 leading-relaxed">
+                            主導易清系列檯面爐（G2522AG、G2623AG）與近吸式油煙機（R7610、R7650）完整開發流程。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Led full-cycle development of easy-clean gas cooktops (G2522AG, G2623AG) and incline range hoods (R7610, R7650).
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Item 2 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Award size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <h5 className="text-base font-black text-gray-900 mb-1.5">獲獎與產品落地</h5>
+                          <p className="text-sm text-gray-700 font-medium mb-1.5 leading-relaxed">
+                            親自承辦金點設計競賽提案並獲得 2 件入選（R3750B、P0233／235）；協助外觀與結構開發並導入量產流程，成功落地產品。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Won Golden Pin Design Award selections for 2 projects (R3750B, P0233/235); coordinated industrial styling and engineering to ensure successful commercialization.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Item 3 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Users size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <h5 className="text-base font-black text-gray-900 mb-1.5">供應商協作能力</h5>
+                          <p className="text-sm text-gray-700 font-medium mb-1.5 leading-relaxed">
+                            能與供應商與工廠密切協作，確保設計順利導入量產並維持品質穩定。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Collaborated seamlessly with tooling suppliers and assembly lines, guaranteeing flawless tooling handover and robust quality consistency.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeAboutTab === 'career' && (
+                <div className="space-y-6 sm:space-y-8 text-[#121212]">
+                  {/* 第一張卡片：短期目標 (Image 2 top) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
+                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                        <Flag size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">短期目標</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">SHORT-TERM STRATEGIC GOALS</span>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-6 sm:space-y-8">
+                      {/* Item 1 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Leaf size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
+                            深入 ESG 永續議題，探索各類紙材、布料等 CMF 特性與加工技術，建立應用知識庫，並與供應商合作開發環保材質。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Deep-dive into ESG sustainability, exploring CMF characteristics and processing techniques of paper and fabrics to build knowledge bases and co-develop eco-friendly materials with suppliers.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Item 2 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Box size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
+                            強化紙材結構設計能力，目標能提出具創新性的設計專利。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Elevate paper structural engineering, targeting the filing and grant of innovative structural design patents.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Item 3 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Cpu size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
+                            培養紙材成本評估能力，根據需求提出兼顧保護性與成本效益的結構優化方案。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Cultivate rigorous packaging cost evaluation to formulate optimized structural designs that seamlessly balance superior protection with high cost-efficiency.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 第二張卡片：中長期目標 (Image 2 bottom) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
+                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                        <Rocket size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">中長期目標</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">MID- TO LONG-TERM VISION</span>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-6 sm:space-y-8">
+                      {/* Item 1 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Globe size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
+                            累積跨國與跨部門合作經驗，強化英文聽說讀寫的能力以應對全球化的工作需求。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Amplify multinational and cross-departmental collaboration, continually advancing professional English fluency to thrive in global organizations.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Item 2 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <Award size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
+                            持續提升設計落地與製程協作能力，累積更多實戰開發經驗。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Continually advance design realization and manufacturing execution, deepening hands-on hardware development expertise.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Item 3 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <TrendingUp size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div>
+                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
+                            建立包裝設計與市場趨勢的連結敏感度，結合行銷視角強化整合能力，朝向具策略思維的設計開發整合型人才邁進。
+                          </p>
+                          <p className="text-xs text-gray-500 leading-relaxed">
+                            Bridge packaging innovation with commercial market trends and marketing insights, advancing into an integrative design strategist with high business impact.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeAboutTab === 'philosophy' && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[#121212]">
+                  {/* Card 1: 兼具感性與理性 (Image 1 top left) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center shrink-0 mb-6">
+                        <Scale size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight mb-1">兼具感性與理性</h4>
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">BALANCE EMOTION & LOGIC</span>
+                      <p className="text-sm sm:text-[14px] text-gray-800 font-medium leading-relaxed mb-3">
+                        設計不僅是創造視覺與情感價值，更必須考量製程可行性、技術限制、成本控制與品質穩定性。
+                      </p>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Design must deliver emotional resonance while strictly honoring manufacturing feasibility, cost parameters, and production stability.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 2: 服務於產品與使用者 (Image 1 top right) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center shrink-0 mb-6">
+                        <UserCheck size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight mb-1">服務於產品與使用者</h4>
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">FORM FOLLOWS FUNCTION</span>
+                      <p className="text-sm sm:text-[14px] text-gray-800 font-medium leading-relaxed mb-3">
+                        我重視產品本質，關注設計如何實際提升使用者的便利性與品牌價值，讓設計發揮功能性與影響力。
+                      </p>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Rooted in product essence, ensuring design genuinely enhances user convenience and delivers enduring brand value and tangible impact.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 3: 重視跨部門協作效率 (Image 1 bottom left) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center shrink-0 mb-6">
+                        <MessageSquare size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight mb-1">重視跨部門協作效率</h4>
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">TEAMWORK & SYNERGY</span>
+                      <p className="text-sm sm:text-[14px] text-gray-800 font-medium leading-relaxed mb-3">
+                        良好的設計來自良好的協作，我樂於與不同角色協同合作，透過積極溝通整合各方需求與資源。
+                      </p>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Superior designs originate from seamless collaboration, uniting diverse stakeholders through proactive communication and resource integration.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Card 4: 保持熱情與學習動能 (Image 1 bottom right) */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/80 text-white flex items-center justify-center shrink-0 mb-6">
+                        <Flame size={22} className="text-white" />
+                      </div>
+                      <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight mb-1">保持熱情與學習動能</h4>
+                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">STAY CURIOUS & DRIVEN</span>
+                      <p className="text-sm sm:text-[14px] text-gray-800 font-medium leading-relaxed mb-3">
+                        對我而言，設計不只是工作，更是一種持續探索的過程。我始終懷抱熱情與好奇心，樂於在團隊中貢獻專業，一同創造實質價值。
+                      </p>
+                      <p className="text-xs text-gray-500 leading-relaxed">
+                        Design is an ongoing journey of exploration; maintaining continuous curiosity and passion to co-create measurable, real-world value.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
             </Reveal>
           </div>
         </div>
@@ -1065,19 +1139,19 @@ export default function App() {
             <p className="text-xs sm:text-[14px] font-black text-gray-400 uppercase tracking-widest mt-4 md:mt-0 text-[#121212]">Design Mastery × Core Focus</p>
           </div>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-16 text-[#121212]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 xl:gap-14 text-[#121212]">
           {Object.entries({ Packaging: '包裝設計', Product: '產品設計', Graphic: '平面設計' }).map(([key, label], idx) => (
             <Reveal key={key} delay={idx * 200}>
-               <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] shadow-xl hover:-translate-y-2 sm:hover:-translate-y-4 transition-all duration-700">
-                  <div className="aspect-square overflow-hidden relative bg-white border-b border-gray-50 p-4 sm:p-6">
+               <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[2.5rem] lg:rounded-[3.5rem] shadow-xl hover:-translate-y-2 sm:hover:-translate-y-4 transition-all duration-700 overflow-hidden">
+                  <div className="aspect-square overflow-hidden relative bg-white border-b border-gray-50 p-3 sm:p-5 md:p-4 lg:p-6">
                      <img src={key === 'Packaging' ? "/tws_pkg_design11111.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
                   </div>
-                  <div className="p-8 sm:p-10 lg:p-14 flex flex-col items-center text-center flex-grow text-[#121212]">
-                     <h4 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-2 sm:mb-4 tracking-tight">{key}</h4>
-                     <p className="text-base sm:text-[18px] font-bold text-[#a38a6a] tracking-widest mb-8 sm:mb-12 flex-grow uppercase">{label}</p>
-                     <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-3 sm:gap-4 w-full pt-6 sm:pt-8 border-t border-gray-100 transition-all text-[#121212]">
-                        <span className="text-sm sm:text-base lg:text-[18px] font-black uppercase tracking-widest">Explore Collection</span>
-                        <ArrowRight size={20} className="group-hover/btn:translate-x-2 sm:group-hover/btn:translate-x-3 transition-transform" />
+                  <div className="p-5 sm:p-7 md:p-4 lg:p-8 xl:p-12 flex flex-col items-center text-center flex-grow text-[#121212]">
+                     <h4 className="text-2xl sm:text-3xl md:text-xl min-[900px]:text-2xl lg:text-4xl xl:text-5xl font-black uppercase mb-1.5 sm:mb-3 tracking-tighter truncate max-w-full">{key}</h4>
+                     <p className="text-xs sm:text-sm md:text-xs lg:text-base font-bold text-[#a38a6a] tracking-wider mb-5 sm:mb-8 flex-grow uppercase">{label}</p>
+                     <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-1.5 sm:gap-2.5 md:gap-2 lg:gap-3 w-full pt-4 sm:pt-6 border-t border-gray-100 transition-all text-[#121212]">
+                        <span className="text-xs sm:text-sm md:text-xs min-[900px]:text-sm lg:text-base font-black uppercase tracking-wider whitespace-nowrap">Explore Collection</span>
+                        <ArrowRight size={16} className="group-hover/btn:translate-x-1 sm:group-hover/btn:translate-x-2 transition-transform shrink-0" />
                      </button>
                   </div>
                </SpotlightCard>
@@ -1494,6 +1568,7 @@ export default function App() {
           </div>
         </div>
       )}
+
 
       {/* CSS Animations & Fluid Dynamics */}
       <style>{`
