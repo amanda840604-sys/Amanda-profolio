@@ -571,10 +571,32 @@ export default function App() {
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 text-[#121212]">
           <div className="lg:col-span-4">
             <Reveal direction="left">
-               <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-8 flex items-center gap-6">
-                 <div className="w-16 h-[2px] bg-[#a38a6a]"></div> Profile
-               </h2>
-               <h3 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-[#121212] mb-12">設計美學 × <br /> 量產實務</h3>
+               <div className="flex items-center justify-between mb-8">
+                 <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase flex items-center gap-4">
+                   <div className="w-12 h-[2px] bg-[#a38a6a]"></div> Profile
+                 </h2>
+                 <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-full text-xs font-bold">
+                   <button 
+                     onClick={() => setActiveAboutTab('background')} 
+                     className={`px-3 py-1 rounded-full transition-all ${activeAboutTab !== 'english' ? 'bg-[#a38a6a] text-white shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}
+                   >
+                     中文
+                   </button>
+                   <button 
+                     onClick={() => setActiveAboutTab('english')} 
+                     className={`px-3 py-1 rounded-full transition-all ${activeAboutTab === 'english' ? 'bg-[#a38a6a] text-white shadow-sm' : 'text-gray-500 hover:text-gray-900'}`}
+                   >
+                     EN
+                   </button>
+                 </div>
+               </div>
+               <h3 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-[#121212] mb-12">
+                 {activeAboutTab === 'english' ? (
+                   <>Design Aesthetics × <br /> Mass Production</>
+                 ) : (
+                   <>設計美學 × <br /> 量產實務</>
+                 )}
+               </h3>
                
                {/* About Tabs Navigation */}
                <div className="flex flex-col md:flex-row lg:flex-col gap-3">
@@ -582,7 +604,8 @@ export default function App() {
                    { id: 'background', label: '設計背景與專業', icon: User },
                    { id: 'experience', label: '開發實務經驗', icon: Briefcase },
                    { id: 'career', label: '職涯規劃目標', icon: Target },
-                   { id: 'philosophy', label: '核心設計理念', icon: Lightbulb }
+                   { id: 'philosophy', label: '核心設計理念', icon: Lightbulb },
+                   { id: 'english', label: 'English Bio (英文自傳)', icon: Globe }
                  ].map(tab => (
                    <button 
                      key={tab.id}
@@ -758,6 +781,197 @@ export default function App() {
                     <div className="pt-10 text-center">
                       <p className="text-xl font-black text-[#a38a6a] italic tracking-wide">
                         "非常感謝您的閱讀。如有進一步了解的需要，歡迎與我聯繫。"
+                      </p>
+                    </div>
+                 </div>
+               )}
+               {/* English Biography Content */}
+               {activeAboutTab === 'english' && (
+                 <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    {/* Background & Packaging Expertise */}
+                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                      <h4 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500">
+                          <GraduationCap className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} />
+                        </div>
+                        Design Background & Full Development Experience
+                      </h4>
+                      <p className="text-[17px] text-gray-600 leading-[1.8] font-medium text-justify mb-4">
+                        I graduated from <strong className="text-[#a38a6a]">National Taiwan University of Science and Technology</strong> with a degree in Industrial Design. With over 6 years of experience in product and packaging design, I’m familiar with the full development process—from early concept and structure planning to mass production.
+                      </p>
+                      <p className="text-[17px] text-gray-600 leading-[1.8] font-medium text-justify">
+                        I focus on brand research, positioning, and translating product needs into design solutions through 2D/3D design, prototyping, 3D modeling, and engineering drawings. I adapt design strategies based on cost and budget constraints.
+                      </p>
+                    </div>
+
+                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                      <h4 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500">
+                          <Star className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} />
+                        </div>
+                        Packaging Design Expertise
+                      </h4>
+                      <p className="text-[17px] text-gray-600 leading-[1.8] font-medium text-justify">
+                        Currently, I work at <strong className="text-gray-900">Merry Electronics Co., Ltd.</strong>, designing packaging for international electronics brands, including TWS earbuds, gaming headsets, and soundbars. I focus on sustainable packaging, cross-functional teamwork, and aligning design with manufacturing.
+                      </p>
+                    </div>
+
+                    {/* Design & Development Experience */}
+                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500">
+                          <Package className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} />
+                        </div>
+                        Packaging Design Projects
+                      </h4>
+                      <ul className="space-y-8">
+                        <li className="text-[16px] text-gray-600 leading-[1.8] font-medium flex items-start gap-4">
+                          <CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} />
+                          <div>
+                            <strong className="text-gray-900 block mb-2 text-[17px]">Packaging Proposals for International Brands (25 Projects)</strong>
+                            Developed packaging proposals for TWS, HDT, and Soundbar products for international brands. Designed multi-tier packaging solutions (low/mid/high price points) based on product positioning, meeting diverse market needs and brand strategies, achieving a <strong className="text-[#a38a6a]">40% project acquisition success rate</strong>.<br />
+                            Led packaging structure design, 2D engineering drawings, and initial cost analysis at the RFQ stage, contributing to approximately <strong className="text-[#a38a6a]">10% packaging material cost savings</strong> for the R&D team.
+                          </div>
+                        </li>
+                        <li className="text-[16px] text-gray-600 leading-[1.8] font-medium flex items-start gap-4">
+                          <CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} />
+                          <div>
+                            <strong className="text-gray-900 block mb-2 text-[17px]">Established Packaging Design Database and Market Research Table (6 Projects)</strong>
+                            Compiled structural specifications of TWS, HDT, and Soundbar paper card inserts to create a modular design database, accelerating proposal efficiency and enhancing market alignment.
+                          </div>
+                        </li>
+                        <li className="text-[16px] text-gray-600 leading-[1.8] font-medium flex items-start gap-4">
+                          <CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} />
+                          <div>
+                            <strong className="text-gray-900 block mb-2 text-[17px]">Participation in HDT Gaming Headset Development (2 Projects)</strong>
+                            Actively involved in the development of two gaming headset models, gaining end-to-end experience from structural design and prototype optimization to mass production implementation.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500">
+                          <MonitorSmartphone className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} />
+                        </div>
+                        Product Design & Collaboration
+                      </h4>
+                      <ul className="space-y-8">
+                        <li className="text-[16px] text-gray-600 leading-[1.8] font-medium flex items-start gap-4">
+                          <Layers className="text-[#a38a6a] shrink-0 mt-1" size={22} />
+                          <div>
+                            <strong className="text-gray-900 block mb-2 text-[17px]">Cooktop & Kitchen Appliance Development</strong>
+                            Led full development of built-in gas stoves (G2522AG, G2623AG) and range hoods (R7610, R7650).
+                          </div>
+                        </li>
+                        <li className="text-[16px] text-gray-600 leading-[1.8] font-medium flex items-start gap-4">
+                          <Award className="text-[#a38a6a] shrink-0 mt-1" size={22} />
+                          <div>
+                            <strong className="text-gray-900 block mb-2 text-[17px]">Golden Pin Design Award Recognition</strong>
+                            Won Golden Pin Design Award with projects R3750B and P0233/235; supported structure development and mass production for R3750B.
+                          </div>
+                        </li>
+                        <li className="text-[16px] text-gray-600 leading-[1.8] font-medium flex items-start gap-4">
+                          <Users className="text-[#a38a6a] shrink-0 mt-1" size={22} />
+                          <div>
+                            <strong className="text-gray-900 block mb-2 text-[17px]">Cross-Team & Supplier Collaboration</strong>
+                            Coordinated with factories and suppliers to ensure smooth handover and reliable manufacturing quality.
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+
+                    {/* Career Goals */}
+                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500">
+                          <Flag className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} />
+                        </div>
+                        Short-Term Career Goals
+                      </h4>
+                      <ul className="space-y-6 text-[16px] text-gray-600 leading-[1.8] font-medium list-none">
+                        <li className="flex gap-4 items-start"><Leaf className="text-[#a38a6a] shrink-0 mt-1" size={22} /> Learn more about ESG and sustainable materials (paper, fabric, and advanced CMF).</li>
+                        <li className="flex gap-4 items-start"><Box className="text-[#a38a6a] shrink-0 mt-1" size={22} /> Improve skills in paper-based packaging design and structured cost analysis.</li>
+                        <li className="flex gap-4 items-start"><Cpu className="text-[#a38a6a] shrink-0 mt-1" size={22} /> Work with suppliers on eco-friendly structure ideas and innovative design patents.</li>
+                      </ul>
+                    </div>
+
+                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                      <h4 className="text-xl font-black text-gray-900 mb-8 flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500">
+                          <Rocket className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} />
+                        </div>
+                        Mid- to Long-Term Career Goals
+                      </h4>
+                      <ul className="space-y-6 text-[16px] text-gray-600 leading-[1.8] font-medium list-none">
+                        <li className="flex gap-4 items-start"><Globe className="text-[#a38a6a] shrink-0 mt-1" size={22} /> Gain more global project experience and enhance professional English fluency.</li>
+                        <li className="flex gap-4 items-start"><Award className="text-[#a38a6a] shrink-0 mt-1" size={22} /> Strengthen packaging realization and interdisciplinary teamwork during production.</li>
+                        <li className="flex gap-4 items-start"><TrendingUp className="text-[#a38a6a] shrink-0 mt-1" size={22} /> Combine design with marketing insights to grow into a strategic, high-impact designer.</li>
+                      </ul>
+                    </div>
+
+                    {/* Design Beliefs */}
+                    <div>
+                      <h4 className="text-2xl font-black text-gray-900 mb-6 flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10"><Lightbulb className="text-[#a38a6a]" size={24} /></div>
+                        Design Beliefs
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
+                          <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
+                            <Scale size={28} />
+                          </div>
+                          <h4 className="text-lg font-black text-gray-900 mb-4">Balance Emotion and Logic</h4>
+                          <p className="text-[15px] text-gray-600 leading-[1.8] font-medium">Design should connect with people, but also be realistic, technically feasible, and efficient.</p>
+                        </SpotlightCard>
+                        <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
+                          <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
+                            <UserCheck size={28} />
+                          </div>
+                          <h4 className="text-lg font-black text-gray-900 mb-4">Form Follows Function</h4>
+                          <p className="text-[15px] text-gray-600 leading-[1.8] font-medium">I aim to improve user experience and brand value through thoughtful, purpose-driven design.</p>
+                        </SpotlightCard>
+                        <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
+                          <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
+                            <MessageSquare size={28} />
+                          </div>
+                          <h4 className="text-lg font-black text-gray-900 mb-4">Teamwork Matters</h4>
+                          <p className="text-[15px] text-gray-600 leading-[1.8] font-medium">Good design comes from open, proactive communication and collaborative problem solving.</p>
+                        </SpotlightCard>
+                        <SpotlightCard className="p-8 rounded-3xl bg-white shadow-sm border border-gray-100 group">
+                          <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] flex items-center justify-center text-[#a38a6a] group-hover:text-white transition-colors duration-500 mb-6">
+                            <Flame size={28} />
+                          </div>
+                          <h4 className="text-lg font-black text-gray-900 mb-4">Stay Curious</h4>
+                          <p className="text-[15px] text-gray-600 leading-[1.8] font-medium">I enjoy learning, growing, and taking on new challenges through design exploration.</p>
+                        </SpotlightCard>
+                      </div>
+                    </div>
+
+                    {/* Personal Interests & Final Note */}
+                    <div className="bg-white p-8 md:p-10 rounded-3xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 group">
+                      <h4 className="text-xl font-black text-gray-900 mb-6 flex items-center gap-3 border-b border-gray-100 pb-4">
+                        <div className="p-2 rounded-lg bg-[#a38a6a]/10 group-hover:bg-[#a38a6a] transition-colors duration-500">
+                          <Mountain className="text-[#a38a6a] group-hover:text-white transition-colors duration-500" size={24} />
+                        </div>
+                        Personal Interests
+                      </h4>
+                      <p className="text-[17px] text-gray-600 leading-[1.8] font-medium text-justify mb-6">
+                        Outside of work, I enjoy fitness training, running, and hiking. These help me stay healthy, focused, and ready to tackle challenges—physically and mentally. Exercise helps me reflect, set goals, and keep improving at work and in life.
+                      </p>
+                      <ul className="space-y-4 text-[16px] text-gray-600 leading-[1.8] font-medium list-none">
+                        <li className="flex gap-4 items-start"><CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} /> Sports make me stronger, more flexible, and help me keep a positive attitude in daily life.</li>
+                        <li className="flex gap-4 items-start"><CheckCircle2 className="text-[#a38a6a] shrink-0 mt-1" size={22} /> I also like meeting people from different backgrounds, learning from their experiences, and getting new ideas from everyday life.</li>
+                      </ul>
+                    </div>
+
+                    <div className="pt-8 text-center bg-gradient-to-r from-transparent via-[#a38a6a]/5 to-transparent p-8 rounded-3xl border border-[#a38a6a]/15">
+                      <p className="text-xl font-black text-[#a38a6a] tracking-wide mb-2">
+                        "Thanks for reading my profile!"
+                      </p>
+                      <p className="text-base text-gray-600 font-medium">
+                        If my background matches your needs, I’d be excited to bring my skills and team spirit to your organization.
                       </p>
                     </div>
                  </div>
