@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Briefcase, GraduationCap, LayoutGrid, Award, Mail, ChevronRight, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers, User, Target, Lightbulb, Star, Package, MonitorSmartphone, Users, CheckCircle2, Flag, Rocket, Leaf, TrendingUp, Globe, Scale, UserCheck, MessageSquare, Flame, Menu } from 'lucide-react';
+import { ArrowRight, Briefcase, GraduationCap, LayoutGrid, Award, Mail, ChevronRight, ChevronDown, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers, User, Target, Lightbulb, Star, Package, MonitorSmartphone, Users, CheckCircle2, Flag, Rocket, Leaf, TrendingUp, Globe, Scale, UserCheck, MessageSquare, Flame, Menu } from 'lucide-react';
 
 /* --- 互動組件 1：流體式滾動漸出 (Reveal) --- */
 const Reveal = ({ children, delay = 0, className = "", direction = "up" }: any) => {
@@ -440,6 +440,33 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('home');
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // --- 自傳分頁設定 ---
+  const aboutTabs = [
+    { id: 'background', num: '01', label: '設計背景與專業', subLabel: 'Background & Expertise', icon: User },
+    { id: 'experience', num: '02', label: '開發實務經驗', subLabel: 'Development Experience', icon: Briefcase },
+    { id: 'career', num: '03', label: '職涯規劃目標', subLabel: 'Career Goals', icon: Target },
+    { id: 'philosophy', num: '04', label: '核心設計理念', subLabel: 'Design Beliefs', icon: Lightbulb }
+  ];
+
+  const handleAboutTabClick = (tabId: string) => {
+    setActiveAboutTab(tabId);
+    // 在手機與平板（寬度 < 1024px），點擊後自動平滑捲動至自傳內容區塊頂部，讓使用者明確看到內文切換變化
+    if (typeof window !== 'undefined' && window.innerWidth < 1024) {
+      setTimeout(() => {
+        const el = document.getElementById('about-content-section');
+        if (el) {
+          const navOffset = 85;
+          const elementPosition = el.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navOffset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 50);
+    }
+  };
 
   // --- 計算屬性 ---
   const currentFilterOptions = activeCategory ? (
