@@ -707,12 +707,15 @@ export default function App() {
 
               {/* 個人照 Squircle 卡片 (無邊框，僅保留 Amanda Lai) */}
               <div className="group relative w-48 h-48 sm:w-56 sm:h-56 rounded-[2.2rem] sm:rounded-[2.5rem] overflow-hidden select-none shadow-xl shadow-stone-900/10 hover:shadow-2xl hover:shadow-[#a38a6a]/20 hover:-translate-y-1.5 transition-all duration-500">
-                {/* 頭像圖片：無邊框滿版，預設黑白並於懸停時全彩微放大 */}
-                <img 
-                  src="/Profolio_photo.jpg" 
-                  alt="Amanda Lai" 
-                  className="w-full h-full object-cover grayscale contrast-[1.02] group-hover:grayscale-0 group-hover:scale-105 group-hover:contrast-100 transition-all duration-700 ease-out" 
-                />
+                {/* 內部浮動動畫容器：延遲啟動確保放大過渡平滑 */}
+                <div className="w-full h-full group-hover:[animation:image-float_4s_ease-in-out_infinite_0.4s]">
+                  {/* 頭像圖片：無邊框滿版，預設黑白並於懸停時全彩微放大 */}
+                  <img 
+                    src="/Profolio_photo.jpg" 
+                    alt="Amanda Lai" 
+                    className="w-full h-full object-cover grayscale contrast-[1.02] group-hover:grayscale-0 group-hover:scale-105 group-hover:contrast-100 transition-all duration-700 ease-out" 
+                  />
+                </div>
 
                 {/* 底部優雅漸層遮罩 */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-75 group-hover:opacity-60 transition-opacity duration-500 pointer-events-none" />
@@ -1573,6 +1576,10 @@ export default function App() {
       {/* CSS Animations & Fluid Dynamics */}
       <style>{`
         @keyframes slide { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
+        @keyframes image-float {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .cubic-bezier { transition-timing-function: cubic-bezier(0.25, 1, 0.05, 1); }
         .fluid-anim { transition-timing-function: cubic-bezier(0.25, 1, 0.05, 1); }
