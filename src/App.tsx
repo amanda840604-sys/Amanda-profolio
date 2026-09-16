@@ -514,13 +514,13 @@ export default function App() {
       <div className="fixed top-0 left-0 h-[3px] bg-[#a38a6a] z-[130] transition-transform duration-300 ease-out origin-left shadow-[0_0_12px_rgba(163,138,106,0.6)]" style={{ transform: `scaleX(${scrollProgress})` }} />
 
       {/* 2. 精品膠囊導覽列 */}
-      <div className="fixed top-0 left-0 w-full z-[120] flex justify-center pt-8 px-6 pointer-events-none">
-        <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-6 md:px-8 py-3 rounded-full bg-white/80 backdrop-blur-3xl border border-white/40 shadow-lg ${scrolled ? 'w-full max-w-[70rem]' : 'w-full max-w-[85rem]'}`}>
-          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({top: 0, behavior: 'smooth'}); }}>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white shrink-0">
+      <div className="fixed top-0 left-0 w-full z-[120] flex justify-center pt-4 sm:pt-6 md:pt-8 px-3 sm:px-6 pointer-events-none">
+        <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 rounded-full bg-white/85 backdrop-blur-3xl border border-white/40 shadow-lg ${scrolled ? 'w-full max-w-[70rem]' : 'w-full max-w-[85rem]'}`}>
+          <div className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group" onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({top: 0, behavior: 'smooth'}); }}>
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white shrink-0">
                <img src="/logo.png" alt="AL Logo" className="w-full h-full object-cover" />
             </div>
-            <span className="font-black text-xl tracking-wide uppercase whitespace-nowrap">AMANDA LAI<span className="text-[#a38a6a]">.</span></span>
+            <span className="font-black text-base sm:text-xl tracking-wide uppercase whitespace-nowrap">AMANDA LAI<span className="text-[#a38a6a]">.</span></span>
           </div>
 
           {/* 桌面版導覽連結 (>= 768px 顯示) */}
@@ -601,30 +601,33 @@ export default function App() {
       )}
 
       {/* 3. HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-8">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-tr from-[#a38a6a]/10 via-white to-[#a38a6a]/5 blur-[160px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4 sm:px-8 py-24 sm:py-32">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] md:w-[1200px] h-[600px] sm:h-[900px] md:h-[1200px] bg-gradient-to-tr from-[#a38a6a]/10 via-white to-[#a38a6a]/5 blur-[120px] sm:blur-[160px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
         <Reveal direction="down">
-          <div className="inline-flex items-center mt-20 md:mt-32 gap-3 px-6 py-2 rounded-full bg-white border border-gray-100 text-[#a38a6a] text-[14px] font-black tracking-widest uppercase mb-12 shadow-sm">
+          <div className="inline-flex items-center mt-16 sm:mt-24 md:mt-32 gap-3 px-5 sm:px-6 py-2 rounded-full bg-white border border-gray-100 text-[#a38a6a] text-xs sm:text-[14px] font-black tracking-widest uppercase mb-8 sm:mb-12 shadow-sm">
             PORTFOLIO 2026
           </div>
         </Reveal>
-        <Reveal delay={200}>
-          <h1 className="text-8xl md:text-[12rem] tracking-tighter leading-[0.75] mb-12 flex flex-col items-center transition-transform duration-500 ease-out text-[#121212]" style={{ transform: `translate(${-mousePos.x * 0.4}px, ${-mousePos.y * 0.4}px)` }}>
-            <span className="font-black uppercase">Sustainable</span>
-            <span className="font-serif italic text-[#a38a6a] font-light -mt-4 md:-mt-10 ml-12 md:ml-32 opacity-90">Packaging.</span>
+        <Reveal delay={200} className="w-full max-w-full px-2">
+          <h1 
+            className="w-full max-w-full text-4xl min-[390px]:text-[2.75rem] min-[440px]:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[9.5rem] tracking-tighter leading-[0.9] sm:leading-[0.85] mb-8 sm:mb-12 flex flex-col items-center transition-transform duration-500 ease-out text-[#121212] select-none"
+            style={typeof window !== 'undefined' && window.innerWidth >= 1024 ? { transform: `translate(${-mousePos.x * 0.35}px, ${-mousePos.y * 0.35}px)` } : undefined}
+          >
+            <span className="font-black uppercase tracking-tight text-center">Sustainable</span>
+            <span className="font-serif italic text-[#a38a6a] font-light mt-1 sm:-mt-2 md:-mt-4 lg:-mt-6 xl:-mt-8 ml-0 sm:ml-4 md:ml-8 lg:ml-16 xl:ml-20 opacity-90 text-center">Packaging.</span>
           </h1>
         </Reveal>
         <Reveal delay={400}>
-          <p className="text-lg md:text-2xl text-gray-500 max-w-[65ch] font-medium leading-[1.85] mb-16 mx-auto text-balance">
+          <p className="text-base sm:text-lg md:text-2xl text-gray-500 max-w-[65ch] font-medium leading-[1.75] sm:leading-[1.85] mb-12 sm:mb-16 mx-auto px-2 text-balance">
             包裝設計專業深化 × 結構工程實務 <br className="hidden sm:block" /> 致力於在視覺美學與永續環保之間尋求平衡。
           </p>
         </Reveal>
         <Reveal delay={600}>
-          <button onClick={() => document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})} className="group flex flex-col items-center gap-4">
-             <div className="w-[1px] h-24 bg-gradient-to-b from-[#a38a6a] to-transparent relative overflow-hidden">
+          <button onClick={() => document.getElementById('portfolio')?.scrollIntoView({behavior: 'smooth'})} className="group flex flex-col items-center gap-3 sm:gap-4">
+             <div className="w-[1px] h-16 sm:h-24 bg-gradient-to-b from-[#a38a6a] to-transparent relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1/2 bg-white animate-[slide_3s_infinite]"></div>
              </div>
-             <span className="text-[14px] font-black uppercase tracking-[0.4em] text-gray-400 group-hover:text-[#a38a6a] transition-colors">Scroll To Explore</span>
+             <span className="text-xs sm:text-[14px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gray-400 group-hover:text-[#a38a6a] transition-colors">Scroll To Explore</span>
           </button>
         </Reveal>
       </section>
@@ -632,21 +635,21 @@ export default function App() {
       {/* 4. ABOUT SECTION */}
       
       
-      <section id="about" className="px-8 md:px-24 py-40 border-t border-gray-50 text-[#121212]">
-        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 text-[#121212]">
+      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 text-[#121212]">
+        <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 text-[#121212]">
           <div className="lg:col-span-4">
             <Reveal direction="left">
-               <div className="flex items-center justify-between mb-8">
-                 <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase flex items-center gap-4">
-                   <div className="w-12 h-[2px] bg-[#a38a6a]"></div> Profile
+               <div className="flex items-center justify-between mb-4 sm:mb-8">
+                 <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase flex items-center gap-3 sm:gap-4">
+                   <div className="w-8 sm:w-12 h-[2px] bg-[#a38a6a]"></div> Profile
                  </h2>
                </div>
-               <h3 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] text-[#121212] mb-12">
+               <h3 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] sm:leading-[0.9] text-[#121212] mb-8 sm:mb-12">
                  設計美學 × <br /> 量產實務
                </h3>
                
                {/* About Tabs Navigation */}
-               <div className="flex flex-col md:flex-row lg:flex-col gap-3">
+               <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-col gap-2.5 sm:gap-3">
                  {[
                    { id: 'background', label: '設計背景與專業', subLabel: 'Background & Expertise', icon: User },
                    { id: 'experience', label: '開發實務經驗', subLabel: 'Development Experience', icon: Briefcase },
@@ -656,30 +659,30 @@ export default function App() {
                    <button 
                      key={tab.id}
                      onClick={() => setActiveAboutTab(tab.id)}
-                     className={`flex items-center justify-between text-left px-6 py-4 rounded-2xl transition-all duration-500 font-bold tracking-wider text-[16px] ${
+                     className={`flex items-center justify-between text-left px-5 sm:px-6 py-3.5 sm:py-4 rounded-2xl transition-all duration-500 font-bold tracking-wider text-[15px] sm:text-[16px] ${
                        activeAboutTab === tab.id 
                          ? 'bg-[#a38a6a] text-white shadow-lg shadow-[#a38a6a]/30 lg:translate-x-2' 
                          : 'bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-900'
                      }`}
                    >
-                     <div className="flex items-center gap-4">
-                       <tab.icon size={20} className={`${activeAboutTab === tab.id ? "text-white" : "text-gray-400"}`} />
-                       <div>
-                         <span className="block">{tab.label}</span>
-                         <span className={`block text-xs font-normal tracking-normal ${activeAboutTab === tab.id ? 'text-white/80' : 'text-gray-400'}`}>{tab.subLabel}</span>
+                     <div className="flex items-center gap-3.5 sm:gap-4 min-w-0">
+                       <tab.icon size={20} className={`shrink-0 ${activeAboutTab === tab.id ? "text-white" : "text-gray-400"}`} />
+                       <div className="min-w-0">
+                         <span className="block truncate">{tab.label}</span>
+                         <span className={`block text-[11px] sm:text-xs font-normal tracking-normal truncate ${activeAboutTab === tab.id ? 'text-white/80' : 'text-gray-400'}`}>{tab.subLabel}</span>
                        </div>
                      </div>
                    </button>
                  ))}
                </div>
                
-               <div className="mt-12 w-48 h-48 md:w-64 md:h-64 rounded-[2.5rem] md:rounded-[4rem] group overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border-[6px] border-white cursor-pointer relative hover:-translate-y-2 mx-auto lg:mx-0">
+               <div className="mt-8 sm:mt-12 w-36 h-36 sm:w-48 sm:h-48 md:w-64 md:h-64 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[4rem] group overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl border-4 sm:border-[6px] border-white cursor-pointer relative hover:-translate-y-2 mx-auto lg:mx-0">
                   <img src="/Profolio_photo.jpg" alt="Amanda Lai" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
                </div>
             </Reveal>
           </div>
           
-          <div className="lg:col-span-8 flex flex-col justify-start pt-4 lg:pt-24 text-[#121212]">
+          <div className="lg:col-span-8 flex flex-col justify-start pt-2 lg:pt-24 text-[#121212]">
             <Reveal delay={200} className="w-full">
                {/* Background Content */}
                {activeAboutTab === 'background' && (
@@ -1024,27 +1027,30 @@ export default function App() {
 
 
       {/* 5. PORTFOLIO */}
-      <section id="portfolio" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
+      <section id="portfolio" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] text-[#121212]">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-end mb-24 border-b border-gray-200 pb-12">
-            <div><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6">Works</h2><h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Projects.</h3></div>
-            <p className="text-[14px] font-black text-gray-400 uppercase tracking-widest mt-8 md:mt-0 text-[#121212]">Design Mastery × Core Focus</p>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-24 border-b border-gray-200 pb-8 sm:pb-12">
+            <div>
+              <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-4 sm:mb-6">Works</h2>
+              <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Projects.</h3>
+            </div>
+            <p className="text-xs sm:text-[14px] font-black text-gray-400 uppercase tracking-widest mt-4 md:mt-0 text-[#121212]">Design Mastery × Core Focus</p>
           </div>
         </Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-[#121212]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10 lg:gap-16 text-[#121212]">
           {Object.entries({ Packaging: '包裝設計', Product: '產品設計', Graphic: '平面設計' }).map(([key, label], idx) => (
             <Reveal key={key} delay={idx * 200}>
-               <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[4rem] shadow-2xl hover:-translate-y-4 transition-all duration-700">
-                  <div className="aspect-square overflow-hidden relative bg-white border-b border-gray-50">
+               <SpotlightCard className="group/card flex flex-col h-full bg-white text-[#121212] rounded-[2.5rem] sm:rounded-[3rem] md:rounded-[4rem] shadow-xl hover:-translate-y-2 sm:hover:-translate-y-4 transition-all duration-700">
+                  <div className="aspect-square overflow-hidden relative bg-white border-b border-gray-50 p-4 sm:p-6">
                      <img src={key === 'Packaging' ? "/tws_pkg_design11111.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
                   </div>
-                  <div className="p-20 flex flex-col items-center text-center flex-grow text-[#121212]">
-                     <h4 className="text-5xl font-black uppercase mb-4 tracking-tight">{key}</h4>
-                     <p className="text-[18px] font-bold text-[#a38a6a] tracking-widest mb-16 flex-grow uppercase">{label}</p>
-                     <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-4 w-full pt-12 border-t border-gray-100 transition-all text-[#121212]">
-                        <span className="text-[18px] font-black uppercase tracking-widest">Explore Collection</span>
-                        <ArrowRight size={24} className="group-hover/btn:translate-x-3 transition-transform" />
+                  <div className="p-8 sm:p-10 lg:p-14 flex flex-col items-center text-center flex-grow text-[#121212]">
+                     <h4 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-2 sm:mb-4 tracking-tight">{key}</h4>
+                     <p className="text-base sm:text-[18px] font-bold text-[#a38a6a] tracking-widest mb-8 sm:mb-12 flex-grow uppercase">{label}</p>
+                     <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-3 sm:gap-4 w-full pt-6 sm:pt-8 border-t border-gray-100 transition-all text-[#121212]">
+                        <span className="text-sm sm:text-base lg:text-[18px] font-black uppercase tracking-widest">Explore Collection</span>
+                        <ArrowRight size={20} className="group-hover/btn:translate-x-2 sm:group-hover/btn:translate-x-3 transition-transform" />
                      </button>
                   </div>
                </SpotlightCard>
@@ -1055,16 +1061,16 @@ export default function App() {
       </section>
 
       {/* 6. EXPERIENCE (重新規劃為單一垂直演進流) */}
-      <section id="experience" className="px-8 md:px-24 py-40 bg-[#f9f9f9] text-[#121212]">
+      <section id="experience" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] text-[#121212]">
         <div className="max-w-6xl mx-auto">
         <Reveal>
-          <div className="text-center mb-32">
-             <h2 className="text-[14px] font-black tracking-[0.6em] text-[#a38a6a] uppercase mb-6">Chronicles</h2>
-             <h3 className="text-5xl md:text-7xl font-black tracking-tighter">Evolution Path.</h3>
+          <div className="text-center mb-16 sm:mb-24 md:mb-32">
+             <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.6em] text-[#a38a6a] uppercase mb-4 sm:mb-6">Chronicles</h2>
+             <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter">Evolution Path.</h3>
           </div>
         </Reveal>
         
-        <div className="relative space-y-12">
+        <div className="relative space-y-8 sm:space-y-12">
           {/* 中間導引線 */}
           <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#a38a6a]/40 via-gray-100 to-transparent -translate-x-1/2 hidden md:block"></div>
 
@@ -1081,51 +1087,51 @@ export default function App() {
             const IconComponent = item.icon;
             return (
             <Reveal key={idx} delay={idx * 150} direction={idx % 2 === 0 ? "left" : "right"}>
-              <div className={`flex flex-col md:flex-row items-center gap-12 w-full ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+              <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                 <div className="md:w-1/2 w-full">
-                  <SpotlightCard className={`p-8 md:p-12 rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-700 fluid-anim ${item.type === 'edu' ? 'bg-gray-50/50' : 'bg-white'}`}>
-                    <div className={`${item.type === 'work' ? 'border-b border-gray-100 pb-6 mb-6' : 'mb-4'}`}>
-                      <div className="flex justify-between items-start mb-4 gap-4">
-                        <div className="min-w-0">
-                          <div className="flex flex-wrap items-center gap-3 text-[14px] font-black tracking-widest uppercase mb-3">
+                  <SpotlightCard className={`p-6 sm:p-8 md:p-12 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-700 fluid-anim ${item.type === 'edu' ? 'bg-gray-50/50' : 'bg-white'}`}>
+                    <div className={`${item.type === 'work' ? 'border-b border-gray-100 pb-5 sm:pb-6 mb-5 sm:mb-6' : 'mb-4'}`}>
+                      <div className="flex justify-between items-start mb-3 sm:mb-4 gap-3 sm:gap-4">
+                        <div className="min-w-0 flex-1">
+                          <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-[14px] font-black tracking-widest uppercase mb-2 sm:mb-3">
                             <span className="text-[#a38a6a]">{item.date}</span>
                             <span className="text-gray-200">|</span>
                             <span className="text-gray-400">{item.duration}</span>
                           </div>
-                          <h4 className={`text-2xl lg:text-3xl font-black text-[#121212] mb-2 tracking-tighter whitespace-nowrap overflow-hidden text-ellipsis ${item.type === 'edu' ? 'opacity-80' : ''}`}>{item.company}</h4>
-                          <p className="text-sm font-bold text-[#a38a6a] tracking-widest leading-relaxed">{item.title}</p>
+                          <h4 className={`text-xl sm:text-2xl lg:text-3xl font-black text-[#121212] mb-1.5 sm:mb-2 tracking-tighter break-words ${item.type === 'edu' ? 'opacity-80' : ''}`}>{item.company}</h4>
+                          <p className="text-xs sm:text-sm font-bold text-[#a38a6a] tracking-widest leading-relaxed">{item.title}</p>
                         </div>
                         {/* Logo Image Rendering */}
-                        <div className="w-14 h-14 p-2 bg-white/50 rounded-2xl hidden sm:flex items-center justify-center shrink-0 shadow-sm relative overflow-hidden group-hover:scale-110 fluid-anim">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 p-2 bg-white/50 rounded-2xl flex items-center justify-center shrink-0 shadow-sm relative overflow-hidden group-hover:scale-110 fluid-anim">
                           <div className="absolute inset-0 bg-[#a38a6a] opacity-5 group-hover:opacity-10 transition-opacity"></div>
                           {item.image ? (
                              <img src={item.image} alt={item.company} className="w-full h-full object-contain relative z-10 filter grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-multiply" />
                           ) : (
-                             <IconComponent size={24} className="text-[#a38a6a] css-mask-logo relative z-10" />
+                             <IconComponent size={22} className="text-[#a38a6a] css-mask-logo relative z-10" />
                           )}
                         </div>
                       </div>
-                      {item.type === 'work' && <p className="text-[14px] font-bold text-gray-400 flex items-center gap-1.5 tracking-wider"><MapPin size={12} className="text-gray-300"/> {item.location}</p>}
+                      {item.type === 'work' && <p className="text-xs sm:text-[14px] font-bold text-gray-400 flex items-center gap-1.5 tracking-wider"><MapPin size={12} className="text-gray-300 shrink-0"/> {item.location}</p>}
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-5 sm:space-y-6">
                       <div>
-                        {item.type === 'work' && <h5 className="text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-3">Core Responsibilities</h5>}
-                        <ul className={`list-disc space-y-2 marker:text-gray-300 ${item.type === 'work' ? 'pl-4' : 'pl-0 list-none'}`}>
+                        {item.type === 'work' && <h5 className="text-xs sm:text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-2.5 sm:mb-3">Core Responsibilities</h5>}
+                        <ul className={`list-disc space-y-1.5 sm:space-y-2 marker:text-gray-300 ${item.type === 'work' ? 'pl-4' : 'pl-0 list-none'}`}>
                           {item.responsibilities.map(res => (
-                            <li key={res} className="text-[14px] text-gray-600 font-medium leading-[1.8] max-w-[55ch]">{res}</li>
+                            <li key={res} className="text-[13px] sm:text-[14px] text-gray-600 font-medium leading-[1.75] sm:leading-[1.8] max-w-[55ch]">{res}</li>
                           ))}
                         </ul>
                       </div>
                       
                       {item.achievements.length > 0 && (
                         <div>
-                          <h5 className="text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-4 mt-2">Key Achievements</h5>
-                          <div className="flex flex-col gap-3">
+                          <h5 className="text-xs sm:text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-3 sm:mb-4 mt-2">Key Achievements</h5>
+                          <div className="flex flex-col gap-2.5 sm:gap-3">
                             {item.achievements.map(ach => (
-                              <div key={ach} className="flex items-start gap-3">
-                                <CheckCircle size={16} className="text-[#a38a6a] shrink-0 mt-[4px]" strokeWidth={2.5}/>
-                                <span className="text-[14px] text-gray-700 font-medium leading-[1.8] max-w-[55ch]">{ach}</span>
+                              <div key={ach} className="flex items-start gap-2.5 sm:gap-3">
+                                <CheckCircle size={15} className="text-[#a38a6a] shrink-0 mt-[4px]" strokeWidth={2.5}/>
+                                <span className="text-[13px] sm:text-[14px] text-gray-700 font-medium leading-[1.75] sm:leading-[1.8] max-w-[55ch]">{ach}</span>
                               </div>
                             ))}
                           </div>
@@ -1133,9 +1139,9 @@ export default function App() {
                       )}
                     </div>
 
-                    <div className="flex flex-wrap gap-2 mt-8 pt-6 border-t border-[#a38a6a]/10">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[#a38a6a]/10">
                       {item.tools.map(tool => (
-                        <span key={tool} className="text-[14px] font-black px-4 py-2 bg-gray-50 rounded-lg text-gray-500 hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all uppercase fluid-anim cursor-default">{tool}</span>
+                        <span key={tool} className="text-xs sm:text-[14px] font-black px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-50 rounded-lg text-gray-500 hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all uppercase fluid-anim cursor-default">{tool}</span>
                       ))}
                     </div>
                   </SpotlightCard>
@@ -1151,12 +1157,12 @@ export default function App() {
       </section>
 
       {/* 7. SKILLS */}
-      <section id="skills" className="px-8 md:px-24 py-40 border-t border-gray-50 text-[#121212]">
+      <section id="skills" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 text-[#121212]">
         <div className="max-w-7xl mx-auto w-full text-[#121212]">
         <Reveal>
-           <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Mastery Skills & Tools</h2>
+           <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">Mastery Skills & Tools</h2>
         </Reveal>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
            {[
              { id: '01', title: '市場調研與定位分析', icon: LayoutGrid, en: 'Market Research & Strategy', desc: '擅長設計前期的競品蒐集並針對該品牌定位分析，總結設計規畫方向。', tags: ['競品分析', '產品策略', '產品定位', '市場調查資料分析', '報告撰寫與提案'] },
              { id: '02', title: '2D 品牌視覺整合與簡報提案', icon: FileCheck, en: 'Graphic Design & Branding', desc: '擅長整合包裝結構與品牌識別，製作具專業感與說服力的提案簡報。', tags: ['Adobe InDesign', 'Illustrator', 'Photoshop', '電腦排版設計', '設計印刷基本認知', '電腦印前設計'] },
@@ -1165,18 +1171,18 @@ export default function App() {
              { id: '05', title: '打樣實作與設計驗證能力', icon: CheckCircle, en: 'Prototyping & Validation', desc: '善用割樣機進行結構模擬與快速打樣，快速驗證設計可行性。', tags: ['打樣機操作', '結構模擬', '快速打樣', '設計驗證', 'CMF 樣板製作'] }
            ].map((skill, idx) => (
              <Reveal key={idx} delay={idx * 150} className={idx === 4 ? "lg:col-span-2" : ""}>
-                <SpotlightCard className="p-10 group rounded-[3rem] h-full flex flex-col hover:border-[#a38a6a]/30 transition-all bg-white text-[#121212]">
-                   <div className="flex justify-between items-start mb-8">
-                      <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] transition-transform group-hover:scale-110 duration-500">
-                        <skill.icon size={28} />
+                <SpotlightCard className="p-6 sm:p-8 md:p-10 group rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] h-full flex flex-col hover:border-[#a38a6a]/30 transition-all bg-white text-[#121212]">
+                   <div className="flex justify-between items-start mb-6 sm:mb-8 gap-4">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] transition-transform group-hover:scale-110 duration-500 shrink-0">
+                        <skill.icon size={24} className="sm:w-7 sm:h-7" />
                       </div>
-                      <p className="text-[14px] font-black tracking-widest text-[#a38a6a] uppercase">{skill.en}</p>
+                      <p className="text-xs sm:text-[14px] font-black tracking-widest text-[#a38a6a] uppercase text-right">{skill.en}</p>
                    </div>
-                   <h4 className="text-2xl font-black mb-4 tracking-tight leading-snug group-hover:text-[#a38a6a] transition-colors">{skill.title}</h4>
-                   <p className="text-[14px] text-gray-500 font-medium leading-[1.8] mb-10 flex-grow">{skill.desc}</p>
-                   <div className="flex flex-wrap gap-2 text-[#121212]">
+                   <h4 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 tracking-tight leading-snug group-hover:text-[#a38a6a] transition-colors">{skill.title}</h4>
+                   <p className="text-[13px] sm:text-[14px] text-gray-500 font-medium leading-[1.75] sm:leading-[1.8] mb-6 sm:mb-10 flex-grow">{skill.desc}</p>
+                   <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[#121212]">
                      {skill.tags.map(t => (
-                       <span key={t} className="text-[14px] font-black px-4 py-1.5 bg-gray-50 text-gray-500 rounded-lg hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all fluid-anim uppercase">{t}</span>
+                       <span key={t} className="text-xs sm:text-[14px] font-black px-3 sm:px-4 py-1.5 bg-gray-50 text-gray-500 rounded-lg hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all fluid-anim uppercase">{t}</span>
                      ))}
                    </div>
                 </SpotlightCard>
@@ -1185,13 +1191,13 @@ export default function App() {
         </div>
         
         <Reveal delay={300}>
-           <div className="bg-[#121212] rounded-[3rem] p-12 text-white overflow-hidden relative">
+           <div className="bg-[#121212] rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 text-white overflow-hidden relative">
               <div className="relative z-10">
-                <div className="flex justify-between items-center mb-16 border-b border-white/10 pb-10">
-                   <h4 className="font-serif italic text-4xl text-[#a38a6a]">Software Tools</h4>
-                   <p className="text-[14px] font-black tracking-[0.4em] text-white/50 uppercase">Design & Engineering Mastery</p>
+                <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 sm:gap-4 mb-8 sm:mb-12 md:mb-16 border-b border-white/10 pb-6 sm:pb-10">
+                   <h4 className="font-serif italic text-3xl sm:text-4xl text-[#a38a6a]">Software Tools</h4>
+                   <p className="text-xs sm:text-[14px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-white/50 uppercase">Design & Engineering Mastery</p>
                 </div>
-                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-6">
+                <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-6">
                    {[
                      { name: 'SolidWorks', img: '/solidworks_logo.jpg' },
                      { name: 'Creo', img: '/creo_logo.jpg' },
@@ -1201,7 +1207,7 @@ export default function App() {
                      { name: 'InDesign', img: '/Indesign_logo.png' },
                      { name: 'AutoCAD', img: '/autocad_logo.jpg' }
                    ].map(tool => (
-                     <div key={tool.name} className="flex flex-col items-center gap-4 bg-white/5 py-8 rounded-[2rem] hover:bg-[#a38a6a]/20 hover:-translate-y-2 transition-all cursor-pointer border border-transparent hover:border-[#a38a6a]/30 group">
+                     <div key={tool.name} className="flex flex-col items-center gap-3 sm:gap-4 bg-white/5 py-6 sm:py-8 rounded-2xl sm:rounded-[2rem] hover:bg-[#a38a6a]/20 hover:-translate-y-1 sm:hover:-translate-y-2 transition-all cursor-pointer border border-transparent hover:border-[#a38a6a]/30 group">
                         <div className="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-110 fluid-anim relative">
                            {tool.img ? (
                               <img src={tool.img} alt={tool.name} className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 rounded" />
@@ -1222,25 +1228,33 @@ export default function App() {
       </section>
 
       {/* 8. COURSES (非對稱佈局設計) */}
-      <section id="courses" className="px-8 md:px-24 py-40 bg-[#fdfdfd] text-[#121212]">
+      <section id="courses" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#fdfdfd] text-[#121212]">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-end mb-24">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 md:mb-24 gap-5 sm:gap-6">
             <div>
-              <h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-6 text-[#a38a6a]">Learning Path</h2>
-              <h3 className="text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Growth.</h3>
+              <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-2 sm:mb-6 text-[#a38a6a]">Learning Path</h2>
+              <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212]">Growth.</h3>
             </div>
-            <div className="flex gap-2 mt-10 md:mt-0 overflow-x-auto pb-4 scrollbar-hide text-[#121212]">
+            <div className="flex flex-wrap gap-2 sm:gap-3 w-full md:w-auto text-[#121212]">
               {['全部', 'AI應用課程', '包裝專業課程'].map(f => (
-                <button key={f} onClick={() => setActiveCourseFilter(f)} className={`whitespace-nowrap px-8 py-3 rounded-full text-base font-black uppercase tracking-[0.2em] transition-all shadow-sm ${activeCourseFilter === f ? 'bg-[#a38a6a] text-white' : 'bg-white text-gray-400 hover:text-[#121212] border border-gray-100'}`}>
-                  {f} <span className="ml-2 opacity-50">({getCourseFilterCount(f)})</span>
+                <button 
+                  key={f} 
+                  onClick={() => setActiveCourseFilter(f)} 
+                  className={`px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-black uppercase tracking-wider transition-all shadow-sm ${
+                    activeCourseFilter === f 
+                      ? 'bg-[#a38a6a] text-white shadow-md shadow-[#a38a6a]/20' 
+                      : 'bg-white text-gray-500 hover:text-[#121212] border border-gray-100 hover:border-gray-200'
+                  }`}
+                >
+                  {f} <span className="ml-1 opacity-60">({getCourseFilterCount(f)})</span>
                 </button>
               ))}
             </div>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-16 text-[#121212]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 text-[#121212]">
            {filteredCourses.map((course, idx) => (
              <CourseCard key={course.id} course={course} delay={idx * 150} />
            ))}
@@ -1249,28 +1263,28 @@ export default function App() {
       </section>
 
       {/* 9. INTERESTS */}
-      <section id="interests" className="px-8 md:px-24 py-40 bg-white text-[#121212]">
+      <section id="interests" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-white text-[#121212]">
         <div className="max-w-7xl mx-auto w-full">
-        <Reveal><h2 className="text-[14px] font-black tracking-[0.5em] text-[#a38a6a] uppercase mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <Reveal><h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
            {[
              { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "/fitness.jpg" },
              { title: '馬拉松', en: 'Marathon', icon: Timer, goal: '5次半馬，目標全馬', desc: '不只是體能，更是對堅持信念的終極挑戰。', img: "/marathon.jpg" },
              { title: '登山挑戰', en: 'Hiking', icon: Mountain, goal: '登頂2座百岳，持續挑戰', desc: '在山林間對話，尋找自我探索與放鬆的途徑。', img: "/mountain.jpg" }
            ].map((item, idx) => (
              <Reveal key={idx} delay={idx * 150}>
-                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] rounded-[3rem] group bg-white border-0">
-                   <div className="h-[28rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-white">
+                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] rounded-[2.5rem] sm:rounded-[3rem] group bg-white border-0">
+                   <div className="h-64 sm:h-80 md:h-[28rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-white">
                       <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
                       <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/80 to-transparent group-hover:opacity-40 transition-opacity duration-1000"></div>
                    </div>
-                   <div className="p-10 flex flex-col flex-grow relative bg-white -mt-12 mx-6 rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] border border-gray-100 mb-6 text-[#121212] group-hover:-translate-y-4 transition-transform duration-700 ease-out">
-                      <div className="flex items-center gap-5 mb-8 text-[#121212]">
-                         <div className="w-14 h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] shadow-inner text-[#121212]"><item.icon size={28} strokeWidth={2.5} /></div>
-                         <div><h4 className="text-xl font-black tracking-tight text-[#121212]">{item.title}</h4><p className="text-[14px] font-black uppercase tracking-widest text-gray-300">{item.en}</p></div>
+                   <div className="p-6 sm:p-8 md:p-10 flex flex-col flex-grow relative bg-white -mt-10 sm:-mt-12 mx-4 sm:mx-6 rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] border border-gray-100 mb-6 text-[#121212] group-hover:-translate-y-2 sm:group-hover:-translate-y-4 transition-transform duration-700 ease-out">
+                      <div className="flex items-center gap-4 sm:gap-5 mb-6 sm:mb-8 text-[#121212]">
+                         <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] shadow-inner text-[#121212] shrink-0"><item.icon size={24} className="sm:w-7 sm:h-7" strokeWidth={2.5} /></div>
+                         <div className="min-w-0"><h4 className="text-lg sm:text-xl font-black tracking-tight text-[#121212] truncate">{item.title}</h4><p className="text-xs sm:text-[14px] font-black uppercase tracking-widest text-gray-300">{item.en}</p></div>
                       </div>
-                      <p className="text-sm font-bold text-[#a38a6a] mb-4 leading-relaxed">{item.goal}</p>
-                      <p className="text-[14px] text-gray-400 font-medium leading-relaxed text-[#121212]">{item.desc}</p>
+                      <p className="text-xs sm:text-sm font-bold text-[#a38a6a] mb-3 sm:mb-4 leading-relaxed">{item.goal}</p>
+                      <p className="text-[13px] sm:text-[14px] text-gray-400 font-medium leading-relaxed text-[#121212]">{item.desc}</p>
                    </div>
                 </SpotlightCard>
              </Reveal>
@@ -1280,14 +1294,14 @@ export default function App() {
       </section>
 
       {/* 10. CLOSING & FOOTER */}
-      <footer id="contact" className="bg-[#121212] pt-40 pb-20 text-white px-8 md:px-24">
+      <footer id="contact" className="bg-[#121212] pt-20 sm:pt-28 md:pt-40 pb-16 sm:pb-20 text-white px-5 sm:px-8 md:px-16 lg:px-24">
         <Reveal>
-          <div className="max-w-4xl mx-auto mb-32 text-center px-4">
-            <p className="text-[#a38a6a] font-black text-[14px] tracking-[0.5em] uppercase mb-12">Closing Statement</p>
-            <div className="space-y-8">
-              <p className="text-3xl md:text-5xl font-black tracking-tight leading-tight">非常感謝您的閱讀。</p>
-              <p className="text-xl md:text-2xl font-medium text-gray-400 leading-relaxed max-w-2xl mx-auto">如有進一步了解的需要，歡迎隨時與我聯繫。</p>
-              <p className="text-xl md:text-2xl text-[#a38a6a] font-serif italic leading-relaxed pt-4">
+          <div className="max-w-4xl mx-auto mb-20 sm:mb-28 md:mb-32 text-center px-2 sm:px-4">
+            <p className="text-[#a38a6a] font-black text-xs sm:text-[14px] tracking-[0.4em] sm:tracking-[0.5em] uppercase mb-6 sm:mb-12">Closing Statement</p>
+            <div className="space-y-6 sm:space-y-8">
+              <p className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight leading-tight">非常感謝您的閱讀。</p>
+              <p className="text-base sm:text-xl md:text-2xl font-medium text-gray-400 leading-relaxed max-w-2xl mx-auto">如有進一步了解的需要，歡迎隨時與我聯繫。</p>
+              <p className="text-base sm:text-xl md:text-2xl text-[#a38a6a] font-serif italic leading-relaxed pt-2 sm:pt-4">
                 若有幸符合貴公司徵才條件，<br />
                 我將十分期待有機會參與正式面試，<br />
                 為團隊帶來我的熱情與專業。
@@ -1296,20 +1310,20 @@ export default function App() {
           </div>
         </Reveal>
         <Reveal direction="down">
-          <div className="text-center mb-40 border-t border-white/5 pt-32">
-             <h2 className="text-5xl md:text-[10rem] font-black tracking-tighter mb-20 leading-[0.8]">Let's Build <br /><span className="font-serif italic text-[#a38a6a]">Something.</span></h2>
-             <div className="flex flex-col md:flex-row justify-center items-center gap-12">
-                <a href="mailto:amanda840604@gmail.com" className="group bg-white text-[#121212] px-14 py-7 rounded-full font-black text-[14px] uppercase tracking-[0.4em] hover:bg-[#a38a6a] hover:text-white transition-all flex items-center gap-5 shadow-2xl active:scale-95"><Mail size={22} /> AMANDA840604@GMAIL.COM</a>
-                <div className="flex gap-6">
-                   <a href="tel:0918190990" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#a38a6a] transition-all group active:scale-90"><Phone size={28} /></a>
-                   <a href="https://line.me/ti/p/" target="_blank" rel="noopener noreferrer" className="w-20 h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#06C755] transition-all group active:scale-90"><MessageCircle size={28} /></a>
+          <div className="text-center mb-20 sm:mb-28 md:mb-40 border-t border-white/5 pt-16 sm:pt-24 md:pt-32">
+             <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter mb-10 sm:mb-16 md:mb-20 leading-[0.9] sm:leading-[0.8]">Let's Build <br /><span className="font-serif italic text-[#a38a6a]">Something.</span></h2>
+             <div className="flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-12 w-full max-w-xl md:max-w-none mx-auto">
+                <a href="mailto:amanda840604@gmail.com" className="w-full sm:w-auto text-center justify-center group bg-white text-[#121212] px-8 sm:px-14 py-4 sm:py-7 rounded-full font-black text-xs sm:text-[14px] uppercase tracking-[0.2em] sm:tracking-[0.4em] hover:bg-[#a38a6a] hover:text-white transition-all flex items-center gap-3 sm:gap-5 shadow-2xl active:scale-95"><Mail size={20} className="sm:w-6 sm:h-6 shrink-0" /> <span className="truncate">AMANDA840604@GMAIL.COM</span></a>
+                <div className="flex gap-4 sm:gap-6">
+                   <a href="tel:0918190990" className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#a38a6a] transition-all group active:scale-90"><Phone size={22} className="sm:w-7 sm:h-7" /></a>
+                   <a href="https://line.me/ti/p/fk-CFFKYiU" target="_blank" rel="noopener noreferrer" className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#06C755] transition-all group active:scale-90"><MessageCircle size={22} className="sm:w-7 sm:h-7" /></a>
                 </div>
              </div>
           </div>
         </Reveal>
-        <div className="flex flex-col md:flex-row justify-between items-center py-16 border-t border-white/5 text-[14px] font-black uppercase tracking-[0.5em] text-gray-600 text-white text-white text-white">
-          <p className="text-white opacity-50 text-white">© 2026 AMANDA LAI. ALL RIGHTS RESERVED.</p>
-          <div className="flex flex-wrap gap-8 mt-12 md:mt-0 text-white text-white justify-center">
+        <div className="flex flex-col md:flex-row justify-between items-center py-10 sm:py-16 border-t border-white/5 text-xs sm:text-[14px] font-black uppercase tracking-[0.3em] sm:tracking-[0.5em] text-white">
+          <p className="text-white opacity-50 text-center md:text-left">© 2026 AMANDA LAI. ALL RIGHTS RESERVED.</p>
+          <div className="flex flex-wrap gap-8 mt-6 md:mt-0 text-white justify-center">
              <a href="https://line.me/ti/p/fk-CFFKYiU" target="_blank" rel="noopener noreferrer" className="hover:text-[#a38a6a] transition-colors flex items-center gap-2">
                 <MessageCircle size={18} />
                 LINE 聯繫
@@ -1320,46 +1334,59 @@ export default function App() {
 
       {/* --- MODAL --- */}
       {activeCategory && (
-        <div className="fixed inset-0 z-[200] bg-white flex flex-col overflow-y-auto animate-in fade-in duration-500 text-[#121212] text-[#121212]">
-          <div className="sticky top-0 z-[210] bg-white/90 backdrop-blur-xl border-b border-gray-100 px-8 md:px-24 py-10 flex justify-between items-center text-[#121212]">
-            <div className="flex items-center gap-6">
-              <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-[#121212]">
-                {activeCategory} <span className="text-[#a38a6a] font-normal italic lowercase font-serif ml-2">Gallery Collection</span>
+        <div className="fixed inset-0 z-[200] bg-white flex flex-col overflow-y-auto animate-in fade-in duration-500 text-[#121212]">
+          <div className="sticky top-0 z-[210] bg-white/95 backdrop-blur-xl border-b border-gray-100 px-4 sm:px-8 md:px-24 py-3.5 sm:py-5 md:py-8 flex justify-between items-center text-[#121212]">
+            <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+              <h2 className="text-lg sm:text-2xl md:text-4xl font-black uppercase tracking-tight text-[#121212] truncate">
+                {activeCategory} <span className="text-[#a38a6a] font-normal italic lowercase font-serif ml-1 sm:ml-2 text-xs sm:text-lg md:text-2xl">Collection</span>
               </h2>
             </div>
-            <button onClick={() => setActiveCategory(null)} className="group flex items-center gap-6 bg-[#121212] text-white px-10 py-4 rounded-full hover:bg-[#a38a6a] transition-all active:scale-90 shadow-xl">
-              <span className="text-[14px] font-black uppercase tracking-widest">Close Gallery</span>
-              <X size={20} />
+            <button 
+              onClick={() => setActiveCategory(null)} 
+              className="group flex items-center gap-1.5 sm:gap-3 bg-[#121212] text-white px-3.5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full hover:bg-[#a38a6a] transition-all active:scale-90 shadow-xl shrink-0"
+              aria-label="關閉作品藝廊"
+            >
+              <span className="text-xs sm:text-[14px] font-black uppercase tracking-wider hidden sm:inline">Close Gallery</span>
+              <span className="text-xs font-black uppercase tracking-wider sm:hidden">關閉</span>
+              <X size={16} className="sm:w-5 sm:h-5 shrink-0" />
             </button>
           </div>
-          <div className="px-8 md:px-24 py-24 max-w-7xl mx-auto w-full text-[#121212]">
+          <div className="px-4 sm:px-8 md:px-24 py-6 sm:py-12 md:py-20 max-w-7xl mx-auto w-full text-[#121212]">
             {currentFilterOptions.length > 0 && (
-              <div className="flex gap-4 mb-24 overflow-x-auto pb-6 scrollbar-hide">
+              <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-12 md:mb-16">
                 {currentFilterOptions.map(f => (
-                  <button key={f} onClick={() => setActiveFilter(f)} className={`whitespace-nowrap px-10 py-4 rounded-full text-base font-black uppercase tracking-[0.2em] transition-all ${activeFilter === f ? 'bg-[#121212] text-white' : 'bg-gray-50 text-gray-400 hover:bg-gray-100'}`}>
-                    {f} <span className="ml-4 opacity-40">({getFilterCount(activeCategory, f)})</span>
+                  <button 
+                    key={f} 
+                    onClick={() => setActiveFilter(f)} 
+                    className={`px-3.5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 rounded-full text-xs sm:text-sm md:text-base font-black uppercase tracking-wider transition-all shadow-sm ${
+                      activeFilter === f 
+                        ? 'bg-[#121212] text-white shadow-md' 
+                        : 'bg-gray-50 text-gray-500 hover:bg-gray-100 hover:text-gray-900 border border-gray-100'
+                    }`}
+                  >
+                    {f} <span className="ml-1 opacity-50">({getFilterCount(activeCategory, f)})</span>
                   </button>
                 ))}
               </div>
             )}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-20">
               {filteredProjects.map((proj, i) => (
-                 <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
-                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[3rem] bg-white relative p-4 aspect-[3/2]">
+                 <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white rounded-[2rem] sm:rounded-[3rem] border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700">
+                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[2rem] sm:rounded-t-[3rem] bg-white relative p-4 aspect-[3/2]">
                       <img src={proj.img} alt={proj.title} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.05]" />
                    </div>
-                   <div className="px-10 pb-10 pt-4 flex-grow flex flex-col justify-end">
-                      <div className="flex justify-between items-center mb-3">
-                         <h4 className="text-3xl font-black tracking-tight">{proj.title}</h4>
-                         <div className="w-12 h-12 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all shrink-0 ml-4"><ExternalLink size={20} /></div>
+                   <div className="px-6 sm:px-10 pb-6 sm:pb-10 pt-3 sm:pt-4 flex-grow flex flex-col justify-end">
+                      <div className="flex justify-between items-center mb-2 sm:mb-3">
+                         <h4 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">{proj.title}</h4>
+                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 flex items-center justify-center text-gray-300 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all shrink-0 ml-3 sm:ml-4"><ExternalLink size={18} /></div>
                       </div>
                       {proj.desc && (
-                        <p className="text-gray-500 text-sm md:text-base leading-relaxed mb-6 font-medium line-clamp-2">
+                        <p className="text-gray-500 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6 font-medium line-clamp-2">
                           {proj.desc}
                         </p>
                       )}
-                      <div className="flex flex-wrap gap-3">
-                        {proj.tags.map(tag => (<span key={tag} className="text-[12px] font-black uppercase px-4 py-1.5 bg-[#a38a6a]/10 rounded-full text-[#a38a6a] tracking-widest">{tag}</span>))}
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
+                        {proj.tags.map(tag => (<span key={tag} className="text-[11px] sm:text-[12px] font-black uppercase px-3 sm:px-4 py-1 sm:py-1.5 bg-[#a38a6a]/10 rounded-full text-[#a38a6a] tracking-widest">{tag}</span>))}
                       </div>
                    </div>
                  </div>
@@ -1371,66 +1398,66 @@ export default function App() {
 
       {/* --- PROJECT DETAILS MODAL --- */}
       {selectedProject && (
-        <div className="fixed inset-0 z-[300] flex justify-center items-center p-4 sm:p-8 md:p-12">
+        <div className="fixed inset-0 z-[300] flex justify-center items-center p-2 sm:p-6 md:p-12">
           {/* Backdrop */}
           <div onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-[#121212]/80 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"></div>
           
           {/* Modal Content */}
-          <div className="relative bg-white w-full max-w-7xl h-[90vh] md:h-full max-h-[90vh] md:max-h-full rounded-[2rem] shadow-2xl flex flex-col animate-in zoom-in-95 duration-500 cubic-bezier">
+          <div className="relative bg-white w-full max-w-7xl h-[94vh] md:h-full max-h-[94vh] md:max-h-full rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl flex flex-col animate-in zoom-in-95 duration-500 cubic-bezier">
             
             {/* Header & Close */}
-            <div className="flex-shrink-0 flex items-center justify-between p-8 md:p-10 border-b border-gray-100 z-10 sticky top-0 bg-white/90 backdrop-blur-md rounded-t-[2rem]">
-               <div className="flex flex-col">
-                  <h3 className="text-3xl md:text-4xl font-black tracking-tight text-[#121212]">{selectedProject.title}</h3>
-                  <div className="flex gap-2 mt-4 flex-wrap">
+            <div className="flex-shrink-0 flex items-center justify-between p-5 sm:p-8 md:p-10 border-b border-gray-100 z-10 sticky top-0 bg-white/95 backdrop-blur-md rounded-t-[1.5rem] sm:rounded-t-[2rem] gap-4">
+               <div className="flex flex-col min-w-0">
+                  <h3 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#121212] truncate">{selectedProject.title}</h3>
+                  <div className="flex gap-1.5 sm:gap-2 mt-2 sm:mt-4 flex-wrap">
                     {selectedProject.tags.map(tag => (
-                      <span key={tag} className="text-[14px] font-bold text-[#a38a6a] bg-[#a38a6a]/10 px-4 py-1.5 rounded-full uppercase tracking-widest">{tag}</span>
+                      <span key={tag} className="text-xs sm:text-[14px] font-bold text-[#a38a6a] bg-[#a38a6a]/10 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full uppercase tracking-widest">{tag}</span>
                     ))}
                   </div>
                </div>
-               <button onClick={() => setSelectedProject(null)} className="flex items-center justify-center w-14 h-14 bg-gray-50 hover:bg-gray-100 rounded-full transition-colors group">
-                 <X size={24} className="text-gray-500 group-hover:text-[#121212] transition-colors" />
+               <button onClick={() => setSelectedProject(null)} className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-gray-50 hover:bg-gray-100 rounded-full transition-colors group shrink-0">
+                 <X size={20} className="sm:w-6 sm:h-6 text-gray-500 group-hover:text-[#121212] transition-colors" />
                </button>
             </div>
 
             {/* Scrollable Content */}
             <div className="flex-grow overflow-y-auto p-4 sm:p-8 md:p-12 custom-scrollbar bg-[#fdfdfd]">
-               <div className="max-w-5xl mx-auto space-y-10">
+               <div className="max-w-5xl mx-auto space-y-6 sm:space-y-10">
                  {/* 專案文字簡介 */}
                  {selectedProject.brief ? (
-                   <div className="bg-white rounded-[2rem] p-8 md:p-10 border border-gray-100 shadow-sm">
-                     <h4 className="text-xl md:text-2xl font-black text-[#121212] mb-6 flex items-center gap-3">
-                       <span className="w-2.5 h-6 bg-[#a38a6a] rounded-full inline-block"></span>
+                   <div className="bg-white rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 shadow-sm">
+                     <h4 className="text-lg sm:text-xl md:text-2xl font-black text-[#121212] mb-4 sm:mb-6 flex items-center gap-2.5 sm:gap-3">
+                       <span className="w-2 sm:w-2.5 h-5 sm:h-6 bg-[#a38a6a] rounded-full inline-block"></span>
                        專案簡介與執行策略
                      </h4>
-                     <div className="flex flex-col gap-6 w-full">
+                     <div className="flex flex-col gap-4 sm:gap-6 w-full">
                        {selectedProject.brief.map((item: any, idx: number) => (
-                         <div key={idx} className="w-full p-6 md:p-8 rounded-2xl bg-gray-50/70 border border-gray-100/80 flex flex-col justify-start">
-                           <div className="flex items-center gap-2 mb-2.5">
+                         <div key={idx} className="w-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-gray-50/70 border border-gray-100/80 flex flex-col justify-start">
+                           <div className="flex items-center gap-2 mb-2">
                              <span className="w-2 h-2 rounded-full bg-[#a38a6a]"></span>
-                             <span className="text-sm font-black text-[#a38a6a] tracking-wider uppercase">{item.label}</span>
+                             <span className="text-xs sm:text-sm font-black text-[#a38a6a] tracking-wider uppercase">{item.label}</span>
                            </div>
-                           <p className="text-gray-700 text-[15px] leading-relaxed font-medium text-justify whitespace-pre-line">{item.content}</p>
+                           <p className="text-gray-700 text-[14px] sm:text-[15px] leading-relaxed font-medium text-justify whitespace-pre-line">{item.content}</p>
                          </div>
                        ))}
                      </div>
                    </div>
                  ) : selectedProject.desc ? (
-                   <div className="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-100 shadow-sm">
-                     <p className="text-gray-600 text-base md:text-lg leading-relaxed font-medium">{selectedProject.desc}</p>
+                   <div className="bg-white rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-6 md:p-8 border border-gray-100 shadow-sm">
+                     <p className="text-gray-600 text-sm sm:text-base md:text-lg leading-relaxed font-medium">{selectedProject.desc}</p>
                    </div>
                  ) : null}
 
                  {/* 圖片展示 */}
-                 <div className="space-y-8 flex flex-col items-center">
+                 <div className="space-y-4 sm:space-y-8 flex flex-col items-center">
                     {selectedProject.detailsImages ? (
                        selectedProject.detailsImages.map((img: string, idx: number) => (
-                         <div key={idx} className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
+                         <div key={idx} className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
                             <img src={img} alt={`${selectedProject.title} details`} className="w-full h-auto object-contain" />
                          </div>
                        ))
                     ) : (
-                       <div className="w-full rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
+                       <div className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white shadow-sm border border-gray-100">
                           <img src={selectedProject.img} alt={`${selectedProject.title} thumbnail`} className="w-full h-auto object-contain" />
                        </div>
                     )}
