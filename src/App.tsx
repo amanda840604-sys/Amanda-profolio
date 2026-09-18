@@ -324,6 +324,20 @@ const projectData = {
       category: '自行車零件'
     },
     {
+      id: 18,
+      title: 'RA車把手 塑膠裝袋優化方案',
+      desc: '針對車把手塑膠裝袋實務問題進行分析與改善，優化包裝流程與產品防護。',
+      brief: [
+        { label: '專案任務', content: '針對現行 RA 車把手在塑膠裝袋包裝作業上的痛點與問題進行分析，評估並規劃更完善的裝袋優化方案。' },
+        { label: '執行策略', content: '深入探討既有裝袋包裝遭遇之實務問題，提出針對性的包裝改善策略，兼顧作業便利性與產品表面防護。' },
+        { label: '最終成果', content: '完成 RA 車把手塑膠裝袋優化評估，提供清晰的改善方向與圖面分析，作為後續包裝標準化與品質提升之依據。' }
+      ],
+      img: '/Giant problem_01.jpg',
+      detailsImages: ['/Giant problem_01.jpg', '/Giant problem_02.jpg'],
+      tags: ['包裝優化', '自行車', '裝袋方案', 'RA車把手'],
+      category: '自行車零件'
+    },
+    {
       id: 12,
       title: '立管 包裝設計',
       desc: '開發無塑環保結構，取代現有塑膠袋包裝，確保足夠防護力。',
@@ -333,7 +347,7 @@ const projectData = {
         { label: '最終成果', content: '提前建立 L 型與 I 型立管的無塑包裝資料庫。\n當客戶提出減塑需求時，能快速提供具備量產可行性的提案，有效縮短前置作業時間。' }
       ],
       img: '/Stem01.jpg',
-      detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'],
+      detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem03-1.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'],
       tags: ['包裝設計', '減塑', '自行車', 'Stem'],
       category: '自行車零件'
     },
@@ -361,7 +375,7 @@ const projectData = {
         { label: '最終成果', content: '提前建立座管的單件與多件無塑包裝資料庫。\n當客戶提出減塑需求時，能快速提供具備量產可行性的提案，有效縮短前置評估與作業時間。' }
       ],
       img: '/Seatpost01.jpg',
-      detailsImages: ['/Seatpost01.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost03-1.jpg', '/Seatpost03-2.jpg', '/Seatpost04.jpg', '/Seatpost04-1.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost08-1.jpg', '/Seatpost09.jpg', '/Seatpost09-1.jpg'],
+      detailsImages: ['/Seatpost01.jpg', '/Seatpost01-1.jpg', '/Seatpost01-2.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost03-1.jpg', '/Seatpost03-2.jpg', '/Seatpost03-2-1.jpg', '/Seatpost03-3.jpg', '/Seatpost04.jpg', '/Seatpost04-1.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost08-1.jpg', '/Seatpost09.jpg', '/Seatpost09-1.jpg'],
       tags: ['包裝設計', '減塑', '自行車', 'Seatpost'],
       category: '自行車零件'
     },
@@ -406,6 +420,20 @@ const projectData = {
       detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'],
       tags: ['包裝設計', '減塑', '電動載具', '結構設計'],
       category: '電動載具'
+    },
+    {
+      id: 19,
+      title: '全紙化無塑包裝 專利申請',
+      desc: '因應全球永續趨勢與歐盟 PPWR 規範，針對自行車零件提出七項全紙化無塑包裝專利結構與綠色閉環物流方案。',
+      brief: [
+        { label: '專案任務', content: '因應全球永續低碳趨勢與歐盟 PPWR / EPR 減塑法規壁壘，針對自行車零件全面淘汰傳統塑膠套袋，研發具備高防護力之「全紙化無塑包裝」創新結構，並進行七項專利佈局與申請。' },
+        { label: '執行策略', content: '1. 核心技術：單一瓦楞紙材質 (Mono-material) 與立體懸浮折線卡槽，達成免工具組裝與無膠全卡扣物理鎖固，兼顧緩衝吸震與端部尖銳防穿刺。\n2. 規格化佈局：涵蓋多件裝車把手（TR 平把）、多件裝座管與立管之分層模組化抗壓陣列。\n3. 綠色物流：結合高剛性循環 A 格塑膠籃與可折平全紙內卡，建構 B2B 零廢棄閉環供應鏈。' },
+        { label: '最終成果', content: '完成七項創新包裝專利規劃與技術說明書撰寫，預計於 2026 Q4 完成正式送件與內部審核，確保在 2027 台北國際自行車展公開展出前取得完整專利保護地位。' }
+      ],
+      img: '/patent01.JPG',
+      detailsImages: ['/patent01.JPG', '/patent02.JPG', '/patent03.JPG', '/patent04.JPG', '/patent05.JPG', '/patent06.JPG', '/patent07.JPG'],
+      tags: ['專利申請', '全紙化無塑', '自行車零件', '結構設計', 'ESG / PPWR'],
+      category: '專利申請'
     }
   ],
   Product: [
@@ -451,7 +479,7 @@ export default function App() {
   // --- 計算屬性 ---
   const currentFilterOptions = activeCategory ? (
     activeCategory === 'Packaging' 
-      ? ['全部包裝', '消費性電子產品', '自行車零件', '電動載具']
+      ? ['全部包裝', '消費性電子產品', '自行車零件', '電動載具', '專利申請']
       : activeCategory === 'Product'
       ? ['全部產品', '廚電/家電', '醫療/穿戴', '玩具設計', '手繪作品']
       : activeCategory === 'Graphic'
