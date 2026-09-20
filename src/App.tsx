@@ -877,6 +877,25 @@ export default function App() {
                           </p>
                         </div>
                       </div>
+
+                      {/* Item 3 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div className="w-full min-w-0">
+                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 leading-snug">
+                            車把手尾數箱品質異常問題解決
+                          </h5>
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                            HANDLEBAR ODD-LOT CARTON QUALITY ISSUE RESOLUTION
+                          </span>
+                          <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
+                            針對車把手尾數箱包裝品質異常問題進行根本原因分析，並評估引進全紙緩衝填充材機台以確保運輸安全與落實減塑理念。
+                          </p>
+                          <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                            Resolved quality anomalies in handlebar odd-lot packing boxes through root-cause troubleshooting, evaluating and introducing paper-cushioning machinery to safeguard transit while eliminating plastic.
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -1204,7 +1223,7 @@ export default function App() {
 
           {/* 專業經歷與基礎教育 (整合為單一連續主軸) */}
           {[
-            { company: "久鼎金屬實業股份有限公司", title: "包裝設計工程師", date: "2025.08 - PRESENT", duration: "仍在職", location: "彰化縣秀水鄉・自行車及其零件製造業 500人+", responsibilities: ["減塑全紙化包裝設計提案", "包裝廠商樣品追蹤、品質問題改善確認", "落摔測試與包裝設計結構調整"], achievements: ["自行車零件（車把手、座管、立管、快拆束仔等）共 21 款全紙包裝設計提案", "車把手尾數箱品質異常問題解決（評估全紙填充材機台）"], tools: ["減塑全紙化", "結構調整", "落摔測試", "包裝設計"], type: "work", icon: Briefcase, image: "/tranzx-logo-vector.png" },
+            { company: "久鼎金屬實業股份有限公司", title: "包裝設計工程師", date: "2025.08 - PRESENT", duration: "仍在職", location: "彰化縣秀水鄉・自行車及其零件製造業 500人+", responsibilities: ["減塑全紙化包裝設計提案", "包裝廠商樣品追蹤、品質問題改善確認", "落摔測試與包裝設計結構調整"], achievements: ["自行車零件（車把手、座管、立管、快拆束仔等）共 21 款全紙包裝設計提案", "車載具（電動滑板車、電動機車）共 3 款全紙包裝設計提案", "車把手尾數箱品質異常問題解決（評估全紙填充材機台）"], tools: ["減塑全紙化", "結構調整", "落摔測試", "包裝設計"], type: "work", icon: Briefcase, image: "/tranzx-logo-vector.png" },
             { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略", "在消費性電子產品 RFQ 階段，主導包裝結構設計、2D 工程圖繪製與初步成本分析"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
             { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
             { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
