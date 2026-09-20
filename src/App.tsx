@@ -827,19 +827,72 @@ export default function App() {
 
               {activeAboutTab === 'experience' && (
                 <div className="space-y-6 sm:space-y-8 text-[#121212]">
-                  {/* 第一張卡片：包裝設計領域 (Image 3) */}
+                  {/* 第一張卡片：久鼎金屬實業股份有限公司 */}
                   <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
                     <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
                       <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
                         <Box size={22} className="text-[#a38a6a]" />
                       </div>
                       <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">包裝設計領域</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">PACKAGING DESIGN MASTERY</span>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">久鼎金屬實業股份有限公司</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">TRANZX / JD COMPONENTS・包裝設計工程師 (目前在職)</span>
                       </div>
                     </div>
 
-                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-8 sm:space-y-10">
+                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-8 sm:space-y-9">
+                      {/* Item 1 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div className="w-full min-w-0">
+                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 leading-snug">
+                            自行車零組件包裝減塑專案
+                          </h5>
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                            BICYCLE COMPONENTS PACKAGING PLASTIC REDUCTION PROJECT
+                          </span>
+                          <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
+                            主導車把手、座管、立管與快拆束仔等零件的包裝優化，評估並全面汰換現行使用的塑膠袋，導入無塑環保材質，推動產品線的綠色轉型。
+                          </p>
+                          <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                            Spearheaded packaging optimization for bicycle components including handlebars, seatposts, stems, and quick releases; systematically replaced conventional plastic bags with eco-friendly plastic-free materials to drive green product line transformation.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Item 2 */}
+                      <div className="flex items-start gap-3.5 sm:gap-4">
+                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                        <div className="w-full min-w-0">
+                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 leading-snug">
+                            電動載具整機包裝結構設計
+                          </h5>
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                            E-MOBILITY COMPLETE VEHICLE PACKAGING STRUCTURAL DESIGN
+                          </span>
+                          <p className="text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
+                            針對電動機車與電動滑板車，進行整機無塑包裝概念規劃。
+                          </p>
+                          <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
+                            Conducted complete vehicle sustainable packaging structural design and concept planning for electric motorcycles and electric scooters.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 第二張卡片：美律實業股份有限公司 */}
+                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
+                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                        <Briefcase size={22} className="text-[#a38a6a]" />
+                      </div>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">美律實業股份有限公司</h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">MERRY ELECTRONICS・包裝工程師</span>
+                      </div>
+                    </div>
+
+                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-8 sm:space-y-9">
                       {/* Item 1 */}
                       <div className="flex items-start gap-3.5 sm:gap-4">
                         <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
@@ -903,63 +956,6 @@ export default function App() {
                           </p>
                           <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
                             Actively co-developed two HyperX flagship gaming headsets, acquiring comprehensive hands-on mastery spanning structural modeling, prototype validation, and volume production rollout.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 第二張卡片：產品設計與跨部門協作 (Image 4) */}
-                  <div className="bg-white rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 shadow-xl shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212]">
-                    <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
-                        <MonitorSmartphone size={22} className="text-[#a38a6a]" />
-                      </div>
-                      <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 leading-tight">產品設計與跨部門協作</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">PRODUCT DESIGN & CROSS-FUNCTIONAL SYNERGY</span>
-                      </div>
-                    </div>
-
-                    <div className="border-t border-gray-100 pt-6 sm:pt-8 space-y-8 sm:space-y-10">
-                      {/* Item 1 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Layers size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <h5 className="text-base font-black text-gray-900 mb-1.5">主導廚電產品開發</h5>
-                          <p className="text-sm text-gray-700 font-medium mb-1.5 leading-relaxed">
-                            主導易清系列檯面爐（G2522AG、G2623AG）與近吸式油煙機（R7610、R7650）完整開發流程。
-                          </p>
-                          <p className="text-xs text-gray-500 leading-relaxed">
-                            Led full-cycle development of easy-clean gas cooktops (G2522AG, G2623AG) and incline range hoods (R7610, R7650).
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 2 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Award size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <h5 className="text-base font-black text-gray-900 mb-1.5">獲獎與產品落地</h5>
-                          <p className="text-sm text-gray-700 font-medium mb-1.5 leading-relaxed">
-                            親自承辦金點設計競賽提案並獲得 2 件入選（R3750B、P0233／235）；協助外觀與結構開發並導入量產流程，成功落地產品。
-                          </p>
-                          <p className="text-xs text-gray-500 leading-relaxed">
-                            Won Golden Pin Design Award selections for 2 projects (R3750B, P0233/235); coordinated industrial styling and engineering to ensure successful commercialization.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 3 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Users size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <h5 className="text-base font-black text-gray-900 mb-1.5">供應商協作能力</h5>
-                          <p className="text-sm text-gray-700 font-medium mb-1.5 leading-relaxed">
-                            能與供應商與工廠密切協作，確保設計順利導入量產並維持品質穩定。
-                          </p>
-                          <p className="text-xs text-gray-500 leading-relaxed">
-                            Collaborated seamlessly with tooling suppliers and assembly lines, guaranteeing flawless tooling handover and robust quality consistency.
                           </p>
                         </div>
                       </div>
