@@ -850,20 +850,20 @@ export default function App() {
                           <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
                             PACKAGING PROPOSALS FOR INTERNATIONAL BRANDS (25 PROJECTS)
                           </span>
-                          <div className="space-y-1 text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
+                          <div className="space-y-1.5 text-sm sm:text-[15px] text-gray-700 leading-relaxed font-medium mb-3">
                             <p>
-                              根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略，<strong className="font-bold text-gray-900">接案達成率 40%</strong>。
+                              根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略。
                             </p>
                             <p>
-                              在消費性電子產品 RFQ 階段，主導包裝結構設計、2D 工程圖繪製與初步成本分析，成功協助研發單位達成約 <strong className="font-bold text-gray-900">10% 的包材成本節省</strong>。
+                              在消費性電子產品 RFQ 階段，主導包裝結構設計、2D 工程圖繪製與初步成本分析。
                             </p>
                           </div>
                           <div className="space-y-1 text-xs sm:text-[13px] text-gray-500 leading-relaxed">
                             <p>
-                              Formulated packaging proposals for Tier-1 international brand audio products (TWS, Headsets, Soundbars). Engineered segmented packaging architecture across multiple price tiers, achieving a <strong className="font-bold text-gray-700">40% project acquisition success rate</strong>.
+                              Formulated packaging proposals for Tier-1 international brand audio products (TWS, Headsets, Soundbars). Engineered segmented packaging architecture across multiple price tiers to meet diverse market demands and brand strategies.
                             </p>
                             <p>
-                              Spearheaded structural packaging engineering, 2D drafting, and preliminary cost analysis during the RFQ stage, delivering an <strong className="font-bold text-gray-700">approx. 10% packaging material cost reduction</strong> for the engineering division.
+                              Spearheaded structural packaging engineering, 2D drafting, and preliminary cost analysis during the RFQ stage for consumer electronics.
                             </p>
                           </div>
                         </div>
@@ -1209,7 +1209,7 @@ export default function App() {
           {/* 專業經歷與基礎教育 (整合為單一連續主軸) */}
           {[
             { company: "久鼎金屬實業股份有限公司", title: "包裝設計工程師", date: "2025.08 - PRESENT", duration: "仍在職", location: "彰化縣秀水鄉・自行車及其零件製造業 500人+", responsibilities: ["減塑全紙化包裝設計提案", "包裝廠商樣品追蹤、品質問題改善確認", "落摔測試與包裝設計結構調整"], achievements: ["自行車零件（車把手、座管、立管、快拆束仔等）共 21 款全紙包裝設計提案", "車把手尾數箱品質異常問題解決（評估全紙填充材機台）"], tools: ["減塑全紙化", "結構調整", "落摔測試", "包裝設計"], type: "work", icon: Briefcase, image: "/tranzx-logo-vector.png" },
-            { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "提出多元價位包裝設計方案，滿足品牌策略，接案達成率達 40%", "於 RFQ 階段設計包裝及成本分析，研發成本節省約 10%"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
+            { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略", "在消費性電子產品 RFQ 階段，主導包裝結構設計、2D 工程圖繪製與初步成本分析"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
             { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
             { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
             { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase, image: "/cic-logo.png.png" },
