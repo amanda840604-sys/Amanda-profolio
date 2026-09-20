@@ -778,10 +778,10 @@ export default function App() {
                     <div className="space-y-6 text-sm sm:text-[15px] leading-relaxed">
                       <div>
                         <p className="text-gray-800 font-medium mb-2 leading-relaxed">
-                          畢業於 <strong className="font-black text-gray-900">國立臺灣科技大學 工業設計系</strong>，擁有 6 年產品與包裝設計實務經驗，熟悉從外觀設計、結構開發到量產製程的完整開發流程。
+                          畢業於 <strong className="font-black text-gray-900">國立臺灣科技大學 工業設計系</strong>，擁有約 6 年產品設計經驗與 3 年多的包裝設計實務經驗，熟悉從外觀設計、結構開發到量產製程的完整開發流程。
                         </p>
                         <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
-                          I graduated from <strong className="font-bold text-gray-700">National Taiwan University of Science and Technology</strong> with a degree in <strong className="font-bold text-gray-700">Industrial Design</strong>. With 6 years of experience in product and packaging design, I'm familiar with the full development process—from early concept and structure planning to mass production.
+                          I graduated in <strong className="font-bold text-gray-700">Industrial Design</strong> from <strong className="font-bold text-gray-700">National Taiwan University of Science and Technology</strong>. I have about 6 years of experience in product design and over 3 years in packaging design, covering the full development process from styling and structure to mass production.
                         </p>
                       </div>
 
@@ -790,7 +790,7 @@ export default function App() {
                           擅長品牌前期市場調研與定位分析，能根據產品需求進行 2D／3D 設計規劃，執行草模驗證、建模與工程圖繪製，並具備「<strong className="font-black text-gray-900">依照預算與成本條件調整設計策略的靈活應變能力</strong>」。
                         </p>
                         <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed">
-                          I focus on brand research, positioning, and translating product needs into design solutions through 2D/3D design, prototyping, 3D modeling, and engineering drawings. I <strong className="font-bold text-gray-700">adapt design strategies based on cost and budget</strong>.
+                          I specialize in market research, brand positioning, and 2D/3D design—including mockups, 3D modeling, and engineering drawings. I am skilled at <strong className="font-bold text-gray-700">adjusting design strategies to meet budget and cost goals</strong>.
                         </p>
                       </div>
                     </div>
@@ -814,10 +814,10 @@ export default function App() {
                       </p>
                       <div className="space-y-1.5 text-xs sm:text-[13px] text-gray-500 leading-relaxed">
                         <p>
-                          Currently, I work at Merry Electronics Co., Ltd., designing packaging for international electronics brands, including TWS earbuds, gaming headsets, and soundbars.
+                          Currently at JD Components Co., Ltd., I design and develop packaging for e-mobility vehicles and bicycle parts.
                         </p>
                         <p>
-                          I focus on <strong className="font-bold text-gray-700">sustainable packaging, cross-functional teamwork, and aligning design with manufacturing</strong>.
+                          I continue to strengthen my skills in <strong className="font-bold text-gray-700">eco-friendly packaging structures, cross-functional collaboration, and practical manufacturing</strong>.
                         </p>
                       </div>
                     </div>
@@ -1051,10 +1051,10 @@ export default function App() {
                         <Award size={20} className="text-[#a38a6a] shrink-0 mt-1" />
                         <div>
                           <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
-                            持續提升設計落地與製程協作能力，累積更多實戰開發經驗。
+                            持續提升設計落地的精準度，累積更多實戰開發經驗。
                           </p>
                           <p className="text-xs text-gray-500 leading-relaxed">
-                            Continually advance design realization and manufacturing execution, deepening hands-on hardware development expertise.
+                            Continually enhance design implementation precision and accumulate hands-on development expertise.
                           </p>
                         </div>
                       </div>
