@@ -1064,10 +1064,10 @@ export default function App() {
                         <TrendingUp size={20} className="text-[#a38a6a] shrink-0 mt-1" />
                         <div>
                           <p className="text-sm sm:text-[15px] font-bold text-gray-900 leading-relaxed mb-1.5">
-                            建立包裝設計與市場趨勢的連結敏感度，結合行銷視角強化整合能力，朝向具策略思維的設計開發整合型人才邁進。
+                            建立包裝設計與市場趨勢的連結敏感度，朝向具策略思維的設計開發整合型人才邁進。
                           </p>
                           <p className="text-xs text-gray-500 leading-relaxed">
-                            Bridge packaging innovation with commercial market trends and marketing insights, advancing into an integrative design strategist with high business impact.
+                            Sharpen sensitivity to market trends in packaging design, advancing toward an integrative design strategist with strategic insight.
                           </p>
                         </div>
                       </div>
