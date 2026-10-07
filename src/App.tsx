@@ -1,5 +1,18 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Briefcase, GraduationCap, LayoutGrid, Award, Mail, ChevronRight, ChevronDown, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers, User, Target, Lightbulb, Star, Package, MonitorSmartphone, Users, CheckCircle2, Flag, Rocket, Leaf, TrendingUp, Globe, Scale, UserCheck, MessageSquare, Flame, Menu, Sun, Moon } from 'lucide-react';
+import {
+  Lang,
+  navItems,
+  heroContent,
+  aboutContent,
+  portfolioContent,
+  projectEnMap,
+  chroniclesContent,
+  skillsContent,
+  coursesContent,
+  lifestyleContent,
+  footerContent
+} from './i18n';
 
 /* --- 互動組件 1：流體式滾動漸出 (Reveal) --- */
 const Reveal = ({ children, delay = 0, className = "", direction = "up" }: any) => {
@@ -82,7 +95,7 @@ const PickleballIcon = ({ size = 24, className = "", strokeWidth = 2 }: any) => 
 );
 
 /* --- 互動組件 3：課程專用輪播卡片 (Course Card) --- */
-const CourseCard = ({ course, delay, ...props }: any) => {
+const CourseCard = ({ course, delay, lang = 'zh', ...props }: any) => {
   const [imgIndex, setImgIndex] = useState(0);
 
   useEffect(() => {
@@ -93,11 +106,17 @@ const CourseCard = ({ course, delay, ...props }: any) => {
     return () => clearInterval(interval);
   }, [course.imgs]);
 
+  const courseEn = coursesContent.courseEnMap[course.id as keyof typeof coursesContent.courseEnMap];
+  const displayCategory = lang === 'en' && courseEn ? courseEn.category : course.category;
+  const displayTitle = lang === 'en' && courseEn ? courseEn.title : course.title;
+  const displayOrg = lang === 'en' && courseEn ? courseEn.org : course.org;
+  const displayHours = lang === 'en' ? `Total : ${course.hours.replace('小時', 'hrs')}` : `總時數 : ${course.hours}`;
+
   return (
     <Reveal delay={delay} {...props}>
-       <div className="group/course flex flex-col hover:shadow-2xl transition-all duration-700 rounded-[3rem] bg-white dark:bg-[#161617] border border-transparent dark:border-white/10 overflow-hidden h-full">
+       <div className="group/course flex flex-col hover:shadow-2xl transition-all duration-700 rounded-[3rem] bg-white dark:bg-[#1a1b24] border border-transparent dark:border-white/10 dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] overflow-hidden h-full">
           {/* Image Area */}
-          <div className="h-[24rem] overflow-hidden relative bg-white dark:bg-[#181819] grayscale group-hover/course:grayscale-0 transition-all duration-1000">
+          <div className="h-[24rem] overflow-hidden relative bg-white dark:bg-[#222430] grayscale group-hover/course:grayscale-0 transition-all duration-1000">
              {course.imgs ? (
                 <div className="w-full h-full relative">
                    {course.imgs.map((img: string, i: number) => {
@@ -129,11 +148,11 @@ const CourseCard = ({ course, delay, ...props }: any) => {
              )}
              
              {/* Gradient Mask (Interests Style) */}
-             <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/40 to-transparent dark:from-[#181819] dark:via-[#181819]/40 group-hover:opacity-20 transition-opacity duration-1000 z-30"></div>
+             <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/40 to-transparent dark:from-[#20222e] dark:via-[#20222e]/40 group-hover:opacity-20 transition-opacity duration-1000 z-30"></div>
              
              {course.status && (
-                <div className="absolute inset-0 flex items-center justify-center bg-black/20 z-40">
-                  <div className="px-6 py-3 bg-[#121212]/90 backdrop-blur-md rounded-2xl text-white text-xs font-black tracking-widest text-center uppercase border border-white/10 shadow-2xl">
+                <div className="absolute inset-0 flex items-center justify-center bg-black/30 z-40">
+                  <div className="px-6 py-3 bg-[#121212]/90 dark:bg-[#1a1b24]/95 backdrop-blur-md rounded-2xl text-white text-xs font-black tracking-widest text-center uppercase border border-white/10 dark:border-[#a38a6a]/30 shadow-2xl">
                     {course.status}
                   </div>
                 </div>
@@ -141,31 +160,31 @@ const CourseCard = ({ course, delay, ...props }: any) => {
           </div>
 
           {/* Overlapping Content Area (Interests Style) */}
-          <div className="p-10 flex flex-col flex-grow relative bg-white dark:bg-[#1a1a1c] -mt-12 mx-6 rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] border border-gray-100 dark:border-white/10 mb-6 text-[#121212] dark:text-[#f0f0f0] group-hover:-translate-y-4 transition-transform duration-700 ease-out z-50">
+          <div className="p-10 flex flex-col flex-grow relative bg-white dark:bg-[#20222e] -mt-12 mx-6 rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 mb-6 text-[#121212] dark:text-[#f0f0f0] group-hover:-translate-y-4 transition-transform duration-700 ease-out z-50">
              <div className="flex items-center gap-4 mb-6">
-               <span className="text-[12px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 rounded-full uppercase tracking-widest">{course.category}</span>
+               <span className="text-[12px] font-black text-[#a38a6a] px-4 py-1.5 bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 rounded-full uppercase tracking-widest">{displayCategory}</span>
                <span className="text-[12px] font-bold text-gray-400 dark:text-gray-400 flex items-center gap-2 uppercase tracking-widest"><Calendar size={12}/> {course.date}</span>
              </div>
              
-             <h4 className="text-2xl font-black mb-8 group-hover/course:text-[#a38a6a] transition-colors leading-tight min-h-[3rem] text-[#121212] dark:text-white">{course.title}</h4>
+             <h4 className="text-2xl font-black mb-8 group-hover/course:text-[#a38a6a] transition-colors leading-tight min-h-[3rem] text-[#121212] dark:text-white whitespace-pre-line">{displayTitle}</h4>
              
              <div className="mt-auto pt-6 border-t border-gray-50 dark:border-white/10 space-y-4">
                 <div className="flex items-center gap-4">
-                   <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-white/5 flex items-center justify-center text-[#a38a6a]"><Award size={20} /></div>
+                   <div className="w-10 h-10 rounded-xl bg-gray-50 dark:bg-[#272937] flex items-center justify-center text-[#a38a6a]"><Award size={20} /></div>
                    <div>
-                      <p className="text-[10px] font-black text-gray-300 dark:text-gray-500 uppercase tracking-widest leading-none mb-1">Organization</p>
-                      <p className="text-[13px] font-bold text-[#121212] dark:text-white">{course.org}</p>
+                      <p className="text-[10px] font-black text-gray-300 dark:text-gray-400 uppercase tracking-widest leading-none mb-1">Organization</p>
+                      <p className="text-[13px] font-bold text-[#121212] dark:text-white">{displayOrg}</p>
                    </div>
                 </div>
                 <div className="pt-2 flex items-center justify-between">
-                   <span className="text-[11px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-400">Total : {course.hours}</span>
+                   <span className="text-[11px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-400">{displayHours}</span>
                 </div>
              </div>
           </div>
        </div>
     </Reveal>
   );
-}
+};
 
 /* --- 互動組件 2：精品級滑鼠光暈 (Spotlight Card) --- */
 const SpotlightCard = ({ children, className = "", dark = false }: {
@@ -522,6 +541,22 @@ export default function App() {
     setDarkMode(prev => !prev);
   };
 
+  const [lang, setLang] = useState<Lang>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('preferred_lang');
+      if (saved === 'en' || saved === 'zh') return saved as Lang;
+    }
+    return 'zh';
+  });
+
+  const toggleLang = () => {
+    setLang(prev => (prev === 'zh' ? 'en' : 'zh'));
+  };
+
+  useEffect(() => {
+    localStorage.setItem('preferred_lang', lang);
+  }, [lang]);
+
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -534,22 +569,18 @@ export default function App() {
   const [activeAboutTab, setActiveAboutTab] = useState('background');
 
   const aboutTabs = [
-    { id: 'background', label: '設計背景與專業', subLabel: 'Background & Expertise', icon: User },
-    { id: 'experience', label: '開發實務經驗', subLabel: 'Development Experience', icon: Briefcase },
-    { id: 'career', label: '職涯規劃目標', subLabel: 'Career Goals', icon: Target },
-    { id: 'philosophy', label: '核心設計理念', subLabel: 'Design Beliefs', icon: Lightbulb }
+    { id: 'background', label: lang === 'zh' ? '設計背景與專業' : 'Background & Expertise', subLabel: lang === 'zh' ? 'Background & Expertise' : 'Education & Career', icon: User },
+    { id: 'experience', label: lang === 'zh' ? '開發實務經驗' : 'Development Experience', subLabel: lang === 'zh' ? 'Development Experience' : 'Hands-on Projects', icon: Briefcase },
+    { id: 'career', label: lang === 'zh' ? '職涯規劃目標' : 'Career Goals', subLabel: lang === 'zh' ? 'Career Goals' : 'Short & Long-term', icon: Target },
+    { id: 'philosophy', label: lang === 'zh' ? '核心設計理念' : 'Design Beliefs', subLabel: lang === 'zh' ? 'Design Beliefs' : 'Core Principles', icon: Lightbulb }
   ];
 
   // --- 計算屬性 ---
-  const currentFilterOptions = activeCategory ? (
-    activeCategory === 'Packaging' 
-      ? ['全部包裝', '消費性電子產品', '自行車零件', '電動載具', '專利申請']
-      : activeCategory === 'Product'
-      ? ['全部產品', '廚電/家電', '醫療/穿戴', '玩具設計', '手繪作品']
-      : activeCategory === 'Graphic'
-      ? ['全部平面', '品牌/CIS']
-      : []
-  ) : [];
+  const currentCategoryFilters = activeCategory 
+    ? (portfolioContent.filterCategories[activeCategory as keyof typeof portfolioContent.filterCategories] || [])
+    : [];
+
+  const currentFilterOptions = currentCategoryFilters.map(f => f.key);
 
   const filteredProjects = activeCategory ? 
     (activeFilter.startsWith('全部') ? projectData[activeCategory] : projectData[activeCategory].filter(p => p.category === activeFilter)) : [];
@@ -558,13 +589,13 @@ export default function App() {
     ? coursesData 
     : coursesData.filter(c => c.category === activeCourseFilter);
 
-  const getFilterCount = (cat, f) => {
-    if (!projectData[cat]) return 0;
-    if (f.startsWith('全部')) return projectData[cat].length;
-    return projectData[cat].filter(p => p.category === f).length;
+  const getFilterCount = (cat: string, f: string) => {
+    if (!projectData[cat as keyof typeof projectData]) return 0;
+    if (f.startsWith('全部')) return projectData[cat as keyof typeof projectData].length;
+    return projectData[cat as keyof typeof projectData].filter(p => p.category === f).length;
   };
 
-  const getCourseFilterCount = (filterVal) => {
+  const getCourseFilterCount = (filterVal: string) => {
     if (filterVal === '全部') return coursesData.length;
     return coursesData.filter(c => c.category === filterVal).length;
   };
@@ -619,25 +650,25 @@ export default function App() {
   }, [selectedProject, activeCategory, isMobileMenuOpen]);
 
   return (
-    <div className="font-sans text-[#121212] dark:text-[#f0f0f0] bg-[#fdfdfd] dark:bg-[#0c0c0d] antialiased selection:bg-[#a38a6a] selection:text-white pb-24 transition-colors duration-500">
+    <div className="font-sans text-[#121212] dark:text-[#f0f0f0] bg-[#fdfdfd] dark:bg-[#0c0d11] antialiased selection:bg-[#a38a6a] selection:text-white pb-24 transition-colors duration-500">
       
       {/* 1. 全域閱讀進度條 */}
       <div className="fixed top-0 left-0 h-[3px] bg-[#a38a6a] z-[130] transition-transform duration-300 ease-out origin-left shadow-[0_0_12px_rgba(163,138,106,0.6)]" style={{ transform: `scaleX(${scrollProgress})` }} />
 
       {/* 2. 精品膠囊導覽列 */}
       <div className="fixed top-0 left-0 w-full z-[120] flex justify-center pt-4 sm:pt-6 md:pt-8 px-3 sm:px-6 pointer-events-none">
-        <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 rounded-full bg-white/85 dark:bg-[#161617]/90 backdrop-blur-3xl border border-white/40 dark:border-white/10 shadow-lg ${scrolled ? 'w-full max-w-[70rem]' : 'w-full max-w-[85rem]'}`}>
+        <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 rounded-full bg-white/85 dark:bg-[#161720]/90 backdrop-blur-3xl border border-white/40 dark:border-white/15 shadow-lg dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] ${scrolled ? 'w-full max-w-[70rem]' : 'w-full max-w-[85rem]'}`}>
           <div className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group" onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({top: 0, behavior: 'smooth'}); }}>
-            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white dark:bg-[#202022] shrink-0 border border-black/5 dark:border-white/10">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white dark:bg-[#222430] shrink-0 border border-black/5 dark:border-white/15">
                <img src="/logo.png" alt="AL Logo" className="w-full h-full object-cover" />
             </div>
             <span className="font-black text-base sm:text-xl tracking-wide uppercase whitespace-nowrap text-[#121212] dark:text-white">AMANDA LAI<span className="text-[#a38a6a]">.</span></span>
           </div>
 
           {/* 桌面版導覽連結 (>= 768px 顯示) */}
-          <div className="hidden md:flex items-center space-x-2 text-[14px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-400">
+          <div className="hidden md:flex items-center space-x-2 text-[14px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-300">
             {['about', 'portfolio', 'experience', 'skills', 'courses'].map(item => (
-              <a key={item} href={`#${item}`} className={`px-4 py-2 rounded-full transition-all duration-500 hover:text-[#121212] dark:hover:text-white ${activeSection === item ? 'text-[#121212] dark:text-white bg-gray-50 dark:bg-white/10' : ''}`}>
+              <a key={item} href={`#${item}`} className={`px-4 py-2 rounded-full transition-all duration-500 hover:text-[#121212] dark:hover:text-white ${activeSection === item ? 'text-[#121212] dark:text-white bg-gray-50 dark:bg-white/15 shadow-sm' : ''}`}>
                 {item}
                 {activeSection === item && <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#a38a6a]"></span>}
               </a>
@@ -645,13 +676,25 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* 語言切換按鈕 (Language Toggle) */}
+            <button
+              type="button"
+              onClick={toggleLang}
+              aria-label={lang === 'zh' ? "切換至英文版 (Switch to English)" : "Switch to Traditional Chinese (切換至繁中)"}
+              title={lang === 'zh' ? "Switch to English" : "切換至繁體中文"}
+              className="h-10 sm:h-11 px-3 sm:px-3.5 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-[#22242f] dark:hover:bg-[#2b2d3b] text-[#121212] dark:text-[#f0f0f0] flex items-center justify-center gap-1.5 transition-all duration-300 active:scale-90 border border-transparent dark:border-white/15 shadow-sm cursor-pointer text-xs font-black tracking-wider uppercase"
+            >
+              <Globe size={15} className="text-[#a38a6a]" />
+              <span>{lang === 'zh' ? 'EN' : '繁中'}</span>
+            </button>
+
             {/* 深色 / 淺色模式切換按鈕 (Dark Mode Toggle) */}
             <button
               type="button"
               onClick={toggleDarkMode}
               aria-label={darkMode ? "切換至淺色模式" : "切換至深色模式"}
               title={darkMode ? "切換至淺色模式 (Switch to Light Mode)" : "切換至深色模式 (Switch to Dark Mode)"}
-              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-white/10 dark:hover:bg-white/20 text-[#121212] dark:text-[#f0f0f0] flex items-center justify-center transition-all duration-300 active:scale-90 border border-transparent dark:border-white/10 shadow-sm cursor-pointer"
+              className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-[#22242f] dark:hover:bg-[#2b2d3b] text-[#121212] dark:text-[#f0f0f0] flex items-center justify-center transition-all duration-300 active:scale-90 border border-transparent dark:border-white/15 shadow-sm cursor-pointer"
             >
               {darkMode ? (
                 <Sun size={19} className="text-[#e2b97f] transition-transform duration-500 rotate-0 hover:rotate-45" />
@@ -660,8 +703,8 @@ export default function App() {
               )}
             </button>
 
-            <a href="mailto:amanda840604@gmail.com" className="hidden sm:inline-flex bg-[#121212] dark:bg-white dark:text-[#121212] flex-shrink-0 text-white text-[14px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] dark:hover:text-white transition-all items-center gap-2 active:scale-95 shadow-md whitespace-nowrap">
-              CONTACT <ArrowRight size={14} />
+            <a href="mailto:amanda840604@gmail.com" className="hidden sm:inline-flex bg-[#121212] dark:bg-[#a38a6a] dark:text-white flex-shrink-0 text-white text-[14px] font-black uppercase tracking-widest px-6 py-3 rounded-full hover:bg-[#a38a6a] dark:hover:bg-[#b89d7b] transition-all items-center gap-2 active:scale-95 shadow-md dark:shadow-[#a38a6a]/25 whitespace-nowrap">
+              {lang === 'zh' ? 'CONTACT' : 'CONTACT'} <ArrowRight size={14} />
             </a>
 
             {/* 行動版漢堡按鈕 (< 768px 顯示) */}
@@ -669,7 +712,7 @@ export default function App() {
               type="button"
               aria-label="選單開關"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gray-100 hover:bg-[#a38a6a]/10 dark:bg-white/10 dark:hover:bg-white/20 flex items-center justify-center text-gray-800 dark:text-gray-200 hover:text-[#a38a6a] transition-colors duration-300 active:scale-90"
+              className="md:hidden w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gray-100 hover:bg-[#a38a6a]/10 dark:bg-[#22242f] dark:hover:bg-[#2b2d3b] flex items-center justify-center text-gray-800 dark:text-gray-200 hover:text-[#a38a6a] transition-colors duration-300 active:scale-90 border border-transparent dark:border-white/10"
             >
               {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -682,23 +725,17 @@ export default function App() {
         <div className="fixed inset-0 z-[115] md:hidden">
           {/* 背景遮罩 */}
           <div 
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-500 animate-in fade-in"
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-500 animate-in fade-in"
             onClick={() => setIsMobileMenuOpen(false)}
           />
           
           {/* 抽屜式卡片選單 */}
-          <div className="absolute top-28 left-6 right-6 bg-white/95 dark:bg-[#1a1a1c]/95 backdrop-blur-2xl rounded-3xl p-6 shadow-2xl border border-gray-100 dark:border-white/10 animate-in slide-in-from-top-4 duration-500 flex flex-col gap-2">
+          <div className="absolute top-28 left-6 right-6 bg-white/95 dark:bg-[#161720]/95 backdrop-blur-2xl rounded-3xl p-6 shadow-2xl border border-gray-100 dark:border-white/15 animate-in slide-in-from-top-4 duration-500 flex flex-col gap-2">
             <div className="flex items-center justify-between px-4 pt-2 pb-1">
               <span className="text-xs font-bold tracking-widest text-[#a38a6a] uppercase">Navigation Menu</span>
-              <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-500 uppercase">{darkMode ? 'Dark Theme' : 'Light Theme'}</span>
+              <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-400 uppercase">{darkMode ? 'Dark' : 'Light'} • {lang.toUpperCase()}</span>
             </div>
-            {[
-              { id: 'about', label: 'About / 關於個人' },
-              { id: 'portfolio', label: 'Portfolio / 精選作品' },
-              { id: 'experience', label: 'Experience / 經歷' },
-              { id: 'skills', label: 'Skills / 專業技能' },
-              { id: 'courses', label: 'Courses / 研習證明' }
-            ].map(item => (
+            {navItems.map(item => (
               <a
                 key={item.id}
                 href={`#${item.id}`}
@@ -706,16 +743,35 @@ export default function App() {
                 className={`flex items-center justify-between px-5 py-3.5 rounded-2xl text-[16px] font-bold tracking-wider transition-all duration-300 ${
                   activeSection === item.id 
                     ? 'bg-[#a38a6a] text-white shadow-md' 
-                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-white/5'
+                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-[#222430]'
                 }`}
               >
-                <span>{item.label}</span>
+                <span>{lang === 'zh' ? `${item.labelEn} / ${item.labelZh}` : item.labelEn}</span>
                 <ChevronRight size={18} className={activeSection === item.id ? 'text-white' : 'text-gray-400'} />
               </a>
             ))}
 
+            {/* 行動版專用語言切換按鈕 */}
+            <div className="flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-50 dark:bg-[#20222d] border border-gray-100 dark:border-white/10 mt-1">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center">
+                  <Globe size={17} />
+                </div>
+                <span className="text-sm font-bold text-gray-800 dark:text-gray-200">
+                  {lang === 'zh' ? '目前語言：繁體中文' : 'Current: English'}
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={toggleLang}
+                className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white dark:bg-[#2a2d3b] shadow-sm border border-gray-200 dark:border-white/15 text-gray-800 dark:text-gray-200 active:scale-95 transition-all"
+              >
+                {lang === 'zh' ? '切換 EN' : 'Switch 繁中'}
+              </button>
+            </div>
+
             {/* 行動版專用模式切換按鈕 */}
-            <div className="flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 mt-1">
+            <div className="flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-50 dark:bg-[#20222d] border border-gray-100 dark:border-white/10 mt-1">
               <div className="flex items-center gap-3">
                 <div className="w-8 h-8 rounded-xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center">
                   {darkMode ? <Sun size={17} className="text-[#e2b97f]" /> : <Moon size={17} className="text-gray-700 dark:text-gray-300" />}
@@ -727,7 +783,7 @@ export default function App() {
               <button
                 type="button"
                 onClick={toggleDarkMode}
-                className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white dark:bg-white/15 shadow-sm border border-gray-200 dark:border-white/10 text-gray-800 dark:text-gray-200 active:scale-95 transition-all"
+                className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white dark:bg-[#2a2d3b] shadow-sm border border-gray-200 dark:border-white/15 text-gray-800 dark:text-gray-200 active:scale-95 transition-all"
               >
                 {darkMode ? '切換淺色' : '切換深色'}
               </button>
@@ -737,7 +793,7 @@ export default function App() {
               <a
                 href="mailto:amanda840604@gmail.com"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-full bg-[#121212] dark:bg-white dark:text-[#121212] text-white text-[15px] font-black uppercase tracking-widest px-6 py-3.5 rounded-2xl hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] dark:hover:text-white transition-all flex items-center justify-center gap-2 active:scale-95 shadow-md"
+                className="w-full bg-[#121212] dark:bg-[#a38a6a] text-white text-[15px] font-black uppercase tracking-widest px-6 py-3.5 rounded-2xl hover:bg-[#a38a6a] dark:hover:bg-[#b89d7b] transition-all flex items-center justify-center gap-2 active:scale-95 shadow-md dark:shadow-[#a38a6a]/25"
               >
                 CONTACT ME <ArrowRight size={16} />
               </a>
@@ -747,10 +803,10 @@ export default function App() {
       )}
 
       {/* 3. HERO SECTION */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4 sm:px-8 py-24 sm:py-32">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] md:w-[1200px] h-[600px] sm:h-[900px] md:h-[1200px] bg-gradient-to-tr from-[#a38a6a]/10 via-white to-[#a38a6a]/5 dark:from-[#a38a6a]/15 dark:via-[#0c0c0d] dark:to-[#a38a6a]/5 blur-[120px] sm:blur-[160px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
+      <section className="relative min-h-screen flex flex-col items-center justify-center text-center overflow-hidden px-4 sm:px-8 py-24 sm:py-32 bg-transparent dark:bg-[#0c0d11]">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] sm:w-[900px] md:w-[1200px] h-[600px] sm:h-[900px] md:h-[1200px] bg-gradient-to-tr from-[#a38a6a]/10 via-white to-[#a38a6a]/5 dark:from-[#a38a6a]/20 dark:via-[#161722]/60 dark:to-[#a38a6a]/10 blur-[120px] sm:blur-[160px] rounded-full pointer-events-none -z-10 animate-pulse"></div>
         <Reveal direction="down">
-          <div className="inline-flex items-center mt-16 sm:mt-24 md:mt-32 gap-3 px-5 sm:px-6 py-2 rounded-full bg-white dark:bg-[#1a1a1c] border border-gray-100 dark:border-white/10 text-[#a38a6a] text-xs sm:text-[14px] font-black tracking-widest uppercase mb-8 sm:mb-12 shadow-sm">
+          <div className="inline-flex items-center mt-16 sm:mt-24 md:mt-32 gap-3 px-5 sm:px-6 py-2 rounded-full bg-white dark:bg-[#1a1b24] border border-gray-100 dark:border-white/15 text-[#a38a6a] text-xs sm:text-[14px] font-black tracking-widest uppercase mb-8 sm:mb-12 shadow-sm">
             PORTFOLIO 2026
           </div>
         </Reveal>
@@ -764,8 +820,8 @@ export default function App() {
           </h1>
         </Reveal>
         <Reveal delay={400}>
-          <p className="text-base sm:text-lg md:text-2xl text-gray-500 dark:text-gray-400 max-w-[65ch] font-medium leading-[1.75] sm:leading-[1.85] mb-12 sm:mb-16 mx-auto px-2 text-balance">
-            包裝設計專業深化 × 結構工程實務 <br className="hidden sm:block" /> 致力於在視覺美學與永續環保之間尋求平衡。
+          <p className="text-base sm:text-lg md:text-2xl text-gray-500 dark:text-gray-300 max-w-[65ch] font-medium leading-[1.75] sm:leading-[1.85] mb-12 sm:mb-16 mx-auto px-2 text-balance whitespace-pre-line">
+            {lang === 'zh' ? heroContent.subtitleZh : heroContent.subtitleEn}
           </p>
         </Reveal>
         <Reveal delay={600}>
@@ -773,7 +829,7 @@ export default function App() {
              <div className="w-[1px] h-16 sm:h-24 bg-gradient-to-b from-[#a38a6a] to-transparent relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1/2 bg-white dark:bg-[#a38a6a] animate-[slide_3s_infinite]"></div>
              </div>
-             <span className="text-xs sm:text-[14px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gray-400 dark:text-gray-500 group-hover:text-[#a38a6a] transition-colors">Scroll To Explore</span>
+             <span className="text-xs sm:text-[14px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-gray-400 dark:text-gray-400 group-hover:text-[#a38a6a] transition-colors">{heroContent.scrollCtaZh}</span>
           </button>
         </Reveal>
       </section>
@@ -781,7 +837,7 @@ export default function App() {
       {/* 4. ABOUT SECTION */}
       
       
-      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-36 border-t border-gray-100 dark:border-white/10 bg-[#faf9f6]/40 dark:bg-[#111112] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-36 border-t border-gray-100 dark:border-white/10 bg-[#faf9f6]/40 dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0]">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 text-[#121212] dark:text-[#f0f0f0]">
           
           {/* 左側：PROFILE標題、選單與頭貼 */}
@@ -790,13 +846,22 @@ export default function App() {
               <div className="flex items-center gap-3 mb-4 sm:mb-6">
                 <div className="w-8 sm:w-10 h-[2px] bg-[#a38a6a]"></div>
                 <h2 className="text-xs sm:text-[13px] font-black tracking-[0.35em] text-[#a38a6a] uppercase">
-                  PROFILE
+                  {aboutContent.profileTag}
                 </h2>
               </div>
               
-              <h3 className="text-4xl sm:text-5xl font-black tracking-tighter leading-[1.08] text-[#121212] dark:text-white mb-6 sm:mb-8">
-                設計美學 × <br />
-                <span className="text-[#a38a6a]">量產實務</span>
+              <h3 className="text-4xl sm:text-5xl font-black tracking-tighter leading-[1.08] text-[#121212] dark:text-white mb-6 sm:mb-8 whitespace-pre-line">
+                {lang === 'zh' ? (
+                  <>
+                    設計美學 × <br />
+                    <span className="text-[#a38a6a]">量產實務</span>
+                  </>
+                ) : (
+                  <>
+                    Design Aesthetics × <br />
+                    <span className="text-[#a38a6a]">Mass Production</span>
+                  </>
+                )}
               </h3>
 
               {/* 4 大分類切換按鈕 */}
@@ -811,11 +876,11 @@ export default function App() {
                       className={`w-full flex items-center gap-3.5 p-3.5 sm:p-4 rounded-2xl text-left transition-all duration-200 ${
                         isActive
                           ? 'bg-[#a38a6a] text-white shadow-lg shadow-[#a38a6a]/25'
-                          : 'bg-white/70 dark:bg-[#181819] hover:bg-white dark:hover:bg-[#202022] text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border border-gray-100/90 dark:border-white/10'
+                          : 'bg-white/70 dark:bg-[#1c1d27] hover:bg-white dark:hover:bg-[#252735] text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white border border-gray-100/90 dark:border-white/10'
                       }`}
                     >
                       <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                        isActive ? 'bg-white/20 text-white' : 'bg-gray-100/90 dark:bg-white/10 text-gray-500 dark:text-gray-400'
+                        isActive ? 'bg-white/20 text-white' : 'bg-gray-100/90 dark:bg-[#252735] text-gray-500 dark:text-gray-300'
                       }`}>
                         <Icon size={19} />
                       </div>
@@ -823,7 +888,7 @@ export default function App() {
                         <div className={`font-bold text-sm sm:text-base leading-tight truncate ${isActive ? 'text-white' : 'text-gray-800 dark:text-gray-200'}`}>
                           {tab.label}
                         </div>
-                        <div className={`text-[11px] sm:text-xs mt-0.5 truncate ${isActive ? 'text-white/80' : 'text-gray-400 dark:text-gray-500'}`}>
+                        <div className={`text-[11px] sm:text-xs mt-0.5 truncate ${isActive ? 'text-white/80' : 'text-gray-400 dark:text-gray-400'}`}>
                           {tab.subLabel}
                         </div>
                       </div>
@@ -863,62 +928,88 @@ export default function App() {
               {activeAboutTab === 'background' && (
                 <div className="space-y-6 sm:space-y-8 text-[#121212] dark:text-[#f0f0f0]">
                   {/* 第一大卡片：設計背景 × 設計流程開發經驗 */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
+                  <div className="bg-white dark:bg-[#1c1d27] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
                     <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 dark:bg-[#a38a6a]/25 text-[#a38a6a] flex items-center justify-center shrink-0">
                         <GraduationCap size={22} className="text-[#a38a6a]" />
                       </div>
                       <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">設計背景 × 設計流程開發經驗</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">DESIGN BACKGROUND & FULL DEVELOPMENT EXPERIENCE</span>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">
+                          {lang === 'zh' ? aboutContent.background.card1.titleZh : aboutContent.background.card1.titleEn}
+                        </h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">
+                          {lang === 'zh' ? aboutContent.background.card1.subZh : aboutContent.background.card1.subEn}
+                        </span>
                       </div>
                     </div>
 
                     <div className="space-y-6 text-sm sm:text-[15px] leading-relaxed">
                       <div>
                         <p className="text-gray-800 dark:text-gray-200 font-medium mb-2 leading-relaxed">
-                          畢業於 <strong className="font-black text-gray-900 dark:text-white">國立臺灣科技大學 工業設計系</strong>，擁有約 6 年產品設計經驗與 3 年多的包裝設計實務經驗，熟悉從外觀設計、結構開發到量產製程的完整開發流程。
+                          {lang === 'zh' ? (
+                            <>畢業於 <strong className="font-black text-gray-900 dark:text-white">國立臺灣科技大學 工業設計系</strong>，擁有約 6 年產品設計經驗與 3 年多的包裝設計實務經驗，熟悉從外觀設計、結構開發到量產製程的完整開發流程。</>
+                          ) : (
+                            aboutContent.background.card1.p1En
+                          )}
                         </p>
-                        <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                          I graduated in <strong className="font-bold text-gray-700 dark:text-gray-300">Industrial Design</strong> from <strong className="font-bold text-gray-700 dark:text-gray-300">National Taiwan University of Science and Technology</strong>. I have about 6 years of experience in product design and over 3 years in packaging design, covering the full development process from styling and structure to mass production.
-                        </p>
+                        {lang === 'zh' && (
+                          <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                            {aboutContent.background.card1.p1En}
+                          </p>
+                        )}
                       </div>
 
                       <div className="border-t border-gray-100 dark:border-white/10 pt-6">
                         <p className="text-gray-800 dark:text-gray-200 font-medium mb-2 leading-relaxed">
-                          擅長品牌前期市場調研與定位分析，能根據產品需求進行 2D／3D 設計規劃，執行草模驗證、建模與工程圖繪製，並具備「<strong className="font-black text-gray-900 dark:text-white">依照預算與成本條件調整設計策略的靈活應變能力</strong>」。
+                          {lang === 'zh' ? (
+                            <>擅長品牌前期市場調研與定位分析，能根據產品需求進行 2D／3D 設計規劃，執行草模驗證、建模與工程圖繪製，並具備「<strong className="font-black text-gray-900 dark:text-white">依照預算與成本條件調整設計策略的靈活應變能力</strong>」。</>
+                          ) : (
+                            aboutContent.background.card1.p2En
+                          )}
                         </p>
-                        <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                          I specialize in market research, brand positioning, and 2D/3D design—including mockups, 3D modeling, and engineering drawings. I am skilled at <strong className="font-bold text-gray-700 dark:text-gray-300">adjusting design strategies to meet budget and cost goals</strong>.
-                        </p>
+                        {lang === 'zh' && (
+                          <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                            {aboutContent.background.card1.p2En}
+                          </p>
+                        )}
                       </div>
                     </div>
                   </div>
 
                   {/* 第二大卡片：包裝設計專業深化 */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
+                  <div className="bg-white dark:bg-[#1c1d27] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
                     <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 dark:bg-[#a38a6a]/25 text-[#a38a6a] flex items-center justify-center shrink-0">
                         <Star size={22} className="text-[#a38a6a]" />
                       </div>
                       <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">包裝設計專業深化</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">PACKAGING DESIGN EXPERTISE</span>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">
+                          {lang === 'zh' ? aboutContent.background.card2.titleZh : aboutContent.background.card2.titleEn}
+                        </h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">
+                          {lang === 'zh' ? aboutContent.background.card2.subZh : aboutContent.background.card2.subEn}
+                        </span>
                       </div>
                     </div>
 
                     <div className="space-y-4 text-sm sm:text-[15px] leading-relaxed">
                       <p className="text-gray-800 dark:text-gray-200 font-medium leading-relaxed">
-                        現任職於久鼎金屬實業股份有限公司，負責車載具及相關零件的包裝設計與開發，持續強化「<strong className="font-black text-gray-900 dark:text-white">環保包裝結構設計、跨部門專案執行能力及開發實務經驗</strong>」。
+                        {lang === 'zh' ? (
+                          <>現任職於久鼎金屬實業股份有限公司，負責車載具及相關零件的包裝設計與開發，持續強化「<strong className="font-black text-gray-900 dark:text-white">環保包裝結構設計、跨部門專案執行能力及開發實務經驗</strong>」。</>
+                        ) : (
+                          aboutContent.background.card2.p1En
+                        )}
                       </p>
-                      <div className="space-y-1.5 text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                        <p>
-                          Currently at JD Components Co., Ltd., I design and develop packaging for e-mobility vehicles and bicycle parts.
-                        </p>
-                        <p>
-                          I continue to strengthen my skills in <strong className="font-bold text-gray-700 dark:text-gray-300">eco-friendly packaging structures, cross-functional collaboration, and practical manufacturing</strong>.
-                        </p>
-                      </div>
+                      {lang === 'zh' && (
+                        <div className="space-y-1.5 text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                          <p>
+                            Currently at JD Components Co., Ltd., I design and develop packaging for e-mobility vehicles and bicycle parts.
+                          </p>
+                          <p>
+                            I continue to strengthen my skills in <strong className="font-bold text-gray-700 dark:text-gray-300">eco-friendly packaging structures, cross-functional collaboration, and practical manufacturing</strong>.
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -927,156 +1018,84 @@ export default function App() {
               {activeAboutTab === 'experience' && (
                 <div className="space-y-6 sm:space-y-8 text-[#121212] dark:text-[#f0f0f0]">
                   {/* 第一張卡片：久鼎金屬實業股份有限公司 */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
+                  <div className="bg-white dark:bg-[#1c1d27] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
                     <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 dark:bg-[#a38a6a]/25 text-[#a38a6a] flex items-center justify-center shrink-0">
                         <Box size={22} className="text-[#a38a6a]" />
                       </div>
                       <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">久鼎金屬實業股份有限公司</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">TRANZX / JD COMPONENTS・包裝設計工程師 (目前在職)</span>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">
+                          {lang === 'zh' ? aboutContent.experienceTab.jd.titleZh : aboutContent.experienceTab.jd.titleEn}
+                        </h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">
+                          {lang === 'zh' ? aboutContent.experienceTab.jd.roleZh : aboutContent.experienceTab.jd.roleEn}
+                        </span>
                       </div>
                     </div>
 
                     <div className="border-t border-gray-100 dark:border-white/10 pt-6 sm:pt-8 space-y-8 sm:space-y-9">
-                      {/* Item 1 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div className="w-full min-w-0">
-                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
-                            自行車零組件包裝減塑專案
-                          </h5>
-                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
-                            BICYCLE COMPONENTS PACKAGING PLASTIC REDUCTION PROJECT
-                          </span>
-                          <p className="text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
-                            主導車把手、座管、立管與快拆束仔等零件的包裝優化，評估並全面汰換現行使用的塑膠袋，導入無塑環保材質，推動產品線的綠色轉型。
-                          </p>
-                          <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Spearheaded packaging optimization for bicycle components including handlebars, seatposts, stems, and quick releases; systematically replaced conventional plastic bags with eco-friendly plastic-free materials to drive green product line transformation.
-                          </p>
+                      {aboutContent.experienceTab.jd.items.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-3.5 sm:gap-4">
+                          <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                          <div className="w-full min-w-0">
+                            <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
+                              {lang === 'zh' ? item.titleZh : item.titleEn}
+                            </h5>
+                            <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                              {item.sub}
+                            </span>
+                            <p className="text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
+                              {lang === 'zh' ? item.descZh : item.descEn}
+                            </p>
+                            {lang === 'zh' && (
+                              <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                                {item.descEn}
+                              </p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-
-                      {/* Item 2 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div className="w-full min-w-0">
-                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
-                            電動載具整機包裝結構設計
-                          </h5>
-                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
-                            E-MOBILITY COMPLETE VEHICLE PACKAGING STRUCTURAL DESIGN
-                          </span>
-                          <p className="text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
-                            針對電動機車與電動滑板車，進行整機無塑包裝概念規劃。
-                          </p>
-                          <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Conducted complete vehicle sustainable packaging structural design and concept planning for electric motorcycles and electric scooters.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 3 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div className="w-full min-w-0">
-                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
-                            車把手尾數箱品質異常問題解決
-                          </h5>
-                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
-                            HANDLEBAR ODD-LOT CARTON QUALITY ISSUE RESOLUTION
-                          </span>
-                          <p className="text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
-                            針對車把手尾數箱包裝品質異常問題進行根本原因分析，並評估引進全紙緩衝填充材機台以確保運輸安全與落實減塑理念。
-                          </p>
-                          <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Resolved quality anomalies in handlebar odd-lot packing boxes through root-cause troubleshooting, evaluating and introducing paper-cushioning machinery to safeguard transit while eliminating plastic.
-                          </p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
 
                   {/* 第二張卡片：美律實業股份有限公司 */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
+                  <div className="bg-white dark:bg-[#1c1d27] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
                     <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 dark:bg-[#a38a6a]/25 text-[#a38a6a] flex items-center justify-center shrink-0">
                         <Briefcase size={22} className="text-[#a38a6a]" />
                       </div>
                       <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">美律實業股份有限公司</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">MERRY ELECTRONICS・包裝工程師</span>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">
+                          {lang === 'zh' ? aboutContent.experienceTab.merry.titleZh : aboutContent.experienceTab.merry.titleEn}
+                        </h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">
+                          {lang === 'zh' ? aboutContent.experienceTab.merry.roleZh : aboutContent.experienceTab.merry.roleEn}
+                        </span>
                       </div>
                     </div>
 
                     <div className="border-t border-gray-100 dark:border-white/10 pt-6 sm:pt-8 space-y-8 sm:space-y-9">
-                      {/* Item 1 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div className="w-full min-w-0">
-                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
-                            國際品牌 TWS／HDT／Soundbar 包裝設計提案 (共25件)
-                          </h5>
-                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
-                            PACKAGING PROPOSALS FOR INTERNATIONAL BRANDS (25 PROJECTS)
-                          </span>
-                          <div className="space-y-1.5 text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
-                            <p>
-                              根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略。
-                            </p>
-                            <p>
-                              在消費性電子產品 RFQ 階段，主導包裝結構設計、2D 工程圖繪製與初步成本分析。
-                            </p>
-                          </div>
-                          <div className="space-y-1 text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                            <p>
-                              Formulated packaging proposals for Tier-1 international brand audio products (TWS, Headsets, Soundbars). Engineered segmented packaging architecture across multiple price tiers to meet diverse market demands and brand strategies.
-                            </p>
-                            <p>
-                              Spearheaded structural packaging engineering, 2D drafting, and preliminary cost analysis during the RFQ stage for consumer electronics.
-                            </p>
+                      {aboutContent.experienceTab.merry.items.map((item, idx) => (
+                        <div key={idx} className="flex items-start gap-3.5 sm:gap-4">
+                          <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                          <div className="w-full min-w-0">
+                            <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
+                              {lang === 'zh' ? item.titleZh : item.titleEn}
+                            </h5>
+                            <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
+                              {item.sub}
+                            </span>
+                            <div className="space-y-1.5 text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
+                              <p>{lang === 'zh' ? item.descZh : item.descEn}</p>
+                            </div>
+                            {lang === 'zh' && (
+                              <div className="space-y-1 text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
+                                <p>{item.descEn}</p>
+                              </div>
+                            )}
                           </div>
                         </div>
-                      </div>
-
-                      {/* Item 2 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div className="w-full min-w-0">
-                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
-                            建立包裝設計資料庫以及市調資料表 (共6件)
-                          </h5>
-                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
-                            PACKAGING DESIGN DATABASE & MARKET RESEARCH (6 DATASETS)
-                          </span>
-                          <p className="text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
-                            彙整 TWS、HDT、Soundbar 紙卡內襯結構規格，形成模組化資料庫，改善專案提案效率，精準對焦市場需求。
-                          </p>
-                          <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Standardized and modularized paper insert structures across TWS, headsets, and soundbars into a comprehensive design database, significantly boosting proposal turnaround speed and pinpoint market calibration.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 3 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <CheckCircle2 size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div className="w-full min-w-0">
-                          <h5 className="text-base sm:text-[17px] font-black text-gray-900 dark:text-white leading-snug">
-                            參與 HDT 電競耳機開發專案 (共2件)
-                          </h5>
-                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-wider uppercase block mt-0.5 mb-2.5">
-                            GAMING HEADSET DEVELOPMENT PROJECTS (2 MODELS)
-                          </span>
-                          <p className="text-sm sm:text-[15px] text-gray-700 dark:text-gray-300 leading-relaxed font-medium mb-3">
-                            實際參與兩款 HyperX 電競耳機機型開發，累積從結構設計、打樣修正到量產導入的完整開發經驗。
-                          </p>
-                          <p className="text-xs sm:text-[13px] text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Actively co-developed two HyperX flagship gaming headsets, acquiring comprehensive hands-on mastery spanning structural modeling, prototype validation, and volume production rollout.
-                          </p>
-                        </div>
-                      </div>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -1084,111 +1103,79 @@ export default function App() {
 
               {activeAboutTab === 'career' && (
                 <div className="space-y-6 sm:space-y-8 text-[#121212] dark:text-[#f0f0f0]">
-                  {/* 第一張卡片：短期目標 (Image 2 top) */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
+                  {/* 第一張卡片：短期目標 */}
+                  <div className="bg-white dark:bg-[#1c1d27] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
                     <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 dark:bg-[#a38a6a]/25 text-[#a38a6a] flex items-center justify-center shrink-0">
                         <Flag size={22} className="text-[#a38a6a]" />
                       </div>
                       <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">短期目標</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">SHORT-TERM STRATEGIC GOALS</span>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">
+                          {lang === 'zh' ? aboutContent.careerTab.shortTermTitleZh : aboutContent.careerTab.shortTermTitleEn}
+                        </h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">
+                          {aboutContent.careerTab.shortTermSub}
+                        </span>
                       </div>
                     </div>
 
                     <div className="border-t border-gray-100 dark:border-white/10 pt-6 sm:pt-8 space-y-6 sm:space-y-8">
-                      {/* Item 1 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Leaf size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
-                            深入 ESG 永續議題，探索各類紙材、布料等 CMF 特性與加工技術，建立應用知識庫，並與供應商合作開發環保材質。
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Deep-dive into ESG sustainability, exploring CMF characteristics and processing techniques of paper and fabrics to build knowledge bases and co-develop eco-friendly materials with suppliers.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 2 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Box size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
-                            強化紙材結構設計能力，目標能提出具創新性的設計專利。
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Elevate paper structural engineering, targeting the filing and grant of innovative structural design patents.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 3 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Cpu size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
-                            培養紙材成本評估能力，根據需求提出兼顧保護性與成本效益的結構優化方案。
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Cultivate rigorous packaging cost evaluation to formulate optimized structural designs that seamlessly balance superior protection with high cost-efficiency.
-                          </p>
-                        </div>
-                      </div>
+                      {aboutContent.careerTab.shortTermItems.map((item, idx) => {
+                        const Icon = idx === 0 ? Leaf : idx === 1 ? Box : Cpu;
+                        return (
+                          <div key={idx} className="flex items-start gap-3.5 sm:gap-4">
+                            <Icon size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                            <div>
+                              <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
+                                {lang === 'zh' ? item.zh : item.en}
+                              </p>
+                              {lang === 'zh' && (
+                                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                                  {item.en}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
 
-                  {/* 第二張卡片：中長期目標 (Image 2 bottom) */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
+                  {/* 第二張卡片：中長期目標 */}
+                  <div className="bg-white dark:bg-[#1c1d27] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] p-6 sm:p-8 md:p-10 text-[#121212] dark:text-[#f0f0f0]">
                     <div className="flex items-center gap-3.5 mb-6 sm:mb-8">
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 text-[#a38a6a] flex items-center justify-center shrink-0">
+                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/20 dark:bg-[#a38a6a]/25 text-[#a38a6a] flex items-center justify-center shrink-0">
                         <Rocket size={22} className="text-[#a38a6a]" />
                       </div>
                       <div>
-                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">中長期目標</h4>
-                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">MID- TO LONG-TERM VISION</span>
+                        <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight">
+                          {lang === 'zh' ? aboutContent.careerTab.longTermTitleZh : aboutContent.careerTab.longTermTitleEn}
+                        </h4>
+                        <span className="text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mt-0.5">
+                          {aboutContent.careerTab.longTermSub}
+                        </span>
                       </div>
                     </div>
 
                     <div className="border-t border-gray-100 dark:border-white/10 pt-6 sm:pt-8 space-y-6 sm:space-y-8">
-                      {/* Item 1 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Globe size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
-                            累積跨國與跨部門合作經驗，強化英文聽說讀寫的能力以應對全球化的工作需求。
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Amplify multinational and cross-departmental collaboration, continually advancing professional English fluency to thrive in global organizations.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 2 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <Award size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
-                            持續提升設計落地的精準度，累積更多實戰開發經驗。
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Continually enhance design implementation precision and accumulate hands-on development expertise.
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Item 3 */}
-                      <div className="flex items-start gap-3.5 sm:gap-4">
-                        <TrendingUp size={20} className="text-[#a38a6a] shrink-0 mt-1" />
-                        <div>
-                          <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
-                            建立包裝設計與市場趨勢的連結敏感度，朝向具策略思維的設計開發整合型人才邁進。
-                          </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                            Sharpen sensitivity to market trends in packaging design, advancing toward an integrative design strategist with strategic insight.
-                          </p>
-                        </div>
-                      </div>
+                      {aboutContent.careerTab.longTermItems.map((item, idx) => {
+                        const Icon = idx === 0 ? Globe : idx === 1 ? Award : TrendingUp;
+                        return (
+                          <div key={idx} className="flex items-start gap-3.5 sm:gap-4">
+                            <Icon size={20} className="text-[#a38a6a] shrink-0 mt-1" />
+                            <div>
+                              <p className="text-sm sm:text-[15px] font-bold text-gray-900 dark:text-white leading-relaxed mb-1.5">
+                                {lang === 'zh' ? item.zh : item.en}
+                              </p>
+                              {lang === 'zh' && (
+                                <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                                  {item.en}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -1196,73 +1183,33 @@ export default function App() {
 
               {activeAboutTab === 'philosophy' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[#121212] dark:text-[#f0f0f0]">
-                  {/* Card 1: 兼具感性與理性 (Image 1 top left) */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
-                    <div>
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center shrink-0 mb-6">
-                        <Scale size={22} className="text-[#a38a6a]" />
+                  {aboutContent.philosophyTab.map((card, idx) => {
+                    const Icon = idx === 0 ? Scale : idx === 1 ? UserCheck : idx === 2 ? MessageSquare : Flame;
+                    const isWhiteIcon = idx === 3;
+                    return (
+                      <div key={idx} className="bg-white dark:bg-[#1c1d27] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                          <div className={`w-11 h-11 rounded-2xl ${isWhiteIcon ? 'bg-[#a38a6a] text-white' : 'bg-[#a38a6a]/15 dark:bg-[#a38a6a]/25 text-[#a38a6a]'} flex items-center justify-center shrink-0 mb-6`}>
+                            <Icon size={22} className={isWhiteIcon ? 'text-white' : 'text-[#a38a6a]'} />
+                          </div>
+                          <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight mb-1">
+                            {lang === 'zh' ? card.titleZh : card.titleEn}
+                          </h4>
+                          <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">
+                            {card.sub}
+                          </span>
+                          <p className="text-sm sm:text-[14px] text-gray-800 dark:text-gray-200 font-medium leading-relaxed mb-3">
+                            {lang === 'zh' ? card.descZh : card.descEn}
+                          </p>
+                          {lang === 'zh' && (
+                            <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                              {card.descEn}
+                            </p>
+                          )}
+                        </div>
                       </div>
-                      <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight mb-1">兼具感性與理性</h4>
-                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">BALANCE EMOTION & LOGIC</span>
-                      <p className="text-sm sm:text-[14px] text-gray-800 dark:text-gray-200 font-medium leading-relaxed mb-3">
-                        設計不僅是創造視覺與情感價值，更必須考量製程可行性、技術限制、成本控制與品質穩定性。
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                        Design must deliver emotional resonance while strictly honoring manufacturing feasibility, cost parameters, and production stability.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card 2: 服務於產品與使用者 (Image 1 top right) */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
-                    <div>
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center shrink-0 mb-6">
-                        <UserCheck size={22} className="text-[#a38a6a]" />
-                      </div>
-                      <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight mb-1">服務於產品與使用者</h4>
-                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">FORM FOLLOWS FUNCTION</span>
-                      <p className="text-sm sm:text-[14px] text-gray-800 dark:text-gray-200 font-medium leading-relaxed mb-3">
-                        我重視產品本質，關注設計如何實際提升使用者的便利性與品牌價值，讓設計發揮功能性與影響力。
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                        Rooted in product essence, ensuring design genuinely enhances user convenience and delivers enduring brand value and tangible impact.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card 3: 重視跨部門協作效率 (Image 1 bottom left) */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
-                    <div>
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/15 text-[#a38a6a] flex items-center justify-center shrink-0 mb-6">
-                        <MessageSquare size={22} className="text-[#a38a6a]" />
-                      </div>
-                      <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight mb-1">重視跨部門協作效率</h4>
-                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">TEAMWORK & SYNERGY</span>
-                      <p className="text-sm sm:text-[14px] text-gray-800 dark:text-gray-200 font-medium leading-relaxed mb-3">
-                        良好的設計來自良好的協作，我樂於與不同角色協同合作，透過積極溝通整合各方需求與資源。
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                        Superior designs originate from seamless collaboration, uniting diverse stakeholders through proactive communication and resource integration.
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Card 4: 保持熱情與學習動能 (Image 1 bottom right) */}
-                  <div className="bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[2.5rem] border border-gray-100 dark:border-white/10 shadow-xl dark:shadow-none shadow-gray-100/50 p-6 sm:p-8 flex flex-col justify-between">
-                    <div>
-                      <div className="w-11 h-11 rounded-2xl bg-[#a38a6a]/80 text-white flex items-center justify-center shrink-0 mb-6">
-                        <Flame size={22} className="text-white" />
-                      </div>
-                      <h4 className="text-base sm:text-lg font-black text-gray-900 dark:text-white leading-tight mb-1">保持熱情與學習動能</h4>
-                      <span className="text-[10px] sm:text-[11px] font-bold text-[#a38a6a] tracking-widest uppercase block mb-4">STAY CURIOUS & DRIVEN</span>
-                      <p className="text-sm sm:text-[14px] text-gray-800 dark:text-gray-200 font-medium leading-relaxed mb-3">
-                        對我而言，設計不只是工作，更是一種持續探索的過程。我始終懷抱熱情與好奇心，樂於在團隊中貢獻專業，一同創造實質價值。
-                      </p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
-                        Design is an ongoing journey of exploration; maintaining continuous curiosity and passion to co-create measurable, real-world value.
-                      </p>
-                    </div>
-                  </div>
+                    );
+                  })}
                 </div>
               )}
             </Reveal>
@@ -1273,108 +1220,110 @@ export default function App() {
 
 
       {/* 5. PORTFOLIO */}
-      <section id="portfolio" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#0c0c0d] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="portfolio" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0]">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-24 border-b border-gray-200 dark:border-white/10 pb-8 sm:pb-12">
             <div>
-              <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-4 sm:mb-6">Works</h2>
-              <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212] dark:text-white">Projects.</h3>
+              <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-4 sm:mb-6">{portfolioContent.tag}</h2>
+              <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212] dark:text-white">{portfolioContent.title}</h3>
             </div>
-            <p className="text-xs sm:text-[14px] font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest mt-4 md:mt-0">Design Mastery × Core Focus</p>
+            <p className="text-xs sm:text-[14px] font-black text-gray-400 dark:text-gray-400 uppercase tracking-widest mt-4 md:mt-0">{lang === 'zh' ? portfolioContent.subZh : portfolioContent.subEn}</p>
           </div>
         </Reveal>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 xl:gap-14 text-[#121212] dark:text-[#f0f0f0]">
-          {Object.entries({ Packaging: '包裝設計', Product: '產品設計', Graphic: '平面設計' }).map(([key, label], idx) => (
+          {Object.entries(portfolioContent.categoryNames).map(([key, nameObj], idx) => {
+            const label = lang === 'zh' ? nameObj.zh : nameObj.en;
+            return (
             <Reveal key={key} delay={idx * 200}>
-               <SpotlightCard className="group/card flex flex-col h-full bg-white dark:bg-[#161617] text-[#121212] dark:text-white rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[2.5rem] lg:rounded-[3.5rem] shadow-xl hover:-translate-y-2 sm:hover:-translate-y-4 transition-all duration-700 overflow-hidden border border-gray-100 dark:border-white/10">
-                  <div className="aspect-square overflow-hidden relative bg-white dark:bg-[#1c1c1e] border-b border-gray-50 dark:border-white/10 p-3 sm:p-5 md:p-4 lg:p-6">
+               <SpotlightCard className="group/card flex flex-col h-full bg-white dark:bg-[#181922] text-[#121212] dark:text-white rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[2.5rem] lg:rounded-[3.5rem] shadow-xl hover:-translate-y-2 sm:hover:-translate-y-3 hover:scale-[1.02] active:scale-[0.99] hover:shadow-2xl hover:shadow-[#a38a6a]/10 dark:hover:shadow-[#a38a6a]/20 dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] transition-all duration-500 ease-out overflow-hidden border border-gray-100 dark:border-white/10 dark:hover:border-[#a38a6a]/40">
+                  <div className="aspect-square overflow-hidden relative bg-white dark:bg-[#222430] border-b border-gray-50 dark:border-white/10 p-3 sm:p-5 md:p-4 lg:p-6">
                      <img src={key === 'Packaging' ? "/tws_pkg_design11111.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
                   </div>
                   <div className="p-5 sm:p-7 md:p-4 lg:p-8 xl:p-12 flex flex-col items-center text-center flex-grow text-[#121212] dark:text-white">
                      <h4 className="text-2xl sm:text-3xl md:text-xl min-[900px]:text-2xl lg:text-4xl xl:text-5xl font-black uppercase mb-1.5 sm:mb-3 tracking-tighter truncate max-w-full text-[#121212] dark:text-white">{key}</h4>
                      <p className="text-xs sm:text-sm md:text-xs lg:text-base font-bold text-[#a38a6a] tracking-wider mb-5 sm:mb-8 flex-grow uppercase">{label}</p>
                      <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-1.5 sm:gap-2.5 md:gap-2 lg:gap-3 w-full pt-4 sm:pt-6 border-t border-gray-100 dark:border-white/10 transition-all text-[#121212] dark:text-white hover:text-[#a38a6a] dark:hover:text-[#a38a6a]">
-                        <span className="text-xs sm:text-sm md:text-xs min-[900px]:text-sm lg:text-base font-black uppercase tracking-wider whitespace-nowrap">Explore Collection</span>
+                        <span className="text-xs sm:text-sm md:text-xs min-[900px]:text-sm lg:text-base font-black uppercase tracking-wider whitespace-nowrap">{lang === 'zh' ? portfolioContent.exploreZh : portfolioContent.exploreEn}</span>
                         <ArrowRight size={16} className="group-hover/btn:translate-x-1 sm:group-hover/btn:translate-x-2 transition-transform shrink-0" />
                      </button>
                   </div>
                </SpotlightCard>
             </Reveal>
-          ))}
+            );
+          })}
         </div>
         </div>
       </section>
 
       {/* 6. EXPERIENCE (重新規劃為單一垂直演進流) */}
-      <section id="experience" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#0e0e0f] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="experience" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0]">
         <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-16 sm:mb-24 md:mb-32">
-             <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.6em] text-[#a38a6a] uppercase mb-4 sm:mb-6">Chronicles</h2>
-             <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212] dark:text-white">Evolution Path.</h3>
+             <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.6em] text-[#a38a6a] uppercase mb-4 sm:mb-6">{lang === 'zh' ? chroniclesContent.tagZh : chroniclesContent.tagEn}</h2>
+             <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212] dark:text-white">{lang === 'zh' ? chroniclesContent.titleZh : chroniclesContent.titleEn}</h3>
           </div>
         </Reveal>
         
         <div className="relative space-y-8 sm:space-y-12">
           {/* 中間導引線 */}
-          <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#a38a6a]/40 via-gray-100 dark:via-white/10 to-transparent -translate-x-1/2 hidden md:block"></div>
+          <div className="absolute left-[30px] md:left-1/2 top-0 bottom-0 w-[1px] bg-gradient-to-b from-[#a38a6a]/50 via-gray-100 dark:via-white/15 to-transparent -translate-x-1/2 hidden md:block"></div>
 
           {/* 專業經歷與基礎教育 (整合為單一連續主軸) */}
-          {[
-            { company: "久鼎金屬實業股份有限公司", title: "包裝設計工程師", date: "2025.08 - PRESENT", duration: "仍在職", location: "彰化縣秀水鄉・自行車及其零件製造業 500人+", responsibilities: ["減塑全紙化包裝設計提案", "包裝廠商樣品追蹤、品質問題改善確認", "落摔測試與包裝設計結構調整"], achievements: ["自行車零件（車把手、座管、立管、快拆束仔等）共 21 款全紙包裝設計提案", "車載具（電動滑板車、電動機車）共 3 款全紙包裝設計提案", "車把手尾數箱品質異常問題解決（評估全紙填充材機台）"], tools: ["減塑全紙化", "結構調整", "落摔測試", "包裝設計"], type: "work", icon: Briefcase, image: "/tranzx-logo-vector.png" },
-            { company: "美律實業股份有限公司", title: "包裝工程師", date: "2022.07 - 2025.05", duration: "2年11個月", location: "台中市南屯區・精密儀器製造業 500人+", responsibilities: ["消費性電子產品包裝開發工作", "新機型產品包材圖面繪製、包裝作業流程製作", "包裝廠商樣品追蹤、品質問題改善確認"], achievements: ["國際品牌 TWS / HDT / Soundbar 包裝設計提案（共 25 件）", "根據產品定位提出多元價位（低／中／高）包裝設計方案，滿足不同市場需求與品牌策略", "在消費性電子產品 RFQ 階段，主導包裝結構設計、2D 工程圖繪製與初步成本分析"], tools: ["Creo", "產品開發", "產品結構評估", "包裝設計"], type: "work", icon: Briefcase, image: "/merry_logo.jpg" },
-            { company: "台灣櫻花股份有限公司", title: "產品設計師", date: "2020.03 - 2022.07", duration: "2年5個月", location: "台中市大雅區・廚電製造業 500人+", responsibilities: ["針對 PM 市場規劃結合消費者調查擬定設計方向", "跨部門協作與國內外廚電市場及造型趨勢調研"], achievements: ["榮獲 2021 年度績優員工", "主導易清檯面爐 G2522AG、G2623AG 上市", "優化清潔設計與旋鈕造型"], tools: ["Creo", "Photoshop", "Illustrator", "KeyShot"], type: "work", icon: Briefcase, image: "/sakura_logo.png" },
-            { company: "上岳科技股份有限公司", title: "產品設計師", date: "2018.11 - 2019.12", duration: "1年2個月", location: "台中市南屯區・醫療器材製造業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 模組進行產品設計提案 (含視覺、材質、風格)", "產品造型設計與機構討論"], achievements: ["低周波治療器 2 款外觀提案", "兒童用霧化器外觀提案", "SPO2 手環 5 款外觀提案"], tools: ["SolidWorks", "Illustrator", "Photoshop", "KeyShot", "機構設計"], type: "work", icon: Briefcase, image: "/emg_logo.png" },
-            { company: "研成股份有限公司", title: "產品設計師", date: "2017.08 - 2018.08", duration: "1年1個月", location: "新北市新店區・設計相關業 30-100人", responsibilities: ["新品提案與簡報製作", "依據 RD 提供模組進行產品造型設計提案"], achievements: ["獨立負責日本學研 GAKKEN 委託之鋁製品設計案", "研發多合一 solar 新產品 & 彩盒設計規劃", "協助 2018 年度 12in1 solar 產品色彩配置"], tools: ["Illustrator", "Photoshop", "KeyShot", "包裝設計", "提案簡報"], type: "work", icon: Briefcase, image: "/cic-logo.png.png" },
-            { company: "國立臺灣科技大學", title: "工業設計系 / 大學畢業", date: "2013 - 2017", duration: "基礎教育", location: "台北市", responsibilities: ["深耕結構工程與美學邏輯，奠定系統化產品開發思維。"], achievements: [], tools: ["工業設計", "產品開發", "系統化邏輯"], type: "edu", icon: GraduationCap, image: "/ntust_logo.jpg" },
-            { company: "國立臺中高工", title: "圖文傳播科 / 高職畢業", date: "2010 - 2013", duration: "基礎教育", location: "台中市", responsibilities: ["啟蒙於平面美學與印刷技術，掌握刀模與色彩控制精髓。"], achievements: [], tools: ["平面設計", "印刷工程", "色彩學"], type: "edu", icon: LayoutGrid, image: "/tcivs_logo.jpg" }
-          ].map((item, idx) => {
-            const IconComponent = item.icon;
+          {chroniclesContent.items.map((item, idx) => {
+            const IconComponent = item.type === 'edu' ? (item.companyZh.includes('高工') ? LayoutGrid : GraduationCap) : Briefcase;
+            const company = lang === 'zh' ? item.companyZh : item.companyEn;
+            const title = lang === 'zh' ? item.titleZh : item.titleEn;
+            const duration = lang === 'zh' ? item.durationZh : item.durationEn;
+            const location = lang === 'zh' ? item.locationZh : item.locationEn;
+            const responsibilities = lang === 'zh' ? item.responsibilitiesZh : item.responsibilitiesEn;
+            const achievements = lang === 'zh' ? item.achievementsZh : item.achievementsEn;
+
             return (
             <Reveal key={idx} delay={idx * 150} direction={idx % 2 === 0 ? "left" : "right"}>
               <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 w-full ${idx % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
                 <div className="md:w-1/2 w-full">
-                  <SpotlightCard className={`p-6 sm:p-8 md:p-12 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-700 fluid-anim border border-gray-100 dark:border-white/10 ${item.type === 'edu' ? 'bg-gray-50/50 dark:bg-white/5' : 'bg-white dark:bg-[#161617]'}`}>
+                  <SpotlightCard className={`p-6 sm:p-8 md:p-12 rounded-[2rem] sm:rounded-[2.5rem] shadow-sm hover:shadow-2xl transition-all duration-700 fluid-anim border border-gray-100 dark:border-white/10 ${item.type === 'edu' ? 'bg-gray-50/50 dark:bg-[#181922]/70 dark:border-white/5' : 'bg-white dark:bg-[#1c1d27] dark:shadow-[0_8px_32px_rgba(0,0,0,0.3)]'}`}>
                     <div className={`${item.type === 'work' ? 'border-b border-gray-100 dark:border-white/10 pb-5 sm:pb-6 mb-5 sm:mb-6' : 'mb-4'}`}>
                       <div className="flex justify-between items-start mb-3 sm:mb-4 gap-3 sm:gap-4">
                         <div className="min-w-0 flex-1">
                           <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-xs sm:text-[14px] font-black tracking-widest uppercase mb-2 sm:mb-3">
                             <span className="text-[#a38a6a]">{item.date}</span>
                             <span className="text-gray-200 dark:text-gray-700">|</span>
-                            <span className="text-gray-400 dark:text-gray-500">{item.duration}</span>
+                            <span className="text-gray-400 dark:text-gray-400">{duration}</span>
                           </div>
-                          <h4 className={`text-xl sm:text-2xl lg:text-3xl font-black text-[#121212] dark:text-white mb-1.5 sm:mb-2 tracking-tighter break-words ${item.type === 'edu' ? 'opacity-80' : ''}`}>{item.company}</h4>
-                          <p className="text-xs sm:text-sm font-bold text-[#a38a6a] tracking-widest leading-relaxed">{item.title}</p>
+                          <h4 className={`text-xl sm:text-2xl lg:text-3xl font-black text-[#121212] dark:text-white mb-1.5 sm:mb-2 tracking-tighter break-words ${item.type === 'edu' ? 'opacity-80' : ''}`}>{company}</h4>
+                          <p className="text-xs sm:text-sm font-bold text-[#a38a6a] tracking-widest leading-relaxed">{title}</p>
                         </div>
                         {/* Logo Image Rendering */}
-                        <div className="w-12 h-12 sm:w-14 sm:h-14 p-2 bg-white/50 dark:bg-white/10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm relative overflow-hidden group-hover:scale-110 fluid-anim border border-black/5 dark:border-white/10">
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 p-2 bg-white/50 dark:bg-[#252735] rounded-2xl flex items-center justify-center shrink-0 shadow-sm relative overflow-hidden group-hover:scale-110 fluid-anim border border-black/5 dark:border-white/15">
                           <div className="absolute inset-0 bg-[#a38a6a] opacity-5 group-hover:opacity-10 transition-opacity"></div>
                           {item.image ? (
-                             <img src={item.image} alt={item.company} className="w-full h-full object-contain relative z-10 filter grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-multiply dark:mix-blend-normal" />
+                             <img src={item.image} alt={company} className="w-full h-full object-contain relative z-10 filter grayscale group-hover:grayscale-0 transition-all duration-500 mix-blend-multiply dark:mix-blend-normal" />
                           ) : (
                              <IconComponent size={22} className="text-[#a38a6a] css-mask-logo relative z-10" />
                           )}
                         </div>
                       </div>
-                      {item.type === 'work' && <p className="text-xs sm:text-[14px] font-bold text-gray-400 dark:text-gray-500 flex items-center gap-1.5 tracking-wider"><MapPin size={12} className="text-gray-300 dark:text-gray-600 shrink-0"/> {item.location}</p>}
+                      {item.type === 'work' && <p className="text-xs sm:text-[14px] font-bold text-gray-400 dark:text-gray-400 flex items-center gap-1.5 tracking-wider"><MapPin size={12} className="text-gray-300 dark:text-gray-500 shrink-0"/> {location}</p>}
                     </div>
 
                     <div className="space-y-5 sm:space-y-6">
                       <div>
-                        {item.type === 'work' && <h5 className="text-xs sm:text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-2.5 sm:mb-3">Core Responsibilities</h5>}
-                        <ul className={`list-disc space-y-1.5 sm:space-y-2 marker:text-gray-300 dark:marker:text-gray-600 ${item.type === 'work' ? 'pl-4' : 'pl-0 list-none'}`}>
-                          {item.responsibilities.map(res => (
+                        {item.type === 'work' && <h5 className="text-xs sm:text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-2.5 sm:mb-3">{lang === 'zh' ? chroniclesContent.coreResponsibilitiesZh : chroniclesContent.coreResponsibilitiesEn}</h5>}
+                        <ul className={`list-disc space-y-1.5 sm:space-y-2 marker:text-gray-300 dark:marker:text-gray-500 ${item.type === 'work' ? 'pl-4' : 'pl-0 list-none'}`}>
+                          {responsibilities.map(res => (
                             <li key={res} className="text-[13px] sm:text-[14px] text-gray-600 dark:text-gray-300 font-medium leading-[1.75] sm:leading-[1.8] max-w-[55ch]">{res}</li>
                           ))}
                         </ul>
                       </div>
                       
-                      {item.achievements.length > 0 && (
+                      {achievements.length > 0 && (
                         <div>
-                          <h5 className="text-xs sm:text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-3 sm:mb-4 mt-2">Key Achievements</h5>
+                          <h5 className="text-xs sm:text-[14px] font-black text-[#a38a6a] uppercase tracking-[0.2em] mb-3 sm:mb-4 mt-2">{lang === 'zh' ? chroniclesContent.keyAchievementsZh : chroniclesContent.keyAchievementsEn}</h5>
                           <div className="flex flex-col gap-2.5 sm:gap-3">
-                            {item.achievements.map(ach => (
+                            {achievements.map(ach => (
                               <div key={ach} className="flex items-start gap-2.5 sm:gap-3">
                                 <CheckCircle size={15} className="text-[#a38a6a] shrink-0 mt-[4px]" strokeWidth={2.5}/>
                                 <span className="text-[13px] sm:text-[14px] text-gray-700 dark:text-gray-200 font-medium leading-[1.75] sm:leading-[1.8] max-w-[55ch]">{ach}</span>
@@ -1387,12 +1336,12 @@ export default function App() {
 
                     <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-[#a38a6a]/10 dark:border-white/10">
                       {item.tools.map(tool => (
-                        <span key={tool} className="text-xs sm:text-[14px] font-black px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-50 dark:bg-white/5 rounded-lg text-gray-500 dark:text-gray-400 hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all uppercase fluid-anim cursor-default">{tool}</span>
+                        <span key={tool} className="text-xs sm:text-[14px] font-black px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-50 dark:bg-[#252735] rounded-lg text-gray-500 dark:text-gray-300 hover:text-white hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all uppercase fluid-anim cursor-default">{tool}</span>
                       ))}
                     </div>
                   </SpotlightCard>
                 </div>
-                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white dark:bg-[#161617] border-4 border-[#a38a6a] z-10 shadow-[0_0_20px_rgba(163,138,106,0.4)] fluid-anim hover:scale-150 cursor-pointer"></div>
+                <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white dark:bg-[#1c1d27] border-4 border-[#a38a6a] z-10 shadow-[0_0_20px_rgba(163,138,106,0.5)] fluid-anim hover:scale-150 cursor-pointer"></div>
                 <div className="md:w-1/2 hidden md:block"></div>
               </div>
             </Reveal>
@@ -1403,45 +1352,43 @@ export default function App() {
       </section>
 
       {/* 7. SKILLS */}
-      <section id="skills" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 dark:border-white/10 bg-white dark:bg-[#0c0c0d] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="skills" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 dark:border-white/10 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0]">
         <div className="max-w-7xl mx-auto w-full text-[#121212] dark:text-[#f0f0f0]">
         <Reveal>
-           <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">Mastery Skills & Tools</h2>
+           <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">{lang === 'zh' ? skillsContent.tagZh : skillsContent.tagEn}</h2>
         </Reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
-           {[
-             { id: '01', title: '市場調研與定位分析', icon: LayoutGrid, en: 'Market Research & Strategy', desc: '擅長設計前期的競品蒐集並針對該品牌定位分析，總結設計規畫方向。', tags: ['競品分析', '產品策略', '產品定位', '市場調查資料分析', '報告撰寫與提案'] },
-             { id: '02', title: '2D 品牌視覺整合與簡報提案', icon: FileCheck, en: 'Graphic Design & Branding', desc: '擅長整合包裝結構與品牌識別，製作具專業感與說服力的提案簡報。', tags: ['Adobe InDesign', 'Illustrator', 'Photoshop', '電腦排版設計', '設計印刷基本認知', '電腦印前設計'] },
-             { id: '03', title: '3D 建模與結構模擬', icon: Box, en: '3D Modeling & Engineering', desc: '能快速建構產品結構模型並進行裝配模擬，支援從設計構想至工程的溝通。', tags: ['Creo', 'SolidWorks', 'Rhino', 'Keyshot', '產品結構評估', '3D 渲染'] },
-             { id: '04', title: '包裝材料選用與 BOM 建立', icon: Layers, en: 'Packaging & BOM', desc: '熟悉泡殼、瓦楞紙卡、紙托等常用包材特性，依需求提出優化方案。', tags: ['瓦楞紙結構', '包裝材料選用', '工程圖繪製', 'BOM 建立'] },
-             { id: '05', title: '打樣實作與設計驗證能力', icon: CheckCircle, en: 'Prototyping & Validation', desc: '善用割樣機進行結構模擬與快速打樣，快速驗證設計可行性。', tags: ['打樣機操作', '結構模擬', '快速打樣', '設計驗證', 'CMF 樣板製作'] }
-           ].map((skill, idx) => (
+           {skillsContent.skills.map((skill, idx) => {
+             const IconComponent = [LayoutGrid, FileCheck, Box, Layers, CheckCircle][idx] || Box;
+             return (
              <Reveal key={idx} delay={idx * 150} className={idx === 4 ? "lg:col-span-2" : ""}>
-                <SpotlightCard className="p-6 sm:p-8 md:p-10 group rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] h-full flex flex-col hover:border-[#a38a6a]/30 transition-all bg-white dark:bg-[#161617] text-[#121212] dark:text-[#f0f0f0] border border-gray-100 dark:border-white/10">
+                <SpotlightCard className="p-6 sm:p-8 md:p-10 group rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] h-full flex flex-col hover:border-[#a38a6a]/30 transition-all bg-white dark:bg-[#181922] text-[#121212] dark:text-[#f0f0f0] border border-gray-100 dark:border-white/10 dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
                    <div className="flex justify-between items-start mb-6 sm:mb-8 gap-4">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] transition-transform group-hover:scale-110 duration-500 shrink-0">
-                        <skill.icon size={24} className="sm:w-7 sm:h-7" />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 flex items-center justify-center text-[#a38a6a] transition-transform group-hover:scale-110 duration-500 shrink-0">
+                        <IconComponent size={24} className="sm:w-7 sm:h-7" />
                       </div>
                       <p className="text-xs sm:text-[14px] font-black tracking-widest text-[#a38a6a] uppercase text-right">{skill.en}</p>
                    </div>
-                   <h4 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 tracking-tight leading-snug group-hover:text-[#a38a6a] transition-colors text-[#121212] dark:text-white">{skill.title}</h4>
-                   <p className="text-[13px] sm:text-[14px] text-gray-500 dark:text-gray-400 font-medium leading-[1.75] sm:leading-[1.8] mb-6 sm:mb-10 flex-grow">{skill.desc}</p>
+                   <h4 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 tracking-tight leading-snug group-hover:text-[#a38a6a] transition-colors text-[#121212] dark:text-white">{lang === 'zh' ? skill.titleZh : skill.titleEn}</h4>
+                   <p className="text-[13px] sm:text-[14px] text-gray-500 dark:text-gray-300 font-medium leading-[1.75] sm:leading-[1.8] mb-6 sm:mb-10 flex-grow">{lang === 'zh' ? skill.descZh : skill.descEn}</p>
                    <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[#121212] dark:text-[#f0f0f0]">
                      {skill.tags.map(t => (
-                       <span key={t} className="text-xs sm:text-[14px] font-black px-3 sm:px-4 py-1.5 bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-gray-400 rounded-lg hover:text-white hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all fluid-anim uppercase">{t}</span>
+                       <span key={t} className="text-xs sm:text-[14px] font-black px-3 sm:px-4 py-1.5 bg-gray-50 dark:bg-[#232532] text-gray-500 dark:text-gray-300 rounded-lg hover:text-white hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all fluid-anim uppercase">{t}</span>
                      ))}
                    </div>
                 </SpotlightCard>
              </Reveal>
-           ))}
+             );
+           })}
         </div>
         
+        {/* 原本是純黑色的軟體工具區塊：在深色模式套用漸層深鈦金屬與香檳金光澤，極富層次感 */}
         <Reveal delay={300}>
-           <div className="bg-[#121212] dark:bg-[#151517] rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 text-white overflow-hidden relative border border-white/5 dark:border-white/10">
+           <div className="bg-[#121212] dark:bg-gradient-to-br dark:from-[#21232d] dark:via-[#191a23] dark:to-[#13141b] rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 text-white overflow-hidden relative border border-white/5 dark:border-[#a38a6a]/30 shadow-2xl dark:shadow-[0_16px_50px_rgba(0,0,0,0.7)]">
               <div className="relative z-10">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 sm:gap-4 mb-8 sm:mb-12 md:mb-16 border-b border-white/10 pb-6 sm:pb-10">
-                   <h4 className="font-serif italic text-3xl sm:text-4xl text-[#a38a6a]">Software Tools</h4>
-                   <p className="text-xs sm:text-[14px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-white/50 uppercase">Design & Engineering Mastery</p>
+                   <h4 className="font-serif italic text-3xl sm:text-4xl text-[#a38a6a]">{skillsContent.toolsHeading}</h4>
+                   <p className="text-xs sm:text-[14px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-white/50 dark:text-gray-300 uppercase">{skillsContent.toolsSub}</p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-6">
                    {[
@@ -1453,7 +1400,7 @@ export default function App() {
                      { name: 'InDesign', img: '/Indesign_logo.png' },
                      { name: 'AutoCAD', img: '/autocad_logo.jpg' }
                    ].map(tool => (
-                     <div key={tool.name} className="flex flex-col items-center gap-3 sm:gap-4 bg-white/5 py-6 sm:py-8 rounded-2xl sm:rounded-[2rem] hover:bg-[#a38a6a]/20 hover:-translate-y-1 sm:hover:-translate-y-2 transition-all cursor-pointer border border-transparent hover:border-[#a38a6a]/30 group">
+                     <div key={tool.name} className="flex flex-col items-center gap-3 sm:gap-4 bg-white/5 dark:bg-[#262835]/80 py-6 sm:py-8 rounded-2xl sm:rounded-[2rem] hover:bg-[#a38a6a]/20 dark:hover:bg-[#a38a6a]/25 hover:-translate-y-1 sm:hover:-translate-y-2 transition-all cursor-pointer border border-transparent dark:border-white/10 hover:border-[#a38a6a]/40 group">
                         <div className="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-110 fluid-anim relative">
                            {tool.img ? (
                               <img src={tool.img} alt={tool.name} className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 rounded" />
@@ -1463,7 +1410,7 @@ export default function App() {
                               </div>
                            )}
                         </div>
-                        <span className="text-xs font-black tracking-widest uppercase text-white/50 group-hover:text-white transition-colors duration-500 text-center w-full truncate px-2">{tool.name}</span>
+                        <span className="text-xs font-black tracking-widest uppercase text-white/60 dark:text-gray-300 group-hover:text-white transition-colors duration-500 text-center w-full truncate px-2">{tool.name}</span>
                      </div>
                    ))}
                 </div>
@@ -1474,26 +1421,26 @@ export default function App() {
       </section>
 
       {/* 8. COURSES (非對稱佈局設計) */}
-      <section id="courses" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#fdfdfd] dark:bg-[#0e0e0f] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="courses" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#fdfdfd] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0]">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 md:mb-24 gap-5 sm:gap-6">
             <div>
-              <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-2 sm:mb-6 text-[#a38a6a]">Learning Path</h2>
-              <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212] dark:text-white">Growth.</h3>
+              <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-2 sm:mb-6">{lang === 'zh' ? coursesContent.tagZh : coursesContent.tagEn}</h2>
+              <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212] dark:text-white">{coursesContent.titleZh}</h3>
             </div>
             <div className="flex flex-wrap gap-2 sm:gap-3 w-full md:w-auto text-[#121212] dark:text-[#f0f0f0]">
-              {['全部', 'AI應用課程', '包裝專業課程'].map(f => (
+              {coursesContent.filters.map(f => (
                 <button 
-                  key={f} 
-                  onClick={() => setActiveCourseFilter(f)} 
-                  className={`px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-black uppercase tracking-wider transition-all shadow-sm ${
-                    activeCourseFilter === f 
+                  key={f.key} 
+                  onClick={() => setActiveCourseFilter(f.key)} 
+                  className={`px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full text-xs sm:text-sm md:text-base font-black uppercase tracking-wider transition-all shadow-sm cursor-pointer ${
+                    activeCourseFilter === f.key 
                       ? 'bg-[#a38a6a] text-white shadow-md shadow-[#a38a6a]/20' 
-                      : 'bg-white dark:bg-[#161617] text-gray-500 dark:text-gray-400 hover:text-[#121212] dark:hover:text-white border border-gray-100 dark:border-white/10 hover:border-gray-200 dark:hover:border-white/20'
+                      : 'bg-white dark:bg-[#1c1d27] text-gray-500 dark:text-gray-300 hover:text-[#121212] dark:hover:text-white border border-gray-100 dark:border-white/10 hover:border-gray-200 dark:hover:border-white/20'
                   }`}
                 >
-                  {f} <span className="ml-1 opacity-60">({getCourseFilterCount(f)})</span>
+                  {lang === 'zh' ? f.labelZh : f.labelEn} <span className="ml-1 opacity-60">({getCourseFilterCount(f.key)})</span>
                 </button>
               ))}
             </div>
@@ -1502,79 +1449,76 @@ export default function App() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 text-[#121212]">
            {filteredCourses.map((course, idx) => (
-             <CourseCard key={course.id} course={course} delay={idx * 150} />
+             <CourseCard key={course.id} course={course} delay={idx * 150} lang={lang} />
            ))}
         </div>
         </div>
       </section>
 
       {/* 9. INTERESTS */}
-      <section id="interests" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-white dark:bg-[#0c0c0d] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="interests" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0]">
         <div className="max-w-7xl mx-auto w-full">
-        <Reveal><h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
+        <Reveal><h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">{lifestyleContent.tag}</h2></Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
-           {[
-             { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "/fitness.jpg" },
-             { title: '馬拉松', en: 'Marathon', icon: Timer, goal: '5次半馬，目標全馬', desc: '不只是體能，更是對堅持信念的終極挑戰。', img: "/marathon.jpg" },
-             { title: '登山挑戰', en: 'Hiking', icon: Mountain, goal: '登頂2座百岳，持續挑戰', desc: '在山林間對話，尋找自我探索與放鬆的途徑。', img: "/mountain.jpg" },
-             { title: '羽球', en: 'Badminton', icon: BadmintonIcon, goal: '每週定期切磋，鍛鍊敏捷身手', desc: '高速攻防與動態專注，在每一次揮拍與移位間鍛鍊敏捷反應。', img: "/badminton.jpg" },
-             { title: '匹克球', en: 'Pickleball', icon: PickleballIcon, goal: '享受新興運動樂趣，精進戰術走位', desc: '融合手眼協調與節奏掌控，在靈活多變的擊球中體驗運動樂趣。', img: "/pickleball.jpg" }
-           ].map((item, idx) => (
+           {lifestyleContent.items.map((item, idx) => {
+             const IconComponent = [Dumbbell, Timer, Mountain, BadmintonIcon, PickleballIcon][idx] || Dumbbell;
+             return (
              <Reveal key={idx} delay={(idx % 3) * 150}>
-                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] dark:text-[#f0f0f0] rounded-[2.5rem] sm:rounded-[3rem] group bg-white dark:bg-[#161617] border border-transparent dark:border-white/10">
-                   <div className="h-64 sm:h-80 md:h-[28rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-white dark:bg-[#181819]">
-                      <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
-                      <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/80 to-transparent dark:from-[#181819] dark:via-[#181819]/80 group-hover:opacity-40 transition-opacity duration-1000"></div>
+                <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] dark:text-[#f0f0f0] rounded-[2.5rem] sm:rounded-[3rem] group bg-white dark:bg-[#181922] border border-transparent dark:border-white/10 dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+                   <div className="h-64 sm:h-80 md:h-[28rem] overflow-hidden grayscale group-hover/course:grayscale-0 group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-white dark:bg-[#222430]">
+                      <img src={item.img} alt={item.titleZh} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
+                      <div className="absolute top-0 bottom-0 left-0 w-full bg-gradient-to-t from-white via-white/80 to-transparent dark:from-[#20222d] dark:via-[#20222d]/80 group-hover:opacity-40 transition-opacity duration-1000"></div>
                    </div>
-                   <div className="p-6 sm:p-8 md:p-10 flex flex-col flex-grow relative bg-white dark:bg-[#181819] -mt-10 sm:-mt-12 mx-4 sm:mx-6 rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] border border-gray-100 dark:border-white/10 mb-6 text-[#121212] dark:text-[#f0f0f0] group-hover:-translate-y-2 sm:group-hover:-translate-y-4 transition-transform duration-700 ease-out">
+                   <div className="p-6 sm:p-8 md:p-10 flex flex-col flex-grow relative bg-white dark:bg-[#20222d] -mt-10 sm:-mt-12 mx-4 sm:mx-6 rounded-[2rem] sm:rounded-[2.5rem] shadow-[0_0_20px_rgba(0,0,0,0.05)] dark:shadow-[0_4px_24px_rgba(0,0,0,0.3)] border border-gray-100 dark:border-white/10 mb-6 text-[#121212] dark:text-[#f0f0f0] group-hover:-translate-y-2 sm:group-hover:-translate-y-4 transition-transform duration-700 ease-out">
                       <div className="flex items-center gap-4 sm:gap-5 mb-6 sm:mb-8 text-[#121212] dark:text-white">
-                         <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#a38a6a]/10 flex items-center justify-center text-[#a38a6a] shadow-inner text-[#121212] shrink-0"><item.icon size={24} className="sm:w-7 sm:h-7" strokeWidth={2.5} /></div>
-                         <div className="min-w-0"><h4 className="text-lg sm:text-xl font-black tracking-tight text-[#121212] dark:text-white truncate">{item.title}</h4><p className="text-xs sm:text-[14px] font-black uppercase tracking-widest text-gray-300 dark:text-gray-500">{item.en}</p></div>
+                         <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 flex items-center justify-center text-[#a38a6a] shadow-inner text-[#121212] shrink-0"><IconComponent size={24} className="sm:w-7 sm:h-7" strokeWidth={2.5} /></div>
+                         <div className="min-w-0"><h4 className="text-lg sm:text-xl font-black tracking-tight text-[#121212] dark:text-white truncate">{lang === 'zh' ? item.titleZh : item.titleEn}</h4><p className="text-xs sm:text-[14px] font-black uppercase tracking-widest text-gray-300 dark:text-gray-400">{item.en}</p></div>
                       </div>
-                      <p className="text-xs sm:text-sm font-bold text-[#a38a6a] mb-3 sm:mb-4 leading-relaxed">{item.goal}</p>
-                      <p className="text-[13px] sm:text-[14px] text-gray-400 dark:text-gray-300 font-medium leading-relaxed">{item.desc}</p>
+                      <p className="text-xs sm:text-sm font-bold text-[#a38a6a] mb-3 sm:mb-4 leading-relaxed">{lang === 'zh' ? item.goalZh : item.goalEn}</p>
+                      <p className="text-[13px] sm:text-[14px] text-gray-400 dark:text-gray-300 font-medium leading-relaxed">{lang === 'zh' ? item.descZh : item.descEn}</p>
                    </div>
                 </SpotlightCard>
              </Reveal>
-           ))}
+             );
+           })}
         </div>
         </div>
       </section>
 
-      {/* 10. CLOSING & FOOTER */}
-      <footer id="contact" className="bg-[#121212] dark:bg-[#070708] pt-20 sm:pt-28 md:pt-40 pb-16 sm:pb-20 text-white px-5 sm:px-8 md:px-16 lg:px-24">
+      {/* 10. CLOSING & FOOTER (原本純黑頁尾：在深色模式下改為沉穩星夜深灰漸層與香檳金點綴，營造層次深度) */}
+      <footer id="contact" className="bg-[#121212] dark:bg-gradient-to-b dark:from-[#181922] dark:via-[#13141b] dark:to-[#0c0d11] pt-20 sm:pt-28 md:pt-40 pb-16 sm:pb-20 text-white px-5 sm:px-8 md:px-16 lg:px-24 border-t border-transparent dark:border-[#a38a6a]/30 relative overflow-hidden">
+        {/* 深色模式下頂部柔和暖金光暈 */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-gradient-to-b from-[#a38a6a]/15 to-transparent blur-[120px] pointer-events-none -z-0"></div>
         <Reveal>
-          <div className="max-w-4xl mx-auto mb-20 sm:mb-28 md:mb-32 text-center px-2 sm:px-4">
-            <p className="text-[#a38a6a] font-black text-xs sm:text-[14px] tracking-[0.4em] sm:tracking-[0.5em] uppercase mb-6 sm:mb-12">Closing Statement</p>
+          <div className="max-w-4xl mx-auto mb-20 sm:mb-28 md:mb-32 text-center px-2 sm:px-4 relative z-10">
+            <p className="text-[#a38a6a] font-black text-xs sm:text-[14px] tracking-[0.4em] sm:tracking-[0.5em] uppercase mb-6 sm:mb-12">{footerContent.tag}</p>
             <div className="space-y-6 sm:space-y-8">
-              <p className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight leading-tight">非常感謝您的閱讀。</p>
-              <p className="text-base sm:text-xl md:text-2xl font-medium text-gray-400 leading-relaxed max-w-2xl mx-auto">如有進一步了解的需要，歡迎隨時與我聯繫。</p>
-              <p className="text-base sm:text-xl md:text-2xl text-[#a38a6a] font-serif italic leading-relaxed pt-2 sm:pt-4">
-                若有幸符合貴公司徵才條件，<br />
-                我將十分期待有機會參與正式面試，<br />
-                為團隊帶來我的熱情與專業。
+              <p className="text-2xl sm:text-3xl md:text-5xl font-black tracking-tight leading-tight">{lang === 'zh' ? footerContent.p1Zh : footerContent.p1En}</p>
+              <p className="text-base sm:text-xl md:text-2xl font-medium text-gray-400 dark:text-gray-300 leading-relaxed max-w-2xl mx-auto">{lang === 'zh' ? footerContent.p2Zh : footerContent.p2En}</p>
+              <p className="text-base sm:text-xl md:text-2xl text-[#a38a6a] font-serif italic leading-relaxed pt-2 sm:pt-4 whitespace-pre-line">
+                {lang === 'zh' ? footerContent.quoteZh : footerContent.quoteEn}
               </p>
             </div>
           </div>
         </Reveal>
         <Reveal direction="down">
-          <div className="text-center mb-20 sm:mb-28 md:mb-40 border-t border-white/5 pt-16 sm:pt-24 md:pt-32">
-             <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter mb-10 sm:mb-16 md:mb-20 leading-[0.9] sm:leading-[0.8]">Let's Build <br /><span className="font-serif italic text-[#a38a6a]">Something.</span></h2>
+          <div className="text-center mb-20 sm:mb-28 md:mb-40 border-t border-white/5 dark:border-white/10 pt-16 sm:pt-24 md:pt-32 relative z-10">
+             <h2 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-black tracking-tighter mb-10 sm:mb-16 md:mb-20 leading-[0.9] sm:leading-[0.8]">{footerContent.heading.split(' ')[0]} {footerContent.heading.split(' ')[1]} <br /><span className="font-serif italic text-[#a38a6a]">{footerContent.heading.split(' ')[2]}</span></h2>
              <div className="flex flex-col md:flex-row justify-center items-center gap-6 sm:gap-8 md:gap-12 w-full max-w-xl md:max-w-none mx-auto">
-                <a href="mailto:amanda840604@gmail.com" className="w-full sm:w-auto text-center justify-center group bg-white text-[#121212] px-8 sm:px-14 py-4 sm:py-7 rounded-full font-black text-xs sm:text-[14px] uppercase tracking-[0.2em] sm:tracking-[0.4em] hover:bg-[#a38a6a] hover:text-white transition-all flex items-center gap-3 sm:gap-5 shadow-2xl active:scale-95"><Mail size={20} className="sm:w-6 sm:h-6 shrink-0" /> <span className="truncate">AMANDA840604@GMAIL.COM</span></a>
+                <a href="mailto:amanda840604@gmail.com" className="w-full sm:w-auto text-center justify-center group bg-white dark:bg-[#a38a6a] text-[#121212] dark:text-white px-8 sm:px-14 py-4 sm:py-7 rounded-full font-black text-xs sm:text-[14px] uppercase tracking-[0.2em] sm:tracking-[0.4em] hover:bg-[#a38a6a] dark:hover:bg-[#b89d7b] transition-all flex items-center gap-3 sm:gap-5 shadow-2xl dark:shadow-[#a38a6a]/25 active:scale-95"><Mail size={20} className="sm:w-6 sm:h-6 shrink-0" /> <span className="truncate">AMANDA840604@GMAIL.COM</span></a>
                 <div className="flex gap-4 sm:gap-6">
-                   <a href="tel:0918190990" className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#a38a6a] transition-all group active:scale-90"><Phone size={22} className="sm:w-7 sm:h-7" /></a>
-                   <a href="https://line.me/ti/p/fk-CFFKYiU" target="_blank" rel="noopener noreferrer" className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/10 flex items-center justify-center hover:border-[#06C755] transition-all group active:scale-90"><MessageCircle size={22} className="sm:w-7 sm:h-7" /></a>
+                   <a href="tel:0918190990" className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/10 dark:border-white/20 dark:bg-white/5 flex items-center justify-center hover:border-[#a38a6a] dark:hover:border-[#a38a6a] dark:hover:bg-[#a38a6a]/20 transition-all group active:scale-90"><Phone size={22} className="sm:w-7 sm:h-7" /></a>
+                   <a href="https://line.me/ti/p/fk-CFFKYiU" target="_blank" rel="noopener noreferrer" className="w-14 h-14 sm:w-20 sm:h-20 rounded-full border border-white/10 dark:border-white/20 dark:bg-white/5 flex items-center justify-center hover:border-[#06C755] dark:hover:bg-[#06C755]/20 transition-all group active:scale-90"><MessageCircle size={22} className="sm:w-7 sm:h-7" /></a>
                 </div>
              </div>
           </div>
         </Reveal>
-        <div className="flex flex-col md:flex-row justify-between items-center py-10 sm:py-16 border-t border-white/5 text-xs sm:text-[14px] font-black uppercase tracking-[0.3em] sm:tracking-[0.5em] text-white">
-          <p className="text-white opacity-50 text-center md:text-left">© 2026 AMANDA LAI. ALL RIGHTS RESERVED.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center py-10 sm:py-16 border-t border-white/5 dark:border-white/10 text-xs sm:text-[14px] font-black uppercase tracking-[0.3em] sm:tracking-[0.5em] text-white relative z-10">
+          <p className="text-white opacity-50 dark:opacity-70 text-center md:text-left">{footerContent.rights}</p>
           <div className="flex flex-wrap gap-8 mt-6 md:mt-0 text-white justify-center">
              <a href="https://line.me/ti/p/fk-CFFKYiU" target="_blank" rel="noopener noreferrer" className="hover:text-[#a38a6a] transition-colors flex items-center gap-2">
                 <MessageCircle size={18} />
-                LINE 聯繫
+                {lang === 'zh' ? footerContent.lineContactZh : footerContent.lineContactEn}
              </a>
           </div>
         </div>
@@ -1582,55 +1526,62 @@ export default function App() {
 
       {/* --- MODAL --- */}
       {activeCategory && (
-        <div className="fixed inset-0 z-[200] bg-white dark:bg-[#0e0e10] flex flex-col overflow-y-auto animate-in fade-in duration-500 text-[#121212] dark:text-[#f0f0f0]">
-          <div className="sticky top-0 z-[210] bg-white/95 dark:bg-[#141416]/95 backdrop-blur-xl border-b border-gray-100 dark:border-white/10 px-4 sm:px-8 md:px-24 py-3.5 sm:py-5 md:py-8 flex justify-between items-center text-[#121212] dark:text-white">
+        <div className="fixed inset-0 z-[200] bg-white dark:bg-[#0c0d12] flex flex-col overflow-y-auto animate-in fade-in duration-500 text-[#121212] dark:text-[#f0f0f0]">
+          <div className="sticky top-0 z-[210] bg-white/95 dark:bg-[#141620]/95 backdrop-blur-xl border-b border-gray-100 dark:border-white/10 px-4 sm:px-8 md:px-24 py-3.5 sm:py-5 md:py-8 flex justify-between items-center text-[#121212] dark:text-white shadow-sm dark:shadow-[0_4px_25px_rgba(0,0,0,0.5)]">
             <div className="flex items-center gap-2 sm:gap-4 min-w-0">
               <h2 className="text-lg sm:text-2xl md:text-4xl font-black uppercase tracking-tight text-[#121212] dark:text-white truncate">
-                {activeCategory} <span className="text-[#a38a6a] font-normal italic lowercase font-serif ml-1 sm:ml-2 text-xs sm:text-lg md:text-2xl">Collection</span>
+                {lang === 'zh' 
+                  ? (portfolioContent.categoryNames[activeCategory as keyof typeof portfolioContent.categoryNames]?.zh || activeCategory)
+                  : (portfolioContent.categoryNames[activeCategory as keyof typeof portfolioContent.categoryNames]?.en || activeCategory)
+                } <span className="text-[#a38a6a] font-normal italic lowercase font-serif ml-1 sm:ml-2 text-xs sm:text-lg md:text-2xl">Collection</span>
               </h2>
             </div>
             <button 
               onClick={() => setActiveCategory(null)} 
-              className="group flex items-center gap-1.5 sm:gap-3 bg-[#121212] dark:bg-white text-white dark:text-[#121212] px-3.5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] dark:hover:text-white transition-all active:scale-90 shadow-xl shrink-0"
-              aria-label="關閉作品藝廊"
+              className="group flex items-center gap-1.5 sm:gap-3 bg-[#121212] dark:bg-[#1e202c] text-white dark:text-gray-100 px-3.5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3 rounded-full hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] dark:hover:text-white transition-all active:scale-90 shadow-xl border border-transparent dark:border-white/15 shrink-0 cursor-pointer"
+              aria-label={lang === 'zh' ? "關閉作品藝廊" : "Close Gallery"}
             >
-              <span className="text-xs sm:text-[14px] font-black uppercase tracking-wider hidden sm:inline">Close Gallery</span>
-              <span className="text-xs font-black uppercase tracking-wider sm:hidden">關閉</span>
+              <span className="text-xs sm:text-[14px] font-black uppercase tracking-wider hidden sm:inline">{lang === 'zh' ? portfolioContent.closeGalleryZh : portfolioContent.closeGalleryEn}</span>
+              <span className="text-xs font-black uppercase tracking-wider sm:hidden">{lang === 'zh' ? portfolioContent.closeBtnMobileZh : portfolioContent.closeBtnMobileEn}</span>
               <X size={16} className="sm:w-5 sm:h-5 shrink-0" />
             </button>
           </div>
           <div className="px-4 sm:px-8 md:px-24 py-6 sm:py-12 md:py-20 max-w-7xl mx-auto w-full text-[#121212] dark:text-[#f0f0f0]">
-            {currentFilterOptions.length > 0 && (
+            {currentCategoryFilters.length > 0 && (
               <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-12 md:mb-16">
-                {currentFilterOptions.map(f => (
+                {currentCategoryFilters.map(item => (
                   <button 
-                    key={f} 
-                    onClick={() => setActiveFilter(f)} 
-                    className={`px-3.5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 rounded-full text-xs sm:text-sm md:text-base font-black uppercase tracking-wider transition-all shadow-sm ${
-                      activeFilter === f 
+                    key={item.key} 
+                    onClick={() => setActiveFilter(item.key)} 
+                    className={`px-3.5 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 rounded-full text-xs sm:text-sm md:text-base font-black uppercase tracking-wider transition-all shadow-sm cursor-pointer ${
+                      activeFilter === item.key 
                         ? 'bg-[#121212] dark:bg-[#a38a6a] text-white shadow-md' 
-                        : 'bg-gray-50 dark:bg-white/5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/10 hover:text-gray-900 dark:hover:text-white border border-gray-100 dark:border-white/10'
+                        : 'bg-gray-50 dark:bg-[#171924] text-gray-500 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-[#202230] hover:text-gray-900 dark:hover:text-white border border-gray-100 dark:border-white/10'
                     }`}
                   >
-                    {f} <span className="ml-1 opacity-50">({getFilterCount(activeCategory, f)})</span>
+                    {lang === 'zh' ? item.labelZh : item.labelEn} <span className="ml-1 opacity-50">({getFilterCount(activeCategory, item.key)})</span>
                   </button>
                 ))}
               </div>
             )}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-20">
-              {filteredProjects.map((proj, i) => (
-                 <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white dark:bg-[#161617] rounded-[2rem] sm:rounded-[3rem] border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl transition-all duration-700">
-                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[2rem] sm:rounded-t-[3rem] bg-white dark:bg-[#1f1f21] relative p-4 aspect-[3/2]">
-                      <img src={proj.img} alt={proj.title} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.05]" />
+              {filteredProjects.map((proj, i) => {
+                 const enItem = projectEnMap[proj.id];
+                 const displayTitle = (lang === 'en' && enItem?.title) ? enItem.title : proj.title;
+                 const displayDesc = (lang === 'en' && enItem?.desc) ? enItem.desc : proj.desc;
+                 return (
+                 <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white dark:bg-[#161822] rounded-[2rem] sm:rounded-[3rem] border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_15px_40px_rgba(163,138,106,0.15)] dark:hover:border-[#a38a6a]/40 hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.99] transition-all duration-500 ease-out">
+                   <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[2rem] sm:rounded-t-[3rem] bg-gray-50/50 dark:bg-[#11121a] relative p-4 aspect-[3/2] border-b border-transparent dark:border-white/5">
+                      <img src={proj.img} alt={displayTitle} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.05]" />
                    </div>
                    <div className="px-6 sm:px-10 pb-6 sm:pb-10 pt-3 sm:pt-4 flex-grow flex flex-col justify-end">
                       <div className="flex justify-between items-center mb-2 sm:mb-3">
-                         <h4 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-[#121212] dark:text-white">{proj.title}</h4>
-                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-300 dark:text-gray-500 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] transition-all shrink-0 ml-3 sm:ml-4"><ExternalLink size={18} /></div>
+                         <h4 className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight text-[#121212] dark:text-white">{displayTitle}</h4>
+                         <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-300 dark:text-gray-400 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] dark:bg-white/5 transition-all shrink-0 ml-3 sm:ml-4"><ExternalLink size={18} /></div>
                       </div>
-                      {proj.desc && (
-                        <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6 font-medium line-clamp-2">
-                          {proj.desc}
+                      {displayDesc && (
+                        <p className="text-gray-500 dark:text-gray-300 text-xs sm:text-sm md:text-base leading-relaxed mb-4 sm:mb-6 font-medium line-clamp-2">
+                          {displayDesc}
                         </p>
                       )}
                       <div className="flex flex-wrap gap-2 sm:gap-3">
@@ -1638,49 +1589,56 @@ export default function App() {
                       </div>
                    </div>
                  </div>
-              ))}
+                 );
+              })}
             </div>
           </div>
         </div>
       )}
 
       {/* --- PROJECT DETAILS MODAL --- */}
-      {selectedProject && (
+      {selectedProject && (() => {
+        const enItem = projectEnMap[selectedProject.id];
+        const displayTitle = (lang === 'en' && enItem?.title) ? enItem.title : selectedProject.title;
+        const displayBrief = (lang === 'en' && enItem?.brief) ? enItem.brief : selectedProject.brief;
+        const displayDesc = (lang === 'en' && enItem?.desc) ? enItem.desc : selectedProject.desc;
+
+        return (
         <div className="fixed inset-0 z-[300] flex justify-center items-center p-2 sm:p-6 md:p-12">
           {/* Backdrop */}
-          <div onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-[#121212]/80 dark:bg-black/85 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"></div>
+          <div onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-[#090a0f]/80 dark:bg-[#050608]/90 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"></div>
           
           {/* Modal Content */}
-          <div className="relative bg-white dark:bg-[#141416] w-full max-w-7xl h-[94vh] md:h-full max-h-[94vh] md:max-h-full rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl flex flex-col animate-in zoom-in-95 duration-500 cubic-bezier border border-transparent dark:border-white/10">
+          <div className="relative bg-white dark:bg-[#141620] w-full max-w-7xl h-[94vh] md:h-full max-h-[94vh] md:max-h-full rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl dark:shadow-[0_25px_70px_rgba(0,0,0,0.8)] flex flex-col animate-in zoom-in-95 duration-500 cubic-bezier border border-transparent dark:border-white/15">
             
             {/* Header & Close */}
-            <div className="flex-shrink-0 flex items-center justify-between p-5 sm:p-8 md:p-10 border-b border-gray-100 dark:border-white/10 z-10 sticky top-0 bg-white/95 dark:bg-[#141416]/95 backdrop-blur-md rounded-t-[1.5rem] sm:rounded-t-[2rem] gap-4">
+            <div className="flex-shrink-0 flex items-center justify-between p-5 sm:p-8 md:p-10 border-b border-gray-100 dark:border-white/10 z-10 sticky top-0 bg-white/95 dark:bg-[#141620]/95 backdrop-blur-md rounded-t-[1.5rem] sm:rounded-t-[2rem] gap-4">
                <div className="flex flex-col min-w-0">
-                  <h3 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#121212] dark:text-white truncate">{selectedProject.title}</h3>
+                  <h3 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#121212] dark:text-white truncate">{displayTitle}</h3>
                   <div className="flex gap-1.5 sm:gap-2 mt-2 sm:mt-4 flex-wrap">
-                    {selectedProject.tags.map(tag => (
+                    {selectedProject.tags.map((tag: string) => (
                       <span key={tag} className="text-xs sm:text-[14px] font-bold text-[#a38a6a] bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full uppercase tracking-widest">{tag}</span>
                     ))}
                   </div>
                </div>
-               <button onClick={() => setSelectedProject(null)} className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-gray-50 dark:bg-white/10 hover:bg-gray-100 dark:hover:bg-white/20 rounded-full transition-colors group shrink-0">
-                 <X size={20} className="sm:w-6 sm:h-6 text-gray-500 dark:text-gray-400 group-hover:text-[#121212] dark:group-hover:text-white transition-colors" />
+               <button onClick={() => setSelectedProject(null)} className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-gray-50 dark:bg-[#202230] hover:bg-gray-100 dark:hover:bg-[#a38a6a] rounded-full transition-colors group shrink-0 cursor-pointer border border-transparent dark:border-white/10">
+                 <X size={20} className="sm:w-6 sm:h-6 text-gray-500 dark:text-gray-300 group-hover:text-[#121212] dark:group-hover:text-white transition-colors" />
                </button>
             </div>
 
             {/* Scrollable Content */}
-            <div className="flex-grow overflow-y-auto p-4 sm:p-8 md:p-12 custom-scrollbar bg-[#fdfdfd] dark:bg-[#0c0c0d]">
+            <div className="flex-grow overflow-y-auto p-4 sm:p-8 md:p-12 custom-scrollbar bg-[#fdfdfd] dark:bg-[#0c0d12]">
                <div className="max-w-5xl mx-auto space-y-6 sm:space-y-10">
                  {/* 專案文字簡介 */}
-                 {selectedProject.brief ? (
-                   <div className="bg-white dark:bg-[#161617] rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 dark:border-white/10 shadow-sm">
+                 {displayBrief ? (
+                   <div className="bg-white dark:bg-[#161822] rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-[0_6px_25px_rgba(0,0,0,0.3)]">
                      <h4 className="text-lg sm:text-xl md:text-2xl font-black text-[#121212] dark:text-white mb-4 sm:mb-6 flex items-center gap-2.5 sm:gap-3">
                        <span className="w-2 sm:w-2.5 h-5 sm:h-6 bg-[#a38a6a] rounded-full inline-block"></span>
-                       專案簡介與執行策略
+                       {lang === 'zh' ? portfolioContent.strategyHeadingZh : portfolioContent.strategyHeadingEn}
                      </h4>
                      <div className="flex flex-col gap-4 sm:gap-6 w-full">
-                       {selectedProject.brief.map((item: any, idx: number) => (
-                         <div key={idx} className="w-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-gray-50/70 dark:bg-white/5 border border-gray-100/80 dark:border-white/10 flex flex-col justify-start">
+                       {displayBrief.map((item: any, idx: number) => (
+                         <div key={idx} className="w-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-gray-50/70 dark:bg-[#10111a] border border-gray-100/80 dark:border-white/10 flex flex-col justify-start">
                            <div className="flex items-center gap-2 mb-2">
                              <span className="w-2 h-2 rounded-full bg-[#a38a6a]"></span>
                              <span className="text-xs sm:text-sm font-black text-[#a38a6a] tracking-wider uppercase">{item.label}</span>
@@ -1690,9 +1648,9 @@ export default function App() {
                        ))}
                      </div>
                    </div>
-                 ) : selectedProject.desc ? (
-                   <div className="bg-white dark:bg-[#161617] rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 dark:border-white/10 shadow-sm">
-                     <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-medium">{selectedProject.desc}</p>
+                 ) : displayDesc ? (
+                   <div className="bg-white dark:bg-[#161822] rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-[0_6px_25px_rgba(0,0,0,0.3)]">
+                     <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-medium">{displayDesc}</p>
                    </div>
                  ) : null}
 
@@ -1700,13 +1658,13 @@ export default function App() {
                  <div className="space-y-4 sm:space-y-8 flex flex-col items-center">
                     {selectedProject.detailsImages ? (
                        selectedProject.detailsImages.map((img: string, idx: number) => (
-                         <div key={idx} className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white dark:bg-[#161617] shadow-sm border border-gray-100 dark:border-white/10">
-                            <img src={img} alt={`${selectedProject.title} details`} className="w-full h-auto object-contain" />
+                         <div key={idx} className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white dark:bg-[#161822] shadow-sm border border-gray-100 dark:border-white/10">
+                            <img src={img} alt={`${displayTitle} details`} className="w-full h-auto object-contain" />
                          </div>
                        ))
                     ) : (
-                       <div className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white dark:bg-[#161617] shadow-sm border border-gray-100 dark:border-white/10">
-                          <img src={selectedProject.img} alt={`${selectedProject.title} thumbnail`} className="w-full h-auto object-contain" />
+                       <div className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white dark:bg-[#161822] shadow-sm border border-gray-100 dark:border-white/10">
+                          <img src={selectedProject.img} alt={`${displayTitle} thumbnail`} className="w-full h-auto object-contain" />
                        </div>
                     )}
                  </div>
@@ -1714,7 +1672,8 @@ export default function App() {
             </div>
           </div>
         </div>
-      )}
+        );
+      })()}
 
 
       {/* CSS Animations & Fluid Dynamics */}
