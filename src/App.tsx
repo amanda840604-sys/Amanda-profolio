@@ -40,6 +40,47 @@ const Reveal = ({ children, delay = 0, className = "", direction = "up" }: any) 
   );
 };
 
+/* --- 自訂運動圖標：羽球與匹克球 --- */
+const BadmintonIcon = ({ size = 24, className = "", strokeWidth = 2 }: any) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth={strokeWidth} 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <path d="M12 18.5a2.2 2.2 0 0 0 2.2-2.2c0-.5-.3-1-.7-1.3H10.5c-.4.3-.7.8-.7 1.3a2.2 2.2 0 0 0 2.2 2.2z" />
+    <path d="M9.8 15L5.5 5.5c4 1 9 1 13 0l-4.3 9.5" />
+    <path d="M7.5 10c3 .8 6 .8 9 0" />
+    <path d="M12 5.5v9.5" />
+  </svg>
+);
+
+const PickleballIcon = ({ size = 24, className = "", strokeWidth = 2 }: any) => (
+  <svg 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth={strokeWidth} 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <rect x="2.5" y="2.5" width="10" height="12" rx="3" transform="rotate(-10 7.5 8.5)" />
+    <path d="M10 14.5l4 6" />
+    <circle cx="18" cy="7" r="3.5" />
+    <circle cx="18" cy="6.2" r="0.6" fill="currentColor" />
+    <circle cx="16.8" cy="7.6" r="0.6" fill="currentColor" />
+    <circle cx="19.2" cy="7.6" r="0.6" fill="currentColor" />
+  </svg>
+);
+
 /* --- 互動組件 3：課程專用輪播卡片 (Course Card) --- */
 const CourseCard = ({ course, delay, ...props }: any) => {
   const [imgIndex, setImgIndex] = useState(0);
@@ -1413,13 +1454,15 @@ export default function App() {
       <section id="interests" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-white text-[#121212]">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal><h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">Lifestyle Beyond Work</h2></Reveal>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
            {[
              { title: '重量訓練', en: 'Fitness', icon: Dumbbell, goal: '目前每週2練，目標4練', desc: '訓練耐力與自律，堅持每一步小幅進步。', img: "/fitness.jpg" },
              { title: '馬拉松', en: 'Marathon', icon: Timer, goal: '5次半馬，目標全馬', desc: '不只是體能，更是對堅持信念的終極挑戰。', img: "/marathon.jpg" },
-             { title: '登山挑戰', en: 'Hiking', icon: Mountain, goal: '登頂2座百岳，持續挑戰', desc: '在山林間對話，尋找自我探索與放鬆的途徑。', img: "/mountain.jpg" }
+             { title: '登山挑戰', en: 'Hiking', icon: Mountain, goal: '登頂2座百岳，持續挑戰', desc: '在山林間對話，尋找自我探索與放鬆的途徑。', img: "/mountain.jpg" },
+             { title: '羽球', en: 'Badminton', icon: BadmintonIcon, goal: '每週定期切磋，鍛鍊敏捷身手', desc: '高速攻防與動態專注，在每一次揮拍與移位間鍛鍊敏捷反應。', img: "/badminton.jpg" },
+             { title: '匹克球', en: 'Pickleball', icon: PickleballIcon, goal: '享受新興運動樂趣，精進戰術走位', desc: '融合手眼協調與節奏掌控，在靈活多變的擊球中體驗運動樂趣。', img: "/pickleball.jpg" }
            ].map((item, idx) => (
-             <Reveal key={idx} delay={idx * 150}>
+             <Reveal key={idx} delay={(idx % 3) * 150}>
                 <SpotlightCard className="h-full flex flex-col hover:shadow-2xl transition-all duration-700 text-[#121212] rounded-[2.5rem] sm:rounded-[3rem] group bg-white border-0">
                    <div className="h-64 sm:h-80 md:h-[28rem] overflow-hidden grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out relative text-[#121212] bg-white">
                       <img src={item.img} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" />
