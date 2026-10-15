@@ -35,18 +35,18 @@ const Reveal = ({ children, delay = 0, className = "", direction = "up" }: any) 
     return () => observer.disconnect();
   }, []);
 
-  const directionClasses = {
-    up: "translate-y-16",
-    down: "-translate-y-16",
-    left: "translate-x-16",
-    right: "-translate-x-16",
+  const directionClasses: Record<string, string> = {
+    up: "translate-y-8 sm:translate-y-16",
+    down: "-translate-y-8 sm:-translate-y-16",
+    left: "translate-y-6 md:translate-y-0 md:translate-x-12",
+    right: "translate-y-6 md:translate-y-0 md:-translate-x-12",
   };
 
   return (
     <div 
       ref={ref} 
-      className={`transition-all duration-[1200ms] fluid-anim ${
-        isVisible ? 'opacity-100 translate-y-0 translate-x-0' : `opacity-0 ${directionClasses[direction]}`
+      className={`transition-all duration-[1200ms] fluid-anim max-w-full ${
+        isVisible ? 'opacity-100 translate-y-0 translate-x-0' : `opacity-0 ${directionClasses[direction] || 'translate-y-8'}`
       } ${className}`} 
       style={{ transitionDelay: `${delay}ms` }}
     >
@@ -925,13 +925,13 @@ export default function App() {
   }, [selectedProject, activeCategory, isMobileMenuOpen]);
 
   return (
-    <div className="font-sans text-[#121212] dark:text-[#f0f0f0] bg-[#fdfdfd] dark:bg-[#0c0d11] antialiased selection:bg-[#a38a6a] selection:text-white pb-24 transition-colors duration-500">
+    <div className="w-full max-w-full overflow-x-hidden font-sans text-[#121212] dark:text-[#f0f0f0] bg-[#fdfdfd] dark:bg-[#0c0d11] antialiased selection:bg-[#a38a6a] selection:text-white pb-24 transition-colors duration-500">
       
       {/* 1. 全域閱讀進度條 */}
       <div className="fixed top-0 left-0 h-[3px] bg-[#a38a6a] z-[130] transition-transform duration-300 ease-out origin-left shadow-[0_0_12px_rgba(163,138,106,0.6)]" style={{ transform: `scaleX(${scrollProgress})` }} />
 
       {/* 2. 精品膠囊導覽列 */}
-      <div className="fixed top-0 left-0 w-full z-[120] flex justify-center pt-4 sm:pt-6 md:pt-8 px-3 sm:px-6 pointer-events-none">
+      <div className="fixed top-0 inset-x-0 w-full z-[120] flex justify-center pt-4 sm:pt-6 md:pt-8 px-3 sm:px-6 pointer-events-none">
         <nav className={`pointer-events-auto transition-all duration-[800ms] fluid-anim flex items-center justify-between px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 rounded-full bg-white/85 dark:bg-[#161720]/90 backdrop-blur-3xl border border-white/40 dark:border-white/15 shadow-lg dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)] ${scrolled ? 'w-full max-w-[70rem]' : 'w-full max-w-[85rem]'}`}>
           <div className="flex items-center gap-2.5 sm:gap-3 cursor-pointer group" onClick={() => { setIsMobileMenuOpen(false); window.scrollTo({top: 0, behavior: 'smooth'}); }}>
             <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden bg-white dark:bg-[#222430] shrink-0 border border-black/5 dark:border-white/15">
@@ -1132,7 +1132,7 @@ export default function App() {
       {/* 4. ABOUT SECTION */}
       
       
-      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-36 border-t border-gray-100 dark:border-white/10 bg-[#faf9f6]/40 dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
+      <section id="about" className="overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-36 border-t border-gray-100 dark:border-white/10 bg-[#faf9f6]/40 dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 text-[#121212] dark:text-[#f0f0f0]">
           
           {/* 左側：PROFILE標題、選單與頭貼 */}
@@ -1515,7 +1515,7 @@ export default function App() {
 
 
       {/* 5. PORTFOLIO */}
-      <section id="portfolio" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
+      <section id="portfolio" className="overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 border-b border-gray-200 dark:border-white/10 pb-8 sm:pb-12">
@@ -1719,7 +1719,7 @@ export default function App() {
       </section>
 
       {/* 6. EXPERIENCE (重新規劃為單一垂直演進流) */}
-      <section id="experience" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
+      <section id="experience" className="overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-16 sm:mb-24 md:mb-32">
@@ -1814,7 +1814,7 @@ export default function App() {
       </section>
 
       {/* 7. SKILLS */}
-      <section id="skills" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 dark:border-white/10 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
+      <section id="skills" className="overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 dark:border-white/10 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full text-[#121212] dark:text-[#f0f0f0]">
         <Reveal>
           <div className="text-center mb-10 sm:mb-16">
@@ -1936,7 +1936,7 @@ export default function App() {
       </section>
 
       {/* 8. COURSES (非對稱佈局設計) */}
-      <section id="courses" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#fdfdfd] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
+      <section id="courses" className="overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#fdfdfd] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 md:mb-24 gap-5 sm:gap-6">
@@ -1971,7 +1971,7 @@ export default function App() {
       </section>
 
       {/* 9. INTERESTS */}
-      <section id="interests" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="interests" className="overflow-hidden px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0]">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal><h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">{lifestyleContent.tag}</h2></Reveal>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
