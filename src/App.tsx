@@ -2275,7 +2275,7 @@ export default function App() {
                    </div>
                  ) : null}
 
-                 {/* 圖片展示清單 (預載入 + 骨架屏 Shimmer + 柔順淡入動畫) */}
+                 {/* 圖片展示清單 (預載入 + 骨架屏 Shimmer + 柔順淡入動畫，支援平滑直接下滑檢視) */}
                  <div className="space-y-4 sm:space-y-6 flex flex-col items-center w-full">
                     {projectImages.map((img: string, idx: number) => (
                       <ModalImage 
