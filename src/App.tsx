@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, ArrowUp, Briefcase, GraduationCap, LayoutGrid, Award, Mail, ChevronRight, ChevronDown, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers, User, Target, Lightbulb, Star, Package, MonitorSmartphone, Users, CheckCircle2, Flag, Rocket, Leaf, TrendingUp, Globe, Scale, UserCheck, MessageSquare, Flame, Menu, Sun, Moon, Sparkles, Filter, Check, Tag } from 'lucide-react';
+import { ArrowRight, ArrowUp, Briefcase, GraduationCap, LayoutGrid, Award, Mail, ChevronRight, ChevronDown, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers, User, Target, Lightbulb, Star, Package, MonitorSmartphone, Users, CheckCircle2, Flag, Rocket, Leaf, TrendingUp, Globe, Scale, UserCheck, MessageSquare, Flame, Menu, Sun, Moon, Sparkles, Filter, Check, Tag, Image as ImageIcon, Loader2 } from 'lucide-react';
 import {
   Lang,
   navItems,
@@ -252,6 +252,107 @@ const SpotlightCard = ({ children, className = "", dark = false, onClick }: {
       >
         {children}
       </div>
+    </div>
+  );
+};
+
+/* --- 互動組件 3：作品詳情圖片預載與淡入動畫 (Modal Image with Preload & Fade-In) --- */
+const ModalImage = ({
+  src,
+  alt,
+  index,
+  total,
+  className = ""
+}: {
+  src: string;
+  alt: string;
+  index?: number;
+  total?: number;
+  className?: string;
+  key?: React.Key;
+}) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
+
+  useEffect(() => {
+    let active = true;
+    setIsLoaded(false);
+    setHasError(false);
+
+    const img = new Image();
+    img.src = src;
+
+    if (img.complete && img.naturalWidth > 0) {
+      setIsLoaded(true);
+      return;
+    }
+
+    img.onload = () => {
+      if (active) setIsLoaded(true);
+    };
+
+    img.onerror = () => {
+      if (active) setHasError(true);
+    };
+
+    return () => {
+      active = false;
+    };
+  }, [src, retryCount]);
+
+  return (
+    <div className={`relative w-full rounded-[1.25rem] sm:rounded-[2rem] overflow-hidden bg-gray-50/60 dark:bg-[#161822] shadow-sm border border-gray-100 dark:border-white/10 group ${className}`}>
+      {/* 預載中 Skeleton 骨架屏與優雅 Shimmer 動畫 */}
+      {!isLoaded && !hasError && (
+        <div className="w-full min-h-[220px] sm:min-h-[360px] md:min-h-[460px] flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 via-gray-100/70 to-gray-50 dark:from-[#11121a] dark:via-[#171924] dark:to-[#11121a] relative overflow-hidden">
+          <div className="absolute inset-0 -translate-x-full animate-[shimmer_2s_infinite] bg-gradient-to-r from-transparent via-white/40 dark:via-white/5 to-transparent pointer-events-none" />
+          <div className="flex flex-col items-center gap-2.5 sm:gap-3 text-[#a38a6a] dark:text-[#e8c68c] relative z-10 px-4 text-center">
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border-2 border-[#a38a6a]/20 border-t-[#a38a6a] animate-spin flex items-center justify-center">
+              <ImageIcon size={16} className="opacity-70 sm:w-5 sm:h-5" />
+            </div>
+            <span className="text-[11px] sm:text-xs font-semibold tracking-wider uppercase text-gray-400 dark:text-gray-400">
+              Loading image...
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* 載入失敗備援與重試按鈕 */}
+      {hasError && (
+        <div className="w-full min-h-[200px] sm:min-h-[280px] flex flex-col items-center justify-center bg-gray-50 dark:bg-[#11121a] p-6 text-center">
+          <p className="text-xs sm:text-sm font-medium text-gray-500 dark:text-gray-400 mb-3">圖片載入未完成</p>
+          <button
+            type="button"
+            onClick={() => setRetryCount(c => c + 1)}
+            className="px-4 py-1.5 text-xs font-bold rounded-full bg-[#a38a6a] text-white hover:bg-[#8f7556] transition-colors cursor-pointer shadow-sm"
+          >
+            重新載入
+          </button>
+        </div>
+      )}
+
+      {/* 漸顯淡入圖片 (Smooth Fade-in Animation) */}
+      <img
+        src={src}
+        alt={alt}
+        loading="eager"
+        decoding="async"
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setHasError(true)}
+        className={`w-full h-auto object-contain transition-all duration-700 ease-out select-none ${
+          isLoaded
+            ? 'opacity-100 scale-100 blur-0'
+            : 'opacity-0 scale-[0.99] absolute inset-0 pointer-events-none'
+        }`}
+      />
+
+      {/* 多圖序號指示標籤 (Publication-style counter badge) */}
+      {total && total > 1 && isLoaded && (
+        <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 z-10 px-2.5 sm:px-3 py-1 rounded-full text-[10px] sm:text-xs font-bold font-mono bg-black/60 dark:bg-black/80 text-white/90 backdrop-blur-md border border-white/10 pointer-events-none tracking-wider shadow-md">
+          {index ? `${String(index).padStart(2, '0')} / ${String(total).padStart(2, '0')}` : ''}
+        </div>
+      )}
     </div>
   );
 };
@@ -590,6 +691,42 @@ export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeAboutTab, setActiveAboutTab] = useState('background');
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+
+  // 圖片預載入邏輯：快速將專案所有高解析大圖加入瀏覽器快取
+  const preloadProjectImages = (project: any) => {
+    if (!project) return;
+    const list: string[] = project.detailsImages?.length 
+      ? project.detailsImages 
+      : (project.img ? [project.img] : []);
+    list.forEach((url: string) => {
+      if (url) {
+        const img = new Image();
+        img.src = url;
+      }
+    });
+  };
+
+  // 當開啟作品詳情時，立即預載入該作品的所有細節圖片
+  useEffect(() => {
+    if (selectedProject) {
+      preloadProjectImages(selectedProject);
+    }
+  }, [selectedProject]);
+
+  // 支援 ESC 鍵快速關閉作品詳情視窗
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedProject(null);
+      }
+    };
+    if (selectedProject) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [selectedProject]);
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1521,7 +1658,8 @@ export default function App() {
                 return (
                   <div
                     key={`${proj.parentCategory}-${proj.id}`}
-                    onClick={() => setSelectedProject(proj)}
+                    onMouseEnter={() => preloadProjectImages(proj)}
+                    onClick={() => { preloadProjectImages(proj); setSelectedProject(proj); }}
                     className="group/item cursor-pointer flex flex-col bg-white dark:bg-[#161822] rounded-[2rem] border-2 border-[#a38a6a] shadow-md hover:shadow-[0_22px_45px_-12px_rgba(0,0,0,0.18),0_8px_20px_-6px_rgba(0,0,0,0.08),0_0_25px_rgba(163,138,106,0.18)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.45)] dark:hover:shadow-[0_28px_60px_-12px_rgba(0,0,0,0.9),0_0_35px_rgba(163,138,106,0.25)] hover:-translate-y-2.5 hover:scale-[1.025] sm:hover:scale-[1.03] active:scale-[0.985] transition-all duration-500 ease-out overflow-hidden"
                   >
                     <div className="relative aspect-[3/2] bg-gray-50/70 dark:bg-[#11121a] p-4 flex items-center justify-center overflow-hidden border-b border-gray-100 dark:border-white/5">
@@ -1990,7 +2128,8 @@ export default function App() {
                  return (
                  <div 
                    key={proj.id} 
-                   onClick={() => setSelectedProject(proj)} 
+                   onMouseEnter={() => preloadProjectImages(proj)}
+                   onClick={() => { preloadProjectImages(proj); setSelectedProject(proj); }} 
                    className={`group/item flex flex-col cursor-pointer bg-white dark:bg-[#161822] rounded-[2rem] sm:rounded-[3rem] shadow-md hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.18),0_10px_24px_-6px_rgba(0,0,0,0.08),0_0_25px_rgba(163,138,106,0.16)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.45)] dark:hover:shadow-[0_30px_65px_-12px_rgba(0,0,0,0.9),0_0_40px_rgba(163,138,106,0.25)] hover:-translate-y-2.5 hover:scale-[1.025] sm:hover:scale-[1.03] active:scale-[0.985] transition-all duration-500 ease-out border ${
                      selectedSkill
                        ? isMatched
@@ -2050,28 +2189,36 @@ export default function App() {
         const displayTitle = (lang === 'en' && enItem?.title) ? enItem.title : selectedProject.title;
         const displayBrief = (lang === 'en' && enItem?.brief) ? enItem.brief : selectedProject.brief;
         const displayDesc = (lang === 'en' && enItem?.desc) ? enItem.desc : selectedProject.desc;
+        const projectImages: string[] = (selectedProject.detailsImages && selectedProject.detailsImages.length > 0)
+          ? selectedProject.detailsImages
+          : (selectedProject.img ? [selectedProject.img] : []);
 
         return (
-        <div className="fixed inset-0 z-[300] flex justify-center items-center p-2 sm:p-6 md:p-12">
-          {/* Backdrop */}
-          <div onClick={() => setSelectedProject(null)} className="absolute inset-0 bg-[#090a0f]/80 dark:bg-[#050608]/90 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"></div>
+        <div className="fixed inset-0 z-[300] flex justify-center items-center p-2.5 sm:p-5 md:p-8 lg:p-10">
+          {/* Backdrop with blur & smooth fade */}
+          <div 
+            onClick={() => setSelectedProject(null)} 
+            className="absolute inset-0 bg-[#090a0f]/80 dark:bg-[#050608]/90 backdrop-blur-md transition-opacity duration-500 animate-in fade-in"
+          />
           
-          {/* Modal Content */}
-          <div className="relative bg-white dark:bg-[#141620] w-full max-w-7xl h-[94vh] md:h-full max-h-[94vh] md:max-h-full rounded-[1.5rem] sm:rounded-[2rem] shadow-2xl dark:shadow-[0_25px_70px_rgba(0,0,0,0.8)] flex flex-col animate-in zoom-in-95 duration-500 cubic-bezier border border-transparent dark:border-white/15">
+          {/* Modal Container */}
+          <div className="relative bg-white dark:bg-[#141620] w-full max-w-6xl h-[92vh] sm:h-[90vh] max-h-[96vh] rounded-[1.25rem] sm:rounded-[2rem] shadow-2xl dark:shadow-[0_25px_70px_rgba(0,0,0,0.8)] flex flex-col animate-in zoom-in-95 duration-500 cubic-bezier border border-gray-100 dark:border-white/15 overflow-hidden">
             
-            {/* Header & Close */}
-            <div className="flex-shrink-0 flex items-center justify-between p-5 sm:p-8 md:p-10 border-b border-gray-100 dark:border-white/10 z-10 sticky top-0 bg-white/95 dark:bg-[#141620]/95 backdrop-blur-md rounded-t-[1.5rem] sm:rounded-t-[2rem] gap-4">
-               <div className="flex flex-col min-w-0">
-                  <h3 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#121212] dark:text-white truncate">{displayTitle}</h3>
-                  <div className="flex gap-2 sm:gap-4 mt-2 sm:mt-3 flex-wrap">
+            {/* Header & Close Button */}
+            <div className="flex-shrink-0 flex items-start sm:items-center justify-between p-4 sm:p-6 md:p-8 border-b border-gray-100 dark:border-white/10 z-10 sticky top-0 bg-white/95 dark:bg-[#141620]/95 backdrop-blur-md rounded-t-[1.25rem] sm:rounded-t-[2rem] gap-3 sm:gap-4">
+               <div className="flex flex-col min-w-0 pr-2">
+                  <h3 className="text-lg sm:text-2xl md:text-3xl font-black tracking-tight text-[#121212] dark:text-white leading-snug break-words">
+                    {displayTitle}
+                  </h3>
+                  <div className="flex gap-1.5 sm:gap-2.5 mt-2 sm:mt-2.5 flex-wrap items-center">
                     {selectedProject.tags.map(tag => {
                       const isTagMatch = isProjectMatchingSkill({ skills: [tag], tags: [] }, selectedSkill);
                       return (
                         <span 
                           key={tag} 
-                          className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider transition-all ${
+                          className={`text-[11px] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider transition-all ${
                             isTagMatch 
-                              ? 'bg-[#a38a6a] text-white shadow-sm ring-2 ring-[#a38a6a]' 
+                              ? 'bg-[#a38a6a] text-white shadow-sm ring-1 ring-[#a38a6a]' 
                               : 'text-[#a38a6a] bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20'
                           }`}
                         >
@@ -2081,53 +2228,64 @@ export default function App() {
                     })}
                   </div>
                </div>
-               <button onClick={() => setSelectedProject(null)} className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-gray-50 dark:bg-[#202230] hover:bg-gray-100 dark:hover:bg-[#a38a6a] rounded-full transition-colors group shrink-0 cursor-pointer border border-transparent dark:border-white/10">
-                 <X size={20} className="sm:w-6 sm:h-6 text-gray-500 dark:text-gray-300 group-hover:text-[#121212] dark:group-hover:text-white transition-colors" />
+               <button 
+                 onClick={() => setSelectedProject(null)} 
+                 aria-label="Close modal"
+                 className="flex items-center justify-center w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gray-100/80 dark:bg-[#202230] hover:bg-gray-200 dark:hover:bg-[#a38a6a] rounded-full transition-colors group shrink-0 cursor-pointer border border-transparent dark:border-white/10"
+               >
+                 <X size={18} className="sm:w-5 sm:h-5 text-gray-600 dark:text-gray-300 group-hover:text-[#121212] dark:group-hover:text-white transition-colors" />
                </button>
             </div>
 
-            {/* Scrollable Content */}
-            <div className="flex-grow overflow-y-auto p-4 sm:p-8 md:p-12 custom-scrollbar bg-[#fdfdfd] dark:bg-[#0c0d12]">
-               <div className="max-w-5xl mx-auto space-y-6 sm:space-y-10">
+            {/* Scrollable Content Body */}
+            <div className="flex-grow overflow-y-auto p-4 sm:p-6 md:p-10 custom-scrollbar bg-[#fdfdfd] dark:bg-[#0c0d12]">
+               <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
 
-                 {/* 專案文字簡介 */}
+                 {/* 專案文字簡介 / 分項策略說明 (針對不同螢幕寬度的最佳排版) */}
                  {displayBrief ? (
-                   <div className="bg-white dark:bg-[#161822] rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-[0_6px_25px_rgba(0,0,0,0.3)]">
-                     <h4 className="text-lg sm:text-xl md:text-2xl font-black text-[#121212] dark:text-white mb-4 sm:mb-6 flex items-center gap-2.5 sm:gap-3">
-                       <span className="w-2 sm:w-2.5 h-5 sm:h-6 bg-[#a38a6a] rounded-full inline-block"></span>
+                   <div className="bg-white dark:bg-[#161822] rounded-[1.25rem] sm:rounded-[1.75rem] p-4 sm:p-6 md:p-8 border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-[0_6px_25px_rgba(0,0,0,0.3)]">
+                     <h4 className="text-base sm:text-lg md:text-xl font-black text-[#121212] dark:text-white mb-3.5 sm:mb-5 flex items-center gap-2 sm:gap-2.5 tracking-tight">
+                       <span className="w-1.5 sm:w-2 h-4 sm:h-5 bg-[#a38a6a] rounded-full inline-block shrink-0"></span>
                        {lang === 'zh' ? portfolioContent.strategyHeadingZh : portfolioContent.strategyHeadingEn}
                      </h4>
-                     <div className="flex flex-col gap-4 sm:gap-6 w-full">
+                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4.5 w-full">
                        {displayBrief.map((item: any, idx: number) => (
-                         <div key={idx} className="w-full p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-gray-50/70 dark:bg-[#10111a] border border-gray-100/80 dark:border-white/10 flex flex-col justify-start">
+                         <div 
+                           key={idx} 
+                           className="w-full p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-gray-50/80 dark:bg-[#10111a] border border-gray-100/90 dark:border-white/10 flex flex-col justify-start transition-colors hover:border-[#a38a6a]/30"
+                         >
                            <div className="flex items-center gap-2 mb-2">
-                             <span className="w-2 h-2 rounded-full bg-[#a38a6a]"></span>
-                             <span className="text-xs sm:text-sm font-black text-[#a38a6a] tracking-wider uppercase">{item.label}</span>
+                             <span className="w-2 h-2 rounded-full bg-[#a38a6a] shrink-0"></span>
+                             <span className="text-xs sm:text-[13px] font-black text-[#a38a6a] dark:text-[#e8c68c] tracking-wider uppercase">
+                               {item.label}
+                             </span>
                            </div>
-                           <p className="text-gray-700 dark:text-gray-300 text-[14px] sm:text-[15px] leading-relaxed font-medium text-justify whitespace-pre-line">{item.content}</p>
+                           <p className="text-gray-700 dark:text-gray-200 text-[13.5px] sm:text-[14.5px] md:text-[15px] leading-relaxed sm:leading-[1.75] font-normal text-left [text-wrap:pretty] whitespace-pre-line break-words">
+                             {item.content}
+                           </p>
                          </div>
                        ))}
                      </div>
                    </div>
                  ) : displayDesc ? (
-                   <div className="bg-white dark:bg-[#161822] rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-[0_6px_25px_rgba(0,0,0,0.3)]">
-                     <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base md:text-lg leading-relaxed font-medium">{displayDesc}</p>
+                   <div className="bg-white dark:bg-[#161822] rounded-[1.25rem] sm:rounded-[1.75rem] p-4 sm:p-6 md:p-8 border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-[0_6px_25px_rgba(0,0,0,0.3)]">
+                     <p className="text-gray-700 dark:text-gray-200 text-sm sm:text-base md:text-lg leading-relaxed sm:leading-[1.8] font-normal text-left [text-wrap:pretty] break-words">
+                       {displayDesc}
+                     </p>
                    </div>
                  ) : null}
 
-                 {/* 圖片展示 */}
-                 <div className="space-y-4 sm:space-y-8 flex flex-col items-center">
-                    {selectedProject.detailsImages ? (
-                       selectedProject.detailsImages.map((img: string, idx: number) => (
-                         <div key={idx} className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white dark:bg-[#161822] shadow-sm border border-gray-100 dark:border-white/10">
-                            <img src={img} alt={`${displayTitle} details`} className="w-full h-auto object-contain" />
-                         </div>
-                       ))
-                    ) : (
-                       <div className="w-full rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden bg-white dark:bg-[#161822] shadow-sm border border-gray-100 dark:border-white/10">
-                          <img src={selectedProject.img} alt={`${displayTitle} thumbnail`} className="w-full h-auto object-contain" />
-                       </div>
-                    )}
+                 {/* 圖片展示清單 (預載入 + 骨架屏 Shimmer + 柔順淡入動畫) */}
+                 <div className="space-y-4 sm:space-y-6 flex flex-col items-center w-full">
+                    {projectImages.map((img: string, idx: number) => (
+                      <ModalImage 
+                        key={`${selectedProject.id}-img-${idx}`}
+                        src={img} 
+                        alt={`${displayTitle} - ${idx + 1}`} 
+                        index={idx + 1}
+                        total={projectImages.length}
+                      />
+                    ))}
                  </div>
                </div>
             </div>
@@ -2140,6 +2298,7 @@ export default function App() {
       {/* CSS Animations & Fluid Dynamics */}
       <style>{`
         @keyframes slide { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
+        @keyframes shimmer { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         @keyframes image-float {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-6px); }
