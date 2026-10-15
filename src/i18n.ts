@@ -2,11 +2,11 @@
 export type Lang = 'zh' | 'en';
 
 export const navItems = [
-  { id: 'about', labelZh: '關於個人', labelEn: 'About', subZh: '個人歷程', subEn: 'Profile' },
-  { id: 'portfolio', labelZh: '精選作品', labelEn: 'Portfolio', subZh: '精選專案', subEn: 'Works' },
-  { id: 'experience', labelZh: '經歷歷程', labelEn: 'Experience', subZh: '實務年表', subEn: 'Chronicles' },
-  { id: 'skills', labelZh: '專業技能', labelEn: 'Skills', subZh: '軟硬體技能', subEn: 'Mastery' },
-  { id: 'courses', labelZh: '研習證明', labelEn: 'Courses', subZh: '持續進修', subEn: 'Growth' }
+  { id: 'about', labelZh: 'About', labelEn: 'About', subZh: 'Profile', subEn: 'Profile' },
+  { id: 'portfolio', labelZh: 'Portfolio', labelEn: 'Portfolio', subZh: 'Works', subEn: 'Works' },
+  { id: 'experience', labelZh: 'Experience', labelEn: 'Experience', subZh: 'Chronicles', subEn: 'Chronicles' },
+  { id: 'skills', labelZh: 'Skills', labelEn: 'Skills', subZh: 'Mastery', subEn: 'Mastery' },
+  { id: 'courses', labelZh: 'Courses', labelEn: 'Courses', subZh: 'Growth', subEn: 'Growth' }
 ];
 
 export const heroContent = {
@@ -569,6 +569,61 @@ export const skillsContent = {
   ],
   toolsHeading: 'Software Tools',
   toolsSub: 'Design & Engineering Mastery'
+};
+
+export const skillTagTranslations: Record<string, { zh: string; en: string }> = {
+  '競品分析': { zh: '競品分析', en: 'Benchmarking' },
+  '產品策略': { zh: '產品策略', en: 'Product Strategy' },
+  '產品定位': { zh: '產品定位', en: 'Positioning' },
+  '市場調查資料分析': { zh: '市場調查資料分析', en: 'Market Research' },
+  '報告撰寫與提案': { zh: '報告撰寫與提案', en: 'Pitch Decks & Reports' },
+  'Adobe InDesign': { zh: 'Adobe InDesign', en: 'Adobe InDesign' },
+  'Illustrator': { zh: 'Illustrator', en: 'Illustrator' },
+  'Photoshop': { zh: 'Photoshop', en: 'Photoshop' },
+  '電腦排版設計': { zh: '電腦排版設計', en: 'Digital Typography' },
+  '設計印刷基本認知': { zh: '設計印刷基本認知', en: 'Print Fundamentals' },
+  '電腦印前設計': { zh: '電腦印前設計', en: 'Prepress Engineering' },
+  'Creo': { zh: 'Creo', en: 'Creo' },
+  'SolidWorks': { zh: 'SolidWorks', en: 'SolidWorks' },
+  'Rhino': { zh: 'Rhino', en: 'Rhino' },
+  'Keyshot': { zh: 'Keyshot', en: 'KeyShot' },
+  'KeyShot': { zh: 'KeyShot', en: 'KeyShot' },
+  '產品結構評估': { zh: '產品結構評估', en: 'Structural Audit' },
+  '3D 渲染': { zh: '3D 渲染', en: '3D Rendering' },
+  '瓦楞紙結構': { zh: '瓦楞紙結構', en: 'Corrugated Design' },
+  '包裝材料選用': { zh: '包裝材料選用', en: 'Material Selection' },
+  '工程圖繪製': { zh: '工程圖繪製', en: 'CAD Drafting' },
+  'BOM 建立': { zh: 'BOM 建立', en: 'BOM Architecture' },
+  '打樣機操作': { zh: '打樣機操作', en: 'Plotter Operation' },
+  '結構模擬': { zh: '結構模擬', en: 'Structural Simulation' },
+  '快速打樣': { zh: '快速打樣', en: 'Rapid Prototyping' },
+  '設計驗證': { zh: '設計驗證', en: 'Design Validation' },
+  'CMF 樣板製作': { zh: 'CMF 樣板製作', en: 'CMF Prototyping' },
+  'AutoCAD': { zh: 'AutoCAD', en: 'AutoCAD' },
+  'InDesign': { zh: 'InDesign', en: 'InDesign' }
+};
+
+export const skillHighlightContent = {
+  hintZh: '點擊任一技能標籤，立即在作品集區塊高亮關聯專案',
+  hintEn: 'Click any skill tag to highlight related projects in Portfolio',
+  activeLabelZh: '技能高亮篩選',
+  activeLabelEn: 'Skill Highlight',
+  clearZh: '清除高亮',
+  clearEn: 'Clear Highlight',
+  matchedProjectsHeadingZh: '相關運用專案',
+  matchedProjectsHeadingEn: 'Projects Utilizing This Skill',
+  matchedProjectsSubZh: '作品集中具備此項技能的代表作',
+  matchedProjectsSubEn: 'Featured projects in portfolio embodying this mastery',
+  noMatchesZh: '查無符合此技能的專案',
+  noMatchesEn: 'No projects found with this skill',
+  viewDetailsZh: '查看完整專案',
+  viewDetailsEn: 'View Details',
+  viewInGalleryZh: '開啟藝廊瀏覽',
+  viewInGalleryEn: 'Open Gallery',
+  badgeZh: '✦ 技能運用',
+  badgeEn: '✦ Utilized',
+  matchingInCatZh: (count: number) => `${count} 件專案符合`,
+  matchingInCatEn: (count: number) => `${count} matching projects`
 };
 
 export const coursesContent = {

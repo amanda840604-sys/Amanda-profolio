@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Briefcase, GraduationCap, LayoutGrid, Award, Mail, ChevronRight, ChevronDown, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers, User, Target, Lightbulb, Star, Package, MonitorSmartphone, Users, CheckCircle2, Flag, Rocket, Leaf, TrendingUp, Globe, Scale, UserCheck, MessageSquare, Flame, Menu, Sun, Moon } from 'lucide-react';
+import { ArrowRight, ArrowUp, Briefcase, GraduationCap, LayoutGrid, Award, Mail, ChevronRight, ChevronDown, Phone, MessageCircle, X, Cpu, Calendar, Dumbbell, Timer, Mountain, ExternalLink, FileCheck, MousePointer2, MapPin, CheckCircle, Box, Layers, User, Target, Lightbulb, Star, Package, MonitorSmartphone, Users, CheckCircle2, Flag, Rocket, Leaf, TrendingUp, Globe, Scale, UserCheck, MessageSquare, Flame, Menu, Sun, Moon, Sparkles, Filter, Check, Tag } from 'lucide-react';
 import {
   Lang,
   navItems,
@@ -9,6 +9,8 @@ import {
   projectEnMap,
   chroniclesContent,
   skillsContent,
+  skillTagTranslations,
+  skillHighlightContent,
   coursesContent,
   lifestyleContent,
   footerContent
@@ -187,10 +189,11 @@ const CourseCard = ({ course, delay, lang = 'zh', ...props }: any) => {
 };
 
 /* --- 互動組件 2：精品級滑鼠光暈 (Spotlight Card) --- */
-const SpotlightCard = ({ children, className = "", dark = false }: {
+const SpotlightCard = ({ children, className = "", dark = false, onClick }: {
   children: React.ReactNode;
   className?: string;
   dark?: boolean;
+  onClick?: () => void;
 }) => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [parallaxOffset, setParallaxOffset] = useState({ x: 0, y: 0 });
@@ -223,6 +226,7 @@ const SpotlightCard = ({ children, className = "", dark = false }: {
   return (
     <div 
       ref={cardRef} 
+      onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
@@ -239,9 +243,9 @@ const SpotlightCard = ({ children, className = "", dark = false }: {
       <div 
         className="relative z-10 h-full flex flex-col transition-transform ease-out"
         style={{
-          transitionDuration: isHovered ? '100ms' : '500ms',
+          transitionDuration: isHovered ? '300ms' : '500ms',
           transform: isHovered 
-            ? `rotateX(${parallaxOffset.y}deg) rotateY(${parallaxOffset.x}deg) scale3d(1.02, 1.02, 1.02)` 
+            ? `rotateX(${parallaxOffset.y}deg) rotateY(${parallaxOffset.x}deg) scale3d(1.015, 1.015, 1.015)` 
             : 'rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
           transformStyle: 'preserve-3d'
         }}
@@ -268,6 +272,7 @@ const projectData = {
       img: '/tws_innercard01.png',
       detailsImages: ['/tws_innercard01.png', '/tws_innercard02.png', '/tws_innercard03.png', '/tws_innercard04.png', '/tws_innercard05.png', '/tws_innercard06.png', '/tws_innercard07.png', '/tws_innercard08.png', '/tws_innercard9.png', '/tws_innercard10.png', '/tws_innercard11.png', '/tws_innercard12.png'],
       tags: ['包裝設計', 'TWS', '紙卡'],
+      skills: ['瓦楞紙結構', '打樣機操作', '結構模擬', '快速打樣', '設計驗證', '工程圖繪製', '包裝材料選用', '產品結構評估', 'Creo'],
       category: '消費性電子產品'
     },
     {
@@ -282,6 +287,7 @@ const projectData = {
       img: '/tws_pkg_design01-1.jpg',
       detailsImages: ['/tws_pkg_design01.jpg', '/tws_pkg_design02.jpg'],
       tags: ['包裝設計', '消費電子'],
+      skills: ['包裝材料選用', '產品策略', '產品定位', '報告撰寫與提案', 'BOM 建立', '瓦楞紙結構', '競品分析', 'Illustrator', 'Creo'],
       category: '消費性電子產品'
     },
     {
@@ -296,6 +302,7 @@ const projectData = {
       img: '/hdt_inner_card01.jpg',
       detailsImages: ['/hdt_inner_card01.jpg', '/hdt_inner_card02.jpg', '/hdt_inner_card03.jpg', '/hdt_inner_card04.jpg', '/hdt_inner_card05.jpg', '/hdt_inner_card06.jpg', '/hdt_inner_card07.jpg', '/hdt_inner_card08.jpg', '/hdt_inner_card09.jpg', '/hdt_inner_card10.jpg', '/hdt_inner_card11.jpg', '/hdt_inner_card12.jpg', '/hdt_inner_card13.jpg', '/hdt_inner_card14.jpg'],
       tags: ['包裝設計', '紙卡', '電競'],
+      skills: ['瓦楞紙結構', '打樣機操作', '結構模擬', '快速打樣', '設計驗證', '工程圖繪製', '產品結構評估', 'Creo'],
       category: '消費性電子產品'
     },
     {
@@ -311,6 +318,7 @@ const projectData = {
       img: '/soundbar_inner_card01.png',
       detailsImages: ['/soundbar_inner_card01.png', '/soundbar_inner_card02.png', '/soundbar_inner_card03.png', '/soundbar_inner_card04.jpg', '/soundbar_inner_card05.jpg', '/soundbar_inner_card06.jpg', '/soundbar_inner_card07.jpg'],
       tags: ['包裝設計', '紙卡', 'Soundbar'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '打樣機操作', '結構模擬', '快速打樣', '設計驗證', '產品結構評估', '報告撰寫與提案', 'Creo'],
       category: '消費性電子產品'
     },
     {
@@ -325,6 +333,7 @@ const projectData = {
       img: '/soundbar01.jpg',
       detailsImages: ['/soundbar01.jpg'],
       tags: ['包裝設計', '永續', 'Soundbar'],
+      skills: ['工程圖繪製', 'BOM 建立', '產品結構評估', '競品分析', 'Creo', 'AutoCAD', '包裝材料選用'],
       category: '消費性電子產品'
     },
     {
@@ -339,6 +348,7 @@ const projectData = {
       img: '/camera_pkg_001.jpg',
       detailsImages: ['/camera_pkg_001.jpg', '/camera_pkg_002.jpg'],
       tags: ['包裝設計', '紙托', '結構設計'],
+      skills: ['包裝材料選用', 'BOM 建立', '工程圖繪製', '產品結構評估', '結構模擬', 'Creo', '快速打樣'],
       category: '消費性電子產品'
     },
     {
@@ -353,6 +363,7 @@ const projectData = {
       img: '/carrycase.png',
       detailsImages: ['/carrycase.png'],
       tags: ['包裝設計', '攜帶盒', '減塑'],
+      skills: ['包裝材料選用', '產品定位', '產品策略', 'CMF 樣板製作', '報告撰寫與提案', 'BOM 建立', 'Illustrator'],
       category: '消費性電子產品'
     },
     {
@@ -367,6 +378,7 @@ const projectData = {
       img: '/tr_handle_bar01.jpg',
       detailsImages: ['/tr_handle_bar01.jpg', '/tr_handle_bar02.jpg', '/tr_handle_bar03.jpg', '/tr_handle_bar04.jpg', '/tr_handle_bar05.jpg', '/tr_handle_bar06.png', '/tr_handle_bar07.png', '/tr_handle_bar08.png'],
       tags: ['包裝設計', '減塑', '自行車'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '快速打樣', '設計驗證', '打樣機操作', '結構模擬', 'Creo', 'SolidWorks'],
       category: '自行車零件'
     },
     {
@@ -381,6 +393,7 @@ const projectData = {
       img: '/RA_handle_bar01.png',
       detailsImages: ['/RA_handle_bar01.png', '/RA_handle_bar02.png', '/RA_handle_bar03.png', '/RA_handle_bar04.png', '/RA_handle_bar05.png', '/RA_handle_bar06.png', '/RA_handle_bar07.png'],
       tags: ['包裝設計', '減塑', '自行車'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '快速打樣', '設計驗證', '打樣機操作', '結構模擬', 'Creo', 'SolidWorks'],
       category: '自行車零件'
     },
     {
@@ -395,6 +408,7 @@ const projectData = {
       img: '/Giant problem_01.jpg',
       detailsImages: ['/Giant problem_01.jpg', '/Giant problem_02.jpg'],
       tags: ['包裝優化', '自行車', '裝袋方案', 'RA車把手'],
+      skills: ['產品結構評估', '設計驗證', '報告撰寫與提案', '工程圖繪製', '包裝材料選用', '產品策略'],
       category: '自行車零件'
     },
     {
@@ -409,6 +423,7 @@ const projectData = {
       img: '/Stem01.jpg',
       detailsImages: ['/Stem01.jpg', '/Stem02.jpg', '/Stem03.jpg', '/Stem03-1.jpg', '/Stem04.jpg', '/Stem05.jpg', '/Stem06.jpg'],
       tags: ['包裝設計', '減塑', '自行車', 'Stem'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '快速打樣', '打樣機操作', '結構模擬', '設計驗證', 'Creo', 'SolidWorks'],
       category: '自行車零件'
     },
     {
@@ -423,6 +438,7 @@ const projectData = {
       img: '/Quick Release01.jpg',
       detailsImages: ['/Quick Release01.jpg', '/Quick Release02.jpg', '/Quick Release03.jpg', '/Quick Release04.jpg'],
       tags: ['包裝設計', '減塑', '自行車', 'Quick Release'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '快速打樣', '打樣機操作', '結構模擬', '設計驗證', 'Creo'],
       category: '自行車零件'
     },
     {
@@ -437,6 +453,7 @@ const projectData = {
       img: '/Seatpost01.jpg',
       detailsImages: ['/Seatpost01.jpg', '/Seatpost01-1.jpg', '/Seatpost01-2.jpg', '/Seatpost02.jpg', '/Seatpost03.jpg', '/Seatpost03-1.jpg', '/Seatpost03-2.jpg', '/Seatpost03-2-1.jpg', '/Seatpost03-3.jpg', '/Seatpost04.jpg', '/Seatpost04-1.jpg', '/Seatpost05.jpg', '/Seatpost06.jpg', '/Seatpost07.jpg', '/Seatpost08.jpg', '/Seatpost08-1.jpg', '/Seatpost09.jpg', '/Seatpost09-1.jpg'],
       tags: ['包裝設計', '減塑', '自行車', 'Seatpost'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '快速打樣', '打樣機操作', '結構模擬', '設計驗證', 'Creo', 'SolidWorks'],
       category: '自行車零件'
     },
     {
@@ -444,13 +461,14 @@ const projectData = {
       title: '煞車線 包裝設計',
       desc: '開發無塑環保結構，取代現有塑膠袋包裝。',
       brief: [
-        { label: '專案任務', content: '因應市場減塑趨勢，開發無塑環保結構，取代煞車線現有的塑膠袋包裝。' },
+        { label: '專案任務', content: '因英市場減塑趨勢，開發無塑環保結構，取代煞車線現有的塑膠袋包裝。' },
         { label: '執行策略', content: '採用「瓦楞紙卡折合」方式規劃。' },
         { label: '最終成果', content: '提前建立煞車線的無塑包裝資料庫。\n當客戶提出減塑需求時，能快速提供具備量產可行性的提案，有效縮短前置評估與作業時間。' }
       ],
       img: '/brakeline-1.jpg',
       detailsImages: ['/brakeline-1.jpg', '/brakeline-2.jpg'],
       tags: ['包裝設計', '減塑', '自行車', 'Brake Line'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '快速打樣', '結構模擬', 'Creo', '設計驗證'],
       category: '自行車零件'
     },
     {
@@ -465,6 +483,7 @@ const projectData = {
       img: '/Ebike-1.JPG',
       detailsImages: ['/Ebike-1.JPG', '/Ebike-2.JPG', '/Ebike-3.JPG', '/Ebike-4.JPG', '/Ebike-5.JPG', '/Ebike-6.JPG'],
       tags: ['包裝設計', '減塑', '電動載具', '結構設計'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '產品結構評估', '結構模擬', '工程圖繪製', 'Creo', 'SolidWorks', '3D 渲染', 'Keyshot'],
       category: '電動載具'
     },
     {
@@ -479,6 +498,7 @@ const projectData = {
       img: '/Escooter-1.JPG',
       detailsImages: ['/Escooter-1.JPG', '/Escooter-2.JPG', '/Escooter-3.JPG', '/Escooter-4.JPG'],
       tags: ['包裝設計', '減塑', '電動載具', '結構設計'],
+      skills: ['瓦楞紙結構', '包裝材料選用', '產品結構評估', '結構模擬', '工程圖繪製', 'Creo', 'SolidWorks', '設計驗證'],
       category: '電動載具'
     },
     {
@@ -493,19 +513,20 @@ const projectData = {
       img: '/patent01.JPG',
       detailsImages: ['/patent01.JPG', '/patent02.JPG', '/patent03.JPG', '/patent04.JPG', '/patent05.JPG', '/patent06.JPG', '/patent07.JPG'],
       tags: ['專利申請', '全紙化無塑', '自行車零件', '結構設計', 'ESG / PPWR'],
+      skills: ['瓦楞紙結構', '產品結構評估', '報告撰寫與提案', '工程圖繪製', '設計驗證', '產品策略', 'AutoCAD', 'Creo', '包裝材料選用'],
       category: '專利申請'
     }
   ],
   Product: [
-    { id: 1, title: '油煙機設計', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], category: '廚電/家電' },
-    { id: 2, title: '瓦斯爐設計', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], category: '廚電/家電' },
-    { id: 3, title: '穿戴式裝置設計', img: '/sleep_monitor_device01-1.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], category: '醫療/穿戴' },
-    { id: 4, title: '醫療器材設計', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], category: '醫療/穿戴' },
-    { id: 5, title: '玩具設計', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], category: '玩具設計' },
-    { id: 6, title: '手繪作品', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], category: '手繪作品' }
+    { id: 1, title: '油煙機設計', img: '/rangehood01.jpg', detailsImages: ['/rangehood01.jpg', '/rangehood02.jpg', '/rangehood03.jpg'], tags: ['產品設計', '廚房家電', 'SAKURA'], skills: ['Creo', 'Keyshot', 'KeyShot', '3D 渲染', '產品結構評估', '競品分析', '產品策略', '市場調查資料分析', 'Photoshop', 'Illustrator', '工程圖繪製'], category: '廚電/家電' },
+    { id: 2, title: '瓦斯爐設計', img: '/g252201.jpg', detailsImages: ['/g252201.jpg'], tags: ['產品設計', '家電'], skills: ['Creo', 'Keyshot', 'KeyShot', '3D 渲染', '產品結構評估', '產品定位', 'CMF 樣板製作', '工程圖繪製', '設計驗證'], category: '廚電/家電' },
+    { id: 3, title: '穿戴式裝置設計', img: '/sleep_monitor_device01-1.jpg', detailsImages: ['/sleep_monitor_device01.jpg', '/sleep_monitor_device02.jpg', '/sleep_monitor_device03.jpg', '/sleep_monitor_device04.jpg'], tags: ['穿戴裝置', '醫療'], skills: ['SolidWorks', 'Keyshot', 'KeyShot', '3D 渲染', '產品定位', '競品分析', 'CMF 樣板製作', '快速打樣', '產品結構評估', 'Rhino'], category: '醫療/穿戴' },
+    { id: 4, title: '醫療器材設計', img: '/emg01.jpg', detailsImages: ['/emg01.jpg', '/emg02.jpg'], tags: ['醫療器材', '工業設計'], skills: ['SolidWorks', 'Keyshot', 'KeyShot', '3D 渲染', '產品結構評估', '快速打樣', '設計驗證', '報告撰寫與提案', 'Photoshop'], category: '醫療/穿戴' },
+    { id: 5, title: '玩具設計', img: '/cic_toy.jpg', detailsImages: ['/cic_toy.jpg'], tags: ['玩具設計', 'CMF'], skills: ['SolidWorks', 'Keyshot', 'KeyShot', '3D 渲染', 'CMF 樣板製作', '產品定位', 'Illustrator', 'Photoshop', '電腦排版設計'], category: '玩具設計' },
+    { id: 6, title: '手繪作品', img: '/draw.jpg', detailsImages: ['/draw.jpg'], tags: ['手繪', '插畫'], skills: ['Photoshop', 'Illustrator', '電腦排版設計', '設計印刷基本認知'], category: '手繪作品' }
   ],
   Graphic: [
-    { id: 1, title: '品牌視覺整合', img: '/graphic_design02-1.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], category: '品牌/CIS' }
+    { id: 1, title: '品牌視覺整合', img: '/graphic_design02-1.jpg', detailsImages: ['/graphic_design01.jpg', '/graphic_design02.jpg', '/post_design.jpg'], tags: ['品牌設計', '平面', 'CIS'], skills: ['Illustrator', 'Photoshop', 'Adobe InDesign', 'InDesign', '電腦排版設計', '設計印刷基本認知', '電腦印前設計', '產品策略', '報告撰寫與提案'], category: '品牌/CIS' }
   ]
 };
 
@@ -559,6 +580,7 @@ export default function App() {
 
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [activeFilter, setActiveFilter] = useState('全部包裝');
@@ -567,6 +589,62 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeAboutTab, setActiveAboutTab] = useState('background');
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setActiveSection('home');
+  };
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerOffset = 90; // offset for floating capsule navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setActiveSection(sectionId);
+      if (window.history && window.history.pushState) {
+        window.history.pushState(null, '', `#${sectionId}`);
+      }
+    }
+  };
+
+  const isProjectMatchingSkill = (project: any, skill: string | null): boolean => {
+    if (!skill || !project) return false;
+    const target = skill.toLowerCase().trim();
+    const skillsList = project.skills || [];
+    const tagsList = project.tags || [];
+    
+    return [...skillsList, ...tagsList].some((s: string) => {
+      const sLower = s.toLowerCase().trim();
+      if (sLower === target) return true;
+      if (target === 'indesign' && sLower.includes('indesign')) return true;
+      if (target === 'adobe indesign' && sLower.includes('indesign')) return true;
+      if (target === 'keyshot' && sLower.includes('keyshot')) return true;
+      if (target === 'autocad' && sLower.includes('autocad')) return true;
+      return false;
+    });
+  };
+
+  const handleSkillClick = (skillName: string) => {
+    if (selectedSkill === skillName) {
+      setSelectedSkill(null);
+    } else {
+      setSelectedSkill(skillName);
+      // Smooth scroll to portfolio section so user sees the highlighted projects immediately
+      const portfolioEl = document.getElementById('portfolio');
+      if (portfolioEl) {
+        portfolioEl.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
   const aboutTabs = [
     { id: 'background', label: lang === 'zh' ? '設計背景與專業' : 'Background & Expertise', subLabel: lang === 'zh' ? 'Background & Expertise' : 'Education & Career', icon: User },
@@ -576,6 +654,20 @@ export default function App() {
   ];
 
   // --- 計算屬性 ---
+  const allProjectsList = Object.entries(projectData).flatMap(([cat, list]) => 
+    list.map(p => ({ ...p, parentCategory: cat }))
+  );
+
+  const matchingProjects = selectedSkill 
+    ? allProjectsList.filter(p => isProjectMatchingSkill(p, selectedSkill))
+    : [];
+
+  const getCategoryMatchingCount = (catKey: string, skill: string | null) => {
+    if (!skill) return 0;
+    const list = projectData[catKey as keyof typeof projectData] || [];
+    return list.filter(p => isProjectMatchingSkill(p, skill)).length;
+  };
+
   const currentCategoryFilters = activeCategory 
     ? (portfolioContent.filterCategories[activeCategory as keyof typeof portfolioContent.filterCategories] || [])
     : [];
@@ -600,26 +692,72 @@ export default function App() {
     return coursesData.filter(c => c.category === filterVal).length;
   };
 
-  // --- 副作用處理 ---
+  // --- 副作用處理：Scroll-Spy 滾動監聽與狀態動態更新 ---
   useEffect(() => {
     const handleScroll = () => {
       const winScroll = window.scrollY;
       setScrolled(winScroll > 50);
+      setShowScrollTop(winScroll > window.innerHeight / 2);
       const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      setScrollProgress(winScroll / height);
+      setScrollProgress(height > 0 ? winScroll / height : 0);
 
-      const sections = ['about', 'portfolio', 'experience', 'skills', 'courses', 'interests', 'contact'];
-      const current = sections.find(section => {
-        const el = document.getElementById(section);
+      const navSectionIds = ['about', 'portfolio', 'experience', 'skills', 'courses'];
+
+      // 當位於頂部 Hero 區塊時，不強制啟用主要導覽錨點高亮
+      if (winScroll < 180) {
+        setActiveSection('home');
+        return;
+      }
+
+      // 當捲動至接近頁面底部時，自動將最後一個導覽區塊設為 active
+      if (window.innerHeight + winScroll >= document.documentElement.scrollHeight - 70) {
+        setActiveSection(navSectionIds[navSectionIds.length - 1]);
+        return;
+      }
+
+      // 視窗閱讀焦點基準線（位於導覽列下方約 180px 處）
+      const focalOffset = 180;
+
+      let detected = '';
+      for (let i = 0; i < navSectionIds.length; i++) {
+        const id = navSectionIds[i];
+        const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          return rect.top <= 160 && rect.bottom >= 160;
+          // 若區塊頂部已越過基準線，且底部仍在基準線下方，則該區塊為當前閱讀焦點
+          if (rect.top <= focalOffset && rect.bottom > focalOffset) {
+            detected = id;
+            break;
+          }
         }
-        return false;
-      });
-      if (current) setActiveSection(current);
+      }
+
+      // 快速滾動或區塊交界處的備援計算：挑選最接近閱讀焦點基準線的區塊
+      if (!detected) {
+        let minDiff = Infinity;
+        for (const id of navSectionIds) {
+          const el = document.getElementById(id);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+              const diff = Math.abs(rect.top - focalOffset);
+              if (diff < minDiff) {
+                minDiff = diff;
+                detected = id;
+              }
+            }
+          }
+        }
+      }
+
+      if (detected) {
+        setActiveSection(detected);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // 初始化呼叫一次，確保載入或重整時狀態正確
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -665,14 +803,26 @@ export default function App() {
             <span className="font-black text-base sm:text-xl tracking-wide uppercase whitespace-nowrap text-[#121212] dark:text-white">AMANDA LAI<span className="text-[#a38a6a]">.</span></span>
           </div>
 
-          {/* 桌面版導覽連結 (>= 768px 顯示) */}
-          <div className="hidden md:flex items-center space-x-2 text-[14px] font-black uppercase tracking-widest text-gray-400 dark:text-gray-300">
-            {['about', 'portfolio', 'experience', 'skills', 'courses'].map(item => (
-              <a key={item} href={`#${item}`} className={`px-4 py-2 rounded-full transition-all duration-500 hover:text-[#121212] dark:hover:text-white ${activeSection === item ? 'text-[#121212] dark:text-white bg-gray-50 dark:bg-white/15 shadow-sm' : ''}`}>
-                {item}
-                {activeSection === item && <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#a38a6a]"></span>}
-              </a>
-            ))}
+          {/* 桌面版導覽連結 (>= 768px 顯示) - 繁中與英文模式皆純保留大寫英文 */}
+          <div className="hidden md:flex items-center space-x-1 lg:space-x-1.5 xl:space-x-2 text-[12px] lg:text-[13px] font-black uppercase tracking-wider">
+            {navItems.map(item => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={`relative px-3 sm:px-3.5 lg:px-4 py-1.5 sm:py-2 rounded-full transition-all duration-300 cursor-pointer inline-flex items-center border ${
+                    isActive
+                      ? 'text-[#a38a6a] dark:text-[#e8c68c] bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 border-[#a38a6a] dark:border-[#a38a6a] shadow-sm font-extrabold scale-105'
+                      : 'text-gray-500 dark:text-gray-400 hover:text-[#121212] dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10 border-transparent'
+                  }`}
+                >
+                  <span className="relative z-10 font-black tracking-wider uppercase">{item.labelEn}</span>
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-2 sm:gap-3">
@@ -735,21 +885,29 @@ export default function App() {
               <span className="text-xs font-bold tracking-widest text-[#a38a6a] uppercase">Navigation Menu</span>
               <span className="text-[11px] font-semibold text-gray-400 dark:text-gray-400 uppercase">{darkMode ? 'Dark' : 'Light'} • {lang.toUpperCase()}</span>
             </div>
-            {navItems.map(item => (
-              <a
-                key={item.id}
-                href={`#${item.id}`}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex items-center justify-between px-5 py-3.5 rounded-2xl text-[16px] font-bold tracking-wider transition-all duration-300 ${
-                  activeSection === item.id 
-                    ? 'bg-[#a38a6a] text-white shadow-md' 
-                    : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-[#222430]'
-                }`}
-              >
-                <span>{lang === 'zh' ? `${item.labelEn} / ${item.labelZh}` : item.labelEn}</span>
-                <ChevronRight size={18} className={activeSection === item.id ? 'text-white' : 'text-gray-400'} />
-              </a>
-            ))}
+            {navItems.map(item => {
+              const isActive = activeSection === item.id;
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={(e) => handleNavClick(e, item.id)}
+                  className={`flex items-center justify-between px-5 py-3.5 rounded-2xl text-[16px] font-bold tracking-wider transition-all duration-300 ${
+                    isActive 
+                      ? 'bg-[#a38a6a] text-white shadow-md shadow-[#a38a6a]/30 ring-2 ring-[#a38a6a]/40 scale-[1.01]' 
+                      : 'text-gray-800 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-[#222430]'
+                  }`}
+                >
+                  <div className="flex items-center gap-2.5">
+                    {isActive && (
+                      <span className="w-2 h-2 rounded-full bg-white shadow-[0_0_6px_white] animate-pulse" />
+                    )}
+                    <span className="font-extrabold tracking-wide uppercase">{item.labelEn}</span>
+                  </div>
+                  <ChevronRight size={18} className={isActive ? 'text-white' : 'text-gray-400'} />
+                </a>
+              );
+            })}
 
             {/* 行動版專用語言切換按鈕 */}
             <div className="flex items-center justify-between px-5 py-3 rounded-2xl bg-gray-50 dark:bg-[#20222d] border border-gray-100 dark:border-white/10 mt-1">
@@ -837,7 +995,7 @@ export default function App() {
       {/* 4. ABOUT SECTION */}
       
       
-      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-36 border-t border-gray-100 dark:border-white/10 bg-[#faf9f6]/40 dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="about" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-36 border-t border-gray-100 dark:border-white/10 bg-[#faf9f6]/40 dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 text-[#121212] dark:text-[#f0f0f0]">
           
           {/* 左側：PROFILE標題、選單與頭貼 */}
@@ -1220,10 +1378,10 @@ export default function App() {
 
 
       {/* 5. PORTFOLIO */}
-      <section id="portfolio" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="portfolio" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 sm:mb-16 md:mb-24 border-b border-gray-200 dark:border-white/10 pb-8 sm:pb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 border-b border-gray-200 dark:border-white/10 pb-8 sm:pb-12">
             <div>
               <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-4 sm:mb-6">{portfolioContent.tag}</h2>
               <h3 className="text-4xl sm:text-5xl md:text-7xl font-black tracking-tighter text-[#121212] dark:text-white">{portfolioContent.title}</h3>
@@ -1231,19 +1389,94 @@ export default function App() {
             <p className="text-xs sm:text-[14px] font-black text-gray-400 dark:text-gray-400 uppercase tracking-widest mt-4 md:mt-0">{lang === 'zh' ? portfolioContent.subZh : portfolioContent.subEn}</p>
           </div>
         </Reveal>
+
+        {/* 技能高亮橫幅 (Skill Highlight Banner) */}
+        {selectedSkill && (
+          <div className="mb-10 sm:mb-14 p-5 sm:p-7 rounded-3xl bg-gradient-to-r from-[#a38a6a]/15 via-white/95 to-[#a38a6a]/10 dark:from-[#a38a6a]/25 dark:via-[#181a24] dark:to-[#14151e] border-2 border-[#a38a6a] shadow-xl dark:shadow-[0_10px_35px_rgba(163,138,106,0.18)] backdrop-blur-md animate-in fade-in slide-in-from-top-4 duration-500">
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="flex items-center gap-3.5 sm:gap-4">
+                <div className="w-11 h-11 rounded-2xl bg-[#a38a6a] text-white flex items-center justify-center shrink-0 shadow-lg shadow-[#a38a6a]/30">
+                  <Sparkles size={22} className="animate-spin-slow" />
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 sm:gap-3 flex-wrap">
+                    <span className="text-xs font-black uppercase tracking-wider text-[#a38a6a]">
+                      {lang === 'zh' ? skillHighlightContent.activeLabelZh : skillHighlightContent.activeLabelEn}
+                    </span>
+                    <span className="px-3.5 py-1 bg-[#a38a6a] text-white text-xs sm:text-sm font-black rounded-full shadow-sm tracking-wide">
+                      {skillTagTranslations[selectedSkill]?.[lang] || selectedSkill}
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-700 dark:text-gray-300 font-medium mt-1">
+                    {lang === 'zh' 
+                      ? `已在作品集中高亮 ${matchingProjects.length} 件運用「${skillTagTranslations[selectedSkill]?.zh || selectedSkill}」的專案作品` 
+                      : `Highlighted ${matchingProjects.length} projects in portfolio utilizing "${skillTagTranslations[selectedSkill]?.en || selectedSkill}"`
+                    }
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2.5 w-full md:w-auto justify-end">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById('skills');
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-bold bg-white/80 dark:bg-[#202230] hover:bg-gray-100 dark:hover:bg-[#282a3c] text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-white/10 transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap"
+                >
+                  <Filter size={13} />
+                  {lang === 'zh' ? '更換技能' : 'Change Skill'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSelectedSkill(null)}
+                  className="flex items-center gap-1.5 px-4 py-2 rounded-full text-xs sm:text-sm font-black uppercase tracking-wider bg-[#121212] dark:bg-[#a38a6a] hover:bg-[#a38a6a] dark:hover:bg-[#b89d7b] text-white transition-all shadow-sm active:scale-95 cursor-pointer whitespace-nowrap"
+                >
+                  <X size={14} />
+                  {lang === 'zh' ? skillHighlightContent.clearZh : skillHighlightContent.clearEn}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-10 xl:gap-14 text-[#121212] dark:text-[#f0f0f0]">
           {Object.entries(portfolioContent.categoryNames).map(([key, nameObj], idx) => {
             const label = lang === 'zh' ? nameObj.zh : nameObj.en;
+            const matchCount = getCategoryMatchingCount(key, selectedSkill);
+            const hasMatches = matchCount > 0;
             return (
             <Reveal key={key} delay={idx * 200}>
-               <SpotlightCard className="group/card flex flex-col h-full bg-white dark:bg-[#181922] text-[#121212] dark:text-white rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[2.5rem] lg:rounded-[3.5rem] shadow-xl hover:-translate-y-2 sm:hover:-translate-y-3 hover:scale-[1.02] active:scale-[0.99] hover:shadow-2xl hover:shadow-[#a38a6a]/10 dark:hover:shadow-[#a38a6a]/20 dark:shadow-[0_8px_32px_rgba(0,0,0,0.36)] transition-all duration-500 ease-out overflow-hidden border border-gray-100 dark:border-white/10 dark:hover:border-[#a38a6a]/40">
+               <SpotlightCard 
+                 onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }}
+                 className={`group/card flex flex-col h-full bg-white dark:bg-[#181922] text-[#121212] dark:text-white rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[2.5rem] lg:rounded-[3.5rem] shadow-md hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.18),0_12px_24px_-6px_rgba(0,0,0,0.08)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.45)] dark:hover:shadow-[0_28px_65px_-12px_rgba(0,0,0,0.9),0_0_35px_rgba(163,138,106,0.22)] hover:-translate-y-2 sm:hover:-translate-y-3.5 hover:scale-[1.025] sm:hover:scale-[1.03] active:scale-[0.985] transition-all duration-500 ease-out overflow-hidden border cursor-pointer ${
+                 selectedSkill 
+                   ? hasMatches 
+                     ? 'border-2 border-[#a38a6a] ring-2 ring-[#a38a6a]/40 shadow-2xl shadow-[#a38a6a]/20 scale-[1.01]' 
+                     : 'border-gray-100 dark:border-white/10 opacity-50 grayscale hover:grayscale-0 hover:opacity-90'
+                   : 'border-gray-100 dark:border-white/10 dark:hover:border-[#a38a6a]/40'
+               }`}>
                   <div className="aspect-square overflow-hidden relative bg-white dark:bg-[#222430] border-b border-gray-50 dark:border-white/10 p-3 sm:p-5 md:p-4 lg:p-6">
                      <img src={key === 'Packaging' ? "/tws_pkg_design11111.jpg" : key === 'Product' ? "/sleep_monitor_device01-1.jpg" : "/graphic_design02-1.jpg"} alt={key} className="w-full h-full object-contain grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 group-hover/card:scale-105 transition-all duration-1000" />
+                     {selectedSkill && (
+                       <div className="absolute top-4 sm:top-5 left-1/2 -translate-x-1/2 z-20 pointer-events-none whitespace-nowrap">
+                         {hasMatches ? (
+                           <span className="px-4 py-1.5 rounded-full text-xs font-black bg-[#a38a6a] text-white shadow-xl shadow-[#a38a6a]/30 flex items-center gap-1.5 animate-pulse ring-2 ring-white/60 dark:ring-[#181922]/80">
+                             <Sparkles size={12} />
+                             {skillHighlightContent.matchingInCatZh ? (lang === 'zh' ? skillHighlightContent.matchingInCatZh(matchCount) : skillHighlightContent.matchingInCatEn(matchCount)) : `${matchCount}`}
+                           </span>
+                         ) : (
+                           <span className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-gray-200/90 dark:bg-black/60 text-gray-500 dark:text-gray-400 backdrop-blur-sm border border-black/5 dark:border-white/10">
+                             {lang === 'zh' ? '0 件符合' : '0 matching'}
+                           </span>
+                         )}
+                       </div>
+                     )}
                   </div>
                   <div className="p-5 sm:p-7 md:p-4 lg:p-8 xl:p-12 flex flex-col items-center text-center flex-grow text-[#121212] dark:text-white">
                      <h4 className="text-2xl sm:text-3xl md:text-xl min-[900px]:text-2xl lg:text-4xl xl:text-5xl font-black uppercase mb-1.5 sm:mb-3 tracking-tighter truncate max-w-full text-[#121212] dark:text-white">{key}</h4>
                      <p className="text-xs sm:text-sm md:text-xs lg:text-base font-bold text-[#a38a6a] tracking-wider mb-5 sm:mb-8 flex-grow uppercase">{label}</p>
-                     <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-1.5 sm:gap-2.5 md:gap-2 lg:gap-3 w-full pt-4 sm:pt-6 border-t border-gray-100 dark:border-white/10 transition-all text-[#121212] dark:text-white hover:text-[#a38a6a] dark:hover:text-[#a38a6a]">
+                     <button onClick={() => { setActiveCategory(key); setActiveFilter(key === 'Packaging' ? '全部包裝' : key === 'Product' ? '全部產品' : '全部平面'); }} className="group/btn flex items-center justify-center gap-1.5 sm:gap-2.5 md:gap-2 lg:gap-3 w-full pt-4 sm:pt-6 border-t border-gray-100 dark:border-white/10 transition-all text-[#121212] dark:text-white hover:text-[#a38a6a] dark:hover:text-[#a38a6a] cursor-pointer">
                         <span className="text-xs sm:text-sm md:text-xs min-[900px]:text-sm lg:text-base font-black uppercase tracking-wider whitespace-nowrap">{lang === 'zh' ? portfolioContent.exploreZh : portfolioContent.exploreEn}</span>
                         <ArrowRight size={16} className="group-hover/btn:translate-x-1 sm:group-hover/btn:translate-x-2 transition-transform shrink-0" />
                      </button>
@@ -1253,11 +1486,102 @@ export default function App() {
             );
           })}
         </div>
+
+        {/* 技能關聯專案即時展示區 (Featured Matching Projects Grid) */}
+        {selectedSkill && matchingProjects.length > 0 && (
+          <div className="mt-14 sm:mt-20 pt-10 sm:pt-14 border-t border-gray-200 dark:border-white/10 animate-in fade-in duration-700">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 sm:mb-10 gap-3">
+              <div>
+                <div className="flex items-center gap-2 mb-2 text-[#a38a6a]">
+                  <Target size={16} />
+                  <span className="text-xs sm:text-sm font-black uppercase tracking-widest">
+                    {lang === 'zh' ? skillHighlightContent.matchedProjectsHeadingZh : skillHighlightContent.matchedProjectsHeadingEn}
+                  </span>
+                </div>
+                <h4 className="text-2xl sm:text-3xl md:text-4xl font-black text-[#121212] dark:text-white tracking-tight">
+                  {skillTagTranslations[selectedSkill]?.[lang] || selectedSkill}
+                  <span className="text-sm sm:text-base font-bold text-gray-400 dark:text-gray-400 ml-3">
+                    ({matchingProjects.length} {lang === 'zh' ? '件專案' : 'projects'})
+                  </span>
+                </h4>
+              </div>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium">
+                {lang === 'zh' ? skillHighlightContent.matchedProjectsSubZh : skillHighlightContent.matchedProjectsSubEn}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+              {matchingProjects.map((proj) => {
+                const enItem = projectEnMap[proj.id];
+                const displayTitle = (lang === 'en' && enItem?.title) ? enItem.title : proj.title;
+                const displayDesc = (lang === 'en' && enItem?.desc) ? enItem.desc : proj.desc;
+                const catName = portfolioContent.categoryNames[proj.parentCategory as keyof typeof portfolioContent.categoryNames];
+                const displayCat = lang === 'zh' ? catName?.zh : catName?.en;
+
+                return (
+                  <div
+                    key={`${proj.parentCategory}-${proj.id}`}
+                    onClick={() => setSelectedProject(proj)}
+                    className="group/item cursor-pointer flex flex-col bg-white dark:bg-[#161822] rounded-[2rem] border-2 border-[#a38a6a] shadow-md hover:shadow-[0_22px_45px_-12px_rgba(0,0,0,0.18),0_8px_20px_-6px_rgba(0,0,0,0.08),0_0_25px_rgba(163,138,106,0.18)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.45)] dark:hover:shadow-[0_28px_60px_-12px_rgba(0,0,0,0.9),0_0_35px_rgba(163,138,106,0.25)] hover:-translate-y-2.5 hover:scale-[1.025] sm:hover:scale-[1.03] active:scale-[0.985] transition-all duration-500 ease-out overflow-hidden"
+                  >
+                    <div className="relative aspect-[3/2] bg-gray-50/70 dark:bg-[#11121a] p-4 flex items-center justify-center overflow-hidden border-b border-gray-100 dark:border-white/5">
+                      <img
+                        src={proj.img}
+                        alt={displayTitle}
+                        className="w-full h-full object-contain group-hover/item:scale-105 transition-transform duration-700"
+                      />
+                      <span className="absolute top-4 left-4 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-[#121212]/80 dark:bg-[#1f212e]/90 text-white backdrop-blur-md">
+                        {displayCat || proj.parentCategory}
+                      </span>
+                      <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider bg-[#a38a6a] text-white shadow-md flex items-center gap-1">
+                        <Sparkles size={11} />
+                        {lang === 'zh' ? skillHighlightContent.badgeZh : skillHighlightContent.badgeEn}
+                      </span>
+                    </div>
+                    <div className="p-6 sm:p-7 flex flex-col flex-grow">
+                      <div className="flex justify-between items-start gap-2 mb-2">
+                        <h5 className="text-lg sm:text-xl font-black text-[#121212] dark:text-white group-hover/item:text-[#a38a6a] transition-colors line-clamp-1">
+                          {displayTitle}
+                        </h5>
+                        <div className="w-8 h-8 rounded-full border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-300 dark:text-gray-400 group-hover/item:text-[#a38a6a] group-hover/item:border-[#a38a6a] shrink-0">
+                          <ExternalLink size={14} />
+                        </div>
+                      </div>
+                      {displayDesc && (
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-300 font-medium mb-4 line-clamp-2 leading-relaxed flex-grow">
+                          {displayDesc}
+                        </p>
+                      )}
+                      
+                      <div className="flex flex-wrap gap-2 pt-2 border-t border-gray-100 dark:border-white/10">
+                        {proj.tags.map((tag: string) => {
+                          const isTagMatch = isProjectMatchingSkill({ skills: [tag], tags: [] }, selectedSkill);
+                          return (
+                            <span 
+                              key={tag} 
+                              className={`text-[10px] sm:text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider transition-all ${
+                                isTagMatch 
+                                  ? 'bg-[#a38a6a] text-white shadow-sm ring-1 ring-[#a38a6a]' 
+                                  : 'text-[#a38a6a] bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20'
+                              }`}
+                            >
+                              {tag}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
         </div>
       </section>
 
       {/* 6. EXPERIENCE (重新規劃為單一垂直演進流) */}
-      <section id="experience" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="experience" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#f9f9f9] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-6xl mx-auto">
         <Reveal>
           <div className="text-center mb-16 sm:mb-24 md:mb-32">
@@ -1352,10 +1676,16 @@ export default function App() {
       </section>
 
       {/* 7. SKILLS */}
-      <section id="skills" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 dark:border-white/10 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="skills" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 border-t border-gray-50 dark:border-white/10 bg-white dark:bg-[#0e0f14] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full text-[#121212] dark:text-[#f0f0f0]">
         <Reveal>
-           <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-12 sm:mb-16 md:mb-24 text-center">{lang === 'zh' ? skillsContent.tagZh : skillsContent.tagEn}</h2>
+          <div className="text-center mb-10 sm:mb-16">
+            <h2 className="text-xs sm:text-[14px] font-black tracking-[0.4em] sm:tracking-[0.5em] text-[#a38a6a] uppercase mb-4">{lang === 'zh' ? skillsContent.tagZh : skillsContent.tagEn}</h2>
+            <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 rounded-full bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 border border-[#a38a6a]/30 text-xs sm:text-sm font-bold text-[#a38a6a] shadow-sm">
+              <Sparkles size={14} className="shrink-0 text-[#a38a6a] animate-pulse" />
+              <span>{lang === 'zh' ? skillHighlightContent.hintZh : skillHighlightContent.hintEn}</span>
+            </div>
+          </div>
         </Reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-10 sm:mb-12">
            {skillsContent.skills.map((skill, idx) => {
@@ -1371,10 +1701,35 @@ export default function App() {
                    </div>
                    <h4 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 tracking-tight leading-snug group-hover:text-[#a38a6a] transition-colors text-[#121212] dark:text-white">{lang === 'zh' ? skill.titleZh : skill.titleEn}</h4>
                    <p className="text-[13px] sm:text-[14px] text-gray-500 dark:text-gray-300 font-medium leading-[1.75] sm:leading-[1.8] mb-6 sm:mb-10 flex-grow">{lang === 'zh' ? skill.descZh : skill.descEn}</p>
-                   <div className="flex flex-wrap gap-1.5 sm:gap-2 text-[#121212] dark:text-[#f0f0f0]">
-                     {skill.tags.map(t => (
-                       <span key={t} className="text-xs sm:text-[14px] font-black px-3 sm:px-4 py-1.5 bg-gray-50 dark:bg-[#232532] text-gray-500 dark:text-gray-300 rounded-lg hover:text-white hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] hover:shadow-lg hover:shadow-[#a38a6a]/40 transition-all fluid-anim uppercase">{t}</span>
-                     ))}
+                   <div className="flex flex-wrap gap-2 text-[#121212] dark:text-[#f0f0f0]">
+                     {skill.tags.map(t => {
+                       const isSelected = selectedSkill === t;
+                       const count = allProjectsList.filter(p => isProjectMatchingSkill(p, t)).length;
+                       return (
+                         <button
+                           key={t}
+                           type="button"
+                           onClick={() => handleSkillClick(t)}
+                           aria-pressed={isSelected}
+                           title={lang === 'zh' ? `點擊在作品集高亮 ${count} 件關聯專案` : `Click to highlight ${count} related projects in Portfolio`}
+                           className={`group/tag flex items-center gap-1.5 text-xs sm:text-[14px] font-black px-3.5 sm:px-4 py-2 rounded-xl transition-all duration-300 uppercase cursor-pointer active:scale-95 ${
+                             isSelected
+                               ? 'bg-[#a38a6a] text-white shadow-lg shadow-[#a38a6a]/35 ring-2 ring-[#a38a6a] scale-105'
+                               : 'bg-gray-50 dark:bg-[#232532] text-gray-600 dark:text-gray-300 hover:text-white hover:bg-[#a38a6a] dark:hover:bg-[#a38a6a] hover:shadow-md hover:shadow-[#a38a6a]/30'
+                           }`}
+                         >
+                           {isSelected ? (
+                             <Check size={13} className="shrink-0 stroke-[3]" />
+                           ) : (
+                             <Tag size={12} className="shrink-0 opacity-40 group-hover/tag:opacity-100" />
+                           )}
+                           <span>{skillTagTranslations[t]?.[lang] || t}</span>
+                           <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-bold ml-0.5 ${isSelected ? 'bg-white/20 text-white' : 'bg-black/5 dark:bg-white/10 text-gray-400 group-hover/tag:text-white group-hover/tag:bg-white/20'}`}>
+                             {count}
+                           </span>
+                         </button>
+                       );
+                     })}
                    </div>
                 </SpotlightCard>
              </Reveal>
@@ -1382,12 +1737,17 @@ export default function App() {
            })}
         </div>
         
-        {/* 原本是純黑色的軟體工具區塊：在深色模式套用漸層深鈦金屬與香檳金光澤，極富層次感 */}
+        {/* 軟體工具區塊：支援點擊高亮專案 */}
         <Reveal delay={300}>
            <div className="bg-[#121212] dark:bg-gradient-to-br dark:from-[#21232d] dark:via-[#191a23] dark:to-[#13141b] rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-12 text-white overflow-hidden relative border border-white/5 dark:border-[#a38a6a]/30 shadow-2xl dark:shadow-[0_16px_50px_rgba(0,0,0,0.7)]">
               <div className="relative z-10">
                 <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-2 sm:gap-4 mb-8 sm:mb-12 md:mb-16 border-b border-white/10 pb-6 sm:pb-10">
-                   <h4 className="font-serif italic text-3xl sm:text-4xl text-[#a38a6a]">{skillsContent.toolsHeading}</h4>
+                   <div>
+                     <h4 className="font-serif italic text-3xl sm:text-4xl text-[#a38a6a]">{skillsContent.toolsHeading}</h4>
+                     <p className="text-[11px] sm:text-xs text-white/60 dark:text-gray-300 mt-1">
+                       {lang === 'zh' ? '點選工具即可快速檢索運用該軟體之專案作品' : 'Select a software tool to view projects developed with it'}
+                     </p>
+                   </div>
                    <p className="text-xs sm:text-[14px] font-black tracking-[0.3em] sm:tracking-[0.4em] text-white/50 dark:text-gray-300 uppercase">{skillsContent.toolsSub}</p>
                 </div>
                 <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-4 md:gap-6">
@@ -1399,20 +1759,37 @@ export default function App() {
                      { name: 'Photoshop', img: '/photoshop_logo.jpg' },
                      { name: 'InDesign', img: '/Indesign_logo.png' },
                      { name: 'AutoCAD', img: '/autocad_logo.jpg' }
-                   ].map(tool => (
-                     <div key={tool.name} className="flex flex-col items-center gap-3 sm:gap-4 bg-white/5 dark:bg-[#262835]/80 py-6 sm:py-8 rounded-2xl sm:rounded-[2rem] hover:bg-[#a38a6a]/20 dark:hover:bg-[#a38a6a]/25 hover:-translate-y-1 sm:hover:-translate-y-2 transition-all cursor-pointer border border-transparent dark:border-white/10 hover:border-[#a38a6a]/40 group">
-                        <div className="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-110 fluid-anim relative">
-                           {tool.img ? (
-                              <img src={tool.img} alt={tool.name} className="w-full h-full object-contain filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 rounded" />
-                           ) : (
-                              <div className="w-full h-full rounded-lg bg-white flex items-center justify-center text-[#121212] font-black text-xs">
-                                 {tool.name.substring(0,2).toUpperCase()}
-                              </div>
-                           )}
-                        </div>
-                        <span className="text-xs font-black tracking-widest uppercase text-white/60 dark:text-gray-300 group-hover:text-white transition-colors duration-500 text-center w-full truncate px-2">{tool.name}</span>
-                     </div>
-                   ))}
+                   ].map(tool => {
+                     const isSelected = selectedSkill === tool.name || (tool.name === 'InDesign' && selectedSkill === 'Adobe InDesign');
+                     const count = allProjectsList.filter(p => isProjectMatchingSkill(p, tool.name)).length;
+                     return (
+                       <button
+                         key={tool.name}
+                         type="button"
+                         onClick={() => handleSkillClick(tool.name)}
+                         title={lang === 'zh' ? `點擊高亮使用 ${tool.name} 的專案 (${count}件)` : `Click to highlight projects using ${tool.name} (${count})`}
+                         className={`flex flex-col items-center gap-3 sm:gap-4 py-6 sm:py-8 rounded-2xl sm:rounded-[2rem] transition-all cursor-pointer border group active:scale-95 ${
+                           isSelected
+                             ? 'bg-[#a38a6a]/30 dark:bg-[#a38a6a]/35 border-[#a38a6a] ring-2 ring-[#a38a6a] shadow-lg shadow-[#a38a6a]/30 scale-105'
+                             : 'bg-white/5 dark:bg-[#262835]/80 hover:bg-[#a38a6a]/20 dark:hover:bg-[#a38a6a]/25 hover:-translate-y-1 sm:hover:-translate-y-2 border-transparent dark:border-white/10 hover:border-[#a38a6a]/40'
+                         }`}
+                       >
+                          <div className="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-110 fluid-anim relative">
+                             {tool.img ? (
+                                <img src={tool.img} alt={tool.name} className={`w-full h-full object-contain rounded transition-all duration-500 ${isSelected ? 'grayscale-0 opacity-100 scale-110' : 'filter grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100'}`} />
+                             ) : (
+                                <div className="w-full h-full rounded-lg bg-white flex items-center justify-center text-[#121212] font-black text-xs">
+                                   {tool.name.substring(0,2).toUpperCase()}
+                                </div>
+                             )}
+                          </div>
+                          <div className="flex flex-col items-center gap-1 w-full px-2">
+                            <span className={`text-xs font-black tracking-widest uppercase transition-colors duration-500 text-center w-full truncate ${isSelected ? 'text-[#a38a6a]' : 'text-white/70 dark:text-gray-300 group-hover:text-white'}`}>{tool.name}</span>
+                            <span className="text-[10px] font-bold text-gray-400 dark:text-gray-400">({count})</span>
+                          </div>
+                       </button>
+                     );
+                   })}
                 </div>
               </div>
            </div>
@@ -1421,7 +1798,7 @@ export default function App() {
       </section>
 
       {/* 8. COURSES (非對稱佈局設計) */}
-      <section id="courses" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#fdfdfd] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0]">
+      <section id="courses" className="px-5 sm:px-8 md:px-16 lg:px-24 py-20 sm:py-28 md:py-40 bg-[#fdfdfd] dark:bg-[#13141b] text-[#121212] dark:text-[#f0f0f0] scroll-mt-24 sm:scroll-mt-28">
         <div className="max-w-7xl mx-auto w-full">
         <Reveal>
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 md:mb-24 gap-5 sm:gap-6">
@@ -1524,6 +1901,26 @@ export default function App() {
         </div>
       </footer>
 
+      {/* 8. 懸浮回到頂部按鈕 (Floating Back to Top Button) */}
+      <button
+        type="button"
+        onClick={scrollToTop}
+        className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-[90] group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full transition-all duration-500 ease-out cursor-pointer backdrop-blur-md ${
+          showScrollTop
+            ? 'opacity-100 translate-y-0 scale-100 pointer-events-auto shadow-[0_10px_25px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_30px_rgba(0,0,0,0.5)]'
+            : 'opacity-0 translate-y-6 scale-75 pointer-events-none'
+        } bg-white/90 dark:bg-[#161822]/90 text-[#121212] dark:text-gray-200 border border-gray-200/80 dark:border-white/15 hover:border-[#a38a6a] dark:hover:border-[#a38a6a] hover:text-[#a38a6a] dark:hover:text-[#a38a6a] hover:scale-105 active:scale-95`}
+        aria-label={lang === 'zh' ? '回到頁面頂端' : 'Back to Top'}
+        title={lang === 'zh' ? '回到頁面頂端' : 'Back to Top'}
+      >
+        <ArrowUp size={20} className="sm:w-6 sm:h-6 transition-transform duration-300 group-hover:-translate-y-1" />
+        
+        {/* 懸浮提示文字 Tooltip */}
+        <span className="absolute right-full mr-3 px-3 py-1.5 text-xs font-bold rounded-full bg-[#121212] text-white dark:bg-[#202230] dark:text-gray-100 dark:border dark:border-white/15 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap shadow-xl -translate-x-1 group-hover:translate-x-0 tracking-wider hidden sm:block">
+          {lang === 'zh' ? '回到頂部' : 'Back to Top'}
+        </span>
+      </button>
+
       {/* --- MODAL --- */}
       {activeCategory && (
         <div className="fixed inset-0 z-[200] bg-white dark:bg-[#0c0d12] flex flex-col overflow-y-auto animate-in fade-in duration-500 text-[#121212] dark:text-[#f0f0f0]">
@@ -1547,6 +1944,26 @@ export default function App() {
             </button>
           </div>
           <div className="px-4 sm:px-8 md:px-24 py-6 sm:py-12 md:py-20 max-w-7xl mx-auto w-full text-[#121212] dark:text-[#f0f0f0]">
+            {/* 彈窗內技能高亮提示 */}
+            {selectedSkill && (
+              <div className="mb-6 sm:mb-8 p-3.5 sm:p-4 rounded-2xl bg-[#a38a6a]/15 dark:bg-[#a38a6a]/20 border border-[#a38a6a]/40 flex items-center justify-between gap-3 animate-in fade-in duration-300">
+                <div className="flex items-center gap-2.5">
+                  <Sparkles size={16} className="text-[#a38a6a] shrink-0" />
+                  <span className="text-xs sm:text-sm font-bold text-gray-800 dark:text-gray-200">
+                    {lang === 'zh' ? '目前聚焦技能：' : 'Focused Skill: '}
+                    <strong className="text-[#a38a6a] font-black">{skillTagTranslations[selectedSkill]?.[lang] || selectedSkill}</strong>
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedSkill(null)}
+                  className="text-xs font-bold px-3 py-1 rounded-full bg-white dark:bg-[#1a1b24] text-gray-700 dark:text-gray-200 hover:text-[#a38a6a] border border-gray-200 dark:border-white/10 shadow-sm cursor-pointer"
+                >
+                  {lang === 'zh' ? '清除高亮' : 'Clear Highlight'}
+                </button>
+              </div>
+            )}
+
             {currentCategoryFilters.length > 0 && (
               <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-12 md:mb-16">
                 {currentCategoryFilters.map(item => (
@@ -1569,10 +1986,27 @@ export default function App() {
                  const enItem = projectEnMap[proj.id];
                  const displayTitle = (lang === 'en' && enItem?.title) ? enItem.title : proj.title;
                  const displayDesc = (lang === 'en' && enItem?.desc) ? enItem.desc : proj.desc;
+                 const isMatched = isProjectMatchingSkill(proj, selectedSkill);
                  return (
-                 <div key={proj.id} onClick={() => setSelectedProject(proj)} className="group/item flex flex-col cursor-pointer bg-white dark:bg-[#161822] rounded-[2rem] sm:rounded-[3rem] border border-gray-100 dark:border-white/10 shadow-sm hover:shadow-2xl dark:shadow-[0_8px_30px_rgba(0,0,0,0.35)] dark:hover:shadow-[0_15px_40px_rgba(163,138,106,0.15)] dark:hover:border-[#a38a6a]/40 hover:-translate-y-2 hover:scale-[1.02] active:scale-[0.99] transition-all duration-500 ease-out">
+                 <div 
+                   key={proj.id} 
+                   onClick={() => setSelectedProject(proj)} 
+                   className={`group/item flex flex-col cursor-pointer bg-white dark:bg-[#161822] rounded-[2rem] sm:rounded-[3rem] shadow-md hover:shadow-[0_24px_50px_-12px_rgba(0,0,0,0.18),0_10px_24px_-6px_rgba(0,0,0,0.08),0_0_25px_rgba(163,138,106,0.16)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.45)] dark:hover:shadow-[0_30px_65px_-12px_rgba(0,0,0,0.9),0_0_40px_rgba(163,138,106,0.25)] hover:-translate-y-2.5 hover:scale-[1.025] sm:hover:scale-[1.03] active:scale-[0.985] transition-all duration-500 ease-out border ${
+                     selectedSkill
+                       ? isMatched
+                         ? 'border-2 border-[#a38a6a] ring-2 ring-[#a38a6a]/40 shadow-xl shadow-[#a38a6a]/15 opacity-100'
+                         : 'border-gray-100 dark:border-white/10 opacity-50 grayscale hover:grayscale-0 hover:opacity-100'
+                       : 'border-gray-100 dark:border-white/10 dark:hover:border-[#a38a6a]/40'
+                   }`}
+                 >
                    <div className="w-full flex items-center justify-center overflow-hidden rounded-t-[2rem] sm:rounded-t-[3rem] bg-gray-50/50 dark:bg-[#11121a] relative p-4 aspect-[3/2] border-b border-transparent dark:border-white/5">
                       <img src={proj.img} alt={displayTitle} className="w-full h-full object-contain transition-all duration-1000 group-hover/item:scale-[1.05]" />
+                      {selectedSkill && isMatched && (
+                        <span className="absolute top-4 right-4 z-10 px-3.5 py-1.5 rounded-full text-xs font-black uppercase tracking-wider bg-[#a38a6a] text-white shadow-lg flex items-center gap-1.5 animate-pulse">
+                          <Sparkles size={12} />
+                          {skillTagTranslations[selectedSkill]?.[lang] || selectedSkill}
+                        </span>
+                      )}
                    </div>
                    <div className="px-6 sm:px-10 pb-6 sm:pb-10 pt-3 sm:pt-4 flex-grow flex flex-col justify-end">
                       <div className="flex justify-between items-center mb-2 sm:mb-3">
@@ -1585,7 +2019,21 @@ export default function App() {
                         </p>
                       )}
                       <div className="flex flex-wrap gap-2 sm:gap-3">
-                        {proj.tags.map(tag => (<span key={tag} className="text-[11px] sm:text-[12px] font-black uppercase px-3 sm:px-4 py-1 sm:py-1.5 bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 rounded-full text-[#a38a6a] tracking-widest">{tag}</span>))}
+                        {proj.tags.map(tag => {
+                          const isTagMatch = isProjectMatchingSkill({ skills: [tag], tags: [] }, selectedSkill);
+                          return (
+                            <span 
+                              key={tag} 
+                              className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider transition-all ${
+                                isTagMatch 
+                                  ? 'bg-[#a38a6a] text-white shadow-sm ring-2 ring-[#a38a6a]' 
+                                  : 'text-[#a38a6a] bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20'
+                              }`}
+                            >
+                              {tag}
+                            </span>
+                          );
+                        })}
                       </div>
                    </div>
                  </div>
@@ -1615,10 +2063,22 @@ export default function App() {
             <div className="flex-shrink-0 flex items-center justify-between p-5 sm:p-8 md:p-10 border-b border-gray-100 dark:border-white/10 z-10 sticky top-0 bg-white/95 dark:bg-[#141620]/95 backdrop-blur-md rounded-t-[1.5rem] sm:rounded-t-[2rem] gap-4">
                <div className="flex flex-col min-w-0">
                   <h3 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-[#121212] dark:text-white truncate">{displayTitle}</h3>
-                  <div className="flex gap-1.5 sm:gap-2 mt-2 sm:mt-4 flex-wrap">
-                    {selectedProject.tags.map((tag: string) => (
-                      <span key={tag} className="text-xs sm:text-[14px] font-bold text-[#a38a6a] bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full uppercase tracking-widest">{tag}</span>
-                    ))}
+                  <div className="flex gap-2 sm:gap-4 mt-2 sm:mt-3 flex-wrap">
+                    {selectedProject.tags.map(tag => {
+                      const isTagMatch = isProjectMatchingSkill({ skills: [tag], tags: [] }, selectedSkill);
+                      return (
+                        <span 
+                          key={tag} 
+                          className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider transition-all ${
+                            isTagMatch 
+                              ? 'bg-[#a38a6a] text-white shadow-sm ring-2 ring-[#a38a6a]' 
+                              : 'text-[#a38a6a] bg-[#a38a6a]/10 dark:bg-[#a38a6a]/20'
+                          }`}
+                        >
+                          {tag}
+                        </span>
+                      );
+                    })}
                   </div>
                </div>
                <button onClick={() => setSelectedProject(null)} className="flex items-center justify-center w-10 h-10 sm:w-14 sm:h-14 bg-gray-50 dark:bg-[#202230] hover:bg-gray-100 dark:hover:bg-[#a38a6a] rounded-full transition-colors group shrink-0 cursor-pointer border border-transparent dark:border-white/10">
@@ -1629,6 +2089,7 @@ export default function App() {
             {/* Scrollable Content */}
             <div className="flex-grow overflow-y-auto p-4 sm:p-8 md:p-12 custom-scrollbar bg-[#fdfdfd] dark:bg-[#0c0d12]">
                <div className="max-w-5xl mx-auto space-y-6 sm:space-y-10">
+
                  {/* 專案文字簡介 */}
                  {displayBrief ? (
                    <div className="bg-white dark:bg-[#161822] rounded-[1.5rem] sm:rounded-[2rem] p-5 sm:p-8 md:p-10 border border-gray-100 dark:border-white/10 shadow-sm dark:shadow-[0_6px_25px_rgba(0,0,0,0.3)]">
