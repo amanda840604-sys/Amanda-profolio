@@ -404,7 +404,7 @@ export const chroniclesContent = {
       achievementsEn: [],
       tools: ['包裝設計', '永續包裝', '跨國協作', '結構設計'],
       type: 'work',
-      image: ''
+      image: '/sbd_logo.png'
     },
     {
       companyZh: '久鼎金屬實業股份有限公司',
