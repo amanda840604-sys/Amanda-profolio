@@ -389,7 +389,7 @@ export const chroniclesContent = {
   keyAchievementsEn: 'Key Achievements',
   items: [
     {
-      companyZh: '史丹利百得',
+      companyZh: 'Stanley Black & Decker',
       companyEn: 'Stanley Black & Decker (SBD)',
       titleZh: '包裝工程師',
       titleEn: 'Packaging Engineer',
