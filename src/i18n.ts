@@ -389,6 +389,24 @@ export const chroniclesContent = {
   keyAchievementsEn: 'Key Achievements',
   items: [
     {
+      companyZh: '史丹利百得',
+      companyEn: 'Stanley Black & Decker (SBD)',
+      titleZh: '包裝工程師',
+      titleEn: 'Packaging Engineer',
+      date: '2026.11 - PRESENT',
+      durationZh: '仍在職',
+      durationEn: 'Current',
+      locationZh: '台灣・國際工具品牌',
+      locationEn: 'Taiwan・Global Tools & Storage Brand',
+      responsibilitiesZh: ['國際品牌工具類產品包裝結構設計與開發', '跨國團隊與供應商協作，追蹤包材樣品與品質確認', '推動永續減塑包裝，兼顧產品保護性與成本效益'],
+      responsibilitiesEn: ['Packaging structural design and development for global tool brands', 'Cross-regional collaboration with teams and suppliers on sample tracking and quality verification', 'Driving sustainable, plastic-reduced packaging that balances protection and cost-efficiency'],
+      achievementsZh: [],
+      achievementsEn: [],
+      tools: ['包裝設計', '永續包裝', '跨國協作', '結構設計'],
+      type: 'work',
+      image: ''
+    },
+    {
       companyZh: '久鼎金屬實業股份有限公司',
       companyEn: 'JD Components Co., Ltd. (TranzX)',
       titleZh: '包裝設計工程師',
